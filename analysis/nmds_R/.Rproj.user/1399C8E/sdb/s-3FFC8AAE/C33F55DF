@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "#Update R (do on Rgui)\ninstall.packages(\"installr\"); \nlibrary(installr)\nupdateR()\n\n#Install and load packages\ninstall.packages(\"vegan\")\nlibrary(vegan)\ninstall.packages(\"raster\")\nlibrary(raster)\ninstall.packages(\"BioStatR\")\nlibrary(BioStatR)\n\n########Create NMDS plot with silo 3 and 9################\n\n#upload file\nlibrary(readr)\nABACUSdata <- read.csv(\"~/Documents/robertslab/oysterseedproject/raw_os_data/ABACUSdata.csv\", header=TRUE)\nView(ABACUSdata)\n\n#Transpose- switch rows and columns\ntABACUSdata <- t(ABACUSdata)\nView(tABACUSdata)\n\n#Rename Columns\ncolnames(tABACUSdata) <- tABACUSdata[1,]\n\n#Remove row\ntABACUSdata = tABACUSdata[-1,]\nView(tABACUSdata)\n\n#Remove NA and convert to numeric\ntABACUSdata[is.na(tABACUSdata)] <- 0\nas.numeric(tABACUSdata)\n\n#Make MDS dissimilarity matrix\nnmds.tABACUSdata <- metaMDS(tABACUSdata, distance = 'bray', k = 2, trymax = 3000, autotransform = FALSE)\n\n\n\n\n\n\n\n#Seperate into \"silo\" and \"day\" columns\nstrsplit()\n\n\n\n",
+    "created" : 1509573008620.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1657460692",
+    "id" : "C33F55DF",
+    "lastKnownWriteTime" : 1509958525,
+    "last_content_update" : 1509958525054,
+    "path" : "~/Documents/robertslab/oysterseedproject/R_work/nmds_code.R",
+    "project_path" : "nmds_code.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
