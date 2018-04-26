@@ -1,18 +1,18 @@
 #K MEANS CLUSTERING
 
-#install packages for vegan and cluster
-install.packages("vegan", "cluster", "pvclust", "fpc")
-library(vegan, cluster, pvclust, fpc)
+#install packages
+# install.packages("cluster", "pvclust", "fpc", "BioStatR", "vegan")
+library(vegan, cluster, pvclust, fpc, Biostats)
+library(vegan)
+library(cluster)
+library(fpc)
+library(BioStatR)
+library(pvclust)
+setwd("Documents/kmeans/")
+source("biostats.R")
 
-#read in file with things you want to cluster (i.e., protein names) as rows and variables you want to cluster across (i.e., NSAF for each day & temperature) as columns
-allsilos <- read.csv('Documents/robertslab/labnotebook/raw_data/ABACUSdata.csv', header=T, row.names=1 )
-
-#if all data are on the same scle, you do not need to standardize (https://stackoverflow.com/questions/14438942/standardization-of-data-in-r)
-
-#Make individual silos
-silo2 <- allsilos[, (seq(from = 2, to = 22, by = 3))]
-silo3 <- allsilos[, (seq(from = 3, to = 22, by = 3))]
-silo9 <- allsilos[, (seq(from = 4, to = 22, by = 3))]
+#load silo in
+silo2 <- read.csv("silo2.csv", row.names = 1)
 
 #make a euclidean distance matrix
 silo2.eucd <- vegdist(silo2, method='euclidean')
