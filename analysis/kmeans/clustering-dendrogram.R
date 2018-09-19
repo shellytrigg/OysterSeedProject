@@ -3,10 +3,13 @@
 ##and selecting that height yielded 23 clusters.
 
 setwd('/Documents/Kaitlyn')
+source("biostats.R")
+setwd('/Documents/Kaitlyn/kmeans/silo3')
 
 #Load in NSAF data
 silo3 <- read.csv("silo3.csv", row.names=1)
 silo3.detected <- read.csv("silo3.csv")
+colnames(silo3.detected)[1] <- "X"
 
 #use bray-curtis dissimilarity for clustering
 library(vegan)
@@ -26,7 +29,6 @@ cor(nsaf.bray, cophenetic(clust.avg))
 #I think you want this to be close-ish to 1 (silo2 = 0.7518792) (silo 3 = 0.7555737 or w/o exp = 0.744824) (silo9 = 0.7613414)
 
 #Scree plot
-source("biostats.R")
 hclus.scree(clust.avg)
 
 jpeg(filename = "s3_scree.jpeg", width = 1000, height = 1000)
@@ -56,9 +58,9 @@ silo3.clus <- data.frame(clust.class)
 names <- rownames(silo3.clus)
 silo3.clus <- cbind(names, silo3.clus)
 rownames(silo3.clus) <- NULL
-colnames(silo3.clus)[1] <- "Protein"
+colnames(silo3.clus)[1] <- "S3.Protein"
 colnames(silo3.clus)[2] <- "Cluster"
-silo3.clus <- merge(silo3.clus, silo3.detected, by.x = "Protein", by.y = "X")
+silo3.all <- merge(silo3.clus, silo3.detected, by.x = "S3.Protein", by.y = "X")
 
 
 #this gives matrix of 2 columns, first with proteins second with cluster assignment
@@ -67,12 +69,19 @@ library(ggthemes)
 library(reshape)
 library(ggplot2)
 
-melted_all_s3<-melt(silo3.clus, id.vars=c('Protein', 'Cluster'))
+melted_all_s3<-melt(silo3.all, id.vars=c('S3.Protein', 'Cluster'))
 
-ggplot(melted_all_s3, aes(x=variable, y=value, group=Protein)) +geom_line(alpha=0.1) + theme_bw() +
+ggplot(melted_all_s3, aes(x=variable, y=value, group=S3.Protein)) +geom_line(alpha=0.1) + theme_bw() +
   facet_wrap(~Cluster, scales='free_y') + labs(x='Time Point', y='Normalized Spectral Abundance Factor')
 
 jpeg(filename = "silo3clus_lineplots.jpeg", width = 1000, height = 1000)
-ggplot(melted_all, aes(x=variable, y=value, group=Protein)) +geom_line(alpha=0.1) + theme_bw() +
+ggplot(melted_all_s3, aes(x=variable, y=value, group=Protein)) +geom_line(alpha=0.1) + theme_bw() +
   facet_wrap(~Cluster, scales='free_y') + labs(x='Time Point', y='Normalized Spectral Abundance Factor')
 dev.off()
+
+#Merge Silo 3 clusters with Silo 3 annotated and tagged datasheet
+silo3.annotated <- read.csv("silo3_annotated.csv")
+silo3.final <- merge(silo3.clus, silo3.annotated, by.x = "S3.Protein", by.y = "S3.Protein")
+
+write.csv(silo3.final, file = "silo3-anno_clus")
+write.csv(silo3.freq, file = "silo3-clus_freq")
