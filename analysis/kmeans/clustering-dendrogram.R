@@ -2,10 +2,11 @@
 ##What I did was to make a dendrogram and choose a height on the y-axis of the dendrogram that looked reasonable for separating my variables (proteins), 
 ##and selecting that height yielded 23 clusters.
 
+setwd('/Documents/Kaitlyn')
+
 #Load in NSAF data
-silo3 <- read.csv("~/Documents/robertslab/labnotebook/raw_data/silo3.csv", row.names=1)
-silo3.detected <- read.csv("~/Documents/robertslab/labnotebook/raw_data/silo3.csv")
-colnames(silo3.detected)[1] <- "X"
+silo3 <- read.csv("silo3.csv", row.names=1)
+silo3.detected <- read.csv("silo3.csv")
 
 #use bray-curtis dissimilarity for clustering
 library(vegan)
@@ -17,12 +18,12 @@ clust.avg<-hclust(nsaf.bray, method='average')
 plot(clust.avg)
 
 coef.hclust(clust.avg)
-#coeff of ~1 means clusters are distinct and dissimilar from each other (silo2 = 0.9471688)(silo3 = 0.9403264) (silo9 = 0.940945)
+#coeff of ~1 means clusters are distinct and dissimilar from each other (silo2 = 0.9471688)(silo3 = 0.9403264 or w/o exp = 0.9284654) (silo9 = 0.940945)
 
 #cophenetic correlation
 #how well cluster hierarchy represents original object-by-object dissimilarity space
 cor(nsaf.bray, cophenetic(clust.avg))
-#I think you want this to be close-ish to 1 (silo2 = 0.7518792) (silo 3 = 0.7555737) (silo9 = 0.7613414)
+#I think you want this to be close-ish to 1 (silo2 = 0.7518792) (silo 3 = 0.7555737 or w/o exp = 0.744824) (silo9 = 0.7613414)
 
 #Scree plot
 source("biostats.R")
@@ -43,7 +44,7 @@ plot(clust.avg)
 rect.hclust(clust.avg, h=0.6)
 dev.off()
 
-#this looks reasonable, (silo2 = 24 clusters) (silo3 = 23 clus) (silo9 = 16 clus)
+#this looks reasonable, (silo2 = 24 clusters) (silo3 = 23 clus; noexp = 25 clus) (silo9 = 16 clus)
 clust.class<-cutree(clust.avg, h=0.6)
 max(clust.class)
 
@@ -75,5 +76,3 @@ jpeg(filename = "silo3clus_lineplots.jpeg", width = 1000, height = 1000)
 ggplot(melted_all, aes(x=variable, y=value, group=Protein)) +geom_line(alpha=0.1) + theme_bw() +
   facet_wrap(~Cluster, scales='free_y') + labs(x='Time Point', y='Normalized Spectral Abundance Factor')
 dev.off()
-
-
