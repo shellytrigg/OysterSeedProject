@@ -5,7 +5,14 @@
 
 source("biostats.R")
 
+#Combine silo 3 and silo 9 data
+setwd("Documents/Kaitlyn/Github/OysterSeedProject/analysis/kmeans/silo9/")
+system("cat ../silo3/silo3.csv >> ../Silo3_and_9/silo3_9.csv")
+system("cat silo9.csv >> ../Silo3_and_9/silo3_9.csv")
+#restart R
+
 #Load in NSAF data
+setwd("Documents/Kaitlyn/Github/OysterSeedProject/analysis/kmeans/Silo3_and_9/")
 silo3_9 <- read.csv("silo3and9.csv", row.names=1)
 silo3_9.detected <- read.csv("silo3and9.csv")
 colnames(silo3_9.detected)[1] <- "X"
