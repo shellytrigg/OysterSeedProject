@@ -1,0 +1,25 @@
+{
+    "contents" : "",
+    "created" : 1538189436810.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "3FFC0CE1",
+    "lastKnownWriteTime" : 4294967297,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "2a08mvzoaz",
+        "caption" : "ASCAF",
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=ASCAF&cache_key=2a08mvzoaz",
+        "displayedObservations" : "60",
+        "environment" : "",
+        "object" : "ASCAF",
+        "totalObservations" : "60",
+        "variables" : "2"
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "type" : "r_dataframe"
+}

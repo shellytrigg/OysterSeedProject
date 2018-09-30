@@ -1,0 +1,25 @@
+{
+    "contents" : "",
+    "created" : 1538189363018.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "BABFCB74",
+    "lastKnownWriteTime" : 8387229922789646592,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "vckjcmnccs",
+        "caption" : "ASCAX",
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=ASCAX&cache_key=vckjcmnccs",
+        "displayedObservations" : 60,
+        "environment" : "",
+        "object" : "ASCAX",
+        "totalObservations" : 60,
+        "variables" : 4
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "type" : "r_dataframe"
+}
