@@ -69,6 +69,9 @@ data$Time <- as.numeric(substr(data$Time,2,nchar(data$Time)))
 data$sample <- paste("S",data$silo,"T",data$Time, sep = "")
 #move sample columns to first column
 data <- data[,c(ncol(data),1:ncol(data)-1)]
+#replace NAs with non-zero value so we can run ASCA
+data[is.na(data)] <- 0.1
+
 write.csv(data, "~/Documents/GitHub/OysterSeedProject/analysis/ASCA/ASCA_shellytest/silo3_9_reformat4MetabA.csv", row.names = FALSE, quote = FALSE)
 
 #find max abundance value
@@ -78,8 +81,6 @@ max(data[,4:ncol(data)], na.rm = TRUE)
 #find min abundance value
 min(data[data > 0], na.rm = TRUE)
 #0.5
-#replace NAs with non-zero value so we can run ASCA
-data[is.na(data)] <- 0.1
 
 
 #create matrix to pass to ASCA command, excluding the silo and time info
