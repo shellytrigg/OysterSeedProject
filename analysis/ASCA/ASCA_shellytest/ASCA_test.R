@@ -92,5 +92,49 @@ ASCA_F <- as.matrix(data[,2:3])
 #Run ASCA command
 ASCA <- ASCA.Calculate(ASCA_X, ASCA_F, equation.elements = "1,2,12", scaling = FALSE)
 
+#make data frames of all arrays in ASCA containing protein names.  This way we can compare them and see if they are all in the same order.
+#If they are, we can assume the data in svd$v matches the order of the column names
+d1 <- data.frame(colnames(ASCA$data))
+d2 <- data.frame(colnames(ASCA$remainder))
+d3 <- data.frame(colnames(ASCA$`1`$reduced.matrix))
+d4 <- data.frame(colnames(ASCA$`2`$reduced.matrix))
+d5 <- data.frame(colnames(ASCA$`12`$reduced.matrix))
+#binding all data frames of protein names together
+test <- cbind(d1,d2,d3,d4,d5)
+colnames(test) <- c("d1","d2", "d3","d4","d5")
+View(test)
+#these all appear the same, no order is changed 
+#test if columns are identical
+identical(test$d1,test$d2)
+identical(test$d1,test$d3)
+identical(test$d1,test$d4)
+identical(test$d1,test$d5)
+identical(test$d2,test$d3)
+identical(test$d2,test$d4)
+identical(test$d2,test$d5)
+identical(test$d3,test$d4)
+identical(test$d3,test$d5)
+identical(test$d4,test$d5)
+#all are true; protein orders are identical
 
+#create a dataframe with protein names and loadings
+Temp_loadings <- cbind(d1,ASCA$`1`$svd$v[,1])
+#rename columns
+colnames(Temp_loadings) <- c("protein", "PC1_loadings")
+#output loadings table
+write.csv(Temp_loadings, "~/Documents/GitHub/OysterSeedProject/analysis/ASCA/ASCA_shellytest/ACSAr_temp_loadings.csv", row.names = FALSE, quote = FALSE)
 
+#make a short list of proteins with cut-offs based on plotting loadings curve
+Temp_loadings_cut <- data.frame(Temp_loadings[which(Temp_loadings$PC1_loadings >= 0.05 | Temp_loadings$PC1_loadings <= -0.05),])
+#count the number of proteins remaining after cut-off
+nrow(Temp_loadings_cut)
+#48
+
+#select proteins that made the loadings cutoff out of the data
+data_PC1_0.05_selects <- data[,c(1:3,which(colnames(data) %in% Temp_loadings_cut$protein))]
+#count the number of proteins to verify selection worked; first 3 columns are labels
+ncol(data_PC1_0.05_selects[,4:ncol(data_PC1_0.05_selects)])
+#48
+
+#output table for uploading into metaboanalyst and seeing what is going on with these proteins
+write.csv(data_PC1_0.05_selects, "~/Documents/GitHub/OysterSeedProject/analysis/ASCA/ASCA_shellytest/data_PC1_0.05_selects.csv", row.names = FALSE, quote = FALSE)
