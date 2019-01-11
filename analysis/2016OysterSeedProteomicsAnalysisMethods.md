@@ -1,4 +1,4 @@
-#STEP 1: Protein database preparation
+# STEP 1: Protein database preparation
 
 1. The following file was downloaded from: [http://gigaton.sigenae.org/ngspipelines/#!/NGSpipelines/Crassostrea%20gigas%20-%20GIGATON](http://gigaton.sigenae.org/ngspipelines/#!/NGSpipelines/Crassostrea%20gigas%20-%20GIGATON)
 
@@ -20,7 +20,7 @@
 	
 	See Steven's jupyter notebook for more details: [https://github.com/sr320/nb-2017/blob/master/C_gigas/00-Protein-database.ipynb](https://github.com/sr320/nb-2017/blob/master/C_gigas/00-Protein-database.ipynb)
 
-#STEP 2: Converting .raw file to .mzXML files
+# STEP 2: Converting .raw file to .mzXML files
 
 #### NOTE: This step is likely not necessary because Comet apparently does this for you according to Emma. See [issue #471](https://github.com/sr320/LabDocs/issues/471)
 
@@ -35,7 +35,7 @@ This is also part of the [DDA data analysis wiki](https://github.com/sr320/LabDo
 	    WINEPREFIX=~/.wine32 ReAdW.2016010.msfilereader.exe "$file" "$no_ext".mzXML
 	    done
 
-#STEP 3:  running Comet and TPP and Abacus  
+# STEP 3:  running Comet and TPP and Abacus  
 This step was done by Steven on Feb 13, 2017. See Steven's notebook entry: [https://github.com/sr320/sr320.github.io/blob/master/_posts/2017-02-13-Going-through-DDA.md](https://github.com/sr320/sr320.github.io/blob/master/_posts/2017-02-13-Going-through-DDA.md) and jupyter notebooks: [03-DDA-RE-converted.ipynb](https://github.com/sr320/nb-2017/blob/master/C_gigas/03-DDA-RE-converted.ipynb), [03.5-DDA-pipeline%3F.ipynb](https://github.com/sr320/nb-2017/blob/master/C_gigas/03.5-DDA-pipeline%3F.ipynb), and [04-Exploring-Abacus-out.ipynb](https://github.com/sr320/nb-2017/blob/master/C_gigas/04-Exploring-Abacus-out.ipynb)
 
 	/home/shared/comet/comet.2016012.linux.exe \
@@ -69,7 +69,7 @@ Steven's output files are here:  [https://github.com/sr320/nb-2017/tree/master/C
 Sean's output files are here:  [http://owl.fish.washington.edu/scaphapoda/Sean/Rhonda-2016-Oyster-Intermediates/](http://owl.fish.washington.edu/scaphapoda/Sean/Rhonda-2016-Oyster-Intermediates/)
 
 
-#STEP 4:  Extracting protein abundance values from Abacus output 
+# STEP 4:  Extracting protein abundance values from Abacus output 
 
 Based on [the DDA analysis wiki](https://github.com/sr320/LabDocs/wiki/DDA-data-Analyses#convert-mass-spec-ms-raw-files-mzxml-files-for-use-in-comet) and [Emma's JOP geoduck paper](https://pubs.acs.org/doi/abs/10.1021/acs.jproteome.7b00288):
 
@@ -81,7 +81,7 @@ Based on [the DDA analysis wiki](https://github.com/sr320/LabDocs/wiki/DDA-data-
 
 In trying to run NMDS on technical replicate ADJNSAF data, I found discrepencies between the ADJNSAF values in Steven's [ABACUS_output021417NSAF.tsv](https://github.com/sr320/nb-2017/blob/master/C_gigas/data/ABACUS_output021417NSAF.tsv) and Sean's [Abacus_output.tsv](http://owl.fish.washington.edu/scaphapoda/Sean/Rhonda-2016-Oyster-Intermediates/ABACUS_output.tsv).  I compared Steven's [ABACUS_output021417.tsv](https://github.com/sr320/nb-2017/blob/master/C_gigas/data/ABACUS_output021417.tsv) file (from which he made ABACUS_output021417NSAF.tsv, see his jupyter notebook [https://github.com/sr320/nb-2017/blob/master/C_gigas/04-Exploring-Abacus-out.ipynb](https://github.com/sr320/nb-2017/blob/master/C_gigas/04-Exploring-Abacus-out.ipynb)) with Sean's [Abacus_output.tsv](http://owl.fish.washington.edu/scaphapoda/Sean/Rhonda-2016-Oyster-Intermediates/ABACUS_output.tsv) and found no difference: 
 
-####R code for comparing files
+#### R code for comparing files
 	
 	install.packages("arsenal")
 	library(arsenal)
@@ -101,13 +101,13 @@ In trying to run NMDS on technical replicate ADJNSAF data, I found discrepencies
 	  
 	###SHOWS NO DIFFERENCES BETWEEN FILES
 
-####confirmed by command line diff command
+#### confirmed by command line diff command
  	#D-10-18-212-233:Desktop Shelly$ diff ~/Documents/GitHub/OysterSeedProject/raw_data/ABACUS_outputMar1.tsv ~/Documents/GitHub/OysterSeedProject/raw_data/ABACUS_output021417.tsv 
   	#D-10-18-212-233:Desktop Shelly$ 
   	
 The values in Steven's ABACUS_output021417NSAF.tsv are in fact **NUMSPECSADJ values**
 
-####R code to determine what the values in ABACUS_output021417NSAF.tsv are
+#### R code to determine what the values in ABACUS_output021417NSAF.tsv are
 	data_SR_NSAF <- read.csv("~/Documents/GitHub/OysterSeedProject/raw_data/ABACUS_output021417NSAF.tsv", sep = "\t", header = TRUE, stringsAsFactors = FALSE)
 	data_SB_NUMSPECADJ <- data_SB[,c(1,grep("NUMSPECSADJ", colnames(data_SB)))]
 	colnames(data_SB_NUMSPECADJ) <- gsub("NUMSPECSADJ","ADJNSAF", colnames(data_SB_NUMSPECADJ))
@@ -132,7 +132,7 @@ The values in Steven's ABACUS_output021417NSAF.tsv are in fact **NUMSPECSADJ val
 - see [markdown summary](https://github.com/shellytrigg/OysterSeedProject/blob/master/analysis/nmds_R/CompareAbacusOutputFiles.md) of [R analysis](https://github.com/shellytrigg/OysterSeedProject/blob/master/analysis/nmds_R/CompareAbacusOutputFiles.Rmd)
 
 
-##Next steps:
+## Next steps:
 1. NMDS analysis
 	- extract ADJNSAF values from [ABACUS_output021417.tsv](https://github.com/sr320/nb-2017/blob/master/C_gigas/data/ABACUS_output021417.tsv) 
 	- Find appropriate data transformation/normalization if necessary
