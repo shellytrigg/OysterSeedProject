@@ -1,0 +1,108 @@
+---
+title: "CompareAbacusOutputFiles"
+author: "Shelly Trigg"
+date: "1/11/2019"
+output: rmarkdown::github_document
+---
+
+```{r, eval=FALSE}
+install.packages("arsenal")
+```
+```{r}
+library(arsenal)
+library(gtools)
+```
+
+Compare 02/14/2017 data with Sean's march 1 data
+```{r}
+#load data
+data_SR <- read.csv("~/Documents/GitHub/OysterSeedProject/raw_data/ABACUS_output021417.tsv", sep = "\t" , header=TRUE, stringsAsFactors = FALSE)
+data_SB <- read.csv("~/Documents/GitHub/OysterSeedProject/raw_data/ABACUS_output.tsv", sep = "\t" , header=TRUE, stringsAsFactors = FALSE)
+```
+
+```{r}
+compare(data_SR,data_SB)
+```
+
+R compare function shows no difference between files and I confirmed this with the command line function diff, which gave no output
+
+D-10-18-212-233:Desktop Shelly$ diff ~/Documents/GitHub/OysterSeedProject/raw_data/ABACUS_outputMar1.tsv ~/Documents/GitHub/OysterSeedProject/raw_data/ABACUS_output021417.tsv  
+D-10-18-212-233:Desktop Shelly$ 
+    
+
+Determine what ABACUS_output021417NSAF.tsv 'NSAF' values are
+```{r}
+data_SR_NSAF <- read.csv("~/Documents/GitHub/OysterSeedProject/raw_data/ABACUS_output021417NSAF.tsv", sep = "\t", header = TRUE, stringsAsFactors = FALSE)
+data_SB_NUMSPECADJ <- data_SB[,c(1,grep("NUMSPECSADJ", colnames(data_SB)))]
+colnames(data_SB_NUMSPECADJ) <- gsub("NUMSPECSADJ","ADJNSAF", colnames(data_SB_NUMSPECADJ))
+compare(data_SR_NSAF,data_SB_NUMSPECADJ)
+```
+***NSAF values are in fact NUMSPECSADJ values***
+
+
+Determine what the values are in Kaitlyn's data
+```{r}
+#load data
+data_KM <- read.csv("~/Documents/GitHub/OysterSeedProject/raw_data/ABACUSdata_only.csv", header = TRUE, stringsAsFactors = FALSE)
+
+#convert steven's column names to samlpe number only
+data_SR_NSAF_avg <- data_SR_NSAF[,c(1,grep("NSAF", colnames(data_SR_NSAF)))]
+colnames(data_SR_NSAF_avg) <- gsub(pattern = "X20161205_SAMPLE_", "", colnames(data_SR_NSAF_avg))
+colnames(data_SR_NSAF_avg) <- gsub(pattern = "_ADJNSAF", "", colnames(data_SR_NSAF_avg))
+
+#sort the data frame by order of samples (e.g. 1, 1A, 3, 3A, etc.) but keeping ProteinID as column 1
+data_SR_NSAF_avg <- data_SR_NSAF_avg[,c("PROTID",mixedsort(colnames(data_SR_NSAF_avg[,-1])))]
+```
+Based on a few values in Kaitlyn's data, we think they are averages of the values in ABACUS_output021417NSAF.tsv, so to confirm this we'll calculate the avg between technical reps in ABACUS_output021417NSAF.tsv
+```{r}
+#calculate avg between technical reps. This makes a new data frame of just sample averages (https://stackoverflow.com/questions/13739243/average-pairs-of-columns-in-r)
+data_SR_NSAFavg <- data.frame(sapply(seq(2,ncol(data_SR_NSAF_avg),2), function(i) {
+    rowMeans(data_SR_NSAF_avg[,c(i, i+1)], na.rm=T)
+  }))
+
+#create column names similar to Kaitlyn's file so the two data sets can be compared
+colnames(data_SR_NSAFavg) <- mixedsort(colnames(data_SR_NSAF_avg[,c(-1,-grep("A",colnames(data_SR_NSAF_avg)))]))
+
+#load meta data to convert sample number to silo_day format
+meta_data <- read.csv("~/Documents/GitHub/OysterSeedProject/analysis/nmds_R/Rhonda_new_sample_names.csv", header = TRUE, stringsAsFactors = FALSE)
+#make column for silo
+meta_data$silo <- substr(meta_data$Contents,5,5)
+#make column for day
+meta_data$day <- substr(meta_data$SampleName,5,6)
+#create a new list of column names by converting from sample number to silo_day
+new_colnames <- list()
+#This loops through each sample number, translates it into silo_day, and adds it to the new list of column names
+for (i in 1:length(colnames(data_SR_NSAFavg))){
+  sample <- colnames(data_SR_NSAFavg)[i]
+  new_colnames[[i]] <- paste(meta_data[meta_data$SampleID == sample,"silo"],meta_data[meta_data$SampleID == sample, "day"], sep = "_")
+  }
+#add new silo_day column names to replicate averages
+colnames(data_SR_NSAFavg) <- new_colnames
+  
+#make a new data frame with ProteinID and replicate averages
+data_SR_NSAF_avg <- cbind(data.frame(data_SR_NSAF_avg[,"PROTID"],stringsAsFactors = FALSE), data_SR_NSAFavg)
+```
+compare Kaitlyn's column names with data_SR_NSAF_avg
+```{r}
+colnames(data_KM)
+colnames(data_SR_NSAF_avg)
+```
+They are in the same order so I added Kaitlyn's column names to data_SR_NSAF_avg for easier comparison of files
+```{r}
+colnames(data_SR_NSAF_avg) <- colnames(data_KM)
+```
+Compare column classes between files so files can be easily compared
+```{r}
+str(data_KM)
+str(data_SR_NSAF_avg)
+```
+sort files so they are in the same order
+```{r}
+data_KM <- data_KM[order(data_KM$Protein.ID),]
+data_SR_NSAF_avg <- data_SR_NSAF_avg[order(data_SR_NSAF_avg$Protein.ID),]
+```
+finally, compare files
+```{r}
+compare(data_KM,data_SR_NSAF_avg)
+```
+***files are the same so Kaitlyn's data is in fact the average of the NUMSPECSADJ***
