@@ -1,4 +1,4 @@
-#STEP 1: Protein database preparation###
+#STEP 1: Protein database preparation
 
 1. The following file was downloaded from: [http://gigaton.sigenae.org/ngspipelines/#!/NGSpipelines/Crassostrea%20gigas%20-%20GIGATON](http://gigaton.sigenae.org/ngspipelines/#!/NGSpipelines/Crassostrea%20gigas%20-%20GIGATON)
 
@@ -20,7 +20,7 @@
 	
 	See Steven's jupyter notebook for more details: [https://github.com/sr320/nb-2017/blob/master/C_gigas/00-Protein-database.ipynb](https://github.com/sr320/nb-2017/blob/master/C_gigas/00-Protein-database.ipynb)
 
-#STEP 2: Converting .raw file to .mzXML files###
+#STEP 2: Converting .raw file to .mzXML files
 
 #### NOTE: This step is likely not necessary because Comet apparently does this for you according to Emma. See [issue #471](https://github.com/sr320/LabDocs/issues/471)
 
@@ -35,7 +35,7 @@ This is also part of the [DDA data analysis wiki](https://github.com/sr320/LabDo
 	    WINEPREFIX=~/.wine32 ReAdW.2016010.msfilereader.exe "$file" "$no_ext".mzXML
 	    done
 
-#STEP 3:  running Comet and TPP and Abacus
+#STEP 3:  running Comet and TPP and Abacus  
 This step was done by Steven on Feb 13, 2017. See Steven's notebook entry: [https://github.com/sr320/sr320.github.io/blob/master/_posts/2017-02-13-Going-through-DDA.md](https://github.com/sr320/sr320.github.io/blob/master/_posts/2017-02-13-Going-through-DDA.md) and jupyter notebooks: [03-DDA-RE-converted.ipynb](https://github.com/sr320/nb-2017/blob/master/C_gigas/03-DDA-RE-converted.ipynb), [03.5-DDA-pipeline%3F.ipynb](https://github.com/sr320/nb-2017/blob/master/C_gigas/03.5-DDA-pipeline%3F.ipynb), and [04-Exploring-Abacus-out.ipynb](https://github.com/sr320/nb-2017/blob/master/C_gigas/04-Exploring-Abacus-out.ipynb)
 
 	/home/shared/comet/comet.2016012.linux.exe \
