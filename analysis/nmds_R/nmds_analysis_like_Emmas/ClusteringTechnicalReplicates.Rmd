@@ -135,8 +135,10 @@ nmds.silo3and9_log_bray.scores <- cbind(silo3and9$day, silo3and9$temp,data.frame
 colnames(nmds.silo3and9_log_bray.scores)[1:2] <- c("day","temp")
 ggplot(nmds.silo3and9_log_bray.scores, aes(NMDS1, NMDS2)) + geom_point(aes(col = day, shape = temp)) + theme_bw() + ggtitle("bray curtis NMDS of log ADJNSAF values with zeros replaced with 0.1")
 ```
+**Trying to make the NMDS plot like Emma did with Bray distance and with log tranformed values doesn't work in this case.**
 
-## Seems like technical replicates are pretty close according to either PCA, although a couple are questionable (e.g. 23C day 9, 23C day 11)
+
+## Seems like technical replicates are pretty close according to either PCA, although a couple are questionable (e.g. 23C day 9, 23C day 11). NMDS plots don't seem as helpful as the PCA plots.
 
 The ADJNSAF values for trypsin across samples seem fairly consistent as expected since this was manually added in during protein prep.  This suggests that sample scaling should not be necessary.
 
@@ -166,8 +168,8 @@ silo3and9[,c(1:4,grep("CHOYP_RLA1.5.12|m.15482", colnames(silo3and9)))]
 
 In addition to S3D9, this protein is also not reiably detected in technical replicates from S9D5, S3D7, and S9D9. 
 
-**Next steps:
-- Investigate how wide spread a problem this is an determine if certain proteins need to be removed from the dataset due to unreliable detection across technical replicates
+## Next steps:
+#- Investigate how wide spread a problem this is an determine if certain proteins need to be removed from the dataset due to unreliable detection across technical replicates
 
 ```{r, echo=FALSE, eval = FALSE}
 ###Check if any pair of replicates show 100% error or Inf% error with an SD of > 5; those are the potentially unrealiable proteins
