@@ -89,7 +89,7 @@ silo3and9_nozerovar[silo3and9_nozerovar == 0.0000] <- 0.1000
 
 try PCA
 
-```{r, echo=FALSE}
+```{r}
 pca <- prcomp(silo3and9_nozerovar, center = T, scale = T)
 pca_meta <- cbind(silo3and9$day, silo3and9$temp, data.frame(paste(silo3and9$day,silo3and9$temp, sep = "_")),pca$x)
 colnames(pca_meta)[1:3] <- c("day","temp","SampleName")
@@ -97,7 +97,7 @@ ggplot(pca_meta, aes(PC1, PC2)) + geom_point(aes(col = day, shape = temp)) + the
 ```
 
 try PCA on log transformed values
-```{r, echo = FALSE}
+```{r}
 silo3and9_log <- log(silo3and9_nozerovar,2)
 pca_log <- prcomp(silo3and9_log, center = F, scale = F)
 pca_log_meta <- cbind(silo3and9$day, silo3and9$temp, data.frame(paste(silo3and9$day,silo3and9$temp, sep = "_")),pca_log$x)
