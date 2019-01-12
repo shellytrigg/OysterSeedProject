@@ -10,6 +10,7 @@ Load packages
 library(vegan)
 library(ggplot2)
 library(dplyr)
+library(gtools)
 ```
 
 Load Abacus data, parse out ADJNSAF values, and simplify column names to just sample number
@@ -133,4 +134,65 @@ nmds.silo3and9_log_bray <- metaMDS(silo3and9_log, distance = 'bray', k = 2, trym
 nmds.silo3and9_log_bray.scores <- cbind(silo3and9$day, silo3and9$temp,data.frame(scores(nmds.silo3and9_log_bray)))
 colnames(nmds.silo3and9_log_bray.scores)[1:2] <- c("day","temp")
 ggplot(nmds.silo3and9_log_bray.scores, aes(NMDS1, NMDS2)) + geom_point(aes(col = day, shape = temp)) + theme_bw() + ggtitle("bray curtis NMDS of log ADJNSAF values with zeros replaced with 0.1")
+```
 
+## Seems like technical replicates are pretty close according to either PCA, although a couple are questionable (e.g. 23C day 9, 23C day 11)
+
+The ADJNSAF values for trypsin across samples seem fairly consistent as expected since this was manually added in during protein prep.  This suggests that sample scaling should not be necessary.
+
+```{r}
+mean(silo3and9_nozerovar[,grep("TRYP",colnames(silo3and9_nozerovar))])
+sd(silo3and9_nozerovar[,grep("TRYP",colnames(silo3and9_nozerovar))])
+```
+
+Looking at percent error in 23C day 9 replicates
+```{r}
+S3D9 <- ABACUSdata[,c("PROTID","28","28A")]
+S3D9$percerr <- abs(S3D9$`28` - S3D9$`28A`)/S3D9$`28` * 100
+S3D9$SD <- apply(S3D9[,c("28","28A")],1,sd)
+S3D9$Diff <- abs(S3D9$`28` - S3D9$`28A`)
+```
+
+There are a number of proteins that show up in one technical replicate, sometimes with ADJNSAF values > 100, but then don't show up in the second technical replicate. This seems suspicious and perhaps these are unreliable proteins 
+```{r}
+head(S3D9[order(S3D9$SD, decreasing = TRUE),], n = 20)
+```
+
+If we look at one of these proteins across all technical replicates, are there other samples that show unreliable detection?
+
+```{r}
+silo3and9[,c(1:4,grep("CHOYP_RLA1.5.12|m.15482", colnames(silo3and9)))]
+```
+
+In addition to S3D9, this protein is also not reiably detected in technical replicates from S9D5, S3D7, and S9D9. 
+
+**Next steps:
+- Investigate how wide spread a problem this is an determine if certain proteins need to be removed from the dataset due to unreliable detection across technical replicates
+
+```{r, echo=FALSE, eval = FALSE}
+###Check if any pair of replicates show 100% error or Inf% error with an SD of > 5; those are the potentially unrealiable proteins
+
+ABACUSdata_SD <- ABACUSdata[,c("PROTID",mixedsort(colnames(ABACUSdata[,-1])))]
+
+ABACUSdataSD <- data.frame(sapply(seq(2,ncol(ABACUSdata_SD),2), function(i) {
+    apply(ABACUSdata_SD[,c(i, i+1)],1,sd)
+  }))
+
+colnames(ABACUSdataSD) <- mixedsort(colnames(ABACUSdata_SD[,c(-1,-grep("A",colnames(ABACUSdata_SD)))]))
+new_colnames <- list()
+for (i in 1:length(colnames(ABACUSdataSD))){
+  sample <- colnames(ABACUSdataSD)[i]
+  new_colnames[[i]] <- paste(meta_data[meta_data$SampleID == sample,"silo"],meta_data[meta_data$SampleID == sample, "day"], sep = "_")
+  }
+
+colnames(ABACUSdataSD) <- new_colnames
+
+#exclude silo 2
+ABACUSdataSD <- ABACUSdataSD[,-grep("2",colnames(ABACUSdataSD))]
+
+#Add protein IDs back in 
+ABACUSdata_SD <- cbind(data.frame(ABACUSdata_SD[,"PROTID"],stringsAsFactors = FALSE), ABACUSdataSD)
+
+#determine which proteins have > 100 SD
+largeSD <- ABACUSdata_SD[which(ABACUSdata_SD > 100),]
+```
