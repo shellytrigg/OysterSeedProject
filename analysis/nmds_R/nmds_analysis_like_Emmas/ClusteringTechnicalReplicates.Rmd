@@ -126,16 +126,16 @@ colnames(nmds.silo3and9_log.scores)[1:2] <- c("day","temp")
 ggplot(nmds.silo3and9_log.scores, aes(NMDS1, NMDS2)) + geom_point(aes(col = day, shape = temp)) + theme_bw() + ggtitle("NMDS of log ADJNSAF values with zeros replaced with 0.1")
 ```
 
-Make MDS dissimilarity matrix with log transformed ADJNSAF values and bray curtis distance
+Make MDS dissimilarity matrix with log transformed (ADJNSAF values + 1) and bray curtis distance
 ```{r}
-nmds.silo3and9_log_bray <- metaMDS(silo3and9_log, distance = 'bray', k = 2, trymax = 3000, autotransform = FALSE)
+nmds.silo3and9_log_bray <- metaMDS(log(silo3and9[,-c(1:4,which(colnames(silo3and9) %in% colnames(no_val_proteins)))]+1,2), distance = 'bray', k = 2, trymax = 3000, autotransform = FALSE)
 
 #make data frame of NMDS scores
 nmds.silo3and9_log_bray.scores <- cbind(silo3and9$day, silo3and9$temp,data.frame(scores(nmds.silo3and9_log_bray)))
 colnames(nmds.silo3and9_log_bray.scores)[1:2] <- c("day","temp")
-ggplot(nmds.silo3and9_log_bray.scores, aes(NMDS1, NMDS2)) + geom_point(aes(col = day, shape = temp)) + theme_bw() + ggtitle("bray curtis NMDS of log ADJNSAF values with zeros replaced with 0.1")
+ggplot(nmds.silo3and9_log_bray.scores, aes(NMDS1, NMDS2)) + geom_point(aes(col = day, shape = temp)) + theme_bw() + ggtitle("bray curtis NMDS of log (ADJNSAF values + 1)")
 ```
-**Trying to make the NMDS plot like Emma did with Bray distance and with log tranformed values doesn't work in this case.**
+
 
 
 ## Seems like technical replicates are pretty close according to either PCA, although a couple are questionable (e.g. 23C day 9, 23C day 11). NMDS plots don't seem as helpful as the PCA plots.
