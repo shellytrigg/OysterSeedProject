@@ -138,6 +138,6 @@ df_avg$Sample.ID <- rownames(silo3and9_nozerovar_err20_SD5[-grep("A",rownames(si
 export filtered protein data set
 ```{r,echo=FALSE, eval=FALSE}
 new_data <- merge(silo3and9_meta,df_avg, by = "Sample.ID")
-new_data <- new_data[order(new_data$day, new_data$temp),]
+new_data <- new_data[order(new_data$day, new_data$temp),-1]
 write.csv(new_data, "~/Documents/GitHub/OysterSeedProject/analysis/nmds_R/silo3and9_nozerovals_noincnstprot.csv", row.names = FALSE, quote = FALSE)
 ```
