@@ -88,9 +88,18 @@ For proteins with a zero value in any sample, replace with very small value
 silo3and9_nozerovar[silo3and9_nozerovar == 0.0000] <- 0.1000
 ```
 
+```{r, echo = FALSE, eval=FALSE}
+write.csv(cbind(silo3and9$SampleID, silo3and9$day, silo3and9$temp,silo3and9_nozerovar), "~/Documents/GitHub/OysterSeedProject/analysis/nmds_R/silo3and9_nozerovals.csv", row.names = FALSE, quote = FALSE)
+```
+
 try PCA
 
 ```{r}
+#first convert day and temp data to factors for plotting
+silo3and9$day <- factor(silo3and9$day, levels = unique(silo3and9$day))
+silo3and9$temp <- factor(silo3and9$temp, levels = unique(silo3and9$temp))
+
+#run PCA
 pca <- prcomp(silo3and9_nozerovar, center = T, scale = T)
 pca_meta <- cbind(silo3and9$day, silo3and9$temp, data.frame(paste(silo3and9$day,silo3and9$temp, sep = "_")),pca$x)
 colnames(pca_meta)[1:3] <- c("day","temp","SampleName")

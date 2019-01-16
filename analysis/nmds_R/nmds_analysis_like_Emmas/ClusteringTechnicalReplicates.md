@@ -148,13 +148,18 @@ silo3and9_nozerovar[silo3and9_nozerovar == 0.0000] <- 0.1000
 try PCA
 
 ``` r
+#first convert day and temp data to factors for plotting
+silo3and9$day <- factor(silo3and9$day, levels = unique(silo3and9$day))
+silo3and9$temp <- factor(silo3and9$temp, levels = unique(silo3and9$temp))
+
+#run PCA
 pca <- prcomp(silo3and9_nozerovar, center = T, scale = T)
 pca_meta <- cbind(silo3and9$day, silo3and9$temp, data.frame(paste(silo3and9$day,silo3and9$temp, sep = "_")),pca$x)
 colnames(pca_meta)[1:3] <- c("day","temp","SampleName")
 ggplot(pca_meta, aes(PC1, PC2)) + geom_point(aes(col = day, shape = temp)) + theme_bw() + ggtitle("PCA of ADJNSAF values where zeros were replaced with 0.1")
 ```
 
-![](ClusteringTechnicalReplicates_files/figure-markdown_github/unnamed-chunk-8-1.png)
+![](ClusteringTechnicalReplicates_files/figure-markdown_github/unnamed-chunk-9-1.png)
 
 try PCA on log transformed values
 
@@ -166,7 +171,7 @@ colnames(pca_log_meta)[1:3] <- c("day","temp","SampleName")
 ggplot(pca_log_meta, aes(PC1, PC2)) + geom_point(aes(col = day, shape = temp)) + theme_bw() + ggtitle("PCA of log ADJNSAF values with zeros replaced with 0.1")
 ```
 
-![](ClusteringTechnicalReplicates_files/figure-markdown_github/unnamed-chunk-9-1.png)
+![](ClusteringTechnicalReplicates_files/figure-markdown_github/unnamed-chunk-10-1.png)
 
 Make MDS dissimilarity matrix
 
@@ -175,34 +180,37 @@ nmds.silo3and9 <- metaMDS(silo3and9_nozerovar, distance = 'euclidean', k = 2, tr
 ```
 
     ## Run 0 stress 0.1649526 
-    ## Run 1 stress 0.1649515 
+    ## Run 1 stress 0.2040344 
+    ## Run 2 stress 0.1649515 
     ## ... New best solution
-    ## ... Procrustes: rmse 0.0007448625  max resid 0.003097535 
+    ## ... Procrustes: rmse 0.0005369061  max resid 0.002211761 
     ## ... Similar to previous best
-    ## Run 2 stress 0.1627151 
+    ## Run 3 stress 0.2482187 
+    ## Run 4 stress 0.1631596 
     ## ... New best solution
-    ## ... Procrustes: rmse 0.03389437  max resid 0.1323881 
-    ## Run 3 stress 0.1753087 
-    ## Run 4 stress 0.1627152 
-    ## ... Procrustes: rmse 3.007446e-05  max resid 0.0001071922 
+    ## ... Procrustes: rmse 0.03648538  max resid 0.1312035 
+    ## Run 5 stress 0.1627158 
+    ## ... New best solution
+    ## ... Procrustes: rmse 0.01511808  max resid 0.06274479 
+    ## Run 6 stress 0.1832205 
+    ## Run 7 stress 0.1649514 
+    ## Run 8 stress 0.1865916 
+    ## Run 9 stress 0.1741345 
+    ## Run 10 stress 0.2557405 
+    ## Run 11 stress 0.1741333 
+    ## Run 12 stress 0.2371837 
+    ## Run 13 stress 0.1649528 
+    ## Run 14 stress 0.1649531 
+    ## Run 15 stress 0.1649517 
+    ## Run 16 stress 0.1741334 
+    ## Run 17 stress 0.1631586 
+    ## ... Procrustes: rmse 0.014906  max resid 0.06105475 
+    ## Run 18 stress 0.1627147 
+    ## ... New best solution
+    ## ... Procrustes: rmse 0.0005392992  max resid 0.002199905 
     ## ... Similar to previous best
-    ## Run 5 stress 0.2334726 
-    ## Run 6 stress 0.2187267 
-    ## Run 7 stress 0.1765492 
-    ## Run 8 stress 0.1649522 
-    ## Run 9 stress 0.1725526 
-    ## Run 10 stress 0.1741333 
-    ## Run 11 stress 0.1865938 
-    ## Run 12 stress 0.1865916 
-    ## Run 13 stress 0.1741333 
-    ## Run 14 stress 0.1832189 
-    ## Run 15 stress 0.2015775 
-    ## Run 16 stress 0.1763797 
-    ## Run 17 stress 0.1725528 
-    ## Run 18 stress 0.1649515 
-    ## Run 19 stress 0.1753277 
-    ## Run 20 stress 0.1631589 
-    ## ... Procrustes: rmse 0.0149526  max resid 0.061726 
+    ## Run 19 stress 0.1753088 
+    ## Run 20 stress 0.1765492 
     ## *** Solution reached
 
 ``` r
@@ -212,7 +220,7 @@ colnames(nmds.silo3and9.scores)[1:2] <- c("day","temp")
 ggplot(nmds.silo3and9.scores, aes(NMDS1, NMDS2)) + geom_point(aes(col = day, shape = temp)) + theme_bw() + ggtitle("NMDS of ADJNSAF values with zeros replaced with 0.1")
 ```
 
-![](ClusteringTechnicalReplicates_files/figure-markdown_github/unnamed-chunk-10-1.png)
+![](ClusteringTechnicalReplicates_files/figure-markdown_github/unnamed-chunk-11-1.png)
 
 Make MDS dissimilarity matrix with log tranformed ADJNSAF values
 
@@ -223,39 +231,38 @@ nmds.silo3and9_log <- metaMDS(silo3and9_log, distance = 'euclidean', k = 2, trym
     ## 'comm' has negative data: 'autotransform', 'noshare' and 'wascores' set to FALSE
 
     ## Run 0 stress 0.1123882 
-    ## Run 1 stress 0.1123883 
-    ## ... Procrustes: rmse 9.169263e-05  max resid 0.0001926828 
+    ## Run 1 stress 0.128223 
+    ## Run 2 stress 0.1123889 
+    ## ... Procrustes: rmse 0.0002154536  max resid 0.0004912211 
     ## ... Similar to previous best
-    ## Run 2 stress 0.1318618 
-    ## Run 3 stress 0.1123881 
+    ## Run 3 stress 0.1155853 
+    ## Run 4 stress 0.1282568 
+    ## Run 5 stress 0.1156769 
+    ## Run 6 stress 0.1123893 
+    ## ... Procrustes: rmse 0.0005534177  max resid 0.001880221 
+    ## ... Similar to previous best
+    ## Run 7 stress 0.1230614 
+    ## Run 8 stress 0.1285277 
+    ## Run 9 stress 0.1156654 
+    ## Run 10 stress 0.1124365 
+    ## ... Procrustes: rmse 0.004760629  max resid 0.0167059 
+    ## Run 11 stress 0.1263262 
+    ## Run 12 stress 0.1263215 
+    ## Run 13 stress 0.1124371 
+    ## ... Procrustes: rmse 0.004859841  max resid 0.01684322 
+    ## Run 14 stress 0.1260365 
+    ## Run 15 stress 0.112388 
     ## ... New best solution
-    ## ... Procrustes: rmse 6.400001e-05  max resid 0.0001566127 
+    ## ... Procrustes: rmse 0.0001325142  max resid 0.0003051049 
     ## ... Similar to previous best
-    ## Run 4 stress 0.1285266 
-    ## Run 5 stress 0.1229458 
-    ## Run 6 stress 0.1263217 
-    ## Run 7 stress 0.1319075 
-    ## Run 8 stress 0.1124368 
-    ## ... Procrustes: rmse 0.004766211  max resid 0.01672066 
-    ## Run 9 stress 0.1123881 
-    ## ... Procrustes: rmse 4.18872e-05  max resid 9.474363e-05 
+    ## Run 16 stress 0.1279619 
+    ## Run 17 stress 0.1396267 
+    ## Run 18 stress 0.115669 
+    ## Run 19 stress 0.112388 
+    ## ... Procrustes: rmse 1.847428e-05  max resid 4.600232e-05 
     ## ... Similar to previous best
-    ## Run 10 stress 0.1320852 
-    ## Run 11 stress 0.1290301 
-    ## Run 12 stress 0.1124379 
-    ## ... Procrustes: rmse 0.004850736  max resid 0.01673354 
-    ## Run 13 stress 0.1124369 
-    ## ... Procrustes: rmse 0.004824902  max resid 0.01676372 
-    ## Run 14 stress 0.13393 
-    ## Run 15 stress 0.1284322 
-    ## Run 16 stress 0.1124369 
-    ## ... Procrustes: rmse 0.004825894  max resid 0.01690065 
-    ## Run 17 stress 0.1124365 
-    ## ... Procrustes: rmse 0.004767488  max resid 0.01670878 
-    ## Run 18 stress 0.1261253 
-    ## Run 19 stress 0.1278355 
-    ## Run 20 stress 0.1124366 
-    ## ... Procrustes: rmse 0.004774791  max resid 0.01671523 
+    ## Run 20 stress 0.1124372 
+    ## ... Procrustes: rmse 0.004818013  max resid 0.01673611 
     ## *** Solution reached
 
 ``` r
@@ -265,7 +272,7 @@ colnames(nmds.silo3and9_log.scores)[1:2] <- c("day","temp")
 ggplot(nmds.silo3and9_log.scores, aes(NMDS1, NMDS2)) + geom_point(aes(col = day, shape = temp)) + theme_bw() + ggtitle("NMDS of log ADJNSAF values with zeros replaced with 0.1")
 ```
 
-![](ClusteringTechnicalReplicates_files/figure-markdown_github/unnamed-chunk-11-1.png)
+![](ClusteringTechnicalReplicates_files/figure-markdown_github/unnamed-chunk-12-1.png)
 
 Make MDS dissimilarity matrix with log transformed (ADJNSAF values + 1) and bray curtis distance
 
@@ -274,31 +281,29 @@ nmds.silo3and9_log_bray <- metaMDS(log(silo3and9[,-c(1:4,which(colnames(silo3and
 ```
 
     ## Run 0 stress 0.1245128 
-    ## Run 1 stress 0.1416714 
-    ## Run 2 stress 0.1386313 
-    ## Run 3 stress 0.1618146 
-    ## Run 4 stress 0.1253386 
-    ## Run 5 stress 0.1261322 
-    ## Run 6 stress 0.1553953 
+    ## Run 1 stress 0.1280464 
+    ## Run 2 stress 0.1304808 
+    ## Run 3 stress 0.1416714 
+    ## Run 4 stress 0.1570718 
+    ## Run 5 stress 0.1261316 
+    ## Run 6 stress 0.1261311 
     ## Run 7 stress 0.1245127 
     ## ... New best solution
-    ## ... Procrustes: rmse 5.861505e-05  max resid 0.0001387977 
+    ## ... Procrustes: rmse 4.38979e-05  max resid 0.0001046831 
     ## ... Similar to previous best
-    ## Run 8 stress 0.1386308 
-    ## Run 9 stress 0.150567 
-    ## Run 10 stress 0.1253271 
-    ## Run 11 stress 0.1319905 
-    ## Run 12 stress 0.1253262 
-    ## Run 13 stress 0.1357537 
-    ## Run 14 stress 0.1261331 
-    ## Run 15 stress 0.1416468 
-    ## Run 16 stress 0.1253377 
-    ## Run 17 stress 0.1245129 
-    ## ... Procrustes: rmse 9.576005e-05  max resid 0.0002704903 
-    ## ... Similar to previous best
-    ## Run 18 stress 0.1319948 
-    ## Run 19 stress 0.1394975 
-    ## Run 20 stress 0.1357537 
+    ## Run 8 stress 0.1304776 
+    ## Run 9 stress 0.125327 
+    ## Run 10 stress 0.1304809 
+    ## Run 11 stress 0.1261313 
+    ## Run 12 stress 0.1261311 
+    ## Run 13 stress 0.1304806 
+    ## Run 14 stress 0.1316251 
+    ## Run 15 stress 0.1553948 
+    ## Run 16 stress 0.1253373 
+    ## Run 17 stress 0.14322 
+    ## Run 18 stress 0.1261312 
+    ## Run 19 stress 0.1261311 
+    ## Run 20 stress 0.1364272 
     ## *** Solution reached
 
 ``` r
@@ -308,7 +313,7 @@ colnames(nmds.silo3and9_log_bray.scores)[1:2] <- c("day","temp")
 ggplot(nmds.silo3and9_log_bray.scores, aes(NMDS1, NMDS2)) + geom_point(aes(col = day, shape = temp)) + theme_bw() + ggtitle("bray curtis NMDS of log (ADJNSAF values + 1)")
 ```
 
-![](ClusteringTechnicalReplicates_files/figure-markdown_github/unnamed-chunk-12-1.png)
+![](ClusteringTechnicalReplicates_files/figure-markdown_github/unnamed-chunk-13-1.png)
 
 Seems like technical replicates are pretty close according to either PCA, although a couple are questionable (e.g. 23C day 9, 23C day 11). NMDS plots don't seem as helpful as the PCA plots.
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
