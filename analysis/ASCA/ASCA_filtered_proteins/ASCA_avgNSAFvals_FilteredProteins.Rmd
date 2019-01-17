@@ -58,17 +58,33 @@ ASCA_F <- as.matrix(choyp_data[,c(1:2)])
 ASCA <- ASCA.Calculate(ASCA_X, ASCA_F, equation.elements = "1,2,12", scaling = FALSE)
 ```
 
-plot PCAs from ASCA
+Here is a summary of the ASCA results (e.g. variance explained by different factors; factor 1= time (days), factor 2 = temperature, interaction = interaction of time and temperature)
 ```{r}
-#plot PCA for factor 1, which is time in this case
-ASCA.PlotScoresPerLevel(ASCA, ee = "1", pcs = "1,2")
-#plot PCA for factor 2, which is temperature in this case
-ASCA.PlotScoresPerLevel(ASCA, ee = "2", pcs = "1,2")
 #print the ASCA summary
 ASCA.GetSummary(ASCA)
 ```
 
-Analysis of proteins affected by temperature
+###Plot PCAs from ASCA  
+
+This first plot is the PCA for time (days)
+```{r}
+#plot PCA for factor 1, which is time in this case
+ASCA.PlotScoresPerLevel(ASCA, ee = "1", pcs = "1,2")
+```
+
+This next plot is the PCA for temperature
+```{r}
+#plot PCA for factor 2, which is temperature in this case
+ASCA.PlotScoresPerLevel(ASCA, ee = "2", pcs = "1,2")
+```
+
+This next plot is the PCA for the interaction of time and temperature
+```{r}
+#plot PCA for factor 2, which is temperature in this case
+ASCA.PlotScoresPerLevel(ASCA, ee = "12", pcs = "1,2")
+```
+
+###Analysis of proteins affected by temperature
 ```{r}
 #extract protein names from ASCA data; these will be combined with loadings values; the order is maintained
 protnames <- data.frame(colnames(ASCA$data))
