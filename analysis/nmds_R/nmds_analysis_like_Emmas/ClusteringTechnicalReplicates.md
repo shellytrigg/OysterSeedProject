@@ -180,37 +180,36 @@ nmds.silo3and9 <- metaMDS(silo3and9_nozerovar, distance = 'euclidean', k = 2, tr
 ```
 
     ## Run 0 stress 0.1649526 
-    ## Run 1 stress 0.2040344 
-    ## Run 2 stress 0.1649515 
+    ## Run 1 stress 0.1741347 
+    ## Run 2 stress 0.186594 
+    ## Run 3 stress 0.1649516 
     ## ... New best solution
-    ## ... Procrustes: rmse 0.0005369061  max resid 0.002211761 
+    ## ... Procrustes: rmse 0.0003515769  max resid 0.001450181 
     ## ... Similar to previous best
-    ## Run 3 stress 0.2482187 
-    ## Run 4 stress 0.1631596 
+    ## Run 4 stress 0.2693699 
+    ## Run 5 stress 0.1631588 
     ## ... New best solution
-    ## ... Procrustes: rmse 0.03648538  max resid 0.1312035 
-    ## Run 5 stress 0.1627158 
+    ## ... Procrustes: rmse 0.03627344  max resid 0.1309964 
+    ## Run 6 stress 0.2387604 
+    ## Run 7 stress 0.1832391 
+    ## Run 8 stress 0.2105309 
+    ## Run 9 stress 0.2593247 
+    ## Run 10 stress 0.1627151 
     ## ... New best solution
-    ## ... Procrustes: rmse 0.01511808  max resid 0.06274479 
-    ## Run 6 stress 0.1832205 
-    ## Run 7 stress 0.1649514 
-    ## Run 8 stress 0.1865916 
-    ## Run 9 stress 0.1741345 
-    ## Run 10 stress 0.2557405 
-    ## Run 11 stress 0.1741333 
-    ## Run 12 stress 0.2371837 
-    ## Run 13 stress 0.1649528 
-    ## Run 14 stress 0.1649531 
-    ## Run 15 stress 0.1649517 
-    ## Run 16 stress 0.1741334 
-    ## Run 17 stress 0.1631586 
-    ## ... Procrustes: rmse 0.014906  max resid 0.06105475 
-    ## Run 18 stress 0.1627147 
-    ## ... New best solution
-    ## ... Procrustes: rmse 0.0005392992  max resid 0.002199905 
+    ## ... Procrustes: rmse 0.01441198  max resid 0.05956846 
+    ## Run 11 stress 0.1763837 
+    ## Run 12 stress 0.1874621 
+    ## Run 13 stress 0.1631589 
+    ## ... Procrustes: rmse 0.01448213  max resid 0.06021317 
+    ## Run 14 stress 0.1807038 
+    ## Run 15 stress 0.1741249 
+    ## Run 16 stress 0.1649514 
+    ## Run 17 stress 0.2013429 
+    ## Run 18 stress 0.1627157 
+    ## ... Procrustes: rmse 0.0003196832  max resid 0.00128576 
     ## ... Similar to previous best
-    ## Run 19 stress 0.1753088 
-    ## Run 20 stress 0.1765492 
+    ## Run 19 stress 0.1649515 
+    ## Run 20 stress 0.1649518 
     ## *** Solution reached
 
 ``` r
@@ -231,38 +230,33 @@ nmds.silo3and9_log <- metaMDS(silo3and9_log, distance = 'euclidean', k = 2, trym
     ## 'comm' has negative data: 'autotransform', 'noshare' and 'wascores' set to FALSE
 
     ## Run 0 stress 0.1123882 
-    ## Run 1 stress 0.128223 
-    ## Run 2 stress 0.1123889 
-    ## ... Procrustes: rmse 0.0002154536  max resid 0.0004912211 
+    ## Run 1 stress 0.1282567 
+    ## Run 2 stress 0.1229455 
+    ## Run 3 stress 0.1124371 
+    ## ... Procrustes: rmse 0.004849062  max resid 0.01680513 
+    ## Run 4 stress 0.1230615 
+    ## Run 5 stress 0.1230617 
+    ## Run 6 stress 0.1155855 
+    ## Run 7 stress 0.1124371 
+    ## ... Procrustes: rmse 0.004840493  max resid 0.01677708 
+    ## Run 8 stress 0.1285297 
+    ## Run 9 stress 0.1335596 
+    ## Run 10 stress 0.1124366 
+    ## ... Procrustes: rmse 0.00480659  max resid 0.01678008 
+    ## Run 11 stress 0.1279615 
+    ## Run 12 stress 0.1230613 
+    ## Run 13 stress 0.1123888 
+    ## ... Procrustes: rmse 0.0004994801  max resid 0.001604861 
     ## ... Similar to previous best
-    ## Run 3 stress 0.1155853 
-    ## Run 4 stress 0.1282568 
-    ## Run 5 stress 0.1156769 
-    ## Run 6 stress 0.1123893 
-    ## ... Procrustes: rmse 0.0005534177  max resid 0.001880221 
-    ## ... Similar to previous best
-    ## Run 7 stress 0.1230614 
-    ## Run 8 stress 0.1285277 
-    ## Run 9 stress 0.1156654 
-    ## Run 10 stress 0.1124365 
-    ## ... Procrustes: rmse 0.004760629  max resid 0.0167059 
-    ## Run 11 stress 0.1263262 
-    ## Run 12 stress 0.1263215 
-    ## Run 13 stress 0.1124371 
-    ## ... Procrustes: rmse 0.004859841  max resid 0.01684322 
-    ## Run 14 stress 0.1260365 
-    ## Run 15 stress 0.112388 
-    ## ... New best solution
-    ## ... Procrustes: rmse 0.0001325142  max resid 0.0003051049 
-    ## ... Similar to previous best
-    ## Run 16 stress 0.1279619 
-    ## Run 17 stress 0.1396267 
-    ## Run 18 stress 0.115669 
-    ## Run 19 stress 0.112388 
-    ## ... Procrustes: rmse 1.847428e-05  max resid 4.600232e-05 
-    ## ... Similar to previous best
-    ## Run 20 stress 0.1124372 
-    ## ... Procrustes: rmse 0.004818013  max resid 0.01673611 
+    ## Run 14 stress 0.1263476 
+    ## Run 15 stress 0.1124365 
+    ## ... Procrustes: rmse 0.004745711  max resid 0.01668024 
+    ## Run 16 stress 0.1285279 
+    ## Run 17 stress 0.127836 
+    ## Run 18 stress 0.1124378 
+    ## ... Procrustes: rmse 0.004873351  max resid 0.0168166 
+    ## Run 19 stress 0.1460328 
+    ## Run 20 stress 0.131862 
     ## *** Solution reached
 
 ``` r
@@ -281,29 +275,28 @@ nmds.silo3and9_log_bray <- metaMDS(log(silo3and9[,-c(1:4,which(colnames(silo3and
 ```
 
     ## Run 0 stress 0.1245128 
-    ## Run 1 stress 0.1280464 
-    ## Run 2 stress 0.1304808 
-    ## Run 3 stress 0.1416714 
-    ## Run 4 stress 0.1570718 
-    ## Run 5 stress 0.1261316 
-    ## Run 6 stress 0.1261311 
-    ## Run 7 stress 0.1245127 
-    ## ... New best solution
-    ## ... Procrustes: rmse 4.38979e-05  max resid 0.0001046831 
+    ## Run 1 stress 0.1357539 
+    ## Run 2 stress 0.1397267 
+    ## Run 3 stress 0.1304776 
+    ## Run 4 stress 0.150567 
+    ## Run 5 stress 0.1357538 
+    ## Run 6 stress 0.1261319 
+    ## Run 7 stress 0.1253263 
+    ## Run 8 stress 0.1540754 
+    ## Run 9 stress 0.1514475 
+    ## Run 10 stress 0.1296366 
+    ## Run 11 stress 0.1261315 
+    ## Run 12 stress 0.1261314 
+    ## Run 13 stress 0.1525995 
+    ## Run 14 stress 0.1245128 
+    ## ... Procrustes: rmse 4.332235e-05  max resid 0.0001472904 
     ## ... Similar to previous best
-    ## Run 8 stress 0.1304776 
-    ## Run 9 stress 0.125327 
-    ## Run 10 stress 0.1304809 
-    ## Run 11 stress 0.1261313 
-    ## Run 12 stress 0.1261311 
-    ## Run 13 stress 0.1304806 
-    ## Run 14 stress 0.1316251 
-    ## Run 15 stress 0.1553948 
-    ## Run 16 stress 0.1253373 
-    ## Run 17 stress 0.14322 
+    ## Run 15 stress 0.1261314 
+    ## Run 16 stress 0.135754 
+    ## Run 17 stress 0.1394978 
     ## Run 18 stress 0.1261312 
-    ## Run 19 stress 0.1261311 
-    ## Run 20 stress 0.1364272 
+    ## Run 19 stress 0.1261329 
+    ## Run 20 stress 0.1310119 
     ## *** Solution reached
 
 ``` r
@@ -314,6 +307,24 @@ ggplot(nmds.silo3and9_log_bray.scores, aes(NMDS1, NMDS2)) + geom_point(aes(col =
 ```
 
 ![](ClusteringTechnicalReplicates_files/figure-markdown_github/unnamed-chunk-13-1.png)
+
+Average NSAF values
+
+``` r
+df_avg <- data.frame()
+#loop through the data and calculate the mean between replicates for each protein
+for (i in seq(1,nrow(silo3and9_nozerovar),2)){
+  #this calculates the SD for each odd number row and the row following it
+  df_avg_row <- apply(silo3and9_nozerovar[c(i,i+1),],2,mean)
+  #this sequencially combines rows of data together after the SD is generated
+  df_avg <- rbind(df_avg, df_avg_row)
+}
+#add column names to SD data
+colnames(df_avg) <- colnames(silo3and9_nozerovar)
+df_avg$Sample.ID <- rownames(silo3and9_nozerovar[-grep("A",rownames(silo3and9_nozerovar)),])
+```
+
+export filtered protein data set
 
 Seems like technical replicates are pretty close according to either PCA, although a couple are questionable (e.g. 23C day 9, 23C day 11). NMDS plots don't seem as helpful as the PCA plots.
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

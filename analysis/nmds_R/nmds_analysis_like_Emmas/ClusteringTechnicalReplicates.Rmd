@@ -145,7 +145,27 @@ colnames(nmds.silo3and9_log_bray.scores)[1:2] <- c("day","temp")
 ggplot(nmds.silo3and9_log_bray.scores, aes(NMDS1, NMDS2)) + geom_point(aes(col = day, shape = temp)) + theme_bw() + ggtitle("bray curtis NMDS of log (ADJNSAF values + 1)")
 ```
 
+Average NSAF values 
+```{r}
+df_avg <- data.frame()
+#loop through the data and calculate the mean between replicates for each protein
+for (i in seq(1,nrow(silo3and9_nozerovar),2)){
+  #this calculates the SD for each odd number row and the row following it
+  df_avg_row <- apply(silo3and9_nozerovar[c(i,i+1),],2,mean)
+  #this sequencially combines rows of data together after the SD is generated
+  df_avg <- rbind(df_avg, df_avg_row)
+}
+#add column names to SD data
+colnames(df_avg) <- colnames(silo3and9_nozerovar)
+df_avg$Sample.ID <- rownames(silo3and9_nozerovar[-grep("A",rownames(silo3and9_nozerovar)),])
 
+```
+export filtered protein data set
+```{r,echo=FALSE, eval=FALSE}
+new_data <- merge(silo3and9_meta,df_avg, by = "Sample.ID")
+new_data <- new_data[order(new_data$day, new_data$temp),-1]
+write.csv(new_data, "~/Documents/GitHub/OysterSeedProject/analysis/nmds_R/silo3and9_nozerovals_AVGs.csv", row.names = FALSE, quote = FALSE)
+```
 
 ## Seems like technical replicates are pretty close according to either PCA, although a couple are questionable (e.g. 23C day 9, 23C day 11). NMDS plots don't seem as helpful as the PCA plots.
 
