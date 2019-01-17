@@ -78,12 +78,6 @@ This next plot is the PCA for temperature
 ASCA.PlotScoresPerLevel(ASCA, ee = "2", pcs = "1,2")
 ```
 
-This next plot is the PCA for the interaction of time and temperature
-```{r}
-#plot PCA for factor 2, which is temperature in this case
-ASCA.PlotScoresPerLevel(ASCA, ee = "12", pcs = "1,2")
-```
-
 ###Analysis of proteins affected by temperature
 ```{r}
 #extract protein names from ASCA data; these will be combined with loadings values; the order is maintained

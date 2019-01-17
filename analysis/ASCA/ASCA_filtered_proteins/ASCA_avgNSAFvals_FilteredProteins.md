@@ -196,63 +196,6 @@ ASCA.PlotScoresPerLevel(ASCA, ee = "2", pcs = "1,2")
 
 ![](ASCA_avgNSAFvals_FilteredProteins_files/figure-markdown_github/unnamed-chunk-8-1.png)
 
-This next plot is the PCA for the interaction of time and temperature
-
-``` r
-#plot PCA for factor 2, which is temperature in this case
-ASCA.PlotScoresPerLevel(ASCA, ee = "12", pcs = "1,2")
-```
-
-    ## Warning in plot.xy(xy, type, ...): unimplemented pch value '29'
-
-    ## Warning in plot.xy(xy, type, ...): unimplemented pch value '29'
-
-    ## Warning in plot.xy(xy, type, ...): unimplemented pch value '29'
-
-    ## Warning in plot.xy(xy, type, ...): unimplemented pch value '29'
-
-    ## Warning in plot.xy(xy, type, ...): unimplemented pch value '29'
-
-    ## Warning in plot.xy(xy, type, ...): unimplemented pch value '29'
-
-    ## Warning in plot.xy(xy.coords(x, y), type = type, ...): unimplemented pch
-    ## value '29'
-
-    ## Warning in plot.xy(xy.coords(x, y), type = type, ...): unimplemented pch
-    ## value '29'
-
-    ## Warning in plot.xy(xy.coords(x, y), type = type, ...): unimplemented pch
-    ## value '29'
-
-    ## Warning in plot.xy(xy.coords(x, y), type = type, ...): unimplemented pch
-    ## value '29'
-
-    ## Warning in plot.xy(xy.coords(x, y), type = type, ...): unimplemented pch
-    ## value '29'
-
-    ## Warning in plot.xy(xy.coords(x, y), type = type, ...): unimplemented pch
-    ## value '29'
-
-    ## Warning in plot.xy(xy.coords(x, y), type = type, ...): unimplemented pch
-    ## value '29'
-
-    ## Warning in plot.xy(xy.coords(x, y), type = type, ...): unimplemented pch
-    ## value '29'
-
-    ## Warning in plot.xy(xy.coords(x, y), type = type, ...): unimplemented pch
-    ## value '29'
-
-    ## Warning in plot.xy(xy.coords(x, y), type = type, ...): unimplemented pch
-    ## value '29'
-
-    ## Warning in plot.xy(xy.coords(x, y), type = type, ...): unimplemented pch
-    ## value '29'
-
-    ## Warning in plot.xy(xy.coords(x, y), type = type, ...): unimplemented pch
-    ## value '29'
-
-![](ASCA_avgNSAFvals_FilteredProteins_files/figure-markdown_github/unnamed-chunk-9-1.png)
-
 ### Analysis of proteins affected by temperature
 
 ``` r
@@ -270,13 +213,13 @@ d_less <- d[which(d$PC2loadings < 0),]
 plot(d_great[order(d_great$PC2loadings, decreasing = TRUE),2], xlab = "protein", ylab = "PC2 Loadings")
 ```
 
-![](ASCA_avgNSAFvals_FilteredProteins_files/figure-markdown_github/unnamed-chunk-10-1.png)
+![](ASCA_avgNSAFvals_FilteredProteins_files/figure-markdown_github/unnamed-chunk-9-1.png)
 
 ``` r
 plot(d_less[order(d_less$PC2loadings, decreasing = TRUE),2],xlab = "protein", ylab = "PC2 Loadings")
 ```
 
-![](ASCA_avgNSAFvals_FilteredProteins_files/figure-markdown_github/unnamed-chunk-10-2.png)
+![](ASCA_avgNSAFvals_FilteredProteins_files/figure-markdown_github/unnamed-chunk-9-2.png)
 
 To pull out proteins affected by temperature based on their influence in seperating treatment groups on PC2 of the temperature PCA, I picked an absolute value loadings threshold of 0.025. This means any protein that had a loadings value \> 0.025 or \< -0.025 was selected.
 
@@ -296,7 +239,7 @@ Plot a heatmap of protein abundances (NSAF values) that are influenced by temper
 heatmap3(t.data.frame(cut_data),Colv = NA,cexRow = 0.4, cexCol = 0.7)
 ```
 
-![](ASCA_avgNSAFvals_FilteredProteins_files/figure-markdown_github/unnamed-chunk-12-1.png) This heatmap shows common time points adjacent to each other.
+![](ASCA_avgNSAFvals_FilteredProteins_files/figure-markdown_github/unnamed-chunk-11-1.png) This heatmap shows common time points adjacent to each other.
 
 Make a new heatmap ordered by sequencial time points for each temperature.
 
@@ -309,7 +252,7 @@ cut_data_ord <- cut_data_ord[,-c(1:3)]
 heatmap3(t.data.frame(cut_data_ord),Colv = NA,cexRow = 0.4, cexCol = 0.7)
 ```
 
-![](ASCA_avgNSAFvals_FilteredProteins_files/figure-markdown_github/unnamed-chunk-13-1.png)
+![](ASCA_avgNSAFvals_FilteredProteins_files/figure-markdown_github/unnamed-chunk-12-1.png)
 
 Make a new heatmap with simpler protein names
 
@@ -336,4 +279,4 @@ colnames(cut_data_ord_t) <- rownames(cut_data_ord)
 heatmap3(as.matrix(cut_data_ord_t), Colv = NA, cexRow = 0.3, cexCol = 0.7)
 ```
 
-![](ASCA_avgNSAFvals_FilteredProteins_files/figure-markdown_github/unnamed-chunk-14-1.png)
+![](ASCA_avgNSAFvals_FilteredProteins_files/figure-markdown_github/unnamed-chunk-13-1.png)
