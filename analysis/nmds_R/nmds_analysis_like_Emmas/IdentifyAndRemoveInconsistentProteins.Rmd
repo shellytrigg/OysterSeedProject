@@ -141,3 +141,49 @@ new_data <- merge(silo3and9_meta,df_avg, by = "Sample.ID")
 new_data <- new_data[order(new_data$day, new_data$temp),-1]
 write.csv(new_data, "~/Documents/GitHub/OysterSeedProject/analysis/nmds_R/silo3and9_nozerovals_noincnstprot.csv", row.names = FALSE, quote = FALSE)
 ```
+
+Average NSAF values for all proteins
+```{r}
+df_all_avg <- data.frame()
+#loop through the data and calculate the mean between replicates for each protein
+for (i in seq(1,nrow(silo3and9_nozerovar),2)){
+  #this calculates the mean for each odd number row and the row following it
+  df_all_avg_row <- apply(silo3and9_nozerovar[c(i,i+1),],2,mean)
+  #this sequencially combines rows of data together after the SD is generated
+  df_all_avg <- rbind(df_all_avg, df_all_avg_row)
+}
+#add column names to SD data
+colnames(df_all_avg) <- colnames(silo3and9_nozerovar)
+df_all_avg$Sample.ID <- rownames(silo3and9_nozerovar[-grep("A",rownames(silo3and9_nozerovar)),])
+
+```
+
+export data set avg tech. rep. NSAF for all proteins 
+```{r,echo=FALSE, eval=FALSE}
+new_data_all <- merge(silo3and9_meta,df_all_avg, by = "Sample.ID")
+new_data_all <- new_data_all[order(new_data_all$day, new_data_all$temp),-1]
+write.csv(new_data_all, "~/Documents/GitHub/OysterSeedProject/analysis/nmds_R/silo3and9_nozerovals_AVGs.csv", row.names = FALSE, quote = FALSE)
+```
+
+Sum NSAF values 
+```{r}
+df_sum <- data.frame()
+#loop through the data and calculate the mean between replicates for each protein
+for (i in seq(1,nrow(silo3and9_nozerovar),2)){
+  #this calculates the sum for each odd number row and the row following it
+  df_sum_row <- apply(silo3and9_nozerovar[c(i,i+1),],2,sum)
+  #this sequencially combines rows of data together after the SD is generated
+  df_sum <- rbind(df_sum, df_sum_row)
+}
+#add column names to SD data
+colnames(df_sum) <- colnames(silo3and9_nozerovar)
+df_sum$Sample.ID <- rownames(silo3and9_nozerovar[-grep("A",rownames(silo3and9_nozerovar)),])
+
+```
+
+export data set of summed tech. rep. NSAF values for all proteins
+```{r,echo=FALSE, eval=FALSE}
+new_data_sum <- merge(silo3and9_meta,df_sum, by = "Sample.ID")
+new_data_sum <- new_data_sum[order(new_data_sum$day, new_data_sum$temp),-1]
+write.csv(new_data_sum, "~/Documents/GitHub/OysterSeedProject/analysis/nmds_R/silo3and9_nozerovals_SUMs.csv", row.names = FALSE, quote = FALSE)
+```

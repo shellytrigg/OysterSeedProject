@@ -181,43 +181,42 @@ nmds.silo3and9.err20SD5 <- metaMDS(silo3and9_nozerovar_err20_SD5, distance = 'eu
 ```
 
     ## Run 0 stress 0.09649335 
-    ## Run 1 stress 0.1110536 
-    ## Run 2 stress 0.09561105 
+    ## Run 1 stress 0.09637752 
     ## ... New best solution
-    ## ... Procrustes: rmse 0.02766707  max resid 0.08006392 
-    ## Run 3 stress 0.09561106 
-    ## ... Procrustes: rmse 1.532362e-05  max resid 5.068584e-05 
+    ## ... Procrustes: rmse 0.01079087  max resid 0.04130232 
+    ## Run 2 stress 0.09637788 
+    ## ... Procrustes: rmse 0.00078775  max resid 0.0023909 
     ## ... Similar to previous best
-    ## Run 4 stress 0.09561122 
-    ## ... Procrustes: rmse 0.0001768953  max resid 0.0004736883 
-    ## ... Similar to previous best
-    ## Run 5 stress 0.111037 
-    ## Run 6 stress 0.1110888 
-    ## Run 7 stress 0.09649329 
-    ## Run 8 stress 0.1156924 
-    ## Run 9 stress 0.1157292 
-    ## Run 10 stress 0.096377 
-    ## Run 11 stress 0.09649492 
-    ## Run 12 stress 0.09564827 
-    ## ... Procrustes: rmse 0.01074503  max resid 0.04279624 
-    ## Run 13 stress 0.09649308 
-    ## Run 14 stress 0.1100264 
-    ## Run 15 stress 0.09564893 
-    ## ... Procrustes: rmse 0.01087511  max resid 0.04399558 
-    ## Run 16 stress 0.09561103 
+    ## Run 3 stress 0.09564831 
     ## ... New best solution
-    ## ... Procrustes: rmse 0.0001383638  max resid 0.0004179078 
-    ## ... Similar to previous best
-    ## Run 17 stress 0.09561109 
-    ## ... Procrustes: rmse 7.046002e-05  max resid 0.0002139234 
-    ## ... Similar to previous best
-    ## Run 18 stress 0.09564822 
-    ## ... Procrustes: rmse 0.01077064  max resid 0.04291223 
-    ## Run 19 stress 0.09637834 
-    ## Run 20 stress 0.09561101 
+    ## ... Procrustes: rmse 0.0281052  max resid 0.08045147 
+    ## Run 4 stress 0.1070526 
+    ## Run 5 stress 0.09637714 
+    ## Run 6 stress 0.1102605 
+    ## Run 7 stress 0.09561192 
     ## ... New best solution
-    ## ... Procrustes: rmse 8.849991e-05  max resid 0.0001886452 
+    ## ... Procrustes: rmse 0.01067646  max resid 0.04176012 
+    ## Run 8 stress 0.09649338 
+    ## Run 9 stress 0.1110609 
+    ## Run 10 stress 0.09649319 
+    ## Run 11 stress 0.09649432 
+    ## Run 12 stress 0.09649298 
+    ## Run 13 stress 0.0956112 
+    ## ... New best solution
+    ## ... Procrustes: rmse 0.0003717509  max resid 0.0008537295 
     ## ... Similar to previous best
+    ## Run 14 stress 0.1069906 
+    ## Run 15 stress 0.1102585 
+    ## Run 16 stress 0.1206185 
+    ## Run 17 stress 0.09561101 
+    ## ... New best solution
+    ## ... Procrustes: rmse 4.249455e-05  max resid 0.0001172358 
+    ## ... Similar to previous best
+    ## Run 18 stress 0.09561108 
+    ## ... Procrustes: rmse 0.0001243939  max resid 0.0004605138 
+    ## ... Similar to previous best
+    ## Run 19 stress 0.1068762 
+    ## Run 20 stress 0.0963772 
     ## *** Solution reached
 
 ``` r
@@ -239,36 +238,31 @@ nmds.silo3and9_nozerovar_err20_SD5_log <- metaMDS(silo3and9_nozerovar_err20_SD5_
     ## 'comm' has negative data: 'autotransform', 'noshare' and 'wascores' set to FALSE
 
     ## Run 0 stress 0.1151003 
-    ## Run 1 stress 0.1151004 
-    ## ... Procrustes: rmse 0.0005012301  max resid 0.001158548 
-    ## ... Similar to previous best
-    ## Run 2 stress 0.1289759 
-    ## Run 3 stress 0.1304337 
-    ## Run 4 stress 0.1157219 
-    ## Run 5 stress 0.125709 
-    ## Run 6 stress 0.1320721 
-    ## Run 7 stress 0.1407451 
-    ## Run 8 stress 0.1254476 
-    ## Run 9 stress 0.1289896 
-    ## Run 10 stress 0.1151004 
-    ## ... Procrustes: rmse 0.0005272173  max resid 0.001230939 
-    ## ... Similar to previous best
-    ## Run 11 stress 0.1352 
-    ## Run 12 stress 0.125448 
-    ## Run 13 stress 0.1197585 
-    ## Run 14 stress 0.1151001 
+    ## Run 1 stress 0.1248019 
+    ## Run 2 stress 0.1256178 
+    ## Run 3 stress 0.1406868 
+    ## Run 4 stress 0.1378291 
+    ## Run 5 stress 0.1305047 
+    ## Run 6 stress 0.1157214 
+    ## Run 7 stress 0.1305051 
+    ## Run 8 stress 0.1309268 
+    ## Run 9 stress 0.1398964 
+    ## Run 10 stress 0.1303282 
+    ## Run 11 stress 0.1239736 
+    ## Run 12 stress 0.1388246 
+    ## Run 13 stress 0.1239743 
+    ## Run 14 stress 0.1157203 
+    ## Run 15 stress 0.1300719 
+    ## Run 16 stress 0.1159524 
+    ## Run 17 stress 0.1310088 
+    ## Run 18 stress 0.1304338 
+    ## Run 19 stress 0.1197584 
+    ## Run 20 stress 0.3846078 
+    ## Run 21 stress 0.1301934 
+    ## Run 22 stress 0.1151 
     ## ... New best solution
-    ## ... Procrustes: rmse 0.0001044487  max resid 0.0002401767 
+    ## ... Procrustes: rmse 0.000162046  max resid 0.0003720198 
     ## ... Similar to previous best
-    ## Run 15 stress 0.1248021 
-    ## Run 16 stress 0.1289979 
-    ## Run 17 stress 0.1279578 
-    ## Run 18 stress 0.1151 
-    ## ... New best solution
-    ## ... Procrustes: rmse 0.0001730041  max resid 0.00034712 
-    ## ... Similar to previous best
-    ## Run 19 stress 0.1300717 
-    ## Run 20 stress 0.1248013 
     ## *** Solution reached
 
 ``` r
@@ -296,3 +290,39 @@ df_avg$Sample.ID <- rownames(silo3and9_nozerovar_err20_SD5[-grep("A",rownames(si
 ```
 
 export filtered protein data set
+
+Average NSAF values for all proteins
+
+``` r
+df_all_avg <- data.frame()
+#loop through the data and calculate the mean between replicates for each protein
+for (i in seq(1,nrow(silo3and9_nozerovar),2)){
+  #this calculates the mean for each odd number row and the row following it
+  df_all_avg_row <- apply(silo3and9_nozerovar[c(i,i+1),],2,mean)
+  #this sequencially combines rows of data together after the SD is generated
+  df_all_avg <- rbind(df_all_avg, df_all_avg_row)
+}
+#add column names to SD data
+colnames(df_all_avg) <- colnames(silo3and9_nozerovar)
+df_all_avg$Sample.ID <- rownames(silo3and9_nozerovar[-grep("A",rownames(silo3and9_nozerovar)),])
+```
+
+export data set avg tech. rep. NSAF for all proteins
+
+Sum NSAF values
+
+``` r
+df_sum <- data.frame()
+#loop through the data and calculate the mean between replicates for each protein
+for (i in seq(1,nrow(silo3and9_nozerovar),2)){
+  #this calculates the sum for each odd number row and the row following it
+  df_sum_row <- apply(silo3and9_nozerovar[c(i,i+1),],2,sum)
+  #this sequencially combines rows of data together after the SD is generated
+  df_sum <- rbind(df_sum, df_sum_row)
+}
+#add column names to SD data
+colnames(df_sum) <- colnames(silo3and9_nozerovar)
+df_sum$Sample.ID <- rownames(silo3and9_nozerovar[-grep("A",rownames(silo3and9_nozerovar)),])
+```
+
+export data set of summed tech. rep. NSAF values for all proteins

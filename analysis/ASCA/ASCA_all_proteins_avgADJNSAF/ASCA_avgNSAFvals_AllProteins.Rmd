@@ -1,0 +1,310 @@
+---
+title: "ASCA on average NSAF values of all proteins"
+author: "Shelly Trigg"
+date: "1/17/2019"
+output: rmarkdown::github_document
+---
+
+load libraries
+```{r, echo = FALSE}
+library(dplyr)
+library(tidyr)
+library(MetStaT)
+library(ggplot2)
+library(heatmap3)
+```
+
+load data
+```{r}
+#NSAF data from filtered proteins
+data <- read.csv("~/Documents/GitHub/OysterSeedProject/analysis/nmds_R/silo3and9_nozerovals_AVGs.csv", stringsAsFactors = FALSE)
+```
+
+Load data with annotations so protein IDs can be substituted with shorter names
+```{r, echo =FALSE}
+#data with uniprot annotations
+data_w_uniprot <- read.csv("~/Documents/GitHub/OysterSeedProject/raw_data/gigaton-uniport-table_GOterms-sperated.csv", stringsAsFactors = FALSE)
+#subset only Protein IDs and Entry names
+data_w_uniprot <- data_w_uniprot[,c("Protein.ID", "Entry.name")]
+#replace pipe character with nothing; remember \\ to escape the | character
+data_w_uniprot$Protein.ID <- gsub("\\|",".", data_w_uniprot$Protein.ID)
+#replace all characters following '_' with nothing in the entry name column
+data_w_uniprot$Entry.name.simple <- gsub("\\_.*","", data_w_uniprot$Entry.name)
+#replace 'none' with 'unknown'
+data_w_uniprot$Entry.name.simple <- gsub("None","Unknown", data_w_uniprot$Entry.name.simple)
+
+#there are duplicated Entry names for unique protein IDs, so we need to make unique Entry names by adding .1, .2 etc.
+#https://stackoverflow.com/questions/16646446/renaming-duplicate-strings-in-r
+
+data_w_uniprot$Entry.name.new <- make.names(data_w_uniprot$Entry.name.simple, unique = TRUE)
+```
+
+subset the data for only CHOYP proteins; this removes contaminant proteins
+```{r, echo = FALSE}
+#make a dataframe with just CHOYP proteins
+choyp_data <- data[,c(1:2,grep("CHOYP", colnames(data)))]
+
+#make a seperate data frame with contaminant proteins
+contam_data <- data[,-grep("CHOYP", colnames(data))]
+```
+
+perform ASCA
+```{r}
+#create matrix to pass to ASCA command, excluding the silo and time info
+ASCA_X <- as.matrix(choyp_data[,-c(1:2)])
+#create matrix to pass to ASCA command with only the silo and time info
+ASCA_F <- as.matrix(choyp_data[,c(1:2)])
+#perform ASCA
+ASCA <- ASCA.Calculate(ASCA_X, ASCA_F, equation.elements = "1,2,12", scaling = FALSE)
+```
+
+Here is a summary of the ASCA results (e.g. variance explained by different factors; factor 1= time (days), factor 2 = temperature, interaction = interaction of time and temperature)
+```{r}
+#print the ASCA summary
+ASCA.GetSummary(ASCA)
+```
+
+### Plot PCAs from ASCA  
+
+This first plot is the time (days) effect PCA
+```{r avgNSAF_PCA_timeEffect_plot}
+#plot PCA for factor 1, which is time in this case
+ASCA.PlotScoresPerLevel(ASCA, ee = "1", pcs = "1,2")
+```
+
+This next plot is the temperature effect PCA
+```{r avgNSAF_PCA_tempEffect_plot}
+#plot PCA for factor 2, which is temperature in this case
+ASCA.PlotScoresPerLevel(ASCA, ee = "2", pcs = "1,2")
+```
+
+This next plot is the time x temp interaction effect PCA
+```{r avgNSAF_PCA_timeXtempEffect_plot}
+#plot PCA for factor interaction, which is time x temp in this case
+timextemp_PC12 <- data.frame(ASCA$`12`$svd$t[,c(1,2)])
+timextemp_PC12 <- cbind(data.frame(ASCA$`12`$level.combinations$row.patterns), timextemp_PC12)
+colnames(timextemp_PC12)<- c("day","temp","PC1","PC2")
+timextemp_PC12$day <- as.character(timextemp_PC12$day)
+timextemp_PC12$temp <- as.character(timextemp_PC12$temp)
+ggplot(timextemp_PC12, aes(PC1, PC2)) + geom_point(aes(col = temp, shape = day, size = 3)) + theme_bw() + ggtitle("PC1 vs PC2 for time x temperature interaction effect") + theme(plot.title = element_text(face = "bold")) + xlab(paste("PC1"," (",formatC(ASCA$`12`$svd$var.explained[1] * 100,digits=2,format="f"),"%)", sep = "")) + ylab(paste("PC2"," (",formatC(ASCA$`12`$svd$var.explained[2] * 100,digits=2,format="f"),"%)", sep = ""))
+```
+
+### Analysis of proteins affected by temperature
+
+plot PC2 loadings for temperature effect
+```{r avgNSAF_PCA_tempEffect_PC2loadings}
+#extract protein names from ASCA data; these will be combined with loadings values; the order is maintained
+protnames <- data.frame(colnames(ASCA$data))
+#combine protein names with ASCA loadings for PC2 for temperature, since this component showed the greatest separation between temperatures
+d <- cbind(protnames, ASCA$`2`$svd$v[,2])
+#rename the columns
+colnames(d) <- c("protein", "PC2loadings")
+#make a dataframe of proteins with PC loadings greater than zero for the loadings plot
+d_great <- d[which(d$PC2loadings > 0),]
+#make a dataframe of proteins with PC loadings less than zero for the loadings plot
+d_less <- d[which(d$PC2loadings < 0),]
+#plot PC1 loadings
+plot(d_great[order(d_great$PC2loadings, decreasing = TRUE),2], xlab = "protein", ylab = "PC2 Loadings")
+plot(d_less[order(d_less$PC2loadings, decreasing = TRUE),2],xlab = "protein", ylab = "PC2 Loadings")
+```
+
+To pull out proteins affected by temperature based on their influence in seperating treatment groups on PC2 of the temperature PCA, I picked an absolute value loadings threshold of 0.025. This means any protein that had a loadings value > 0.025 or < -0.025 was selected.
+```{r}
+#make list of proteins with temperature PC1 loadings values >= 0.025
+cutd <- d[which(abs(d$PC2loadings) >= 0.025),]
+#number of proteins affected by temp
+nrow(cutd)
+#make a list of cutoff proteins with normalized abundance
+cut_data <-data[,which(colnames(data) %in% cutd$protein)]
+rownames(cut_data) <- paste(data$day, data$temp, sep="_")
+```
+
+Plot a heatmap of proteins affected by temperature based on temperature effect PC2 loadings value cutoff 
+```{r avgNSAF_tempEffectPC2_cutoff0.025_heatmap_OrderedByTemp_ShortNames,fig.height=10, fig.width=10}
+#reorder the cut data so that samples are grouped by temperature
+cut_data_ord <- data[,c(1:3,which(colnames(data) %in% cutd$protein))]
+cut_data_ord <- cut_data_ord[order(cut_data_ord$temp,cut_data_ord$day),]
+rownames(cut_data_ord) <- paste(cut_data_ord$day, cut_data_ord$temp, sep="_")
+cut_data_ord <- cut_data_ord[,-c(1:3)]
+#replace CHOYP names with "entry names"
+#transposed to eventually get row names as columns to match entry names to. 
+#t.data.frame returns a matrix so I had convert back to data frame for all downstream rearranging because data frames are much easier to work with
+cut_data_ord_t <- data.frame(t.data.frame(cut_data_ord))
+#make row names which contain the protein IDs a column
+cut_data_ord_t <- cbind(rownames(cut_data_ord_t), cut_data_ord_t)
+#add the column name
+colnames(cut_data_ord_t)[1] <- "Protein.ID"
+#convert the Protein ID column to character
+cut_data_ord_t[,1] <- as.character(cut_data_ord_t[,1])
+#add the Entry names
+cut_data_ord_t <- merge(data_w_uniprot[,c("Protein.ID","Entry.name.new")],cut_data_ord_t, by = "Protein.ID")
+#make the entry names the row names
+rownames(cut_data_ord_t) <- cut_data_ord_t[,"Entry.name.new"]
+#remove the protein ID and entry name columns since the row names are added
+cut_data_ord_t <- cut_data_ord_t[,-c(1:2)]
+#this step removes the x from the column names while preserving the order of colnames
+colnames(cut_data_ord_t) <- rownames(cut_data_ord)
+#plot the heat map
+heatmap3(as.matrix(cut_data_ord_t), Colv = NA, cexRow = 0.5)
+```
+
+### Analysis of proteins affected by time (development associated proteins)
+
+plot PC1 loadings for the time effect PCA
+```{r avgNSAF_PCA_timeEffect_PC1loadings, echo = FALSE}
+#make dataframes of factor 1 (time) PC1 loadings
+d1 <- cbind(protnames, ASCA$`1`$svd$v[,1])
+colnames(d1) <- c("protein", "PC1loadings")
+d1_great <- d1[which(d1$PC1loadings > 0),]
+d1_less <- d1[which(d1$PC1loadings < 0),]
+
+plot(d1_great[order(d1_great$PC1loadings, decreasing = TRUE),2])
+plot(d1_less[order(d1_less$PC1loadings, decreasing = TRUE),2])
+```
+
+plot PC2 loadings for the time effect PCA
+```{r avgNSAF_PCA_timeEffect_PC2loadings, echo = FALSE}
+d2 <- cbind(protnames, ASCA$`1`$svd$v[,2])
+colnames(d2) <- c("protein", "PC2loadings")
+d2_great <- d2[which(d2$PC2loadings > 0),]
+d2_less <- d2[which(d2$PC2loadings < 0),]
+
+plot(d2_great[order(d2_great$PC2loadings, decreasing = TRUE),2])
+plot(d2_less[order(d2_less$PC2loadings, decreasing = TRUE),2])
+
+#make list of proteins with temperature PC1 loadings values >= 0.04
+cutd1 <- data.frame(d1[which(abs(d1$PC1loadings) >= 0.025),1])
+colnames(cutd1) <- "protein"
+cutd2 <- data.frame(d2[which(abs(d2$PC2loadings) >= 0.025),1])
+colnames(cutd2) <- "protein"
+cutd12 <- unique(rbind(cutd1,cutd2))
+#number of proteins affected by time 
+nrow(cutd12)
+```
+
+Plot a heatmap of proteins affected by time based on time effect PC1 and PC2 loadings value cutoffs 
+```{r avgNSAF_timeEffectPC1and2_cutoff0.025_heatmap_OrderedByTime, echo = FALSE, fig.height=10, fig.width=10}
+#make a list of cutoff proteins with normalized abundance
+cut12_data <-data[,which(colnames(data) %in% cutd12$protein)]
+rownames(cut12_data) <- paste(data$day, data$temp, sep="_")
+heatmap3(t.data.frame(cut12_data),Colv = NA,cexRow = 0.4)
+```
+
+### Analysis of proteins affected by the interaction of time and temp 
+plot PC1 loadings for the time x temperature interaction effect PCA
+```{r avgNSAF_PCA_timeXtempEffect_PC1loadings, echo = FALSE}
+#look at PC1 loadings because this separates
+d3 <- cbind(protnames, ASCA$`12`$svd$v[,1])
+colnames(d3) <- c("protein", "PC1loadings")
+d3_great <- d3[which(d3$PC1loadings > 0),]
+d3_less <- d3[which(d3$PC1loadings < 0),]
+
+plot(d3_great[order(d3_great$PC1loadings, decreasing = TRUE),2])
+plot(d3_less[order(d3_less$PC1loadings, decreasing = TRUE),2])
+```
+
+plot PC2 loadings for the time x temperature interaction effect PCA
+```{r avgNSAF_PCA_timeXtempEffect_PC2loadings, echo = FALSE}
+d4 <- cbind(protnames, ASCA$`12`$svd$v[,2])
+colnames(d4) <- c("protein", "PC2loadings")
+d4_great <- d4[which(d4$PC2loadings > 0),]
+d4_less <- d4[which(d4$PC2loadings < 0),]
+
+plot(d4_great[order(d4_great$PC2loadings, decreasing = TRUE),2])
+plot(d4_less[order(d4_less$PC2loadings, decreasing = TRUE),2])
+
+#make list of proteins with temperature PC1 loadings values >= 0.04
+cutd3 <- data.frame(d3[which(abs(d3$PC1loadings) >= 0.025),1])
+colnames(cutd3) <- "protein"
+cutd4 <- data.frame(d4[which(abs(d4$PC2loadings) >= 0.025),1])
+colnames(cutd4) <- "protein"
+cutd34 <- unique(rbind(cutd3,cutd4))
+#number of proteins affected by temp x time interaction
+nrow(cutd34)
+```
+
+Plot a heatmap of proteins affected by the time x temperature interaction based on time x temperature effect PC1 and PC2 loadings value cutoffs 
+```{r avgNSAF_timeXtempEffectPC1and2_cutoff0.025_heatmap_OrderedByTime, echo = FALSE, fig.height=10, fig.width=10}
+#make a list of cutoff proteins with normalized abundance
+cut34_data <-data[,which(colnames(data) %in% cutd34$protein)]
+rownames(cut34_data) <- paste(data$day, data$temp, sep="_")
+heatmap3(t.data.frame(cut34_data),Colv = NA,cexRow = 0.4)
+```
+
+```{r Examine_all_ASCA_factor_affected_proteins, echo = FALSE, eval = FALSE}
+f1 <- data.frame(cutd[,1])
+colnames(f1) <- "protein"
+f1$effect <- "temp"
+f2 <- cutd12
+f2$effect <- "time"
+f3 <- cutd34
+f3$effect <- "tempXtime"
+
+f123 <- rbind(f1,f2,f3)
+
+protein_freq <- data.frame(table(f123$protein))
+
+protein_highfreq <- protein_freq[which(protein_freq$Freq==3),]
+colnames(protein_highfreq)[1] <- "protein"
+protein_modfreq <- protein_freq[which(protein_freq$Freq==2),]
+colnames(protein_modfreq)[1] <- "protein"
+protein_lowfreq <- protein_freq[which(protein_freq$Freq==1),]
+colnames(protein_lowfreq)[1] <- "protein"
+
+f123_lowfreq <- f123[which(f123$protein %in% protein_lowfreq$protein),]
+
+f123_lowfreq_temp <- f123_lowfreq[which(f123_lowfreq$effect=="temp"),]
+f_temp_ord <- data[,c(1:3,which(colnames(data) %in% f123_lowfreq_temp$protein))]
+f_temp_ord <- f_temp_ord[order(f_temp_ord$temp,f_temp_ord$day),]
+rownames(f_temp_ord) <- paste(f_temp_ord$day, f_temp_ord$temp, sep="_")
+f_temp_ord <- f_temp_ord[,-c(1:3)]
+heatmap3(t.data.frame(f_temp_ord),Colv = NA, cexRow = 0.4)
+```
+
+
+```{r derivate_for_loadings_threshold, echo = FALSE, eval = FALSE}
+
+#playing around with using derivatives to pick a loadings threshold
+
+
+#https://stackoverflow.com/questions/41518870/finding-the-elbow-knee-in-a-curve
+get.elbow.points.indices <- function(x, y, threshold) {
+  d1 <- diff(y) / diff(x) # first derivative
+  d2 <- diff(d1) / diff(x[-1]) # second derivative
+  indices <- which(abs(d2) > threshold)  
+  return(indices)
+}
+
+
+
+x = seq(1:nrow(d_great))
+#convert this to negative sort greatest to least; this allows us to pick the first derivative
+#y = d_great[order(d_great$PC2loadings, decreasing = FALSE),2] * -1
+y = d_great[order(d_great$PC1loadings, decreasing = TRUE),2]
+
+indices <- get.elbow.points.indices(x, y,0.001) # threshold for huge jump = 0.001
+x[indices]
+#[1]  1  2  3  4  5  6  7  8 11 12 13 14 15 16 17 18 25 26 28 29 37
+y[indices]
+#[1] 0.37187461 0.27551707 0.25225684 0.18367869 0.18172208 0.10977722 0.08680822 0.07276701 0.06496925
+#[10] 0.06271090 0.06177204 0.05975629 0.05667319 0.05563780 0.05182859 0.05154770 0.04306674 0.04262415
+#[19] 0.03987387 0.03900935 0.03375264
+plot(x, y, pch=19)
+points(x[indices], y[indices], pch=19, col='red')
+
+
+x = seq(1:nrow(d_less))
+y = d_less[order(d_less$PC2loadings, decreasing = TRUE),2]
+
+indices <- get.elbow.points.indices(x, y,0.001) # threshold for huge jump = 0.001
+x[indices]
+#[1] 2407 2408 2418 2421 2422 2429 2431 2433 2435 2440 2441 2442 2443 2444 2445 2446 2447 2448 2449 2450 2451
+#[22] 2452 2453
+y[indices]
+#[1] -0.02592041 -0.02598057 -0.03015541 -0.03170286 -0.03234933 -0.03757466 -0.03944236 -0.04092336
+#[9] -0.04456572 -0.04964308 -0.04990225 -0.05389416 -0.05445493 -0.05711436 -0.06314595 -0.06791729
+#[17] -0.07024664 -0.07398529 -0.09805340 -0.09988452 -0.10409290 -0.12862659 -0.14560657
+plot(x, y, pch=19)
+points(x[indices[1]], y[indices[1]], pch=19, col='red')
+```
+
