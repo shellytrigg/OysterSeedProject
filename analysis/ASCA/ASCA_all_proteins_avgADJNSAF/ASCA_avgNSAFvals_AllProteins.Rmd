@@ -118,10 +118,16 @@ cut_data <-data[,which(colnames(data) %in% cutd$protein)]
 rownames(cut_data) <- paste(data$day, data$temp, sep="_")
 ```
 
+```{r, echo = FALSE, eval = FALSE}
+write.csv(cut_data, "~/Documents/GitHub/OysterSeedProject/analysis/ASCA/ASCA_all_proteins_avgADJNSAF/ASCA_TempAffectedProteins.csv")
+```
+
 Number of proteins affected by temperature at loadings value > 0.025 or < -0.025
 ```{r, echo = FALSE}
 nrow(cutd)
 ```
+
+
 
 **Heatmap of proteins affected by temperature based on temperature effect PC2 loadings value cutoff**
 ```{r avgNSAF_tempEffectPC2_cutoff0.025_heatmap_OrderedByTemp_ShortNames,fig.height=10, fig.width=10, echo = FALSE}
@@ -197,6 +203,10 @@ rownames(cut12_data) <- paste(data$day, data$temp, sep="_")
 heatmap3(t.data.frame(cut12_data),Colv = NA,cexRow = 0.4)
 ```
 
+```{r, echo = FALSE, eval = FALSE}
+write.csv(cut12_data, "~/Documents/GitHub/OysterSeedProject/analysis/ASCA/ASCA_all_proteins_avgADJNSAF/ASCA_TimeAffectedProteins.csv")
+```
+
 ### Analysis of proteins affected by the interaction of time and temp 
 
 **PC1 loadings for the time x temperature interaction effect PCA**
@@ -241,6 +251,10 @@ nrow(cutd34)
 cut34_data <-data[,which(colnames(data) %in% cutd34$protein)]
 rownames(cut34_data) <- paste(data$day, data$temp, sep="_")
 heatmap3(t.data.frame(cut34_data),Colv = NA,cexRow = 0.4)
+```
+
+```{r, echo = FALSE, eval = FALSE}
+write.csv(cut34_data, "~/Documents/GitHub/OysterSeedProject/analysis/ASCA/ASCA_all_proteins_avgADJNSAF/ASCA_timeXtempAffectedProteins.csv")
 ```
 
 ```{r Examine_all_ASCA_factor_affected_proteins, echo = FALSE, eval = FALSE}
