@@ -3,9 +3,7 @@ ASCA on average NSAF values of all proteins
 Shelly Trigg
 1/17/2019
 
-1.  load libraries
-
-<!-- -->
+load libraries
 
     ## Warning: package 'dplyr' was built under R version 3.4.4
 
@@ -48,18 +46,14 @@ Shelly Trigg
 
     ## Warning: package 'ggplot2' was built under R version 3.4.4
 
-1.  load data
+load data
 
 ``` r
 #NSAF data from filtered proteins
 data <- read.csv("~/Documents/GitHub/OysterSeedProject/analysis/nmds_R/silo3and9_nozerovals_AVGs.csv", stringsAsFactors = FALSE)
 ```
 
-1.  load data with annotations so protein IDs can be substituted with shorter names
-
-2.  subset the data for only CHOYP proteins; this removes contaminant proteins
-
-3.  perform ASCA
+**Perform ASCA**
 
 ``` r
 #create matrix to pass to ASCA command, excluding the silo and time info
@@ -175,6 +169,8 @@ Because the temperature effect PCA show the most separation between 23C and 29C 
 
 To pull out proteins affected by temperature based on their influence in seperating treatment groups on PC2 of the temperature PCA, I picked an absolute value loadings threshold of 0.025. This means any protein that had a loadings value \> 0.025 or \< -0.025 was selected.
 
+Number of proteins affected by temperature at loadings value \> 0.025 or \< -0.025
+
     ## [1] 138
 
 **Heatmap of proteins affected by temperature based on temperature effect PC2 loadings value cutoff** ![](ASCA_avgNSAFvals_AllProteins_files/figure-markdown_github/avgNSAF_tempEffectPC2_cutoff0.025_heatmap_OrderedByTemp_ShortNames-1.png)
@@ -185,6 +181,8 @@ To pull out proteins affected by temperature based on their influence in seperat
 
 **PC2 loadings for the time effect PCA** ![](ASCA_avgNSAFvals_AllProteins_files/figure-markdown_github/avgNSAF_PCA_timeEffect_PC2loadings-1.png)![](ASCA_avgNSAFvals_AllProteins_files/figure-markdown_github/avgNSAF_PCA_timeEffect_PC2loadings-2.png)
 
+number of proteins affected by time at loadings value \> 0.025 or \< -0.025
+
     ## [1] 230
 
 **heatmap of proteins affected by time based on time effect PC1 and PC2 loadings value cutoffs** ![](ASCA_avgNSAFvals_AllProteins_files/figure-markdown_github/avgNSAF_timeEffectPC1and2_cutoff0.025_heatmap_OrderedByTime-1.png)
@@ -194,6 +192,8 @@ To pull out proteins affected by temperature based on their influence in seperat
 **PC1 loadings for the time x temperature interaction effect PCA** ![](ASCA_avgNSAFvals_AllProteins_files/figure-markdown_github/avgNSAF_PCA_timeXtempEffect_PC1loadings-1.png)![](ASCA_avgNSAFvals_AllProteins_files/figure-markdown_github/avgNSAF_PCA_timeXtempEffect_PC1loadings-2.png)
 
 **PC2 loadings for the time x temperature interaction effect PCA** ![](ASCA_avgNSAFvals_AllProteins_files/figure-markdown_github/avgNSAF_PCA_timeXtempEffect_PC2loadings-1.png)![](ASCA_avgNSAFvals_AllProteins_files/figure-markdown_github/avgNSAF_PCA_timeXtempEffect_PC2loadings-2.png)
+
+number of proteins affected by time x temperature interaction at loadings value \> 0.025 or \< -0.025
 
     ## [1] 219
 

@@ -5,7 +5,7 @@ date: "1/17/2019"
 output: rmarkdown::github_document
 ---
 
-1. load libraries
+load libraries
 ```{r, echo = FALSE}
 library(dplyr)
 library(tidyr)
@@ -14,14 +14,14 @@ library(ggplot2)
 library(heatmap3)
 ```
 
-2. load data
+load data
 ```{r}
 #NSAF data from filtered proteins
 data <- read.csv("~/Documents/GitHub/OysterSeedProject/analysis/nmds_R/silo3and9_nozerovals_AVGs.csv", stringsAsFactors = FALSE)
 ```
 
-3. load data with annotations so protein IDs can be substituted with shorter names
 ```{r, echo =FALSE}
+#load data with annotations so protein IDs can be substituted with shorter names
 #data with uniprot annotations
 data_w_uniprot <- read.csv("~/Documents/GitHub/OysterSeedProject/raw_data/gigaton-uniport-table_GOterms-sperated.csv", stringsAsFactors = FALSE)
 #subset only Protein IDs and Entry names
@@ -39,8 +39,7 @@ data_w_uniprot$Entry.name.simple <- gsub("None","Unknown", data_w_uniprot$Entry.
 data_w_uniprot$Entry.name.new <- make.names(data_w_uniprot$Entry.name.simple, unique = TRUE)
 ```
 
-4. subset the data for only CHOYP proteins; this removes contaminant proteins
-```{r, echo = FALSE}
+```{r subset_data_for_CHOYP_only, echo = FALSE}
 #make a dataframe with just CHOYP proteins
 choyp_data <- data[,c(1:2,grep("CHOYP", colnames(data)))]
 
@@ -48,7 +47,7 @@ choyp_data <- data[,c(1:2,grep("CHOYP", colnames(data)))]
 contam_data <- data[,-grep("CHOYP", colnames(data))]
 ```
 
-5. perform ASCA
+**Perform ASCA**
 ```{r}
 #create matrix to pass to ASCA command, excluding the silo and time info
 ASCA_X <- as.matrix(choyp_data[,-c(1:2)])
@@ -114,11 +113,14 @@ To pull out proteins affected by temperature based on their influence in seperat
 ```{r, echo = FALSE}
 #make list of proteins with temperature PC1 loadings values >= 0.025
 cutd <- d[which(abs(d$PC2loadings) >= 0.025),]
-#number of proteins affected by temp
-nrow(cutd)
 #make a list of cutoff proteins with normalized abundance
 cut_data <-data[,which(colnames(data) %in% cutd$protein)]
 rownames(cut_data) <- paste(data$day, data$temp, sep="_")
+```
+
+Number of proteins affected by temperature at loadings value > 0.025 or < -0.025
+```{r, echo = FALSE}
+nrow(cutd)
 ```
 
 **Heatmap of proteins affected by temperature based on temperature effect PC2 loadings value cutoff**
@@ -174,13 +176,16 @@ d2_less <- d2[which(d2$PC2loadings < 0),]
 plot(d2_great[order(d2_great$PC2loadings, decreasing = TRUE),2])
 plot(d2_less[order(d2_less$PC2loadings, decreasing = TRUE),2])
 
-#make list of proteins with temperature PC1 loadings values >= 0.04
+#make list of proteins with temperature PC1 loadings values >= 0.025
 cutd1 <- data.frame(d1[which(abs(d1$PC1loadings) >= 0.025),1])
 colnames(cutd1) <- "protein"
 cutd2 <- data.frame(d2[which(abs(d2$PC2loadings) >= 0.025),1])
 colnames(cutd2) <- "protein"
 cutd12 <- unique(rbind(cutd1,cutd2))
-#number of proteins affected by time 
+```
+
+number of proteins affected by time at loadings value > 0.025 or < -0.025
+```{r, echo = FALSE}
 nrow(cutd12)
 ```
 
@@ -222,9 +227,13 @@ colnames(cutd3) <- "protein"
 cutd4 <- data.frame(d4[which(abs(d4$PC2loadings) >= 0.025),1])
 colnames(cutd4) <- "protein"
 cutd34 <- unique(rbind(cutd3,cutd4))
-#number of proteins affected by temp x time interaction
+```
+
+number of proteins affected by time x temperature interaction at loadings value > 0.025 or < -0.025
+```{r, echo = FALSE}
 nrow(cutd34)
 ```
+
 
 **heatmap of proteins affected by the time x temperature interaction based on time x temperature effect PC1 and PC2 loadings value cutoffs**
 ```{r avgNSAF_timeXtempEffectPC1and2_cutoff0.025_heatmap_OrderedByTime, echo = FALSE, fig.height=10, fig.width=10, echo = FALSE}
