@@ -257,6 +257,26 @@ heatmap3(t.data.frame(cut34_data),Colv = NA,cexRow = 0.4)
 write.csv(cut34_data, "~/Documents/GitHub/OysterSeedProject/analysis/ASCA/ASCA_all_proteins_avgADJNSAF/ASCA_timeXtempAffectedProteins.csv")
 ```
 
+```{r, Create_table_all_ASCA_proteins_and_loadings_with_PC1and2cutoff0.025}
+combined1d2 <- merge(d1[which(abs(d1$PC1loadings) >= 0.025),],d2[which(abs(d2$PC2loadings) >= 0.025),], by = "protein", all = TRUE)
+for(i in 1:nrow(combined1d2)){
+  combined1d2$TimePC12[i] <- sum(abs(combined1d2$PC1loadings[i]), abs(combined1d2$PC2loadings[i]), na.rm = TRUE)
+}
+
+combined3d4 <- merge(d3[which(abs(d3$PC1loadings) >= 0.025),],d4[which(abs(d4$PC2loadings) >= 0.025),], by = "protein", all = TRUE)
+for(i in 1:nrow(combined3d4)){
+  combined3d4$TimexTempPC12[i] <- sum(abs(combined3d4$PC1loadings[i]), abs(combined3d4$PC2loadings[i]), na.rm = TRUE)
+}
+
+ASCA_all <- merge(cutd, combined1d2[,c("protein", "TimePC12")], by = "protein", all = TRUE)
+ASCA_all <- merge(ASCA_all, combined3d4[,c("protein", "TimexTempPC12")], by = "protein", all = TRUE)    
+colnames(ASCA_all)[2] <- "TempPC2"
+
+write.csv(ASCA_all,"~/Documents/GitHub/OysterSeedProject/analysis/ASCA/ASCA_all_proteins_avgADJNSAF/ASCA_TimeTempTimexTemp_proteins_loadings.csv", row.names = FALSE, quote = FALSE)
+
+```
+
+
 ```{r Examine_all_ASCA_factor_affected_proteins, echo = FALSE, eval = FALSE}
 f1 <- data.frame(cutd[,1])
 colnames(f1) <- "protein"
