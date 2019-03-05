@@ -1,0 +1,29 @@
+term_ID,description,frequency,plot_X,plot_Y,plot_size,log10 p-value,uniqueness,dispensability,representative,eliminated
+GO:0007017,microtubule-based process,0.66%,-5.816,-2.767,4.927,-2.7065,0.858,0,7017,0
+GO:0071560,cellular response to transforming growth factor beta stimulus,0.05%,5.805,3.184,3.804,-2.4496,0.722,0.026,71560,0
+GO:0006400,tRNA modification,0.91%,0.1,-6.163,5.069,-1.4209,0.882,0.034,6400,0
+GO:0030214,hyaluronan catabolic process,0.00%,6.456,-3.554,2.334,-0.9605,0.948,0.074,30214,0
+GO:0014911,positive regulation of smooth muscle cell migration,0.00%,-1.129,0.854,2.62,-1.4209,0.764,0.122,14911,0
+GO:0001953,negative regulation of cell-matrix adhesion,0.01%,0.659,6.971,2.895,-1.4209,0.784,0.135,1953,0
+GO:1990138,neuron projection extension,0.03%,-5.857,2.132,3.634,-1.4209,0.577,0.144,1990138,0
+GO:0042593,glucose homeostasis,0.07%,-0.936,7.019,3.937,-1.249,0.842,0.148,42593,0
+GO:0000278,mitotic cell cycle,0.56%,-5.451,-3.907,4.857,-0.5125,0.859,0.183,278,0
+GO:0006633,fatty acid biosynthetic process,0.62%,-3.92,-3.571,4.899,-1.4209,0.83,0.185,6633,0
+GO:0014850,response to muscle activity,0.00%,6.134,0.651,2.528,-1.4209,0.861,0.203,14850,0
+GO:0044267,cellular protein metabolic process,14.29%,1.697,-5.82,6.263,-1.1282,0.888,0.212,44267,0
+GO:0009612,response to mechanical stimulus,0.04%,6.041,1.999,3.647,-1.4209,0.813,0.237,9612,0
+GO:0008593,regulation of Notch signaling pathway,0.03%,3.499,3.737,3.528,-1.4209,0.7,0.268,8593,0
+GO:0010737,protein kinase A signaling,0.01%,3.122,4.015,3.022,-0.7551,0.756,0.287,10737,0
+GO:0006006,glucose metabolic process,0.43%,4.171,-3.883,4.741,-1.249,0.882,0.304,6006,0
+GO:0030198,extracellular matrix organization,0.06%,-6.899,-1.333,3.886,-1.2161,0.839,0.316,30198,0
+GO:0043687,post-translational protein modification,0.03%,0.847,-5.764,3.562,-1.249,0.893,0.326,43687,0
+GO:0018107,peptidyl-threonine phosphorylation,0.03%,-0.095,-5.632,3.618,-0.7178,0.883,0.329,18107,0
+GO:0034199,activation of protein kinase A activity,0.00%,0.019,-2.368,1.491,-1.249,0.789,0.35,34199,0
+GO:0010185,regulation of cellular defense response,0.00%,4.612,5.426,0.903,-1.249,0.776,0.392,10185,0
+GO:1904209,positive regulation of chemokine (C-C motif) ligand 2 secretion,0.00%,-3.919,2.925,0.954,-1.4209,0.657,0.397,1904209,0
+GO:0051782,negative regulation of cell division,0.01%,-0.216,4.928,3.222,-0.8976,0.77,0.421,51782,0
+GO:0003073,regulation of systemic arterial blood pressure,0.02%,-3.48,5.062,3.328,-1.0355,0.665,0.437,3073,0
+GO:0048050,post-embryonic eye morphogenesis,0.00%,-5.902,3.886,2.281,-1.249,0.655,0.451,48050,0
+GO:0071307,cellular response to vitamin K,0.00%,6.077,2.655,1.845,-1.4209,0.762,0.473,71307,0
+GO:0008344,adult locomotory behavior,0.02%,-5.606,4.336,3.48,-0.8976,0.705,0.48,8344,0
+GO:1903670,regulation of sprouting angiogenesis,0.01%,-4.005,4.409,2.906,-0.8976,0.577,0.488,1903670,0

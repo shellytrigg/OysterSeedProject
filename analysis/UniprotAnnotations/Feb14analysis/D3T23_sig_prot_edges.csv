@@ -1,0 +1,151 @@
+protein_ID,GO_term
+CHOYP_BRAFLDRAFT_127065.6.7.m.30727,collagen-containing extracellular matrix
+CHOYP_contig_023710.m.26965,cytoplasm
+CHOYP_contig_026700.m.30399,basement membrane
+CHOYP_FASN.3.4.m.60278,cell
+CHOYP_FUCL1.1.1.m.28893,extracellular space
+CHOYP_LOC584364.2.2.m.57790,cytoplasm
+CHOYP_LOC754102.1.1.m.57578,cytoplasm
+CHOYP_MYSP.4.9.m.2302,myofibril
+CHOYP_PHUM_PHUM226120.5.7.m.43551,A band
+CHOYP_TBA.1.6.m.12217,cytoplasm
+CHOYP_TBA1A.2.4.m.19573,cytoplasm
+CHOYP_TMEM2.3.4.m.10491,integral component of plasma membrane
+CHOYP_BRAFLDRAFT_127065.6.7.m.30727,cytoplasm
+CHOYP_contig_023710.m.26965,ATP binding
+CHOYP_contig_026700.m.30399,collagen-containing extracellular matrix
+CHOYP_FASN.3.4.m.60278,(3R)-hydroxymyristoyl-[acyl-carrier-protein] dehydratase activity
+CHOYP_FUCL1.1.1.m.28893,calcium ion binding
+CHOYP_LOC584364.2.2.m.57790,microtubule
+CHOYP_LOC754102.1.1.m.57578,microtubule
+CHOYP_MYSP.4.9.m.2302,myosin filament
+CHOYP_PHUM_PHUM226120.5.7.m.43551,M band
+CHOYP_TBA.1.6.m.12217,microtubule
+CHOYP_TBA1A.2.4.m.19573,microtubule
+CHOYP_TMEM2.3.4.m.10491,calcium ion binding
+CHOYP_BRAFLDRAFT_127065.6.7.m.30727,extracellular matrix
+CHOYP_contig_023710.m.26965,ligase activity, forming carbon-nitrogen bonds
+CHOYP_contig_026700.m.30399,endoplasmic reticulum lumen
+CHOYP_FASN.3.4.m.60278,3-hydroxyoctanoyl-[acyl-carrier-protein] dehydratase activity
+CHOYP_FUCL1.1.1.m.28893,carbohydrate binding
+CHOYP_LOC584364.2.2.m.57790,GTP binding
+CHOYP_LOC754102.1.1.m.57578,GTP binding
+CHOYP_MYSP.4.9.m.2302,motor activity
+CHOYP_PHUM_PHUM226120.5.7.m.43551,sarcomere
+CHOYP_TBA.1.6.m.12217,GTP binding
+CHOYP_TBA1A.2.4.m.19573,GTP binding
+CHOYP_TMEM2.3.4.m.10491,hyalurononglucosaminidase activity
+CHOYP_BRAFLDRAFT_127065.6.7.m.30727,extracellular space
+CHOYP_contig_023710.m.26965,tRNA modification
+CHOYP_contig_026700.m.30399,extracellular matrix
+CHOYP_FASN.3.4.m.60278,3-oxo-glutaryl-[acp] methyl ester reductase activity
+CHOYP_FUCL1.1.1.m.28893,fucose binding
+CHOYP_LOC584364.2.2.m.57790,structural constituent of cytoskeleton
+CHOYP_LOC754102.1.1.m.57578,structural constituent of cytoskeleton
+CHOYP_PHUM_PHUM226120.5.7.m.43551,striated muscle thin filament
+CHOYP_TBA.1.6.m.12217,structural constituent of cytoskeleton
+CHOYP_TBA1A.2.4.m.19573,GTPase activity
+CHOYP_TMEM2.3.4.m.10491,angiogenesis
+CHOYP_BRAFLDRAFT_127065.6.7.m.30727,neuromuscular junction
+CHOYP_contig_026700.m.30399,extracellular region
+CHOYP_FASN.3.4.m.60278,3-oxo-pimeloyl-[acp] methyl ester reductase activity
+CHOYP_FUCL1.1.1.m.28893,regulation of cellular defense response
+CHOYP_LOC584364.2.2.m.57790,microtubule-based process
+CHOYP_LOC754102.1.1.m.57578,microtubule-based process
+CHOYP_PHUM_PHUM226120.5.7.m.43551,Z disc
+CHOYP_TBA.1.6.m.12217,microtubule-based process
+CHOYP_TBA1A.2.4.m.19573,structural constituent of cytoskeleton
+CHOYP_TMEM2.3.4.m.10491,hyaluronan catabolic process
+CHOYP_BRAFLDRAFT_127065.6.7.m.30727,trans-Golgi network
+CHOYP_contig_026700.m.30399,extracellular space
+CHOYP_FASN.3.4.m.60278,3-oxoacyl-[acyl-carrier-protein] reductase (NADPH) activity
+CHOYP_FUCL1.1.1.m.28893,regulation of complement activation, lectin pathway
+CHOYP_PHUM_PHUM226120.5.7.m.43551,actin filament binding
+CHOYP_TBA1A.2.4.m.19573,microtubule cytoskeleton organization
+CHOYP_TMEM2.3.4.m.10491,regulation of sprouting angiogenesis
+CHOYP_BRAFLDRAFT_127065.6.7.m.30727,cell adhesion molecule binding
+CHOYP_contig_026700.m.30399,microfibril
+CHOYP_FASN.3.4.m.60278,3-oxoacyl-[acyl-carrier-protein] synthase activity
+CHOYP_FUCL1.1.1.m.28893,regulation of innate immune response
+CHOYP_PHUM_PHUM226120.5.7.m.43551,ATP binding
+CHOYP_TBA1A.2.4.m.19573,microtubule-based process
+CHOYP_BRAFLDRAFT_127065.6.7.m.30727,extracellular matrix structural constituent
+CHOYP_contig_026700.m.30399,calcium ion binding
+CHOYP_FASN.3.4.m.60278,[acyl-carrier-protein] S-acetyltransferase activity
+CHOYP_PHUM_PHUM226120.5.7.m.43551,calmodulin binding
+CHOYP_TBA1A.2.4.m.19573,mitotic cell cycle
+CHOYP_BRAFLDRAFT_127065.6.7.m.30727,heparin binding
+CHOYP_contig_026700.m.30399,extracellular matrix constituent conferring elasticity
+CHOYP_FASN.3.4.m.60278,[acyl-carrier-protein] S-malonyltransferase activity
+CHOYP_PHUM_PHUM226120.5.7.m.43551,metal ion binding
+CHOYP_BRAFLDRAFT_127065.6.7.m.30727,metal ion binding
+CHOYP_contig_026700.m.30399,extracellular matrix structural constituent
+CHOYP_FASN.3.4.m.60278,enoyl-[acyl-carrier-protein] reductase (NADPH, A-specific) activity
+CHOYP_PHUM_PHUM226120.5.7.m.43551,muscle alpha-actinin binding
+CHOYP_BRAFLDRAFT_127065.6.7.m.30727,bone regeneration
+CHOYP_contig_026700.m.30399,heparin binding
+CHOYP_FASN.3.4.m.60278,fatty acid synthase activity
+CHOYP_PHUM_PHUM226120.5.7.m.43551,protein kinase binding
+CHOYP_BRAFLDRAFT_127065.6.7.m.30727,cell adhesion
+CHOYP_contig_026700.m.30399,hormone activity
+CHOYP_FASN.3.4.m.60278,myristoyl-[acyl-carrier-protein] hydrolase activity
+CHOYP_PHUM_PHUM226120.5.7.m.43551,protein serine/threonine kinase activity
+CHOYP_BRAFLDRAFT_127065.6.7.m.30727,cellular response to fibroblast growth factor stimulus
+CHOYP_contig_026700.m.30399,identical protein binding
+CHOYP_FASN.3.4.m.60278,oleoyl-[acyl-carrier-protein] hydrolase activity
+CHOYP_PHUM_PHUM226120.5.7.m.43551,structural constituent of muscle
+CHOYP_BRAFLDRAFT_127065.6.7.m.30727,cellular response to transforming growth factor beta stimulus
+CHOYP_contig_026700.m.30399,integrin binding
+CHOYP_FASN.3.4.m.60278,palmitoyl-[acyl-carrier-protein] hydrolase activity
+CHOYP_PHUM_PHUM226120.5.7.m.43551,adult locomotory behavior
+CHOYP_BRAFLDRAFT_127065.6.7.m.30727,cellular response to tumor necrosis factor
+CHOYP_contig_026700.m.30399,protein-containing complex binding
+CHOYP_FASN.3.4.m.60278,phosphopantetheine binding
+CHOYP_PHUM_PHUM226120.5.7.m.43551,behavioral response to nicotine
+CHOYP_BRAFLDRAFT_127065.6.7.m.30727,cellular response to vitamin K
+CHOYP_contig_026700.m.30399,activation of protein kinase A activity
+CHOYP_FASN.3.4.m.60278,single-stranded DNA binding
+CHOYP_PHUM_PHUM226120.5.7.m.43551,muscle contraction
+CHOYP_BRAFLDRAFT_127065.6.7.m.30727,extracellular matrix organization
+CHOYP_contig_026700.m.30399,camera-type eye development
+CHOYP_FASN.3.4.m.60278,fatty acid biosynthetic process
+CHOYP_PHUM_PHUM226120.5.7.m.43551,negative regulation of cell division
+CHOYP_BRAFLDRAFT_127065.6.7.m.30727,negative regulation of cell-matrix adhesion
+CHOYP_contig_026700.m.30399,cell adhesion mediated by integrin
+CHOYP_FASN.3.4.m.60278,lactate metabolic process
+CHOYP_PHUM_PHUM226120.5.7.m.43551,peptidyl-serine phosphorylation
+CHOYP_BRAFLDRAFT_127065.6.7.m.30727,negative regulation of substrate adhesion-dependent cell spreading
+CHOYP_contig_026700.m.30399,cellular protein metabolic process
+CHOYP_FASN.3.4.m.60278,positive regulation of appetite
+CHOYP_PHUM_PHUM226120.5.7.m.43551,peptidyl-threonine phosphorylation
+CHOYP_BRAFLDRAFT_127065.6.7.m.30727,neuron projection extension
+CHOYP_contig_026700.m.30399,cellular response to insulin-like growth factor stimulus
+CHOYP_PHUM_PHUM226120.5.7.m.43551,positive regulation of locomotion
+CHOYP_BRAFLDRAFT_127065.6.7.m.30727,positive regulation of chemokine (C-C motif) ligand 2 secretion
+CHOYP_contig_026700.m.30399,cellular response to transforming growth factor beta stimulus
+CHOYP_PHUM_PHUM226120.5.7.m.43551,positive regulation of sarcomere organization
+CHOYP_BRAFLDRAFT_127065.6.7.m.30727,positive regulation of smooth muscle cell migration
+CHOYP_contig_026700.m.30399,embryonic eye morphogenesis
+CHOYP_PHUM_PHUM226120.5.7.m.43551,positive regulation of striated muscle contraction
+CHOYP_BRAFLDRAFT_127065.6.7.m.30727,regulation of Notch signaling pathway
+CHOYP_contig_026700.m.30399,extracellular matrix organization
+CHOYP_PHUM_PHUM226120.5.7.m.43551,sarcomere organization
+CHOYP_BRAFLDRAFT_127065.6.7.m.30727,regulation of systemic arterial blood pressure
+CHOYP_contig_026700.m.30399,glucose homeostasis
+CHOYP_PHUM_PHUM226120.5.7.m.43551,striated muscle myosin thick filament assembly
+CHOYP_BRAFLDRAFT_127065.6.7.m.30727,response to estradiol
+CHOYP_contig_026700.m.30399,glucose metabolic process
+CHOYP_BRAFLDRAFT_127065.6.7.m.30727,response to hypoxia
+CHOYP_contig_026700.m.30399,heart development
+CHOYP_BRAFLDRAFT_127065.6.7.m.30727,response to mechanical stimulus
+CHOYP_contig_026700.m.30399,metanephros development
+CHOYP_BRAFLDRAFT_127065.6.7.m.30727,response to muscle activity
+CHOYP_contig_026700.m.30399,negative regulation of osteoclast development
+CHOYP_BRAFLDRAFT_127065.6.7.m.30727,tissue development
+CHOYP_contig_026700.m.30399,negative regulation of osteoclast differentiation
+CHOYP_contig_026700.m.30399,post-embryonic eye morphogenesis
+CHOYP_contig_026700.m.30399,post-translational protein modification
+CHOYP_contig_026700.m.30399,protein kinase A signaling
+CHOYP_contig_026700.m.30399,sequestering of BMP in extracellular matrix
+CHOYP_contig_026700.m.30399,sequestering of TGFbeta in extracellular matrix
+CHOYP_contig_026700.m.30399,skeletal system development

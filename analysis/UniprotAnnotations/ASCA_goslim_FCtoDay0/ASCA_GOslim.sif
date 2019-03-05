@@ -1,0 +1,700 @@
+cell motility	term-term	nucleocytoplasmic transport
+cell motility	term-term	vesicle-mediated transport
+cell motility	term-term	transport
+cell motility	term-term	transmembrane transport
+cell division	term-term	cellular amino acid metabolism
+nucleocytoplasmic transport	term-term	vesicle-mediated transport
+nucleocytoplasmic transport	term-term	transport
+nucleocytoplasmic transport	term-term	transmembrane transport
+nucleocytoplasmic transport	term-term	cytoskeleton-dependent intracellular transport
+cell death	term-term	
+nucleobase-containing compound catabolism	term-term	DNA metabolism
+chromosome segregation	term-term	
+cofactor metabolism	term-term	
+lipid metabolism	term-term	small molecule metabolism
+lipid metabolism	term-term	cellular amino acid metabolism
+generation of precursor metabolites and energy	term-term	
+anatomical structure development	term-term	aging
+anatomical structure development	term-term	developmental maturation
+catabolism	term-term	
+cell cycle	term-term	cellular amino acid metabolism
+signal transduction	term-term	homeostatic process
+signal transduction	term-term	response to stress
+signal transduction	term-term	cell-cell signaling
+immune system process	term-term	
+biosynthesis	term-term	
+DNA metabolism	term-term	cellular protein modification process
+DNA metabolism	term-term	cellular nitrogen compound metabolism
+DNA metabolism	term-term	tRNA metabolism
+DNA metabolism	term-term	mRNA processing
+cellular protein modification process	term-term	protein maturation
+cellular protein modification process	term-term	translation
+carbohydrate metabolism	term-term	
+protein folding	term-term	
+cell junction organization	term-term	membrane organization
+cell junction organization	term-term	ribosome biogenesis
+cell junction organization	term-term	extracellular matrix organization
+cell junction organization	term-term	mitochondrion organization
+cell junction organization	term-term	plasma membrane organization
+cell junction organization	term-term	cytoskeleton organization
+"symbiosis, encompassing mutualism through parasitism"	term-term	
+aging	term-term	developmental maturation
+membrane organization	term-term	ribosome biogenesis
+membrane organization	term-term	extracellular matrix organization
+membrane organization	term-term	mitochondrion organization
+membrane organization	term-term	plasma membrane organization
+membrane organization	term-term	cytoskeleton organization
+vesicle-mediated transport	term-term	transport
+vesicle-mediated transport	term-term	transmembrane transport
+cellular nitrogen compound metabolism	term-term	cellular amino acid metabolism
+cellular nitrogen compound metabolism	term-term	translation
+ribosome biogenesis	term-term	extracellular matrix organization
+ribosome biogenesis	term-term	mitochondrion organization
+ribosome biogenesis	term-term	plasma membrane organization
+ribosome biogenesis	term-term	cytoskeleton organization
+growth	term-term	
+small molecule metabolism	term-term	cellular amino acid metabolism
+cell proliferation	term-term	
+locomotion	term-term	
+protein maturation	term-term	translation
+pigmentation	term-term	
+transport	term-term	transmembrane transport
+transport	term-term	cytoskeleton-dependent intracellular transport
+tRNA metabolism	term-term	mRNA processing
+cellular amino acid metabolism	term-term	translation
+sulfur compound metabolism	term-term	
+mRNA processing	term-term	translation
+reproduction	term-term	
+extracellular matrix organization	term-term	mitochondrion organization
+extracellular matrix organization	term-term	plasma membrane organization
+extracellular matrix organization	term-term	cytoskeleton organization
+mitochondrion organization	term-term	plasma membrane organization
+mitochondrion organization	term-term	cytoskeleton organization
+plasma membrane organization	term-term	cytoskeleton organization
+cell adhesion	term-term	
+mitotic cell cycle	term-term	
+transmembrane transport	term-term	cytoskeleton-dependent intracellular transport
+circulatory system process	term-term	
+RS27A_CHICK	protein-term	translation
+RS27A_CHICK	protein-term	cellular nitrogen compound metaboli...
+RS27A_CHICK	protein-term	DNA metabolic process
+RS27A_CHICK	protein-term	cellular protein modification proce...
+RS27A_CHICK	protein-term	catabolic process
+RS27A_CHICK	protein-term	biosynthetic process
+RS27A_CHICK	protein-term	response to stress
+HTS_DROME	protein-term	cellular component assembly
+HTS_DROME	protein-term	cell proliferation
+HTS_DROME	protein-term	anatomical structure development
+HTS_DROME	protein-term	cytoskeleton organization
+HTS_DROME	protein-term	cell division
+NDKB_MOUSE	protein-term	signal transduction
+NDKB_MOUSE	protein-term	homeostatic process
+NDKB_MOUSE	protein-term	small molecule metabolic process
+NDKB_MOUSE	protein-term	cellular nitrogen compound metaboli...
+NDKB_MOUSE	protein-term	cellular component assembly
+NDKB_MOUSE	protein-term	biosynthetic process
+NDKB_MOUSE	protein-term	protein-containing complex assembly
+NDKB_MOUSE	protein-term	cellular protein modification proce...
+NDKB_MOUSE	protein-term	response to stress
+AGRIN_RAT	protein-term	membrane organization
+AGRIN_RAT	protein-term	protein-containing complex assembly
+AGRIN_RAT	protein-term	cellular component assembly
+AGRIN_RAT	protein-term	cell-cell signaling
+TBA3_DROME	protein-term	cell cycle
+TBA3_DROME	protein-term	mitotic cell cycle
+TBA3_DROME	protein-term	cytoskeleton organization
+ARF2_RAT	protein-term	transport
+ARF2_RAT	protein-term	vesicle-mediated transport
+ARF2_RAT	protein-term	protein targeting
+ARP3_PONAB	protein-term	cellular component assembly
+ARP3_PONAB	protein-term	cell division
+ATPB_HEMPU	protein-term	biosynthetic process
+ATPB_HEMPU	protein-term	cellular nitrogen compound metaboli...
+ATPB_HEMPU	protein-term	small molecule metabolic process
+ATPB_HEMPU	protein-term	transport
+ATPB_HEMPU	protein-term	transmembrane transport
+IDHP_MACFA	protein-term	small molecule metabolic process
+IDHP_MACFA	protein-term	carbohydrate metabolic process
+PRDX5_HUMAN	protein-term	response to stress
+PRDX5_HUMAN	protein-term	catabolic process
+PRDX5_HUMAN	protein-term	cellular nitrogen compound metaboli...
+PRDX5_HUMAN	protein-term	homeostatic process
+PRDX5_HUMAN	protein-term	small molecule metabolic process
+PRDX5_HUMAN	protein-term	cofactor metabolic process
+DYDC1_HUMAN	protein-term	cellular protein modification proce...
+RSPH9_DANRE	protein-term	cellular component assembly
+RSPH9_DANRE	protein-term	cytoskeleton organization
+RL7_PONAB	protein-term	cellular nitrogen compound metaboli...
+TEKT2_HUMAN	protein-term	cellular component assembly
+TEKT2_HUMAN	protein-term	cell motility
+TEKT2_HUMAN	protein-term	protein-containing complex assembly
+TEKT2_HUMAN	protein-term	locomotion
+CPG2_CAEEL	protein-term	anatomical structure development
+CPG2_CAEEL	protein-term	embryo development
+CPG2_CAEEL	protein-term	anatomical structure formation invo...
+POSTN_MOUSE	protein-term	growth
+POSTN_MOUSE	protein-term	anatomical structure development
+POSTN_MOUSE	protein-term	extracellular matrix organization
+POSTN_MOUSE	protein-term	response to stress
+POSTN_MOUSE	protein-term	cell adhesion
+CBD1_CAEEL	protein-term	anatomical structure development
+CBD1_CAEEL	protein-term	anatomical structure formation invo...
+CBD1_CAEEL	protein-term	embryo development
+RS13_RAT	protein-term	biosynthetic process
+RS13_RAT	protein-term	translation
+RS13_RAT	protein-term	cellular nitrogen compound metaboli...
+SOG_DROME	protein-term	anatomical structure development
+SOG_DROME	protein-term	signal transduction
+SOG_DROME	protein-term	anatomical structure formation invo...
+GRB2_MOUSE	protein-term	protein-containing complex assembly
+GRB2_MOUSE	protein-term	transport
+GRB2_MOUSE	protein-term	vesicle-mediated transport
+GRB2_MOUSE	protein-term	response to stress
+GRB2_MOUSE	protein-term	anatomical structure formation invo...
+GRB2_MOUSE	protein-term	cellular component assembly
+GRB2_MOUSE	protein-term	cell differentiation
+GRB2_MOUSE	protein-term	signal transduction
+GRB2_MOUSE	protein-term	aging
+CHIA_RAT	protein-term	catabolic process
+CHIA_RAT	protein-term	carbohydrate metabolic process
+CHIA_RAT	protein-term	cell death
+CHIA_RAT	protein-term	immune system process
+CRIM1_DANRE	protein-term	anatomical structure formation invo...
+CRIM1_DANRE	protein-term	anatomical structure development
+PACRG_MOUSE	protein-term	anatomical structure development
+PACRG_MOUSE	protein-term	response to stress
+CATA_RUGRU	protein-term	catabolic process
+CATA_RUGRU	protein-term	response to stress
+CALL_CAEEL	protein-term	signal transduction
+FLNA_DROME	protein-term	anatomical structure development
+FLNA_DROME	protein-term	mitotic cell cycle
+FLNA_DROME	protein-term	cytoskeleton organization
+FLNA_DROME	protein-term	nervous system process
+FLNA_DROME	protein-term	cell cycle
+FLNA_DROME	protein-term	transport
+CDPK3_PLAF7	protein-term	cellular protein modification proce...
+CDPK3_PLAF7	protein-term	anatomical structure development
+CDPK3_PLAF7	protein-term	signal transduction
+CDPK3_PLAF7	protein-term	cell differentiation
+CDPK3_PLAF7	protein-term	embryo development
+HMGB3_MOUSE	protein-term	response to stress
+HMGB3_MOUSE	protein-term	DNA metabolic process
+HMGB3_MOUSE	protein-term	cellular nitrogen compound metaboli...
+HMGB3_MOUSE	protein-term	immune system process
+HMGB3_MOUSE	protein-term	chromosome organization
+CHIT_BRUMA	protein-term	catabolic process
+CHIT_BRUMA	protein-term	carbohydrate metabolic process
+DUOX2_HUMAN	protein-term	anatomical structure development
+DUOX2_HUMAN	protein-term	biosynthetic process
+DUOX2_HUMAN	protein-term	response to stress
+DUOX2_HUMAN	protein-term	growth
+DUOX2_HUMAN	protein-term	symbiont process
+DUOX2_HUMAN	protein-term	catabolic process
+DUOX2_HUMAN	protein-term	signal transduction
+ECM2_HUMAN	protein-term	extracellular matrix organization
+ECM2_HUMAN	protein-term	cell adhesion
+FUMA_GEOSE	protein-term	small molecule metabolic process
+PDLI7_HUMAN	protein-term	vesicle-mediated transport
+PDLI7_HUMAN	protein-term	transport
+PDLI7_HUMAN	protein-term	cytoskeleton organization
+Y523_CLOAB	protein-term	cellular nitrogen compound metaboli...
+Y523_CLOAB	protein-term	mRNA processing
+FDHD_ANASK	protein-term	cofactor metabolic process
+FDHD_ANASK	protein-term	biosynthetic process
+MDR3_ASPFU	protein-term	transport
+MDR3_ASPFU	protein-term	transmembrane transport
+SHRM2_XENTR	protein-term	anatomical structure development
+SHRM2_XENTR	protein-term	cytoskeleton organization
+SHRM2_XENTR	protein-term	cell motility
+SHRM2_XENTR	protein-term	locomotion
+SHRM2_XENTR	protein-term	pigmentation
+TILS_PROMM	protein-term	cellular nitrogen compound metaboli...
+TILS_PROMM	protein-term	tRNA metabolic process
+SYL_CHLTE	protein-term	cellular nitrogen compound metaboli...
+SYL_CHLTE	protein-term	tRNA metabolic process
+SYL_CHLTE	protein-term	cellular amino acid metabolic proce...
+SYL_CHLTE	protein-term	small molecule metabolic process
+CO2A1_MOUSE	protein-term	anatomical structure development
+CO2A1_MOUSE	protein-term	nervous system process
+CO2A1_MOUSE	protein-term	cell differentiation
+CO2A1_MOUSE	protein-term	extracellular matrix organization
+CO2A1_MOUSE	protein-term	anatomical structure formation invo...
+CO2A1_MOUSE	protein-term	homeostatic process
+NCAN_MOUSE	protein-term	cell adhesion
+NCAN_MOUSE	protein-term	anatomical structure development
+PDLI5_MOUSE	protein-term	growth
+TLP_BACHD	protein-term	reproduction
+TLP_BACHD	protein-term	anatomical structure formation invo...
+TLP_BACHD	protein-term	cell differentiation
+MDM2_CANLF	protein-term	cellular protein modification proce...
+ATPF_CHAGL	protein-term	small molecule metabolic process
+ATPF_CHAGL	protein-term	biosynthetic process
+ATPF_CHAGL	protein-term	cellular nitrogen compound metaboli...
+ATPF_CHAGL	protein-term	transport
+ATPF_CHAGL	protein-term	transmembrane transport
+TRPD_PHEZH	protein-term	cellular nitrogen compound metaboli...
+TRPD_PHEZH	protein-term	biosynthetic process
+TRPD_PHEZH	protein-term	small molecule metabolic process
+NCAP_HRSV1	protein-term	symbiont process
+PARE_HAEIN	protein-term	chromosome segregation
+PARE_HAEIN	protein-term	chromosome organization
+PARE_HAEIN	protein-term	DNA metabolic process
+PARE_HAEIN	protein-term	cellular nitrogen compound metaboli...
+TSR1_DROME	protein-term	cellular nitrogen compound metaboli...
+GYS1_YEAST	protein-term	biosynthetic process
+GYS1_YEAST	protein-term	generation of precursor metabolites...
+GYS1_YEAST	protein-term	carbohydrate metabolic process
+TRPD_HYPNA	protein-term	small molecule metabolic process
+TRPD_HYPNA	protein-term	biosynthetic process
+TRPD_HYPNA	protein-term	cellular nitrogen compound metaboli...
+COX5B_BOVIN	protein-term	cellular nitrogen compound metaboli...
+COX5B_BOVIN	protein-term	biosynthetic process
+COX5B_BOVIN	protein-term	transmembrane transport
+COX5B_BOVIN	protein-term	transport
+COX5B_BOVIN	protein-term	generation of precursor metabolites...
+COX5B_BOVIN	protein-term	small molecule metabolic process
+H2A_PENVA	protein-term	response to stress
+RS4X_DANRE	protein-term	cellular nitrogen compound metaboli...
+RS4X_DANRE	protein-term	anatomical structure development
+RS4X_DANRE	protein-term	embryo development
+RS4X_DANRE	protein-term	biosynthetic process
+RS4X_DANRE	protein-term	translation
+RSSA_PINFU	protein-term	biosynthetic process
+RSSA_PINFU	protein-term	cellular nitrogen compound metaboli...
+RSSA_PINFU	protein-term	protein-containing complex assembly
+RSSA_PINFU	protein-term	translation
+RSSA_PINFU	protein-term	cellular component assembly
+RSSA_PINFU	protein-term	ribonucleoprotein complex assembly
+CYTC_RAT	protein-term	response to stress
+CYTC_RAT	protein-term	anatomical structure development
+CYTC_RAT	protein-term	cell death
+CYTA_HUMAN	protein-term	cellular protein modification proce...
+CYTA_HUMAN	protein-term	cell death
+CYTA_HUMAN	protein-term	cell differentiation
+CYTA_HUMAN	protein-term	cell adhesion
+DMBT1_HUMAN	protein-term	symbiont process
+DMBT1_HUMAN	protein-term	transport
+DMBT1_HUMAN	protein-term	immune system process
+DMBT1_HUMAN	protein-term	cellular protein modification proce...
+DMBT1_HUMAN	protein-term	response to stress
+DMBT1_HUMAN	protein-term	anatomical structure development
+DMBT1_HUMAN	protein-term	embryo development
+DMBT1_HUMAN	protein-term	cell differentiation
+DMBT1_HUMAN	protein-term	vesicle-mediated transport
+DMBT1_HUMAN	protein-term	translation
+GDIR1_BOVIN	protein-term	signal transduction
+NDUS3_HUMAN	protein-term	generation of precursor metabolites...
+NDUS3_HUMAN	protein-term	anatomical structure development
+NDUS3_HUMAN	protein-term	protein-containing complex assembly
+NDUS3_HUMAN	protein-term	cellular component assembly
+HSPB1_BOVIN	protein-term	cytoskeleton-dependent intracellula...
+HSPB1_BOVIN	protein-term	protein folding
+HSPB1_BOVIN	protein-term	transport
+SET_HUMAN	protein-term	DNA metabolic process
+SET_HUMAN	protein-term	cellular nitrogen compound metaboli...
+SET_HUMAN	protein-term	symbiont process
+SET_HUMAN	protein-term	protein-containing complex assembly
+SET_HUMAN	protein-term	cellular component assembly
+SET_HUMAN	protein-term	biosynthetic process
+PPIB_BOVIN	protein-term	protein folding
+PPIB_BOVIN	protein-term	anatomical structure development
+PPIB_BOVIN	protein-term	cellular protein modification proce...
+H2B7_CHICK	protein-term	cellular component assembly
+H2B7_CHICK	protein-term	protein-containing complex assembly
+EXC4_CAEEL	protein-term	anatomical structure development
+EF1A_DANRE	protein-term	biosynthetic process
+EF1A_DANRE	protein-term	translation
+EF1A_DANRE	protein-term	cellular nitrogen compound metaboli...
+EF2_CAEEL	protein-term	response to stress
+EF2_CAEEL	protein-term	biosynthetic process
+IF5A1_RABIT	protein-term	transport
+IF5A1_RABIT	protein-term	biosynthetic process
+ELOB_RAT	protein-term	cellular nitrogen compound metaboli...
+ELOB_RAT	protein-term	cellular protein modification proce...
+ELOB_RAT	protein-term	biosynthetic process
+ENO_DORPE	protein-term	cofactor metabolic process
+ENO_DORPE	protein-term	carbohydrate metabolic process
+ENO_DORPE	protein-term	cellular nitrogen compound metaboli...
+ENO_DORPE	protein-term	generation of precursor metabolites...
+ENO_DORPE	protein-term	catabolic process
+ENO_DORPE	protein-term	small molecule metabolic process
+FABP7_BOVIN	protein-term	cell proliferation
+FABP7_BOVIN	protein-term	cell differentiation
+FLNA_HUMAN	protein-term	biosynthetic process
+FLNA_HUMAN	protein-term	cell adhesion
+FLNA_HUMAN	protein-term	cellular component assembly
+FLNA_HUMAN	protein-term	cell motility
+FLNA_HUMAN	protein-term	anatomical structure development
+FLNA_HUMAN	protein-term	membrane organization
+FLNA_HUMAN	protein-term	transport
+FLNA_HUMAN	protein-term	signal transduction
+FLNA_HUMAN	protein-term	cellular nitrogen compound metaboli...
+FLNA_HUMAN	protein-term	cell morphogenesis
+FLNA_HUMAN	protein-term	cytoskeleton organization
+FLNA_HUMAN	protein-term	immune system process
+FLNA_HUMAN	protein-term	symbiont process
+FLNA_HUMAN	protein-term	locomotion
+FLNA_HUMAN	protein-term	response to stress
+FLNA_HUMAN	protein-term	plasma membrane organization
+FLNA_HUMAN	protein-term	vesicle-mediated transport
+FLNA_HUMAN	protein-term	cell junction organization
+PI15A_DANRE	protein-term	anatomical structure development
+PI15A_DANRE	protein-term	embryo development
+H90A1_DANRE	protein-term	cytoskeleton organization
+H90A1_DANRE	protein-term	anatomical structure formation invo...
+H90A1_DANRE	protein-term	cellular component assembly
+H90A1_DANRE	protein-term	anatomical structure development
+H90A1_DANRE	protein-term	protein folding
+H90A1_DANRE	protein-term	response to stress
+H90A1_DANRE	protein-term	immune system process
+H90A1_DANRE	protein-term	protein-containing complex assembly
+H90A1_DANRE	protein-term	cell motility
+H90A1_DANRE	protein-term	locomotion
+SODC_MOUSE	protein-term	homeostatic process
+SODC_MOUSE	protein-term	biosynthetic process
+SODC_MOUSE	protein-term	cytoskeleton-dependent intracellula...
+SODC_MOUSE	protein-term	circulatory system process
+SODC_MOUSE	protein-term	cellular nitrogen compound metaboli...
+SODC_MOUSE	protein-term	sulfur compound metabolic process
+SODC_MOUSE	protein-term	response to stress
+SODC_MOUSE	protein-term	nervous system process
+SODC_MOUSE	protein-term	immune system process
+SODC_MOUSE	protein-term	transport
+SODC_MOUSE	protein-term	aging
+SODC_MOUSE	protein-term	anatomical structure development
+SODC_MOUSE	protein-term	cytoskeleton organization
+SODC_MOUSE	protein-term	membrane organization
+SODC_MOUSE	protein-term	plasma membrane organization
+PRDX_ASCSU	protein-term	homeostatic process
+PRDX_ASCSU	protein-term	response to stress
+SRSF1_CHICK	protein-term	cellular nitrogen compound metaboli...
+SRSF1_CHICK	protein-term	mRNA processing
+HMG2_DROME	protein-term	anatomical structure development
+HMG2_DROME	protein-term	chromosome organization
+HMG2_DROME	protein-term	cellular nitrogen compound metaboli...
+HMG2_DROME	protein-term	anatomical structure formation invo...
+HMG2_DROME	protein-term	DNA metabolic process
+ANM1_XENTR	protein-term	cellular component assembly
+ANM1_XENTR	protein-term	cellular protein modification proce...
+ANM1_XENTR	protein-term	cell differentiation
+ANM1_XENTR	protein-term	protein-containing complex assembly
+ANM1_XENTR	protein-term	anatomical structure development
+KCY_DANRE	protein-term	small molecule metabolic process
+KCY_DANRE	protein-term	biosynthetic process
+KCY_DANRE	protein-term	cellular nitrogen compound metaboli...
+LIN_MEDTR	protein-term	symbiont process
+SAHH3_HUMAN	protein-term	cellular nitrogen compound metaboli...
+SAHH3_HUMAN	protein-term	small molecule metabolic process
+SAHH3_HUMAN	protein-term	cofactor metabolic process
+SAHH3_HUMAN	protein-term	sulfur compound metabolic process
+YFHH_SCHPO	protein-term	cytoskeleton organization
+RLA2_BRUMA	protein-term	biosynthetic process
+RLA2_CRYST	protein-term	biosynthetic process
+HSPB1_HUMAN	protein-term	protein folding
+HSPB1_HUMAN	protein-term	homeostatic process
+HSPB1_HUMAN	protein-term	cytoskeleton-dependent intracellula...
+HSPB1_HUMAN	protein-term	transport
+HSPB1_HUMAN	protein-term	cell adhesion
+HSPB1_HUMAN	protein-term	signal transduction
+HSPB1_HUMAN	protein-term	symbiont process
+HSPB1_HUMAN	protein-term	response to stress
+CBR1_PONAB	protein-term	small molecule metabolic process
+CBR1_PONAB	protein-term	cofactor metabolic process
+ASNS_CRIGR	protein-term	response to stress
+ASNS_CRIGR	protein-term	small molecule metabolic process
+ASNS_CRIGR	protein-term	cellular amino acid metabolic proce...
+ASNS_CRIGR	protein-term	biosynthetic process
+COTL1_RAT	protein-term	response to stress
+CF161_DANRE	protein-term	cellular component assembly
+SYNE2_MOUSE	protein-term	cytoskeleton organization
+SYNE2_MOUSE	protein-term	locomotion
+SYNE2_MOUSE	protein-term	transport
+SYNE2_MOUSE	protein-term	cytoskeleton-dependent intracellula...
+SYNE2_MOUSE	protein-term	membrane organization
+SYNE2_MOUSE	protein-term	cell motility
+SQH_DROME	protein-term	growth
+SQH_DROME	protein-term	homeostatic process
+SQH_DROME	protein-term	response to stress
+SQH_DROME	protein-term	cytoskeleton organization
+SQH_DROME	protein-term	anatomical structure formation invo...
+SQH_DROME	protein-term	locomotion
+SQH_DROME	protein-term	cell morphogenesis
+SQH_DROME	protein-term	cytoskeleton-dependent intracellula...
+SQH_DROME	protein-term	cellular component assembly
+SQH_DROME	protein-term	transport
+SQH_DROME	protein-term	protein-containing complex assembly
+SQH_DROME	protein-term	anatomical structure development
+SQH_DROME	protein-term	cell motility
+AN32A_DROPS	protein-term	transport
+AN32A_DROPS	protein-term	nucleocytoplasmic transport
+LRC34_MOUSE	protein-term	cell differentiation
+RS12_CHICK	protein-term	translation
+RS12_CHICK	protein-term	cellular nitrogen compound metaboli...
+RS12_CHICK	protein-term	biosynthetic process
+RSH4A_MOUSE	protein-term	cellular component assembly
+RSH4A_MOUSE	protein-term	cytoskeleton organization
+TBA1_DROME	protein-term	mitotic cell cycle
+TBA1_DROME	protein-term	cell cycle
+TBA1_DROME	protein-term	immune system process
+TBA1_DROME	protein-term	cytoskeleton organization
+CALR_RABIT	protein-term	protein folding
+NXN_DANRE	protein-term	cell differentiation
+NXN_DANRE	protein-term	homeostatic process
+NXN_DANRE	protein-term	signal transduction
+NXN_DANRE	protein-term	anatomical structure development
+FSTA_DANRE	protein-term	anatomical structure development
+FSTA_DANRE	protein-term	anatomical structure formation invo...
+FSTA_DANRE	protein-term	cell differentiation
+CRYAA_CHICK	protein-term	response to stress
+CRYAA_CHICK	protein-term	cell death
+CRYAA_CHICK	protein-term	nervous system process
+CRYAA_CHICK	protein-term	protein-containing complex assembly
+CRYAA_CHICK	protein-term	cellular component assembly
+CRYAA_CHICK	protein-term	cell morphogenesis
+CRYAA_CHICK	protein-term	mitochondrion organization
+MSRB2_DANRE	protein-term	protein-containing complex assembly
+MSRB2_DANRE	protein-term	response to stress
+MSRB2_DANRE	protein-term	cellular component assembly
+SKP1_RAT	protein-term	catabolic process
+SKP1_RAT	protein-term	cellular protein modification proce...
+FAU1_PYRIL	protein-term	cellular nitrogen compound metaboli...
+L2EFL_DROME	protein-term	protein folding
+L2EFL_DROME	protein-term	cellular protein modification proce...
+L2EFL_DROME	protein-term	cytoskeleton organization
+L2EFL_DROME	protein-term	anatomical structure development
+L2EFL_DROME	protein-term	embryo development
+L2EFL_DROME	protein-term	response to stress
+H4_XENTR	protein-term	protein-containing complex assembly
+H4_XENTR	protein-term	cellular component assembly
+H4_XENTR	protein-term	cellular nitrogen compound metaboli...
+H4_XENTR	protein-term	biosynthetic process
+RL12_MOUSE	protein-term	protein-containing complex assembly
+RL12_MOUSE	protein-term	biosynthetic process
+RL12_MOUSE	protein-term	ribonucleoprotein complex assembly
+RL12_MOUSE	protein-term	cellular nitrogen compound metaboli...
+RL12_MOUSE	protein-term	translation
+RL12_MOUSE	protein-term	cellular component assembly
+CYTA3_DICDI	protein-term	response to stress
+ATPD_MOUSE	protein-term	transport
+ATPD_MOUSE	protein-term	transmembrane transport
+ATPD_MOUSE	protein-term	biosynthetic process
+ATPD_MOUSE	protein-term	cellular nitrogen compound metaboli...
+ATPD_MOUSE	protein-term	small molecule metabolic process
+PPIA_BLAGE	protein-term	protein folding
+SODE_DROME	protein-term	response to stress
+SODE_RAT	protein-term	response to stress
+RS14_MOUSE	protein-term	cellular nitrogen compound metaboli...
+RS14_MOUSE	protein-term	ribonucleoprotein complex assembly
+RS14_MOUSE	protein-term	cellular component assembly
+RS14_MOUSE	protein-term	cell differentiation
+RS14_MOUSE	protein-term	biosynthetic process
+RS14_MOUSE	protein-term	protein-containing complex assembly
+RS14_MOUSE	protein-term	translation
+AMY1_MOUSE	protein-term	catabolic process
+AMY1_MOUSE	protein-term	carbohydrate metabolic process
+SPAG6_MOUSE	protein-term	cytoskeleton organization
+SPAG6_MOUSE	protein-term	locomotion
+SPAG6_MOUSE	protein-term	cellular component assembly
+SPAG6_MOUSE	protein-term	anatomical structure development
+SPAG6_MOUSE	protein-term	cell motility
+RL3_BOVIN	protein-term	protein-containing complex assembly
+RL3_BOVIN	protein-term	biosynthetic process
+RL3_BOVIN	protein-term	cellular component assembly
+RL3_BOVIN	protein-term	cellular nitrogen compound metaboli...
+RL3_BOVIN	protein-term	translation
+RL3_BOVIN	protein-term	ribonucleoprotein complex assembly
+LNEBL_MOUSE	protein-term	anatomical structure development
+RGN_DANRE	protein-term	small molecule metabolic process
+RGN_DANRE	protein-term	homeostatic process
+RGN_DANRE	protein-term	biosynthetic process
+LRP5_HUMAN	protein-term	signal transduction
+LRP5_HUMAN	protein-term	catabolic process
+LRP5_HUMAN	protein-term	carbohydrate metabolic process
+LRP5_HUMAN	protein-term	anatomical structure development
+LRP5_HUMAN	protein-term	homeostatic process
+LRP5_HUMAN	protein-term	transport
+LRP5_HUMAN	protein-term	small molecule metabolic process
+LRP5_HUMAN	protein-term	vesicle-mediated transport
+LYS3_CRAVI	protein-term	biosynthetic process
+LYS3_CRAVI	protein-term	catabolic process
+LYS3_CRAVI	protein-term	response to stress
+RS28_ICTPU	protein-term	translation
+RS28_ICTPU	protein-term	biosynthetic process
+RS28_ICTPU	protein-term	cellular nitrogen compound metaboli...
+MDHC_CHICK	protein-term	small molecule metabolic process
+MDHC_CHICK	protein-term	carbohydrate metabolic process
+MDHC_CHICK	protein-term	cellular nitrogen compound metaboli...
+MDHC_CHICK	protein-term	cofactor metabolic process
+NASP_HUMAN	protein-term	cellular component assembly
+NASP_HUMAN	protein-term	protein-containing complex assembly
+NASP_HUMAN	protein-term	cell proliferation
+NASP_HUMAN	protein-term	anatomical structure development
+NASP_HUMAN	protein-term	cellular nitrogen compound metaboli...
+NASP_HUMAN	protein-term	biosynthetic process
+NASP_HUMAN	protein-term	transport
+NASP_HUMAN	protein-term	DNA metabolic process
+NDUB9_BOVIN	protein-term	generation of precursor metabolites...
+NDUB9_BOVIN	protein-term	protein-containing complex assembly
+NDUB9_BOVIN	protein-term	cellular component assembly
+CHS1_SORBI	protein-term	biosynthetic process
+CATL1_MOUSE	protein-term	anatomical structure development
+CATL1_MOUSE	protein-term	cell-cell signaling
+CATL1_MOUSE	protein-term	cell differentiation
+CATL1_MOUSE	protein-term	aging
+CATL1_MOUSE	protein-term	response to stress
+CATL1_MOUSE	protein-term	cell death
+CATL1_MOUSE	protein-term	protein maturation
+PPIB_CHICK	protein-term	protein folding
+PPIB_CHICK	protein-term	cellular protein modification proce...
+SNO1_TYRJA	protein-term	cellular component assembly
+SNO1_TYRJA	protein-term	protein-containing complex assembly
+APOA1_COTJA	protein-term	small molecule metabolic process
+APOA1_COTJA	protein-term	lipid metabolic process
+APOA1_COTJA	protein-term	transport
+NPC2_PANTR	protein-term	transport
+NPC2_PANTR	protein-term	small molecule metabolic process
+NPC2_PANTR	protein-term	lipid metabolic process
+PCKG_HAECO	protein-term	carbohydrate metabolic process
+PCKG_HAECO	protein-term	small molecule metabolic process
+PCKG_HAECO	protein-term	biosynthetic process
+PDIA1_RAT	protein-term	response to stress
+PDIA1_RAT	protein-term	small molecule metabolic process
+PDIA1_RAT	protein-term	protein folding
+PDIA1_RAT	protein-term	cellular protein modification proce...
+PDIA1_RAT	protein-term	homeostatic process
+UNC22_CAEEL	protein-term	cellular component assembly
+UNC22_CAEEL	protein-term	cellular protein modification proce...
+UNC22_CAEEL	protein-term	cytoskeleton organization
+UNC22_CAEEL	protein-term	anatomical structure formation invo...
+UNC22_CAEEL	protein-term	protein-containing complex assembly
+CNN3_RAT	protein-term	cell differentiation
+CNN3_RAT	protein-term	cytoskeleton organization
+GRXC6_ORYSJ	protein-term	response to stress
+GRXC6_ORYSJ	protein-term	homeostatic process
+RSPH1_MOUSE	protein-term	cytoskeleton organization
+RSPH1_MOUSE	protein-term	cell cycle
+RSPH1_MOUSE	protein-term	cellular component assembly
+RSPH1_MOUSE	protein-term	anatomical structure development
+RL10A_CAEEL	protein-term	biosynthetic process
+RL10A_CAEEL	protein-term	translation
+RL10A_CAEEL	protein-term	cellular nitrogen compound metaboli...
+RL18A_HUMAN	protein-term	translation
+RL18A_HUMAN	protein-term	nucleobase-containing compound cata...
+RL18A_HUMAN	protein-term	catabolic process
+RL18A_HUMAN	protein-term	protein targeting
+RL18A_HUMAN	protein-term	cellular nitrogen compound metaboli...
+RL18A_HUMAN	protein-term	transport
+RL18A_HUMAN	protein-term	biosynthetic process
+RL18A_HUMAN	protein-term	membrane organization
+RL23_DROME	protein-term	translation
+RL23_DROME	protein-term	biosynthetic process
+RL23_DROME	protein-term	cellular nitrogen compound metaboli...
+RL23A_RAT	protein-term	cellular component assembly
+RL23A_RAT	protein-term	translation
+RL23A_RAT	protein-term	protein-containing complex assembly
+RL23A_RAT	protein-term	biosynthetic process
+RL23A_RAT	protein-term	cellular nitrogen compound metaboli...
+RL23A_RAT	protein-term	cell proliferation
+RL23A_RAT	protein-term	ribonucleoprotein complex assembly
+MANA_CELJU	protein-term	carbohydrate metabolic process
+MANA_CELJU	protein-term	catabolic process
+RL8_XENTR	protein-term	cellular nitrogen compound metaboli...
+RL8_XENTR	protein-term	translation
+RL8_XENTR	protein-term	biosynthetic process
+RL9_DROME	protein-term	biosynthetic process
+RL9_DROME	protein-term	translation
+RL9_DROME	protein-term	cellular nitrogen compound metaboli...
+RLA0_RANSY	protein-term	ribosome biogenesis
+RLA1_OSCTI	protein-term	biosynthetic process
+RS15A_DROYA	protein-term	biosynthetic process
+RS15A_DROYA	protein-term	translation
+RS15A_DROYA	protein-term	cellular nitrogen compound metaboli...
+TRX1_SCHPO	protein-term	biosynthetic process
+TRX1_SCHPO	protein-term	small molecule metabolic process
+TRX1_SCHPO	protein-term	cellular amino acid metabolic proce...
+TRX1_SCHPO	protein-term	catabolic process
+TRX1_SCHPO	protein-term	homeostatic process
+TRX1_SCHPO	protein-term	response to stress
+TRX1_SCHPO	protein-term	sulfur compound metabolic process
+RS23_DERVA	protein-term	cellular nitrogen compound metaboli...
+RS23_DERVA	protein-term	translation
+RS23_DERVA	protein-term	biosynthetic process
+RS26_OCTVU	protein-term	translation
+RS26_OCTVU	protein-term	biosynthetic process
+RS26_OCTVU	protein-term	cellular nitrogen compound metaboli...
+RS3A_APLCA	protein-term	biosynthetic process
+RS3A_APLCA	protein-term	cellular nitrogen compound metaboli...
+RS3A_APLCA	protein-term	translation
+RS4_IXOSC	protein-term	translation
+RS4_IXOSC	protein-term	biosynthetic process
+RS4_IXOSC	protein-term	cellular nitrogen compound metaboli...
+RS5_HUMAN	protein-term	cellular nitrogen compound metaboli...
+RS5_HUMAN	protein-term	biosynthetic process
+RS5_HUMAN	protein-term	cellular component assembly
+RS5_HUMAN	protein-term	nucleobase-containing compound cata...
+RS5_HUMAN	protein-term	translation
+RS5_HUMAN	protein-term	membrane organization
+RS5_HUMAN	protein-term	transport
+RS5_HUMAN	protein-term	protein-containing complex assembly
+RS5_HUMAN	protein-term	protein targeting
+RS5_HUMAN	protein-term	catabolic process
+RS5_HUMAN	protein-term	ribonucleoprotein complex assembly
+RS8_SPOFR	protein-term	biosynthetic process
+RS8_SPOFR	protein-term	translation
+RS8_SPOFR	protein-term	cellular nitrogen compound metaboli...
+RS9_DROYA	protein-term	cellular nitrogen compound metaboli...
+RS9_DROYA	protein-term	translation
+RS9_DROYA	protein-term	biosynthetic process
+RS9_RAT	protein-term	cellular nitrogen compound metaboli...
+RS9_RAT	protein-term	biosynthetic process
+RS9_RAT	protein-term	translation
+SAHHA_XENLA	protein-term	cellular nitrogen compound metaboli...
+SAHHA_XENLA	protein-term	small molecule metabolic process
+SAHHA_XENLA	protein-term	catabolic process
+SAHHA_XENLA	protein-term	nucleobase-containing compound cata...
+SAHHA_XENLA	protein-term	sulfur compound metabolic process
+SBP1_XENTR	protein-term	transport
+KY_MOUSE	protein-term	anatomical structure development
+CSRP2_MOUSE	protein-term	cell differentiation
+CSRP2_MOUSE	protein-term	anatomical structure development
+CSRP2_MOUSE	protein-term	embryo development
+SPTCA_DROME	protein-term	membrane organization
+SPTCA_DROME	protein-term	anatomical structure development
+SPTCA_DROME	protein-term	plasma membrane organization
+SPTCA_DROME	protein-term	cell proliferation
+SPTCA_DROME	protein-term	cell-cell signaling
+SPTCA_DROME	protein-term	developmental maturation
+DFB1_EMYOR	protein-term	response to stress
+TBA8_CHICK	protein-term	mitotic cell cycle
+TBA8_CHICK	protein-term	cell cycle
+TBA8_CHICK	protein-term	cytoskeleton organization
+TBA1A_RAT	protein-term	cytoskeleton organization
+TBA1A_RAT	protein-term	cell cycle
+TBA1A_RAT	protein-term	mitotic cell cycle
+TBA3_RAT	protein-term	cytoskeleton organization
+TBA3_RAT	protein-term	cell cycle
+TBA3_RAT	protein-term	mitotic cell cycle
+TEKT3_BOVIN	protein-term	cell motility
+TEKT3_BOVIN	protein-term	cellular component assembly
+TEKT3_BOVIN	protein-term	locomotion
+TEKT3_HUMAN	protein-term	cellular component assembly
+TEKT3_HUMAN	protein-term	cell motility
+TEKT3_HUMAN	protein-term	locomotion
+ROAA_MOUSE	protein-term	cell differentiation
+COFI_YARLI	protein-term	cell division
+COFI_YARLI	protein-term	mitotic cell cycle
+COFI_YARLI	protein-term	cell cycle
+TXND3_CIOIN	protein-term	embryo development
+TXND3_CIOIN	protein-term	homeostatic process
+TXND3_CIOIN	protein-term	biosynthetic process
+TXND3_CIOIN	protein-term	cell differentiation
+TXND3_CIOIN	protein-term	cellular nitrogen compound metaboli...
+TXND3_CIOIN	protein-term	small molecule metabolic process
+TXND3_CIOIN	protein-term	anatomical structure development
+TXND3_HELCR	protein-term	biosynthetic process
+TXND3_HELCR	protein-term	small molecule metabolic process
+TXND3_HELCR	protein-term	cellular nitrogen compound metaboli...
+TXND3_HELCR	protein-term	cell differentiation
+TXND3_HELCR	protein-term	embryo development
+TXND3_HELCR	protein-term	homeostatic process
+TXND3_HELCR	protein-term	anatomical structure development
