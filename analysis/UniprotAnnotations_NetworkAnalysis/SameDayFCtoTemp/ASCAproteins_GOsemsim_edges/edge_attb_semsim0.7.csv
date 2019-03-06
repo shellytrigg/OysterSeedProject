@@ -1,0 +1,723 @@
+Var1,Var2,semsimValue,type
+nervous system process,circulatory system process,0.832051221042958,term-term
+transport,vesicle-mediated transport,0.722745548855299,term-term
+homeostatic process,signal transduction,0.832051221042958,term-term
+cell cycle,mitotic cell cycle,0.908327465396174,term-term
+cytoskeleton organization,mitochondrion organization,0.733807483311182,term-term
+cytoskeleton organization,chromosome organization,0.733807483311182,term-term
+mitochondrion organization,chromosome organization,0.733807483311182,term-term
+cellular component assembly,protein-containing complex assembly,0.937258874342498,term-term
+small molecule metabolic process,lipid metabolic process,0.801077475217573,term-term
+locomotion,cell motility,0.908327465396174,term-term
+transport,transmembrane transport,0.722745548855299,term-term
+anatomical structure development,embryo development,0.908327465396174,term-term
+nervous system process,embryo development,0.733807483311182,term-term
+circulatory system process,embryo development,0.733807483311182,term-term
+transport,nucleocytoplasmic transport,0.722745548855299,term-term
+membrane organization,plasma membrane organization,0.908327465396174,term-term
+cellular component assembly,ribonucleoprotein complex assembly,0.846469392218535,term-term
+protein-containing complex assembly,ribonucleoprotein complex assembly,0.908327465396174,term-term
+transport,cytoskeleton-dependent intracellula...,0.722745548855299,term-term
+nucleocytoplasmic transport,cytoskeleton-dependent intracellula...,0.733807483311182,term-term
+cell differentiation,cell morphogenesis,0.832051221042958,term-term
+protein maturation,cellular protein modification proce...,0.733807483311182,term-term
+transport,protein targeting,0.722745548855299,term-term
+nucleocytoplasmic transport,protein targeting,0.733807483311182,term-term
+cytoskeleton-dependent intracellula...,protein targeting,0.733807483311182,term-term
+small molecule metabolic process,cellular amino acid metabolic proce...,0.908327465396174,term-term
+lipid metabolic process,cellular amino acid metabolic proce...,0.733807483311182,term-term
+cellular nitrogen compound metaboli...,DNA metabolic process,0.722745548855299,term-term
+cellular nitrogen compound metaboli...,tRNA metabolic process,0.722745548855299,term-term
+DNA metabolic process,tRNA metabolic process,0.733807483311182,term-term
+cellular nitrogen compound metaboli...,mRNA processing,0.722745548855299,term-term
+DNA metabolic process,mRNA processing,0.733807483311182,term-term
+tRNA metabolic process,mRNA processing,0.832051221042958,term-term
+catabolic process,nucleobase-containing compound cata...,0.908327465396174,term-term
+cellular nitrogen compound metaboli...,nucleobase-containing compound cata...,0.722745548855299,term-term
+biosynthetic process,translation,0.908327465396174,term-term
+cellular nitrogen compound metaboli...,translation,0.722745548855299,term-term
+protein maturation,translation,0.733807483311182,term-term
+cellular protein modification proce...,translation,0.832051221042958,term-term
+cellular amino acid metabolic proce...,translation,0.832051221042958,term-term
+CHOYP_contig_033285.m.37973,reproduction,NA,protein-term
+CHOYP_TBA2.1.1.m.955,mitotic cell cycle,NA,protein-term
+CHOYP_CHER.1.1.m.63350,mitotic cell cycle,NA,protein-term
+CHOYP_TBA1A.2.4.m.19573,mitotic cell cycle,NA,protein-term
+CHOYP_TBA1.2.9.m.9962,mitotic cell cycle,NA,protein-term
+CHOYP_LOC100533261.1.1.m.36141,mitotic cell cycle,NA,protein-term
+CHOYP_ALPHATUB84D.1.1.m.16562,mitotic cell cycle,NA,protein-term
+CHOYP_TBA3.1.1.m.5111,mitotic cell cycle,NA,protein-term
+CHOYP_FLNA.2.6.m.11845,mitotic cell cycle,NA,protein-term
+CHOYP_TBA1.7.9.m.44107,mitotic cell cycle,NA,protein-term
+CHOYP_TRIADDRAFT_57086.1.1.m.25271,mitotic cell cycle,NA,protein-term
+CHOYP_FLNC.2.5.m.37450,cell morphogenesis,NA,protein-term
+CHOYP_LOC100372342.1.1.m.63404,cell morphogenesis,NA,protein-term
+CHOYP_LOC100705966.1.1.m.45957,cell morphogenesis,NA,protein-term
+CHOYP_CNOT1.1.1.m.12106,immune system process,NA,protein-term
+CHOYP_FLNC.2.5.m.37450,immune system process,NA,protein-term
+CHOYP_ISCW_ISCW008219.1.2.m.46822,immune system process,NA,protein-term
+CHOYP_TBA1.7.9.m.44107,immune system process,NA,protein-term
+CHOYP_LOC100533261.1.1.m.36141,immune system process,NA,protein-term
+CHOYP_BRAFLDRAFT_281651.5.8.m.25278,immune system process,NA,protein-term
+CHOYP_HSP90AA1.1.1.m.14867,immune system process,NA,protein-term
+CHOYP_DMBT1.13.34.m.27666,immune system process,NA,protein-term
+CHOYP_ISCW_ISCW008219.1.2.m.46822,circulatory system process,NA,protein-term
+CHOYP_PCKG.1.2.m.43785,carbohydrate metabolic process,NA,protein-term
+CHOYP_BRAFLDRAFT_115608.1.1.m.25984,carbohydrate metabolic process,NA,protein-term
+CHOYP_contig_048973.m.58107,carbohydrate metabolic process,NA,protein-term
+CHOYP_ENO.1.2.m.7681,carbohydrate metabolic process,NA,protein-term
+CHOYP_BRAFLDRAFT_281651.5.8.m.25278,carbohydrate metabolic process,NA,protein-term
+CHOYP_LOC587610.3.3.m.27175,carbohydrate metabolic process,NA,protein-term
+CHOYP_LRP5.1.3.m.18025,carbohydrate metabolic process,NA,protein-term
+CHOYP_RL24.6.9.m.43123,carbohydrate metabolic process,NA,protein-term
+CHOYP_MDHC.1.1.m.57053,carbohydrate metabolic process,NA,protein-term
+CHOYP_COCA1.3.6.m.49360,carbohydrate metabolic process,NA,protein-term
+CHOYP_COX5B.3.3.m.38557,generation of precursor metabolites...,NA,protein-term
+CHOYP_contig_048973.m.58107,generation of precursor metabolites...,NA,protein-term
+CHOYP_ENO.1.2.m.7681,generation of precursor metabolites...,NA,protein-term
+CHOYP_NDUFB9.1.2.m.37494,generation of precursor metabolites...,NA,protein-term
+CHOYP_ISCW_ISCW012366.1.1.m.3691,generation of precursor metabolites...,NA,protein-term
+CHOYP_DSIM_GD13354.1.1.m.6235,generation of precursor metabolites...,NA,protein-term
+CHOYP_CNOT1.1.1.m.12106,DNA metabolic process,NA,protein-term
+CHOYP_contig_043238.m.49940,DNA metabolic process,NA,protein-term
+CHOYP_DUOX1.4.4.m.44613,DNA metabolic process,NA,protein-term
+CHOYP_NASP.4.4.m.56613,DNA metabolic process,NA,protein-term
+CHOYP_ISCW_ISCW017350.1.1.m.11950,DNA metabolic process,NA,protein-term
+CHOYP_ABCF2.1.2.m.28362,DNA metabolic process,NA,protein-term
+CHOYP_contig_015692.m.18358,mRNA processing,NA,protein-term
+CHOYP_ISCW_ISCW014398.1.3.m.15839,mRNA processing,NA,protein-term
+CHOYP_contig_023710.m.26965,tRNA metabolic process,NA,protein-term
+CHOYP_contig_023897.m.27203,tRNA metabolic process,NA,protein-term
+CHOYP_ABCF2.1.2.m.28362,translation,NA,protein-term
+CHOYP_LOC100908688.1.5.m.30293,translation,NA,protein-term
+CHOYP_RL9.5.6.m.63453,translation,NA,protein-term
+CHOYP_RS5.1.2.m.146,translation,NA,protein-term
+CHOYP_RL18A.6.8.m.61646,translation,NA,protein-term
+CHOYP_EF1A.2.4.m.50858,translation,NA,protein-term
+CHOYP_RL23A.3.6.m.31005,translation,NA,protein-term
+CHOYP_RS26.14.15.m.57342,translation,NA,protein-term
+CHOYP_CUL3B.1.1.m.61644,translation,NA,protein-term
+CHOYP_RS3A.4.15.m.15367,translation,NA,protein-term
+CHOYP_RL8.10.10.m.65636,translation,NA,protein-term
+CHOYP_RS23.1.9.m.12948,translation,NA,protein-term
+CHOYP_RL10A.1.2.m.7633,translation,NA,protein-term
+CHOYP_LOC660560.1.4.m.31036,translation,NA,protein-term
+CHOYP_RL23.1.11.m.2901,translation,NA,protein-term
+CHOYP_RS9.11.13.m.49921,translation,NA,protein-term
+CHOYP_CTL2.1.2.m.3858,translation,NA,protein-term
+CHOYP_RS8.8.14.m.44842,translation,NA,protein-term
+CHOYP_LOC100376688.1.8.m.12067,translation,NA,protein-term
+CHOYP_RL18A.1.8.m.12900,translation,NA,protein-term
+CHOYP_RS15A.5.11.m.18785,translation,NA,protein-term
+CHOYP_LOC549476.1.1.m.42388,translation,NA,protein-term
+CHOYP_RS4.3.11.m.15465,translation,NA,protein-term
+CHOYP_DMBT1.13.34.m.27666,translation,NA,protein-term
+CHOYP_RS9.8.13.m.41198,translation,NA,protein-term
+CHOYP_MANL.5.9.m.42622,translation,NA,protein-term
+CHOYP_RL9.4.6.m.43062,translation,NA,protein-term
+CHOYP_BRAFLDRAFT_208436.4.32.m.22689,translation,NA,protein-term
+CHOYP_LOC100374495.1.1.m.55368,protein folding,NA,protein-term
+CHOYP_HSP90AA1.1.1.m.14867,protein folding,NA,protein-term
+CHOYP_LOC100533294.1.3.m.35108,protein folding,NA,protein-term
+CHOYP_DVIR_GJ21252.1.1.m.10086,protein folding,NA,protein-term
+CHOYP_LOC100897892.1.1.m.1462,protein folding,NA,protein-term
+CHOYP_LOC100211409.1.1.m.4742,protein folding,NA,protein-term
+CHOYP_DSIM_GD24875.1.1.m.66201,protein folding,NA,protein-term
+CHOYP_PDIA1.1.1.m.5297,protein folding,NA,protein-term
+CHOYP_NEMVEDRAFT_V1G191841.1.1.m.1745,protein folding,NA,protein-term
+CHOYP_LOC100377173.1.2.m.37699,protein folding,NA,protein-term
+CHOYP_LOC101156984.2.2.m.22956,protein folding,NA,protein-term
+CHOYP_LOC100374495.1.1.m.55368,cellular protein modification proce...,NA,protein-term
+CHOYP_NEMVEDRAFT_V1G191841.1.1.m.1745,cellular protein modification proce...,NA,protein-term
+CHOYP_PDIA1.1.1.m.5297,cellular protein modification proce...,NA,protein-term
+CHOYP_CNE_1C34780.3.3.m.30615,cellular protein modification proce...,NA,protein-term
+CHOYP_CYTA.1.1.m.10540,cellular protein modification proce...,NA,protein-term
+CHOYP_PHUM_PHUM226120.7.7.m.54053,cellular protein modification proce...,NA,protein-term
+CHOYP_ISCW_ISCW023973.1.2.m.6506,cellular protein modification proce...,NA,protein-term
+CHOYP_DMBT1.13.34.m.27666,cellular protein modification proce...,NA,protein-term
+CHOYP_ABCF2.1.2.m.28362,cellular protein modification proce...,NA,protein-term
+CHOYP_LOC100862999.1.1.m.11759,cellular protein modification proce...,NA,protein-term
+CHOYP_AGAP_AGAP007120.1.1.m.57542,cellular protein modification proce...,NA,protein-term
+CHOYP_contig_038370.m.43386,cellular protein modification proce...,NA,protein-term
+CHOYP_BRAFLDRAFT_120058.1.1.m.9895,cellular protein modification proce...,NA,protein-term
+CHOYP_ELOB.1.1.m.56270,cellular protein modification proce...,NA,protein-term
+CHOYP_LOC100897892.1.1.m.1462,cellular protein modification proce...,NA,protein-term
+CHOYP_DVIR_GJ21252.1.1.m.10086,cellular protein modification proce...,NA,protein-term
+CHOYP_contig_023897.m.27203,cellular amino acid metabolic proce...,NA,protein-term
+CHOYP_RS21.1.4.m.13400,cellular amino acid metabolic proce...,NA,protein-term
+CHOYP_LOC100369657.2.2.m.45309,cellular amino acid metabolic proce...,NA,protein-term
+CHOYP_ARF2.1.3.m.10738,protein targeting,NA,protein-term
+CHOYP_RL18A.1.8.m.12900,protein targeting,NA,protein-term
+CHOYP_RL18A.6.8.m.61646,protein targeting,NA,protein-term
+CHOYP_RS5.1.2.m.146,protein targeting,NA,protein-term
+CHOYP_NPC2.6.7.m.31030,lipid metabolic process,NA,protein-term
+CHOYP_NEMVEDRAFT_V1G97278.2.2.m.63648,lipid metabolic process,NA,protein-term
+CHOYP_LOC100121788.1.1.m.28436,sulfur compound metabolic process,NA,protein-term
+CHOYP_ISCW_ISCW008219.1.2.m.46822,sulfur compound metabolic process,NA,protein-term
+CHOYP_RS21.1.4.m.13400,sulfur compound metabolic process,NA,protein-term
+CHOYP_SAHHA.1.1.m.62610,sulfur compound metabolic process,NA,protein-term
+CHOYP_LRP5.1.3.m.18025,transport,NA,protein-term
+CHOYP_ARF2.1.3.m.10738,transport,NA,protein-term
+CHOYP_NEMVEDRAFT_V1G97278.2.2.m.63648,transport,NA,protein-term
+CHOYP_contig_009176.m.10652,transport,NA,protein-term
+CHOYP_CHER.1.1.m.63350,transport,NA,protein-term
+CHOYP_contig_023538.m.26787,transport,NA,protein-term
+CHOYP_SBP1.1.2.m.2083,transport,NA,protein-term
+CHOYP_ATPB.1.1.m.21960,transport,NA,protein-term
+CHOYP_LOC100377173.1.2.m.37699,transport,NA,protein-term
+CHOYP_FLNA.2.6.m.11845,transport,NA,protein-term
+CHOYP_LOC100211409.1.1.m.4742,transport,NA,protein-term
+CHOYP_LOC100372287.1.1.m.10381,transport,NA,protein-term
+CHOYP_LOC100372342.1.1.m.63404,transport,NA,protein-term
+CHOYP_RS5.1.2.m.146,transport,NA,protein-term
+CHOYP_NASP.4.4.m.56613,transport,NA,protein-term
+CHOYP_RL18A.6.8.m.61646,transport,NA,protein-term
+CHOYP_BRAFLDRAFT_263599.1.1.m.59011,transport,NA,protein-term
+CHOYP_FLNC.2.5.m.37450,transport,NA,protein-term
+CHOYP_ISCW_ISCW008219.1.2.m.46822,transport,NA,protein-term
+CHOYP_LOC100372942.1.1.m.31119,transport,NA,protein-term
+CHOYP_COX5B.3.3.m.38557,transport,NA,protein-term
+CHOYP_RL18A.1.8.m.12900,transport,NA,protein-term
+CHOYP_LOC101072646.1.1.m.8800,transport,NA,protein-term
+CHOYP_DSIM_GD24875.1.1.m.66201,transport,NA,protein-term
+CHOYP_NPC2.6.7.m.31030,transport,NA,protein-term
+CHOYP_EIF5A.1.3.m.22684,transport,NA,protein-term
+CHOYP_DMBT1.13.34.m.27666,transport,NA,protein-term
+CHOYP_contig_039285.m.44499,transport,NA,protein-term
+CHOYP_LOC100372942.1.1.m.31119,nucleocytoplasmic transport,NA,protein-term
+CHOYP_PDIA1.1.1.m.5297,response to stress,NA,protein-term
+CHOYP_CPIPJ_CPIJ012408.1.1.m.10724,response to stress,NA,protein-term
+CHOYP_ABCF2.1.2.m.28362,response to stress,NA,protein-term
+CHOYP_TBA.3.6.m.29936,response to stress,NA,protein-term
+CHOYP_LOC100369657.2.2.m.45309,response to stress,NA,protein-term
+CHOYP_LOC100369954.1.1.m.22658,response to stress,NA,protein-term
+CHOYP_LOC100711559.1.1.m.10313,response to stress,NA,protein-term
+CHOYP_PMAR_PMAR003946.2.2.m.31102,response to stress,NA,protein-term
+CHOYP_LOC100211409.1.1.m.4742,response to stress,NA,protein-term
+CHOYP_LOC100372342.1.1.m.63404,response to stress,NA,protein-term
+CHOYP_EF2.5.5.m.39855,response to stress,NA,protein-term
+CHOYP_LOC101169658.2.3.m.20752,response to stress,NA,protein-term
+CHOYP_CYT5.1.1.m.29962,response to stress,NA,protein-term
+CHOYP_LOC101169658.1.3.m.18820,response to stress,NA,protein-term
+CHOYP_LOC100705966.1.1.m.45957,response to stress,NA,protein-term
+CHOYP_HSP90AA1.1.1.m.14867,response to stress,NA,protein-term
+CHOYP_BRAFLDRAFT_263599.1.1.m.59011,response to stress,NA,protein-term
+CHOYP_LOC101067698.2.2.m.27457,response to stress,NA,protein-term
+CHOYP_FLNC.2.5.m.37450,response to stress,NA,protein-term
+CHOYP_CNOT1.1.1.m.12106,response to stress,NA,protein-term
+CHOYP_contig_004993.m.5721,response to stress,NA,protein-term
+CHOYP_CATA.3.3.m.21642,response to stress,NA,protein-term
+CHOYP_ISCW_ISCW010532.2.4.m.35454,response to stress,NA,protein-term
+CHOYP_AGAP_AGAP007120.1.1.m.57542,response to stress,NA,protein-term
+CHOYP_LYS3.1.1.m.31221,response to stress,NA,protein-term
+CHOYP_RS21.1.4.m.13400,response to stress,NA,protein-term
+CHOYP_DMBT1.13.34.m.27666,response to stress,NA,protein-term
+CHOYP_BRAFLDRAFT_119799.1.1.m.23765,response to stress,NA,protein-term
+CHOYP_LOC100897892.1.1.m.1462,response to stress,NA,protein-term
+CHOYP_BRAFLDRAFT_99083.1.1.m.11705,response to stress,NA,protein-term
+CHOYP_ISCW_ISCW008219.1.2.m.46822,response to stress,NA,protein-term
+CHOYP_CATA.1.3.m.11120,response to stress,NA,protein-term
+CHOYP_BRAFLDRAFT_127065.6.7.m.30727,response to stress,NA,protein-term
+CHOYP_LOC100377173.1.2.m.37699,response to stress,NA,protein-term
+CHOYP_NEMVEDRAFT_V1G180651.1.2.m.2808,response to stress,NA,protein-term
+CHOYP_ISCW_ISCW010532.1.4.m.11493,response to stress,NA,protein-term
+CHOYP_EF2.4.5.m.30186,response to stress,NA,protein-term
+CHOYP_LOC100705966.1.1.m.45957,mitochondrion organization,NA,protein-term
+CHOYP_SPTCA.1.2.m.1905,plasma membrane organization,NA,protein-term
+CHOYP_ISCW_ISCW008219.1.2.m.46822,plasma membrane organization,NA,protein-term
+CHOYP_FLNC.2.5.m.37450,plasma membrane organization,NA,protein-term
+CHOYP_LOC100376902.1.1.m.20390,cytoskeleton organization,NA,protein-term
+CHOYP_TBA1.7.9.m.44107,cytoskeleton organization,NA,protein-term
+CHOYP_ISCW_ISCW008219.1.2.m.46822,cytoskeleton organization,NA,protein-term
+CHOYP_TBA1A.2.4.m.19573,cytoskeleton organization,NA,protein-term
+CHOYP_SMP_078690.3.5.m.2272,cytoskeleton organization,NA,protein-term
+CHOYP_PHUM_PHUM226120.7.7.m.54053,cytoskeleton organization,NA,protein-term
+CHOYP_TBA1.2.9.m.9962,cytoskeleton organization,NA,protein-term
+CHOYP_LOC100372287.1.1.m.10381,cytoskeleton organization,NA,protein-term
+CHOYP_LOC589479.2.2.m.57247,cytoskeleton organization,NA,protein-term
+CHOYP_contig_009176.m.10652,cytoskeleton organization,NA,protein-term
+CHOYP_LOC100897892.1.1.m.1462,cytoskeleton organization,NA,protein-term
+CHOYP_LOC100372342.1.1.m.63404,cytoskeleton organization,NA,protein-term
+CHOYP_SMP_078690.5.5.m.64878,cytoskeleton organization,NA,protein-term
+CHOYP_ALPHATUB84D.1.1.m.16562,cytoskeleton organization,NA,protein-term
+CHOYP_TBA2.1.1.m.955,cytoskeleton organization,NA,protein-term
+CHOYP_contig_023655.m.26913,cytoskeleton organization,NA,protein-term
+CHOYP_LOC100175722.1.3.m.11427,cytoskeleton organization,NA,protein-term
+CHOYP_BRAFLDRAFT_121507.1.2.m.30603,cytoskeleton organization,NA,protein-term
+CHOYP_FLNC.2.5.m.37450,cytoskeleton organization,NA,protein-term
+CHOYP_TBA3.1.1.m.5111,cytoskeleton organization,NA,protein-term
+CHOYP_LOC100533261.1.1.m.36141,cytoskeleton organization,NA,protein-term
+CHOYP_PHUM_PHUM289860.1.1.m.44779,cytoskeleton organization,NA,protein-term
+CHOYP_FLNA.2.6.m.11845,cytoskeleton organization,NA,protein-term
+CHOYP_HSP90AA1.1.1.m.14867,cytoskeleton organization,NA,protein-term
+CHOYP_QCR2.1.1.m.35613,cytoskeleton organization,NA,protein-term
+CHOYP_ADD.3.5.m.17639,cytoskeleton organization,NA,protein-term
+CHOYP_CHER.1.1.m.63350,cytoskeleton organization,NA,protein-term
+CHOYP_CHER.1.1.m.63350,cell cycle,NA,protein-term
+CHOYP_TBA3.1.1.m.5111,cell cycle,NA,protein-term
+CHOYP_TBA1.7.9.m.44107,cell cycle,NA,protein-term
+CHOYP_TBA2.1.1.m.955,cell cycle,NA,protein-term
+CHOYP_TBA1A.2.4.m.19573,cell cycle,NA,protein-term
+CHOYP_FLNA.2.6.m.11845,cell cycle,NA,protein-term
+CHOYP_TRIADDRAFT_57086.1.1.m.25271,cell cycle,NA,protein-term
+CHOYP_LOC100533261.1.1.m.36141,cell cycle,NA,protein-term
+CHOYP_TBA1.2.9.m.9962,cell cycle,NA,protein-term
+CHOYP_ALPHATUB84D.1.1.m.16562,cell cycle,NA,protein-term
+CHOYP_QCR2.1.1.m.35613,cell cycle,NA,protein-term
+CHOYP_contig_043238.m.49940,chromosome segregation,NA,protein-term
+CHOYP_BRAFLDRAFT_127065.6.7.m.30727,cell adhesion,NA,protein-term
+CHOYP_FLNC.2.5.m.37450,cell adhesion,NA,protein-term
+CHOYP_contig_008002.m.9263,cell adhesion,NA,protein-term
+CHOYP_LOC100377173.1.2.m.37699,cell adhesion,NA,protein-term
+CHOYP_LOC100211409.1.1.m.4742,cell adhesion,NA,protein-term
+CHOYP_CYTA.1.1.m.10540,cell adhesion,NA,protein-term
+CHOYP_contig_026477.m.30166,cell adhesion,NA,protein-term
+CHOYP_DSEC_GM19691.1.1.m.30070,signal transduction,NA,protein-term
+CHOYP_contig_004993.m.5721,signal transduction,NA,protein-term
+CHOYP_LOC100377173.1.2.m.37699,signal transduction,NA,protein-term
+CHOYP_CDPK5.1.1.m.6214,signal transduction,NA,protein-term
+CHOYP_FLNC.2.5.m.37450,signal transduction,NA,protein-term
+CHOYP_BRAFLDRAFT_246510.1.1.m.27433,signal transduction,NA,protein-term
+CHOYP_CNE_1C34780.3.3.m.30615,signal transduction,NA,protein-term
+CHOYP_BRAFLDRAFT_263599.1.1.m.59011,signal transduction,NA,protein-term
+CHOYP_LRP5.1.3.m.18025,signal transduction,NA,protein-term
+CHOYP_LOC100211409.1.1.m.4742,signal transduction,NA,protein-term
+CHOYP_LOC100633077.1.4.m.4444,signal transduction,NA,protein-term
+CHOYP_LOC100633077.4.4.m.62658,signal transduction,NA,protein-term
+CHOYP_AGAP_AGAP007120.1.1.m.57542,signal transduction,NA,protein-term
+CHOYP_SPTCA.1.2.m.1905,cell-cell signaling,NA,protein-term
+CHOYP_AGRIN.2.5.m.5339,cell-cell signaling,NA,protein-term
+CHOYP_NEMVEDRAFT_V1G180651.1.2.m.2808,cell-cell signaling,NA,protein-term
+CHOYP_ISCW_ISCW008219.1.2.m.46822,aging,NA,protein-term
+CHOYP_NEMVEDRAFT_V1G180651.1.2.m.2808,aging,NA,protein-term
+CHOYP_BRAFLDRAFT_263599.1.1.m.59011,aging,NA,protein-term
+CHOYP_NEMVEDRAFT_V1G180651.1.2.m.2808,cell death,NA,protein-term
+CHOYP_CYT5.1.1.m.29962,cell death,NA,protein-term
+CHOYP_LOC100705966.1.1.m.45957,cell death,NA,protein-term
+CHOYP_BRAFLDRAFT_281651.5.8.m.25278,cell death,NA,protein-term
+CHOYP_CYTA.1.1.m.10540,cell death,NA,protein-term
+CHOYP_SPTCA.1.2.m.1905,cell proliferation,NA,protein-term
+CHOYP_NASP.4.4.m.56613,cell proliferation,NA,protein-term
+CHOYP_ADD.3.5.m.17639,cell proliferation,NA,protein-term
+CHOYP_RL23A.3.6.m.31005,cell proliferation,NA,protein-term
+CHOYP_FABP7.2.2.m.29096,cell proliferation,NA,protein-term
+CHOYP_CATA.1.3.m.11120,catabolic process,NA,protein-term
+CHOYP_COCA1.3.6.m.49360,catabolic process,NA,protein-term
+CHOYP_LRP5.1.3.m.18025,catabolic process,NA,protein-term
+CHOYP_BRAFLDRAFT_119799.1.1.m.23765,catabolic process,NA,protein-term
+CHOYP_CATA.3.3.m.21642,catabolic process,NA,protein-term
+CHOYP_LOC587610.3.3.m.27175,catabolic process,NA,protein-term
+CHOYP_contig_004993.m.5721,catabolic process,NA,protein-term
+CHOYP_RS5.1.2.m.146,catabolic process,NA,protein-term
+CHOYP_ABCF2.1.2.m.28362,catabolic process,NA,protein-term
+CHOYP_SAHHA.1.1.m.62610,catabolic process,NA,protein-term
+CHOYP_BRAFLDRAFT_281651.5.8.m.25278,catabolic process,NA,protein-term
+CHOYP_LYS3.1.1.m.31221,catabolic process,NA,protein-term
+CHOYP_RL18A.6.8.m.61646,catabolic process,NA,protein-term
+CHOYP_RL18A.1.8.m.12900,catabolic process,NA,protein-term
+CHOYP_RS21.1.4.m.13400,catabolic process,NA,protein-term
+CHOYP_RL24.6.9.m.43123,catabolic process,NA,protein-term
+CHOYP_ENO.1.2.m.7681,catabolic process,NA,protein-term
+CHOYP_LOC100862999.1.1.m.11759,catabolic process,NA,protein-term
+CHOYP_RS5.1.2.m.146,biosynthetic process,NA,protein-term
+CHOYP_contig_048973.m.58107,biosynthetic process,NA,protein-term
+CHOYP_contig_004993.m.5721,biosynthetic process,NA,protein-term
+CHOYP_ATPB.1.1.m.21960,biosynthetic process,NA,protein-term
+CHOYP_LOC660560.1.4.m.31036,biosynthetic process,NA,protein-term
+CHOYP_LOC754557.1.2.m.5492,biosynthetic process,NA,protein-term
+CHOYP_ABCF2.1.2.m.28362,biosynthetic process,NA,protein-term
+CHOYP_LOC100903522.1.3.m.2296,biosynthetic process,NA,protein-term
+CHOYP_LOC100369657.2.2.m.45309,biosynthetic process,NA,protein-term
+CHOYP_LOC101072646.1.1.m.8800,biosynthetic process,NA,protein-term
+CHOYP_NASP.4.4.m.56613,biosynthetic process,NA,protein-term
+CHOYP_RS3A.4.15.m.15367,biosynthetic process,NA,protein-term
+CHOYP_CTL2.1.2.m.3858,biosynthetic process,NA,protein-term
+CHOYP_FLNC.2.5.m.37450,biosynthetic process,NA,protein-term
+CHOYP_RL10A.1.2.m.7633,biosynthetic process,NA,protein-term
+CHOYP_RLA1.5.12.m.15482,biosynthetic process,NA,protein-term
+CHOYP_RL18A.1.8.m.12900,biosynthetic process,NA,protein-term
+CHOYP_LOC100123907.1.1.m.2987,biosynthetic process,NA,protein-term
+CHOYP_RS9.11.13.m.49921,biosynthetic process,NA,protein-term
+CHOYP_COX5B.3.3.m.38557,biosynthetic process,NA,protein-term
+CHOYP_EIF5A.1.3.m.22684,biosynthetic process,NA,protein-term
+CHOYP_LOC100908688.1.5.m.30293,biosynthetic process,NA,protein-term
+CHOYP_DUOX1.4.4.m.44613,biosynthetic process,NA,protein-term
+CHOYP_RS26.14.15.m.57342,biosynthetic process,NA,protein-term
+CHOYP_RS9.8.13.m.41198,biosynthetic process,NA,protein-term
+CHOYP_TXND3.1.4.m.3505,biosynthetic process,NA,protein-term
+CHOYP_contig_039285.m.44499,biosynthetic process,NA,protein-term
+CHOYP_EF2.5.5.m.39855,biosynthetic process,NA,protein-term
+CHOYP_TXND3.2.4.m.21415,biosynthetic process,NA,protein-term
+CHOYP_contig_055984.m.66583,biosynthetic process,NA,protein-term
+CHOYP_PCKG.1.2.m.43785,biosynthetic process,NA,protein-term
+CHOYP_RS8.8.14.m.44842,biosynthetic process,NA,protein-term
+CHOYP_RL23A.3.6.m.31005,biosynthetic process,NA,protein-term
+CHOYP_CUL3B.1.1.m.61644,biosynthetic process,NA,protein-term
+CHOYP_ELOB.1.1.m.56270,biosynthetic process,NA,protein-term
+CHOYP_EF1A.2.4.m.50858,biosynthetic process,NA,protein-term
+CHOYP_MANL.5.9.m.42622,biosynthetic process,NA,protein-term
+CHOYP_AGAP_AGAP007120.1.1.m.57542,biosynthetic process,NA,protein-term
+CHOYP_LOC100175959.1.7.m.1896,biosynthetic process,NA,protein-term
+CHOYP_LOC100175959.4.7.m.28172,biosynthetic process,NA,protein-term
+CHOYP_EF2.4.5.m.30186,biosynthetic process,NA,protein-term
+CHOYP_LOC549476.1.1.m.42388,biosynthetic process,NA,protein-term
+CHOYP_RL18A.6.8.m.61646,biosynthetic process,NA,protein-term
+CHOYP_RL9.4.6.m.43062,biosynthetic process,NA,protein-term
+CHOYP_RS15A.5.11.m.18785,biosynthetic process,NA,protein-term
+CHOYP_RS21.1.4.m.13400,biosynthetic process,NA,protein-term
+CHOYP_LYS3.1.1.m.31221,biosynthetic process,NA,protein-term
+CHOYP_KCY.1.1.m.29973,biosynthetic process,NA,protein-term
+CHOYP_contig_039966.m.45203,biosynthetic process,NA,protein-term
+CHOYP_RL8.10.10.m.65636,biosynthetic process,NA,protein-term
+CHOYP_RL9.5.6.m.63453,biosynthetic process,NA,protein-term
+CHOYP_BRAFLDRAFT_208436.4.32.m.22689,biosynthetic process,NA,protein-term
+CHOYP_RS4.3.11.m.15465,biosynthetic process,NA,protein-term
+CHOYP_LOC100376688.1.8.m.12067,biosynthetic process,NA,protein-term
+CHOYP_ISCW_ISCW008219.1.2.m.46822,biosynthetic process,NA,protein-term
+CHOYP_RL23.1.11.m.2901,biosynthetic process,NA,protein-term
+CHOYP_contig_016567.m.19514,biosynthetic process,NA,protein-term
+CHOYP_NEMVEDRAFT_V1G140878.1.1.m.18069,biosynthetic process,NA,protein-term
+CHOYP_RS23.1.9.m.12948,biosynthetic process,NA,protein-term
+CHOYP_CNE_1C34780.3.3.m.30615,embryo development,NA,protein-term
+CHOYP_SMP_087250.2.2.m.25167,embryo development,NA,protein-term
+CHOYP_DMBT1.13.34.m.27666,embryo development,NA,protein-term
+CHOYP_GLIPR1L1.1.1.m.41745,embryo development,NA,protein-term
+CHOYP_TXND3.1.4.m.3505,embryo development,NA,protein-term
+CHOYP_LOC100897892.1.1.m.1462,embryo development,NA,protein-term
+CHOYP_CTL2.1.2.m.3858,embryo development,NA,protein-term
+CHOYP_BRAFLDRAFT_130809.1.1.m.5127,embryo development,NA,protein-term
+CHOYP_BRAFLDRAFT_125880.1.3.m.7081,embryo development,NA,protein-term
+CHOYP_TXND3.2.4.m.21415,embryo development,NA,protein-term
+CHOYP_contig_009176.m.10652,vesicle-mediated transport,NA,protein-term
+CHOYP_FLNC.2.5.m.37450,vesicle-mediated transport,NA,protein-term
+CHOYP_ARF2.1.3.m.10738,vesicle-mediated transport,NA,protein-term
+CHOYP_LRP5.1.3.m.18025,vesicle-mediated transport,NA,protein-term
+CHOYP_BRAFLDRAFT_263599.1.1.m.59011,vesicle-mediated transport,NA,protein-term
+CHOYP_DMBT1.13.34.m.27666,vesicle-mediated transport,NA,protein-term
+CHOYP_SPTCA.1.2.m.1905,developmental maturation,NA,protein-term
+CHOYP_BRAFLDRAFT_121507.1.2.m.30603,cellular component assembly,NA,protein-term
+CHOYP_ADD.3.5.m.17639,cellular component assembly,NA,protein-term
+CHOYP_LOC100903522.1.3.m.2296,cellular component assembly,NA,protein-term
+CHOYP_LOC589479.2.2.m.57247,cellular component assembly,NA,protein-term
+CHOYP_LOC549476.1.1.m.42388,cellular component assembly,NA,protein-term
+CHOYP_LOC660560.1.4.m.31036,cellular component assembly,NA,protein-term
+CHOYP_BRAFLDRAFT_123537.2.2.m.50531,cellular component assembly,NA,protein-term
+CHOYP_RS5.1.2.m.146,cellular component assembly,NA,protein-term
+CHOYP_RL23A.3.6.m.31005,cellular component assembly,NA,protein-term
+CHOYP_LOC100705966.1.1.m.45957,cellular component assembly,NA,protein-term
+CHOYP_CUL3B.1.1.m.61644,cellular component assembly,NA,protein-term
+CHOYP_LOC100908688.1.5.m.30293,cellular component assembly,NA,protein-term
+CHOYP_DVIR_GJ23521.1.1.m.2757,cellular component assembly,NA,protein-term
+CHOYP_ISCW_ISCW023973.1.2.m.6506,cellular component assembly,NA,protein-term
+CHOYP_NEMVEDRAFT_V1G235461.1.1.m.28341,cellular component assembly,NA,protein-term
+CHOYP_LOC100711559.1.1.m.10313,cellular component assembly,NA,protein-term
+CHOYP_TEKT5.1.1.m.60031,cellular component assembly,NA,protein-term
+CHOYP_HSP90AA1.1.1.m.14867,cellular component assembly,NA,protein-term
+CHOYP_LOC100372342.1.1.m.63404,cellular component assembly,NA,protein-term
+CHOYP_DSIM_GD13354.1.1.m.6235,cellular component assembly,NA,protein-term
+CHOYP_ARP3.1.1.m.6867,cellular component assembly,NA,protein-term
+CHOYP_NDUFB9.1.2.m.37494,cellular component assembly,NA,protein-term
+CHOYP_LOC100376902.1.1.m.20390,cellular component assembly,NA,protein-term
+CHOYP_NASP.4.4.m.56613,cellular component assembly,NA,protein-term
+CHOYP_QCR2.1.1.m.35613,cellular component assembly,NA,protein-term
+CHOYP_PHUM_PHUM226120.7.7.m.54053,cellular component assembly,NA,protein-term
+CHOYP_AGRIN.2.5.m.5339,cellular component assembly,NA,protein-term
+CHOYP_FLNC.2.5.m.37450,cellular component assembly,NA,protein-term
+CHOYP_ISCW_ISCW012366.1.1.m.3691,cellular component assembly,NA,protein-term
+CHOYP_BRAFLDRAFT_263599.1.1.m.59011,cellular component assembly,NA,protein-term
+CHOYP_TEKT3.1.1.m.37281,cellular component assembly,NA,protein-term
+CHOYP_LOC100370551.1.1.m.64375,cellular component assembly,NA,protein-term
+CHOYP_DUOX1.4.4.m.44613,cellular component assembly,NA,protein-term
+CHOYP_TEKT5.1.1.m.60033,cellular component assembly,NA,protein-term
+CHOYP_AGAP_AGAP007120.1.1.m.57542,cellular component assembly,NA,protein-term
+CHOYP_RL23A.3.6.m.31005,ribonucleoprotein complex assembly,NA,protein-term
+CHOYP_RS5.1.2.m.146,ribonucleoprotein complex assembly,NA,protein-term
+CHOYP_LOC660560.1.4.m.31036,ribonucleoprotein complex assembly,NA,protein-term
+CHOYP_LOC100908688.1.5.m.30293,ribonucleoprotein complex assembly,NA,protein-term
+CHOYP_CUL3B.1.1.m.61644,ribonucleoprotein complex assembly,NA,protein-term
+CHOYP_LOC549476.1.1.m.42388,ribonucleoprotein complex assembly,NA,protein-term
+CHOYP_ISCW_ISCW023973.1.2.m.6506,cell differentiation,NA,protein-term
+CHOYP_TXND3.2.4.m.21415,cell differentiation,NA,protein-term
+CHOYP_LOC100633077.4.4.m.62658,cell differentiation,NA,protein-term
+CHOYP_BRAFLDRAFT_263599.1.1.m.59011,cell differentiation,NA,protein-term
+CHOYP_contig_033285.m.37973,cell differentiation,NA,protein-term
+CHOYP_CNE_1C34780.3.3.m.30615,cell differentiation,NA,protein-term
+CHOYP_LOC100695151.2.2.m.30573,cell differentiation,NA,protein-term
+CHOYP_LOC100633077.1.4.m.4444,cell differentiation,NA,protein-term
+CHOYP_TXND3.1.4.m.3505,cell differentiation,NA,protein-term
+CHOYP_LOC549476.1.1.m.42388,cell differentiation,NA,protein-term
+CHOYP_CYTA.1.1.m.10540,cell differentiation,NA,protein-term
+CHOYP_TPM.7.19.m.15554,cell differentiation,NA,protein-term
+CHOYP_FABP7.2.2.m.29096,cell differentiation,NA,protein-term
+CHOYP_SMP_087250.2.2.m.25167,cell differentiation,NA,protein-term
+CHOYP_contig_025684.m.29301,cell differentiation,NA,protein-term
+CHOYP_NEMVEDRAFT_V1G180651.1.2.m.2808,cell differentiation,NA,protein-term
+CHOYP_PHUM_PHUM289860.1.1.m.44779,cell differentiation,NA,protein-term
+CHOYP_LOC100374522.1.1.m.66943,cell differentiation,NA,protein-term
+CHOYP_DMBT1.13.34.m.27666,cell differentiation,NA,protein-term
+CHOYP_SMP_078690.5.5.m.64878,cell differentiation,NA,protein-term
+CHOYP_SMP_078690.3.5.m.2272,cell differentiation,NA,protein-term
+CHOYP_BRAFLDRAFT_127065.6.7.m.30727,extracellular matrix organization,NA,protein-term
+CHOYP_contig_025684.m.29301,extracellular matrix organization,NA,protein-term
+CHOYP_contig_008002.m.9263,extracellular matrix organization,NA,protein-term
+CHOYP_DSIM_GD24875.1.1.m.66201,cytoskeleton-dependent intracellula...,NA,protein-term
+CHOYP_LOC100372287.1.1.m.10381,cytoskeleton-dependent intracellula...,NA,protein-term
+CHOYP_LOC100372342.1.1.m.63404,cytoskeleton-dependent intracellula...,NA,protein-term
+CHOYP_LOC100377173.1.2.m.37699,cytoskeleton-dependent intracellula...,NA,protein-term
+CHOYP_ISCW_ISCW008219.1.2.m.46822,cytoskeleton-dependent intracellula...,NA,protein-term
+CHOYP_LOC100211409.1.1.m.4742,cytoskeleton-dependent intracellula...,NA,protein-term
+CHOYP_FLNC.2.5.m.37450,cell junction organization,NA,protein-term
+CHOYP_NASP.4.4.m.56613,cellular nitrogen compound metaboli...,NA,protein-term
+CHOYP_RL10A.1.2.m.7633,cellular nitrogen compound metaboli...,NA,protein-term
+CHOYP_CNOT1.1.1.m.12106,cellular nitrogen compound metaboli...,NA,protein-term
+CHOYP_contig_047707.m.56320,cellular nitrogen compound metaboli...,NA,protein-term
+CHOYP_ATPB.1.1.m.21960,cellular nitrogen compound metaboli...,NA,protein-term
+CHOYP_LOC100123907.1.1.m.2987,cellular nitrogen compound metaboli...,NA,protein-term
+CHOYP_contig_043238.m.49940,cellular nitrogen compound metaboli...,NA,protein-term
+CHOYP_DUOX1.4.4.m.44613,cellular nitrogen compound metaboli...,NA,protein-term
+CHOYP_COX5B.3.3.m.38557,cellular nitrogen compound metaboli...,NA,protein-term
+CHOYP_LOC100121788.1.1.m.28436,cellular nitrogen compound metaboli...,NA,protein-term
+CHOYP_RL23A.3.6.m.31005,cellular nitrogen compound metaboli...,NA,protein-term
+CHOYP_LOC100903522.1.3.m.2296,cellular nitrogen compound metaboli...,NA,protein-term
+CHOYP_MANL.5.9.m.42622,cellular nitrogen compound metaboli...,NA,protein-term
+CHOYP_ISCW_ISCW017350.1.1.m.11950,cellular nitrogen compound metaboli...,NA,protein-term
+CHOYP_LOC101072646.1.1.m.8800,cellular nitrogen compound metaboli...,NA,protein-term
+CHOYP_ELOB.1.1.m.56270,cellular nitrogen compound metaboli...,NA,protein-term
+CHOYP_RL9.5.6.m.63453,cellular nitrogen compound metaboli...,NA,protein-term
+CHOYP_RS5.1.2.m.146,cellular nitrogen compound metaboli...,NA,protein-term
+CHOYP_BRAFLDRAFT_208436.4.32.m.22689,cellular nitrogen compound metaboli...,NA,protein-term
+CHOYP_CTL2.1.2.m.3858,cellular nitrogen compound metaboli...,NA,protein-term
+CHOYP_RS15A.5.11.m.18785,cellular nitrogen compound metaboli...,NA,protein-term
+CHOYP_TXND3.2.4.m.21415,cellular nitrogen compound metaboli...,NA,protein-term
+CHOYP_ABCF2.1.2.m.28362,cellular nitrogen compound metaboli...,NA,protein-term
+CHOYP_RS8.8.14.m.44842,cellular nitrogen compound metaboli...,NA,protein-term
+CHOYP_RS9.11.13.m.49921,cellular nitrogen compound metaboli...,NA,protein-term
+CHOYP_ENO.1.2.m.7681,cellular nitrogen compound metaboli...,NA,protein-term
+CHOYP_CUL3B.1.1.m.61644,cellular nitrogen compound metaboli...,NA,protein-term
+CHOYP_RS26.14.15.m.57342,cellular nitrogen compound metaboli...,NA,protein-term
+CHOYP_FLNC.2.5.m.37450,cellular nitrogen compound metaboli...,NA,protein-term
+CHOYP_LOC660560.1.4.m.31036,cellular nitrogen compound metaboli...,NA,protein-term
+CHOYP_RL18A.6.8.m.61646,cellular nitrogen compound metaboli...,NA,protein-term
+CHOYP_RL8.10.10.m.65636,cellular nitrogen compound metaboli...,NA,protein-term
+CHOYP_TXND3.1.4.m.3505,cellular nitrogen compound metaboli...,NA,protein-term
+CHOYP_RL18A.1.8.m.12900,cellular nitrogen compound metaboli...,NA,protein-term
+CHOYP_LOC100376688.1.8.m.12067,cellular nitrogen compound metaboli...,NA,protein-term
+CHOYP_ISCW_ISCW008219.1.2.m.46822,cellular nitrogen compound metaboli...,NA,protein-term
+CHOYP_MDHC.1.1.m.57053,cellular nitrogen compound metaboli...,NA,protein-term
+CHOYP_contig_023897.m.27203,cellular nitrogen compound metaboli...,NA,protein-term
+CHOYP_RL23.1.11.m.2901,cellular nitrogen compound metaboli...,NA,protein-term
+CHOYP_RS3A.4.15.m.15367,cellular nitrogen compound metaboli...,NA,protein-term
+CHOYP_EF1A.2.4.m.50858,cellular nitrogen compound metaboli...,NA,protein-term
+CHOYP_LOC100888608.1.3.m.5445,cellular nitrogen compound metaboli...,NA,protein-term
+CHOYP_LOC549476.1.1.m.42388,cellular nitrogen compound metaboli...,NA,protein-term
+CHOYP_RS4.3.11.m.15465,cellular nitrogen compound metaboli...,NA,protein-term
+CHOYP_RS9.8.13.m.41198,cellular nitrogen compound metaboli...,NA,protein-term
+CHOYP_BRAFLDRAFT_119799.1.1.m.23765,cellular nitrogen compound metaboli...,NA,protein-term
+CHOYP_contig_039966.m.45203,cellular nitrogen compound metaboli...,NA,protein-term
+CHOYP_contig_039285.m.44499,cellular nitrogen compound metaboli...,NA,protein-term
+CHOYP_ISCW_ISCW014398.1.3.m.15839,cellular nitrogen compound metaboli...,NA,protein-term
+CHOYP_contig_055984.m.66583,cellular nitrogen compound metaboli...,NA,protein-term
+CHOYP_LOC100908688.1.5.m.30293,cellular nitrogen compound metaboli...,NA,protein-term
+CHOYP_RL9.4.6.m.43062,cellular nitrogen compound metaboli...,NA,protein-term
+CHOYP_RS23.1.9.m.12948,cellular nitrogen compound metaboli...,NA,protein-term
+CHOYP_KCY.1.1.m.29973,cellular nitrogen compound metaboli...,NA,protein-term
+CHOYP_contig_015692.m.18358,cellular nitrogen compound metaboli...,NA,protein-term
+CHOYP_BRAFLDRAFT_121562.1.1.m.37268,cellular nitrogen compound metaboli...,NA,protein-term
+CHOYP_SAHHA.1.1.m.62610,cellular nitrogen compound metaboli...,NA,protein-term
+CHOYP_contig_023710.m.26965,cellular nitrogen compound metaboli...,NA,protein-term
+CHOYP_AGAP_AGAP007120.1.1.m.57542,cellular nitrogen compound metaboli...,NA,protein-term
+CHOYP_RS5.1.2.m.146,nucleobase-containing compound cata...,NA,protein-term
+CHOYP_SAHHA.1.1.m.62610,nucleobase-containing compound cata...,NA,protein-term
+CHOYP_RL18A.1.8.m.12900,nucleobase-containing compound cata...,NA,protein-term
+CHOYP_RL18A.6.8.m.61646,nucleobase-containing compound cata...,NA,protein-term
+CHOYP_LOC100372342.1.1.m.63404,growth,NA,protein-term
+CHOYP_contig_032576.m.37192,growth,NA,protein-term
+CHOYP_contig_004993.m.5721,growth,NA,protein-term
+CHOYP_BRAFLDRAFT_127065.6.7.m.30727,growth,NA,protein-term
+CHOYP_TEKT3.1.1.m.37281,locomotion,NA,protein-term
+CHOYP_TEKT5.1.1.m.60031,locomotion,NA,protein-term
+CHOYP_TEKT5.1.1.m.60033,locomotion,NA,protein-term
+CHOYP_BRAFLDRAFT_123537.2.2.m.50531,locomotion,NA,protein-term
+CHOYP_LOC589479.2.2.m.57247,locomotion,NA,protein-term
+CHOYP_LOC100372287.1.1.m.10381,locomotion,NA,protein-term
+CHOYP_FLNC.2.5.m.37450,locomotion,NA,protein-term
+CHOYP_LOC100372342.1.1.m.63404,locomotion,NA,protein-term
+CHOYP_contig_023655.m.26913,locomotion,NA,protein-term
+CHOYP_HSP90AA1.1.1.m.14867,locomotion,NA,protein-term
+CHOYP_RLA0.3.7.m.42196,ribosome biogenesis,NA,protein-term
+CHOYP_LOC754557.1.2.m.5492,homeostatic process,NA,protein-term
+CHOYP_ISCW_ISCW010532.1.4.m.11493,homeostatic process,NA,protein-term
+CHOYP_LOC100377173.1.2.m.37699,homeostatic process,NA,protein-term
+CHOYP_BRAFLDRAFT_119799.1.1.m.23765,homeostatic process,NA,protein-term
+CHOYP_TXND3.2.4.m.21415,homeostatic process,NA,protein-term
+CHOYP_contig_025684.m.29301,homeostatic process,NA,protein-term
+CHOYP_LRP5.1.3.m.18025,homeostatic process,NA,protein-term
+CHOYP_LOC100211409.1.1.m.4742,homeostatic process,NA,protein-term
+CHOYP_LOC100633077.1.4.m.4444,homeostatic process,NA,protein-term
+CHOYP_LOC100633077.4.4.m.62658,homeostatic process,NA,protein-term
+CHOYP_LOC100372342.1.1.m.63404,homeostatic process,NA,protein-term
+CHOYP_PMAR_PMAR003946.2.2.m.31102,homeostatic process,NA,protein-term
+CHOYP_RS21.1.4.m.13400,homeostatic process,NA,protein-term
+CHOYP_PDIA1.1.1.m.5297,homeostatic process,NA,protein-term
+CHOYP_ISCW_ISCW008219.1.2.m.46822,homeostatic process,NA,protein-term
+CHOYP_TXND3.1.4.m.3505,homeostatic process,NA,protein-term
+CHOYP_AGAP_AGAP007120.1.1.m.57542,homeostatic process,NA,protein-term
+CHOYP_ISCW_ISCW010532.2.4.m.35454,homeostatic process,NA,protein-term
+CHOYP_contig_023655.m.26913,pigmentation,NA,protein-term
+CHOYP_LOC100123907.1.1.m.2987,small molecule metabolic process,NA,protein-term
+CHOYP_NEMVEDRAFT_V1G97278.2.2.m.63648,small molecule metabolic process,NA,protein-term
+CHOYP_ATPB.1.1.m.21960,small molecule metabolic process,NA,protein-term
+CHOYP_RS21.1.4.m.13400,small molecule metabolic process,NA,protein-term
+CHOYP_NPC2.6.7.m.31030,small molecule metabolic process,NA,protein-term
+CHOYP_LOC101072646.1.1.m.8800,small molecule metabolic process,NA,protein-term
+CHOYP_COX5B.3.3.m.38557,small molecule metabolic process,NA,protein-term
+CHOYP_contig_023897.m.27203,small molecule metabolic process,NA,protein-term
+CHOYP_LOC754557.1.2.m.5492,small molecule metabolic process,NA,protein-term
+CHOYP_contig_055984.m.66583,small molecule metabolic process,NA,protein-term
+CHOYP_PCKG.1.2.m.43785,small molecule metabolic process,NA,protein-term
+CHOYP_contig_039285.m.44499,small molecule metabolic process,NA,protein-term
+CHOYP_LOC100121788.1.1.m.28436,small molecule metabolic process,NA,protein-term
+CHOYP_KCY.1.1.m.29973,small molecule metabolic process,NA,protein-term
+CHOYP_LRP5.1.3.m.18025,small molecule metabolic process,NA,protein-term
+CHOYP_contig_039966.m.45203,small molecule metabolic process,NA,protein-term
+CHOYP_TXND3.2.4.m.21415,small molecule metabolic process,NA,protein-term
+CHOYP_SAHHA.1.1.m.62610,small molecule metabolic process,NA,protein-term
+CHOYP_PDIA1.1.1.m.5297,small molecule metabolic process,NA,protein-term
+CHOYP_TXND3.1.4.m.3505,small molecule metabolic process,NA,protein-term
+CHOYP_ENO.1.2.m.7681,small molecule metabolic process,NA,protein-term
+CHOYP_LOC100366455.3.3.m.28840,small molecule metabolic process,NA,protein-term
+CHOYP_AGAP_AGAP007120.1.1.m.57542,small molecule metabolic process,NA,protein-term
+CHOYP_MDHC.1.1.m.57053,small molecule metabolic process,NA,protein-term
+CHOYP_contig_008261.m.9575,small molecule metabolic process,NA,protein-term
+CHOYP_BRAFLDRAFT_119799.1.1.m.23765,small molecule metabolic process,NA,protein-term
+CHOYP_LOC100369657.2.2.m.45309,small molecule metabolic process,NA,protein-term
+CHOYP_BRAFLDRAFT_115608.1.1.m.25984,small molecule metabolic process,NA,protein-term
+CHOYP_LOC100377173.1.2.m.37699,symbiont process,NA,protein-term
+CHOYP_contig_004993.m.5721,symbiont process,NA,protein-term
+CHOYP_DUOX1.4.4.m.44613,symbiont process,NA,protein-term
+CHOYP_DMBT1.13.34.m.27666,symbiont process,NA,protein-term
+CHOYP_FLNC.2.5.m.37450,symbiont process,NA,protein-term
+CHOYP_LDLR.6.7.m.57984,symbiont process,NA,protein-term
+CHOYP_LOC100211409.1.1.m.4742,symbiont process,NA,protein-term
+CHOYP_contig_041958.m.48141,symbiont process,NA,protein-term
+CHOYP_BRAFLDRAFT_246510.1.1.m.27433,anatomical structure formation invo...,NA,protein-term
+CHOYP_BRAFLDRAFT_74063.1.5.m.2740,anatomical structure formation invo...,NA,protein-term
+CHOYP_BRAFLDRAFT_130809.1.1.m.5127,anatomical structure formation invo...,NA,protein-term
+CHOYP_HSP90AA1.1.1.m.14867,anatomical structure formation invo...,NA,protein-term
+CHOYP_BRAFLDRAFT_263599.1.1.m.59011,anatomical structure formation invo...,NA,protein-term
+CHOYP_contig_025684.m.29301,anatomical structure formation invo...,NA,protein-term
+CHOYP_BRAFLDRAFT_125880.1.3.m.7081,anatomical structure formation invo...,NA,protein-term
+CHOYP_contig_033285.m.37973,anatomical structure formation invo...,NA,protein-term
+CHOYP_PHUM_PHUM226120.7.7.m.54053,anatomical structure formation invo...,NA,protein-term
+CHOYP_LOC100695151.2.2.m.30573,anatomical structure formation invo...,NA,protein-term
+CHOYP_LOC100372342.1.1.m.63404,anatomical structure formation invo...,NA,protein-term
+CHOYP_ISCW_ISCW017350.1.1.m.11950,anatomical structure formation invo...,NA,protein-term
+CHOYP_DSIM_GD13354.1.1.m.6235,anatomical structure development,NA,protein-term
+CHOYP_FLNA.2.6.m.11845,anatomical structure development,NA,protein-term
+CHOYP_contig_023655.m.26913,anatomical structure development,NA,protein-term
+CHOYP_NASP.4.4.m.56613,anatomical structure development,NA,protein-term
+CHOYP_CNE_1C34780.3.3.m.30615,anatomical structure development,NA,protein-term
+CHOYP_HSP90AA1.1.1.m.14867,anatomical structure development,NA,protein-term
+CHOYP_ISCW_ISCW008219.1.2.m.46822,anatomical structure development,NA,protein-term
+CHOYP_SMP_087250.2.2.m.25167,anatomical structure development,NA,protein-term
+CHOYP_ISCW_ISCW023973.1.2.m.6506,anatomical structure development,NA,protein-term
+CHOYP_BRAFLDRAFT_125880.1.3.m.7081,anatomical structure development,NA,protein-term
+CHOYP_contig_025684.m.29301,anatomical structure development,NA,protein-term
+CHOYP_LOC100372342.1.1.m.63404,anatomical structure development,NA,protein-term
+CHOYP_ADD.3.5.m.17639,anatomical structure development,NA,protein-term
+CHOYP_LOC589479.2.2.m.57247,anatomical structure development,NA,protein-term
+CHOYP_CYT5.1.1.m.29962,anatomical structure development,NA,protein-term
+CHOYP_CHER.1.1.m.63350,anatomical structure development,NA,protein-term
+CHOYP_TXND3.2.4.m.21415,anatomical structure development,NA,protein-term
+CHOYP_BRAFLDRAFT_74063.1.5.m.2740,anatomical structure development,NA,protein-term
+CHOYP_BRAFLDRAFT_246510.1.1.m.27433,anatomical structure development,NA,protein-term
+CHOYP_DVIR_GJ21252.1.1.m.10086,anatomical structure development,NA,protein-term
+CHOYP_DWIL_GK25045.1.2.m.9225,anatomical structure development,NA,protein-term
+CHOYP_SMP_051990.7.7.m.57569,anatomical structure development,NA,protein-term
+CHOYP_LOC663855.2.5.m.747,anatomical structure development,NA,protein-term
+CHOYP_TXND3.1.4.m.3505,anatomical structure development,NA,protein-term
+CHOYP_BRAFLDRAFT_130809.1.1.m.5127,anatomical structure development,NA,protein-term
+CHOYP_LOC100374495.1.1.m.55368,anatomical structure development,NA,protein-term
+CHOYP_LOC100897892.1.1.m.1462,anatomical structure development,NA,protein-term
+CHOYP_GLIPR1L1.1.1.m.41745,anatomical structure development,NA,protein-term
+CHOYP_ISCW_ISCW017350.1.1.m.11950,anatomical structure development,NA,protein-term
+CHOYP_contig_026477.m.30166,anatomical structure development,NA,protein-term
+CHOYP_LRP5.1.3.m.18025,anatomical structure development,NA,protein-term
+CHOYP_BRAFLDRAFT_127065.6.7.m.30727,anatomical structure development,NA,protein-term
+CHOYP_FLNC.2.5.m.37450,anatomical structure development,NA,protein-term
+CHOYP_LOC100633077.4.4.m.62658,anatomical structure development,NA,protein-term
+CHOYP_DMBT1.13.34.m.27666,anatomical structure development,NA,protein-term
+CHOYP_BRAFLDRAFT_99083.1.1.m.11705,anatomical structure development,NA,protein-term
+CHOYP_LOC100633077.1.4.m.4444,anatomical structure development,NA,protein-term
+CHOYP_CTL2.1.2.m.3858,anatomical structure development,NA,protein-term
+CHOYP_SPTCA.1.2.m.1905,anatomical structure development,NA,protein-term
+CHOYP_contig_004993.m.5721,anatomical structure development,NA,protein-term
+CHOYP_QCR2.1.1.m.35613,anatomical structure development,NA,protein-term
+CHOYP_NEMVEDRAFT_V1G180651.1.2.m.2808,anatomical structure development,NA,protein-term
+CHOYP_ISCW_ISCW012366.1.1.m.3691,anatomical structure development,NA,protein-term
+CHOYP_LOC100695151.2.2.m.30573,anatomical structure development,NA,protein-term
+CHOYP_TEKT3.1.1.m.37281,cell motility,NA,protein-term
+CHOYP_TEKT5.1.1.m.60033,cell motility,NA,protein-term
+CHOYP_FLNC.2.5.m.37450,cell motility,NA,protein-term
+CHOYP_LOC100372287.1.1.m.10381,cell motility,NA,protein-term
+CHOYP_LOC589479.2.2.m.57247,cell motility,NA,protein-term
+CHOYP_BRAFLDRAFT_123537.2.2.m.50531,cell motility,NA,protein-term
+CHOYP_contig_023655.m.26913,cell motility,NA,protein-term
+CHOYP_LOC100372342.1.1.m.63404,cell motility,NA,protein-term
+CHOYP_TEKT5.1.1.m.60031,cell motility,NA,protein-term
+CHOYP_HSP90AA1.1.1.m.14867,cell motility,NA,protein-term
+CHOYP_LOC100705966.1.1.m.45957,nervous system process,NA,protein-term
+CHOYP_FLNA.2.6.m.11845,nervous system process,NA,protein-term
+CHOYP_contig_025684.m.29301,nervous system process,NA,protein-term
+CHOYP_CHER.1.1.m.63350,nervous system process,NA,protein-term
+CHOYP_ISCW_ISCW008219.1.2.m.46822,nervous system process,NA,protein-term
+CHOYP_contig_016567.m.19514,cofactor metabolic process,NA,protein-term
+CHOYP_BRAFLDRAFT_119799.1.1.m.23765,cofactor metabolic process,NA,protein-term
+CHOYP_ENO.1.2.m.7681,cofactor metabolic process,NA,protein-term
+CHOYP_LOC100121788.1.1.m.28436,cofactor metabolic process,NA,protein-term
+CHOYP_MDHC.1.1.m.57053,cofactor metabolic process,NA,protein-term
+CHOYP_LOC100366455.3.3.m.28840,cofactor metabolic process,NA,protein-term
+CHOYP_CNOT1.1.1.m.12106,chromosome organization,NA,protein-term
+CHOYP_ISCW_ISCW017350.1.1.m.11950,chromosome organization,NA,protein-term
+CHOYP_contig_043238.m.49940,chromosome organization,NA,protein-term
+CHOYP_ARP3.1.1.m.6867,cell division,NA,protein-term
+CHOYP_TRIADDRAFT_57086.1.1.m.25271,cell division,NA,protein-term
+CHOYP_ADD.3.5.m.17639,cell division,NA,protein-term
+CHOYP_NEMVEDRAFT_V1G180651.1.2.m.2808,protein maturation,NA,protein-term
+CHOYP_ATPB.1.1.m.21960,transmembrane transport,NA,protein-term
+CHOYP_LOC101072646.1.1.m.8800,transmembrane transport,NA,protein-term
+CHOYP_COX5B.3.3.m.38557,transmembrane transport,NA,protein-term
+CHOYP_contig_023538.m.26787,transmembrane transport,NA,protein-term
+CHOYP_contig_039285.m.44499,transmembrane transport,NA,protein-term
+CHOYP_RS5.1.2.m.146,membrane organization,NA,protein-term
+CHOYP_RL18A.1.8.m.12900,membrane organization,NA,protein-term
+CHOYP_ISCW_ISCW008219.1.2.m.46822,membrane organization,NA,protein-term
+CHOYP_FLNC.2.5.m.37450,membrane organization,NA,protein-term
+CHOYP_SPTCA.1.2.m.1905,membrane organization,NA,protein-term
+CHOYP_LOC100372287.1.1.m.10381,membrane organization,NA,protein-term
+CHOYP_AGRIN.2.5.m.5339,membrane organization,NA,protein-term
+CHOYP_RL18A.6.8.m.61646,membrane organization,NA,protein-term
+CHOYP_LOC100908688.1.5.m.30293,protein-containing complex assembly,NA,protein-term
+CHOYP_LOC660560.1.4.m.31036,protein-containing complex assembly,NA,protein-term
+CHOYP_NASP.4.4.m.56613,protein-containing complex assembly,NA,protein-term
+CHOYP_BRAFLDRAFT_263599.1.1.m.59011,protein-containing complex assembly,NA,protein-term
+CHOYP_RL23A.3.6.m.31005,protein-containing complex assembly,NA,protein-term
+CHOYP_LOC100705966.1.1.m.45957,protein-containing complex assembly,NA,protein-term
+CHOYP_HSP90AA1.1.1.m.14867,protein-containing complex assembly,NA,protein-term
+CHOYP_CUL3B.1.1.m.61644,protein-containing complex assembly,NA,protein-term
+CHOYP_AGRIN.2.5.m.5339,protein-containing complex assembly,NA,protein-term
+CHOYP_PHUM_PHUM226120.7.7.m.54053,protein-containing complex assembly,NA,protein-term
+CHOYP_RS5.1.2.m.146,protein-containing complex assembly,NA,protein-term
+CHOYP_LOC549476.1.1.m.42388,protein-containing complex assembly,NA,protein-term
+CHOYP_ISCW_ISCW012366.1.1.m.3691,protein-containing complex assembly,NA,protein-term
+CHOYP_NDUFB9.1.2.m.37494,protein-containing complex assembly,NA,protein-term
+CHOYP_ISCW_ISCW023973.1.2.m.6506,protein-containing complex assembly,NA,protein-term
+CHOYP_LOC100711559.1.1.m.10313,protein-containing complex assembly,NA,protein-term
+CHOYP_NEMVEDRAFT_V1G235461.1.1.m.28341,protein-containing complex assembly,NA,protein-term
+CHOYP_AGAP_AGAP007120.1.1.m.57542,protein-containing complex assembly,NA,protein-term
+CHOYP_DSIM_GD13354.1.1.m.6235,protein-containing complex assembly,NA,protein-term
+CHOYP_BRAFLDRAFT_123537.2.2.m.50531,protein-containing complex assembly,NA,protein-term
+CHOYP_LOC100372342.1.1.m.63404,protein-containing complex assembly,NA,protein-term
+CHOYP_LOC100903522.1.3.m.2296,protein-containing complex assembly,NA,protein-term
+CHOYP_DVIR_GJ23521.1.1.m.2757,protein-containing complex assembly,NA,protein-term
+CHOYP_DUOX1.4.4.m.44613,protein-containing complex assembly,NA,protein-term

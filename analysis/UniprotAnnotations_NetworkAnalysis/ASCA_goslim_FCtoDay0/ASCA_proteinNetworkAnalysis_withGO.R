@@ -51,7 +51,7 @@ STACKED_ASCA_pro_GOid_term <- unique(STACKED_ASCA_pro_GOid_term)
 colnames(STACKED_ASCA_pro_GOid_term)[1] <- "protein_ID"
 STACKED_ASCA_pro_GOid_term <- STACKED_ASCA_pro_GOid_term[which(!is.na(STACKED_ASCA_pro_GOid_term$GO)),]
 
-write.csv(data.frame(unique(STACKED_ASCA_pro_GOid_term$GO)), "~/Documents/GitHub/OysterSeedProject/analysis/UniprotAnnotations/ASCA_goslim_FCtoDay0/ASCA_all_GOterms.csv", row.names = FALSE, quote = FALSE)
+write.csv(data.frame(unique(STACKED_ASCA_pro_GOid_term$GO)), "~/Documents/GitHub/OysterSeedProject/analysis/UniprotAnnotations_NetworkAnalysis/ASCA_goslim_FCtoDay0/ASCA_all_GOterms.csv", row.names = FALSE, quote = FALSE)
 
 ###
 #get ancestors
@@ -196,7 +196,7 @@ nrow(par_ch_anc_slimBP[grep("GO:0008150", par_ch_anc_slimBP$term),])
 #[1] 690
 
 #unique terms to upload to Revigo
-write.csv(unique(par_ch_anc_slim[-grep("GO:0008150",par_ch_anc_slim$term),2]),"~/Documents/GitHub/OysterSeedProject/analysis/UniprotAnnotations/ASCA_goslim_FCtoDay0/ASCA_all_GOSLIMterms.csv")
+write.csv(unique(par_ch_anc_slim[-grep("GO:0008150",par_ch_anc_slim$term),2]),"~/Documents/GitHub/OysterSeedProject/analysis/UniprotAnnotations_NetworkAnalysis/ASCA_goslim_FCtoDay0/ASCA_all_GOSLIMterms.csv")
 
 #checking how GSEA and ontologyX GOid frequncies compare 
 par_ch_anc_slim_freq <- data.frame(table(par_ch_anc_slimBP$term))
@@ -222,13 +222,106 @@ colnames(goslim_protein)[4] <- "GOslimTerm"
 
 ###merge GO slim terms with uniprot info
 #goslim_protein_uniprot <- merge(goslim_protein,ASCA_all_FC_pval[,-grep("GO", colnames(ASCA_all_FC_pval))], by = "protein_ID")
-#write.csv(goslim_protein_uniprot,"~/Documents/GitHub/OysterSeedProject/analysis/UniprotAnnotations/ASCA_goslim_FCtoDay0/ASCA_all_proteins_GOSLIMterms_uniprot.csv", row.names = FALSE, quote = FALSE)
+#write.csv(goslim_protein_uniprot,"~/Documents/GitHub/OysterSeedProject/analysis/UniprotAnnotations_NetworkAnalysis/ASCA_goslim_FCtoDay0/ASCA_all_proteins_GOSLIMterms_uniprot.csv", row.names = FALSE, quote = FALSE)
 
 goslim_protein_uniprot <- ASCA_all_FC_pval[which(ASCA_all_FC_pval$protein_ID %in% unique(goslim_protein$protein_ID)),-grep("GO|_FC|_Chi", colnames(ASCA_all_FC_pval))]
 
 #export table for nodes attributes
 
-write.csv(goslim_protein_uniprot[,-c(29,31:38,40:48)], "~/Documents/GitHub/OysterSeedProject/analysis/UniprotAnnotations/ASCA_goslim_FCtoDay0/ASCA_all_UNIQUE_proteins_wGSLIM_uniprot.csv", row.names = FALSE, quote = FALSE)
+write.csv(goslim_protein_uniprot[,-c(29,31:38,40:48)], "~/Documents/GitHub/OysterSeedProject/analysis/UniprotAnnotations_NetworkAnalysis/ASCA_goslim_FCtoDay0/ASCA_all_UNIQUE_proteins_wGSLIM_uniprot.csv", row.names = FALSE, quote = FALSE)
+
+##############################################
+####Analysis with same day comparisons
+##############################################
+
+###Getting node attributes containing same day comparisons
+
+sameday_logFC_pval <- read.csv("~/Documents/GitHub/OysterSeedProject/analysis/TotNumSpecRatio_FC_Pval/sumNUMSPECSTOT_plus1_ratioFC_logFC_pval_DAYSCOMPARED.csv", stringsAsFactors = FALSE)
+colnames(sameday_logFC_pval)[1] <- "protein_ID"
+sameday_logFC_pval_uniprot<- merge(sameday_logFC_pval, uniprot, by = "protein_ID", all.x = TRUE)
+sameday_logFC_pval_uniprot_mapped <- sameday_logFC_pval_uniprot[-grep("unmapped", sameday_logFC_pval_uniprot$Entry),]
+
+ASCA_all_FCtosameday_pval <- merge(ASCA_all, sameday_logFC_pval_uniprot_mapped, by = "protein_ID")
+ASCA_all_FCtosameday_pval <- ASCA_all_FCtosameday_pval[,-c(25:32,34:45)]
+ASCA_all_FCtosameday_pval$type <- "protein"
+
+write.csv(ASCA_all_FCtosameday_pval,"~/Documents/GitHub/OysterSeedProject/analysis/UniprotAnnotations_NetworkAnalysis/SameDayFCtoTemp/ASCAproteins_GOsemsim_edges/ASCA_all_FCtosameday_pval.csv", quote = FALSE, row.names = FALSE)
+
+
+#####################
+###Cytoscape STRINGapp
+######################
+###trying STRINGapp to get protein interaction info
+test <- merge(ASCA_all, sameday_logFC_pval_uniprot_mapped, by = "protein_ID")
+test <- unique(test[,c("Entry", "GO_IDs")])
+test$GO_IDs <- gsub("; ",",",test$GO_IDs)
+write.table(test, "~/Documents/GitHub/OysterSeedProject/analysis/UniprotAnnotations_NetworkAnalysis/SameDayFCtoTemp/StringApp_analysis/ASCA_entry_GO.txt", sep = " ", quote = FALSE, row.names = FALSE)
+
+#############################
+##Calculating # of proteins remaining after thresholding logFC or pvalue and compare to ASCA proteins
+#############################
+logFC_Columns <- colnames(sameday_logFC_pval_uniprot_mapped)[grep("logFC",colnames(sameday_logFC_pval_uniprot_mapped))]
+
+#LogFC magnitude threshold of 1 
+logFC1_pro <- data.frame()
+for (i in 1:length(logFC_Columns)){
+  column <- logFC_Columns[i]
+  logFC1_pro_temp <- data.frame(sameday_logFC_pval_uniprot_mapped[which(abs(sameday_logFC_pval_uniprot_mapped[,column]) >=1),1])
+  logFC1_pro <- rbind(logFC1_pro, logFC1_pro_temp)
+}
+
+nrow(unique(logFC1_pro))
+#[1] 2224
+
+#LogFC magnitude threshold of 2 
+logFC1_pro <- data.frame()
+for (i in 1:length(logFC_Columns)){
+  column <- logFC_Columns[i]
+  logFC1_pro_temp <- data.frame(sameday_logFC_pval_uniprot_mapped[which(abs(sameday_logFC_pval_uniprot_mapped[,column]) >=2),1])
+  logFC1_pro <- rbind(logFC1_pro, logFC1_pro_temp)
+}
+
+nrow(unique(logFC1_pro))
+#[1] 165
+
+#Thresholding with ChiSq pvalues
+adjChiSqpvalColumns <- colnames(sameday_logFC_pval_uniprot_mapped)[grep("adj.ChiSq.pval",colnames(sameday_logFC_pval_uniprot_mapped))]
+
+#adjChiSq pvalue threshold of =< 0.05
+all_sig_pro <- data.frame()
+for (i in 1:length(adjChiSqpvalColumns)){
+  column <- adjChiSqpvalColumns[i]
+  sig_pro <- data.frame(sameday_logFC_pval_uniprot_mapped[which(sameday_logFC_pval_uniprot_mapped[,column] <= 0.05),1])
+  all_sig_pro <- rbind(all_sig_pro, sig_pro)
+}
+nrow(unique(all_sig_pro))
+#[1] 128
+
+#adjChiSq pvalue threshold of =< 0.1
+all_sig_pro <- data.frame()
+for (i in 1:length(adjChiSqpvalColumns)){
+  column <- adjChiSqpvalColumns[i]
+  sig_pro <- data.frame(sameday_logFC_pval_uniprot_mapped[which(sameday_logFC_pval_uniprot_mapped[,column] <= 0.1),1])
+  all_sig_pro <- rbind(all_sig_pro, sig_pro)
+}
+nrow(unique(all_sig_pro))
+#[1] 153
+
+#figure out overlap between ASCA proteins and adj.pval proteins
+all_sig0.1_pro <- unique(all_sig_pro)
+#select sig proteins @ p.adj 0.1 from logFC list
+all_sig0.1_pro_logFC_pval <- sameday_logFC_pval_uniprot_mapped[which(sameday_logFC_pval_uniprot_mapped$protein_ID %in% all_sig0.1_pro[,1]),]
+#merge with ASCA
+test <- merge(ASCA_all_FCtosameday_pval, all_sig0.1_pro_logFC_pval, by = "protein_ID", all =TRUE)
+###There are 433 proteins total, 230 unique to ASCA (no sig. FC) and 103 unique to sig.0.1 list
+##Export 0.1 list to upload in cytoscape as node attributes
+
+all_sig0.1_pro_logFC_pval_abbrv <- all_sig0.1_pro_logFC_pval[,-c(22:29,31:ncol(all_sig0.1_pro_logFC_pval))]
+all_sig0.1_pro_logFC_pval_abbrv$type <- "protein"
+
+write.csv(all_sig0.1_pro_logFC_pval_abbrv,"~/Documents/GitHub/OysterSeedProject/analysis/UniprotAnnotations_NetworkAnalysis/SameDayFCtoTemp/ChiSqPval0.1proteins_SameDayFCtotemp_GOsemsim_edges/all_sig0.1_pro_logFC_pval_abbrv.csv", quote = FALSE, row.names = FALSE)
+
+
 
 
 ################################
@@ -255,11 +348,8 @@ nrow(all_sig_pro)
 
 sig_FC_logFC_pval_uniprot_mapped <- FC_logFC_pval_uniprot_mapped[which(FC_logFC_pval_uniprot_mapped$protein_ID %in% all_sig_pro[,1]),]
 
-write.table(sig_FC_logFC_pval_uniprot_mapped, "~/Documents/GitHub/OysterSeedProject/analysis/UniprotAnnotations/sigProteins_FC_logFC_pval_uniprotAnnos.tsv", sep = "\t",quote = FALSE, row.names = FALSE)
-
-
-write.table(sig_FC_logFC_pval_uniprot_mapped[,grep("adj|Entry$")], "~/Documents/GitHub/OysterSeedProject/analysis/UniprotAnnotations/sigProteins_FC_logFC_pval_uniprotAnnos.tsv", sep = "\t",quote = FALSE, row.names = FALSE)
-write.csv(sig_FC_logFC_pval_uniprot_mapped[,c(50,grep("adj", colnames(sig_FC_logFC_pval_uniprot_mapped)))], "~/Documents/GitHub/OysterSeedProject/analysis/UniprotAnnotations/sigProteins_FC_logFC_pval_uniprotAccessions.csv", quote = FALSE, row.names = FALSE)
+write.table(sig_FC_logFC_pval_uniprot_mapped[,grep("adj|Entry$")], "~/Documents/GitHub/OysterSeedProject/analysis/UniprotAnnotations_NetworkAnalysis/Feb5analysis/sigProteins_FC_logFC_pval_uniprotAnnos.tsv", sep = "\t",quote = FALSE, row.names = FALSE)
+write.csv(sig_FC_logFC_pval_uniprot_mapped[,c(50,grep("adj", colnames(sig_FC_logFC_pval_uniprot_mapped)))], "~/Documents/GitHub/OysterSeedProject/analysis/UniprotAnnotations_NetworkAnalysis/Feb14analysis/sigProteins_FC_logFC_pval_uniprotAccessions.csv", quote = FALSE, row.names = FALSE)
 
 ######
 ##make a heatmap of log fold change values for all sig proteins 
@@ -300,7 +390,7 @@ STACKED_pro_GOid_term[,"GO_ID"] <- paste("GO:",STACKED_pro_GOid_term$GO_ID, sep 
 sig_uniq_GO_IDs <- data.frame(paste("GO:",unique(STACKED_pro_GOid_term$GO_ID), sep = ""))
 
 
-write.csv(sig_uniq_GO_IDs, "~/Documents/GitHub/OysterSeedProject/analysis/UniprotAnnotations/sigProt_unique_GOids.csv",row.names = FALSE, quote = FALSE)
+write.csv(sig_uniq_GO_IDs, "~/Documents/GitHub/OysterSeedProject/analysis/UniprotAnnotations_NetworkAnalysis/Feb5analysis/sigProt_unique_GOids.csv",row.names = FALSE, quote = FALSE)
 
 #####my own enrichment
 
@@ -333,7 +423,7 @@ for (i in 1:nrow(D3T23_sig_GO_freq)){
 GO_enrich$adj.p.val <- p.adjust(GO_enrich$p.val)
 GO_enrich$sample_GO <- as.character(GO_enrich$sample_GO)
 
-write.csv(GO_enrich, "~/Documents/GitHub/OysterSeedProject/analysis/UniprotAnnotations/GOenrich_D3T23.csv",row.names = FALSE, quote = FALSE)
+write.csv(GO_enrich, "~/Documents/GitHub/OysterSeedProject/analysis/UniprotAnnotations_NetworkAnalysis/Feb14analysis/GOenrich_D3T23.csv",row.names = FALSE, quote = FALSE)
 
 
 #####FOR 29 DEGREES
@@ -361,7 +451,7 @@ for (i in 1:nrow(D3T29_sig_GO_freq)){
 GO_enrich$adj.p.val <- p.adjust(GO_enrich$p.val)
 GO_enrich$sample_GO <- as.character(GO_enrich$sample_GO)
 
-write.csv(GO_enrich, "~/Documents/GitHub/OysterSeedProject/analysis/UniprotAnnotations/GOenrich_D3T29.csv",row.names = FALSE, quote = FALSE)
+write.csv(GO_enrich, "~/Documents/GitHub/OysterSeedProject/analysis/UniprotAnnotations_NetworkAnalysis/Feb14analysis/GOenrich_D3T29.csv",row.names = FALSE, quote = FALSE)
 
 
 
@@ -374,7 +464,7 @@ write.csv(GO_enrich, "~/Documents/GitHub/OysterSeedProject/analysis/UniprotAnnot
 D3T23_sig_prot_nodes <- sig_FC_logFC_pval_uniprot_mapped[which(sig_FC_logFC_pval_uniprot_mapped$D_3_T_23_adj.ChiSq.pval < 0.05),c(1:2,5)]
 colnames(D3T23_sig_prot_nodes) <- c("protein_ID", "log10p.adj", "logFC")
 D3T23_sig_prot_nodes$log10p.adj <- log(D3T23_sig_prot_nodes$log10p.adj, 10)
-write.csv(D3T23_sig_prot_nodes, "~/Documents/GitHub/OysterSeedProject/analysis/UniprotAnnotations/D3T23_sig_prot_nodes.csv",row.names = FALSE, quote = FALSE)
+write.csv(D3T23_sig_prot_nodes, "~/Documents/GitHub/OysterSeedProject/analysis/UniprotAnnotations_NetworkAnalysis/Feb14analysis/D3T23_sig_prot_nodes.csv",row.names = FALSE, quote = FALSE)
 
 
 D3T29_sig_prot_nodes <- sig_FC_logFC_pval_uniprot_mapped[which(sig_FC_logFC_pval_uniprot_mapped$D_3_T_29_adj.ChiSq.pval < 0.05),c(1,6,9)]
@@ -386,7 +476,7 @@ D3_sig_prot_nodes <- rbind(D3T29_sig_prot_nodes, D3T29_sig_prot_nodes)
 
 #make edge attribute table
 
-write.csv(D3T23_sig_GO[,1:2], "~/Documents/GitHub/OysterSeedProject/analysis/UniprotAnnotations/D3T23_sig_prot_edges.csv",row.names = FALSE, quote = FALSE)
+write.csv(D3T23_sig_GO[,1:2], "~/Documents/GitHub/OysterSeedProject/analysis/UniprotAnnotations_NetworkAnalysis/Feb14analysis/D3T23_sig_prot_edges.csv",row.names = FALSE, quote = FALSE)
 
 
 
@@ -400,10 +490,10 @@ write.csv(D3T23_sig_GO[,1:2], "~/Documents/GitHub/OysterSeedProject/analysis/Uni
 GO_assoc <- data.frame()
 
 
-https://www.slideshare.net/dgrapov/proteomics-workshop-2014-lab-dmitry-grapov
+#https://www.slideshare.net/dgrapov/proteomics-workshop-2014-lab-dmitry-grapov
 
 
-ftp://ftp.geneontology.org/go/www/GO.downloads.files.shtml
+#ftp://ftp.geneontology.org/go/www/GO.downloads.files.shtml
 
 #heatmap based on pfams
 
