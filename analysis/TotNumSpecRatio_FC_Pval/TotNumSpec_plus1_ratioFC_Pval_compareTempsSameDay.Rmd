@@ -117,7 +117,10 @@ Add 1 to sum'd NUMSPECSTOT to eliminate zero values
 new_data_sum_ADJNSAFnotzero[,-c(1:4)] <- new_data_sum_ADJNSAFnotzero[,-c(1:4)] +1
 ```
 
-
+Write out file
+```{r, eval = FALSE, echo = FALSE}
+write.csv(new_data_sum_ADJNSAFnotzero, "~/Documents/GitHub/OysterSeedProject/analysis/UniprotAnnotations_NetworkAnalysis/VerifyStatsProteinSelection/TotNumSpecData.csv", quote =FALSE, row.names = FALSE)
+```
 
 Calculate sum of NUMSPECTOT for each sample
 ```{r}
