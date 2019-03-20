@@ -91,7 +91,7 @@ ggsave("~/Documents/GitHub/OysterSeedProject/analysis/UniprotAnnotations_Network
 d <- ggplot(all_sig0.1_ASCA_clust_pro_totnumspec[grep("ASCA", all_sig0.1_ASCA_clust_pro_totnumspec$method),], aes(x = day, y = TotNumSpec, color = temp)) + geom_line() + facet_wrap(~protein_ID, scale = "free") + ggtitle("Total Spectral Abundance for proteins selected by ASCA")
 ggsave("~/Documents/GitHub/OysterSeedProject/analysis/UniprotAnnotations_NetworkAnalysis/VerifyStatsProteinSelection/ASCA_selects_TotNumSpec.pdf", d, width = 19, height = 13 )
 d <- ggplot(all_sig0.1_ASCA_clust_pro_totnumspec[grep("PropTest", all_sig0.1_ASCA_clust_pro_totnumspec$method),], aes(x = day, y = TotNumSpec, color = temp)) + geom_line() + facet_wrap(~protein_ID, scale = "free") + ggtitle("Total Spectral Abundance for proteins selected by ChiSq prop. test pval 0.1") 
-ggsave()ggsave("~/Documents/GitHub/OysterSeedProject/analysis/UniprotAnnotations_NetworkAnalysis/VerifyStatsProteinSelection/chisqpval0.1_selects_TotNumSpec.pdf", d, width = 19, height = 13 )
+ggsave("~/Documents/GitHub/OysterSeedProject/analysis/UniprotAnnotations_NetworkAnalysis/VerifyStatsProteinSelection/chisqpval0.1_selects_TotNumSpec.pdf", d, width = 19, height = 13 )
 d <- ggplot(all_sig0.1_ASCA_clust_pro_totnumspec[grep("clustering", all_sig0.1_ASCA_clust_pro_totnumspec$method),], aes(x = day, y = TotNumSpec, color = temp)) + geom_line() + facet_wrap(~protein_ID, scale = "free") + ggtitle("Total Spectral Abundance for proteins selected by clustering")
 ggsave("~/Documents/GitHub/OysterSeedProject/analysis/UniprotAnnotations_NetworkAnalysis/VerifyStatsProteinSelection/clustering_selects_TotNumSpec.pdf", d, width = 19, height = 13 )
 
