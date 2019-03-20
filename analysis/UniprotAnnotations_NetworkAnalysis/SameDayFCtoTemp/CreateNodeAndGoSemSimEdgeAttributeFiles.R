@@ -72,16 +72,21 @@ write.csv(all_sig0.1_pro_logFC_pval_abbrv,"~/Documents/GitHub/OysterSeedProject/
 
 #Get GO IDs from all_sig0.1_pro_logFC_pval
 sig0.1_pro_GO <- all_sig0.1_pro_logFC_pval[,c("protein_ID","GO_IDs")]
+#make empty data frame that will get filled in by for loop
 sig0.1_pro_GOid_term <- data.frame()
+#loop through each line of data frame containing one column with "protein_ID" and one column with list of "GO_IDs" separated by ";"
 for (i in 1:nrow(sig0.1_pro_GO)){
-  sig0.1_pro_GOid_term_row <- data.frame(t(data.frame(strsplit(as.character(sig0.1_pro_GO$GO_IDs[i]),'; ', fixed = TRUE))))
+  #create a row that lists all GO IDs associated with one protein listed across rows, where each different GO ID gets put in it's own column
+  sig0.1_pro_GOid_term_row <- data.frame(t(data.frame(strsplit(as.character(sig0.1_pro_GO$GO_IDs[i]),'; ', fixed = TRUE))), stringsAsFactors = FALSE)
+  #add each row created in the line above to the empty data frame
+  #this will add NAs in columns where less terms exist; e.g. if a protein only has two terms and another has 10, there will be 8 NAs added to the row for the protein with 2 terms
   sig0.1_pro_GOid_term <- rbind.fill(sig0.1_pro_GOid_term,sig0.1_pro_GOid_term_row)
 }
 
 #add protein IDs back to GO IDs
 sig0.1_pro_GOid_term <- cbind(all_sig0.1_pro_logFC_pval[,"protein_ID"], sig0.1_pro_GOid_term)
 #this results in a table with protein ID listed in one column and each next column contains a GO ID that was listed with the protein in Uniprot DB.
-
+str(sig0.1_pro_GOid_term)
 
 #reshape data so that all GO ID columns are gathered in one column called "GO" 
 STACKED_sig0.1_pro_GOid_term <- tidyr::gather(sig0.1_pro_GOid_term,"protein_ID","GO", 2:ncol(sig0.1_pro_GOid_term))
