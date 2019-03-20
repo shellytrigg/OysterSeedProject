@@ -70,7 +70,7 @@ write.csv(all_sig0.1_pro_logFC_pval_abbrv,"~/Documents/GitHub/OysterSeedProject/
 ###Getting edge attributes; these are the GO term relationships
 ###########################################################
 
-#Get GO IDs by subsetting all_sig0.1_pro_logFC_pval for "protein_ID" column and column with list of "GO_IDs" separated by ";"
+#Subset "protein_ID" column and "GO IDs" column containing list of GO_IDs separated by ";" from all_sig0.1_pro_logFC_pval 
 sig0.1_pro_GO <- all_sig0.1_pro_logFC_pval[,c("protein_ID","GO_IDs")]
 #make empty data frame that will get filled in by for loop
 sig0.1_pro_GOid_term <- data.frame()
