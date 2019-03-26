@@ -1,0 +1,145 @@
+---
+title: "ASCA on average NSAF values of all proteins"
+author: "Shelly Trigg"
+date: "1/17/2019"
+output: rmarkdown::github_document
+---
+
+load libraries
+```{r, echo = FALSE}
+library(dplyr)
+library(tidyr)
+library(MetStaT)
+library(ggplot2)
+library(heatmap3)
+```
+
+load data
+```{r}
+#NSAF data from filtered proteins
+data <- read.csv("~/Documents/GitHub/OysterSeedProject/analysis/nmds_R/silo3and2_nozerovals_AVGs.csv", stringsAsFactors = FALSE)
+```
+
+
+```{r, echo =FALSE}
+#load data with annotations so protein IDs can be substituted with shorter names
+#data with uniprot annotations
+data_w_uniprot <- read.csv("~/Documents/GitHub/OysterSeedProject/raw_data/gigaton-uniport-table_GOterms-sperated.csv", stringsAsFactors = FALSE)
+#subset only Protein IDs and Entry names
+data_w_uniprot <- data_w_uniprot[,c("Protein.ID", "Entry.name")]
+#replace pipe character with nothing; remember \\ to escape the | character
+data_w_uniprot$Protein.ID <- gsub("\\|",".", data_w_uniprot$Protein.ID)
+#replace all characters following '_' with nothing in the entry name column
+data_w_uniprot$Entry.name.simple <- gsub("\\_.*","", data_w_uniprot$Entry.name)
+#replace 'none' with 'unknown'
+data_w_uniprot$Entry.name.simple <- gsub("None","Unknown", data_w_uniprot$Entry.name.simple)
+
+#there are duplicated Entry names for unique protein IDs, so we need to make unique Entry names by adding .1, .2 etc.
+#https://stackoverflow.com/questions/16646446/renaming-duplicate-strings-in-r
+
+data_w_uniprot$Entry.name.new <- make.names(data_w_uniprot$Entry.name.simple, unique = TRUE)
+```
+
+```{r subset_data_for_CHOYP_only_rm0and15, echo = FALSE}
+#make a dataframe with just CHOYP proteins
+choyp_data <- data[which(data$day != 0 & data$day != 15),c(1:3,grep("CHOYP", colnames(data)))]
+
+#make a seperate data frame with contaminant proteins
+contam_data <- data[,-grep("CHOYP", colnames(data))]
+```
+
+**Perform ASCA**
+```{r}
+#create matrix to pass to ASCA command, excluding the silo and time info
+ASCA_X <- as.matrix(choyp_data[,-c(1:3)])
+#create matrix to pass to ASCA command with only the silo and time info
+ASCA_F <- choyp_data[,c(1,3)]
+ASCA_F$silo <- as.numeric(substr(ASCA_F$silo,2,2))
+ASCA_F <- as.matrix(ASCA_F)
+#perform ASCA
+ASCA <- ASCA.Calculate(ASCA_X, ASCA_F, equation.elements = "1,2,12", scaling = FALSE)
+```
+
+Here is a summary of the ASCA results (e.g. variance explained by different factors; factor 1= time (days), factor 2 = silo, interaction = interaction of time and silo)
+```{r}
+#print the ASCA summary
+ASCA.GetSummary(ASCA)
+```
+
+### Plot PCAs from ASCA  
+
+**This first plot is the time (days) effect PCA**
+```{r avgNSAF_PCA_timeEffect_plot}
+#plot PCA for factor 1, which is time in this case
+ASCA.PlotScoresPerLevel(ASCA, ee = "1", pcs = "1,2")
+```
+
+**This next plot is the silo effect PCA**
+```{r avgNSAF_PCA_siloEffect_plot}
+#plot PCA for factor 2, which is silo in this case
+ASCA.PlotScoresPerLevel(ASCA, ee = "2", pcs = "1,2")
+```
+
+**This next plot is the time x silo interaction effect PCA**
+```{r avgNSAF_PCA_timeXsiloEffect_plot}
+#plot PCA for factor interaction, which is time x silo in this case
+timexsilo_PC12 <- data.frame(ASCA$`12`$svd$t[,c(1,2)])
+timexsilo_PC12 <- cbind(data.frame(ASCA$`12`$level.combinations$row.patterns), timexsilo_PC12)
+colnames(timexsilo_PC12)<- c("day","silo","PC1","PC2")
+timexsilo_PC12$day <- as.character(timexsilo_PC12$day)
+timexsilo_PC12$silo <- as.character(timexsilo_PC12$silo)
+ggplot(timexsilo_PC12, aes(PC1, PC2)) + geom_point(aes(col = day, shape = silo, size = 3)) + theme_bw() + ggtitle("PC1 vs PC2 for time x silo interaction effect") + theme(plot.title = element_text(face = "bold")) + xlab(paste("PC1"," (",formatC(ASCA$`12`$svd$var.explained[1] * 100,digits=2,format="f"),"%)", sep = "")) + ylab(paste("PC2"," (",formatC(ASCA$`12`$svd$var.explained[2] * 100,digits=2,format="f"),"%)", sep = ""))
+```
+
+### Analysis of proteins affected by silo
+
+Because the silo effect PCA show the most separation between 2 and 3 in PC1, we will look at those loadings.
+
+```{r avgNSAF_PCA_siloEffect_PC12loadings, echo = FALSE}
+#extract protein names from ASCA data; these will be combined with loadings values; the order is maintained
+protnames <- data.frame(colnames(ASCA$data))
+```
+
+combine protein names with ASCA loadings for PC1 for silo factor
+
+```{r avgNSAF_PCA_siloEffect_PC1loadings, echo = FALSE}
+#make dataframes of factor 2 (temp) PC1 loadings
+d1 <- cbind(protnames, ASCA$`2`$svd$v[,1])
+colnames(d1) <- c("protein", "PC1loadings")
+d1_great <- d1[which(d1$PC1loadings > 0),]
+d1_less <- d1[which(d1$PC1loadings < 0),]
+
+plot(d1_great[order(d1_great$PC1loadings, decreasing = TRUE),2], xlab = "protein", ylab = "PC1 Loadings")
+abline(h = 0.025, col = "red")
+plot(d1_less[order(d1_less$PC1loadings, decreasing = TRUE),2], xlab = "protein", ylab = "PC1 Loadings")
+abline(h = -0.035, col = "red")
+```
+
+make list of proteins with silo PC1 loadings values >= 0.025
+```{r avgNSAF_PCA_siloEffect_PC1_cutoff0.025, echo = FALSE}
+cutd1 <- data.frame(d1[which(d1$PC1loadings >= 0.025 | d1$PC1loadings <= -0.035),1])
+colnames(cutd1) <- "protein"
+
+```
+
+To pull out proteins affected by silo based on their influence in seperating treatment groups on the silo PCA, I picked  any protein that had a loadings value > 0.025 or < -0.035 was selected.
+
+**Heatmap of proteins affected by silo, time points are side-by-side**
+```{r avgNSAF_siloEffect_cutoff0.025_heatmap_OrderedByTime_ShortNames, echo = FALSE, fig.height=15, fig.width=15}
+
+#make a list of cutoff proteins with normalized abundance
+cut_data <- choyp_data[,which(colnames(choyp_data) %in% cutd1$protein)]
+rownames(cut_data) <- paste(choyp_data$day, choyp_data$silo, sep="_")
+heatmap3(t.data.frame(cut_data),Colv = NA,cexRow = 0.3)
+```
+
+```{r, echo = FALSE, eval = FALSE}
+#
+write.csv(cutd1, "~/Documents/GitHub/OysterSeedProject/analysis/ASCA/ASCA_all_proteins_avgADJNSAF/Silo2vs3/ASCA_SiloAffectedProteins_noDay0or15.csv", quote = FALSE, row.names = FALSE)
+```
+
+Number of proteins affected by silo at loadings value > 0.025 or < -0.035
+```{r, echo = FALSE}
+nrow(cutd1)
+```
+

@@ -83,15 +83,15 @@ tABACUSdata_NSAF <- merge(meta_data[,c(1,2,7,8)],tABACUSdata_NSAF, by = "SampleI
 
 
 #add meta data to abacus data
-#Remove Silo 2 and day 15
-silo2_3_9 <- tABACUSdata_TOTNUMSPEC[which(tABACUSdata_TOTNUMSPEC$day != "15"),]
+#Remove day 15 and 0
+silo2_3_9 <- tABACUSdata_TOTNUMSPEC[which(tABACUSdata_TOTNUMSPEC$day != 15 & tABACUSdata_TOTNUMSPEC$day != 0),]
 #make rownames from Sample ID column so that the NMDS knows what's what
 rownames(silo2_3_9) <- silo2_3_9$SampleID
 #order the data frame by day and temperature so coloring the points on the plot is easier
 silo2_3_9 <- silo2_3_9[order(as.numeric(silo2_3_9$day),silo2_3_9$temp),]
 
 
-silo2_3_9_NSAF <- tABACUSdata_NSAF[which(tABACUSdata_NSAF$day != "15"),]
+silo2_3_9_NSAF <- tABACUSdata_NSAF[which(tABACUSdata_NSAF$day != 15 & tABACUSdata_TOTNUMSPEC$day != 0),]
 #make rownames from Sample ID column so that the NMDS knows what's what
 rownames(silo2_3_9_NSAF) <- silo2_3_9_NSAF$SampleID
 #order the data frame by day and temperature so coloring the points on the plot is easier
@@ -183,7 +183,7 @@ head(unique(sort(unlist(df_ratio[,-c(1:4)]))))
 
 order by day and temp
 ```{r}
-df_ratio <- df_ratio[order(df_ratio$day,df_ratio$temp),]
+df_ratio <- df_ratio[order(as.numeric(df_ratio$day),df_ratio$temp),]
 ```
 
 
@@ -194,7 +194,7 @@ First calculate log2 fold change for 2 vs 3
 ```{r}
 
 logFC_23 <- data.frame()
-for (i in seq(2,nrow(df_ratio),3)){
+for (i in seq(1,nrow(df_ratio),3)){
   print(df_ratio[i,c(1:4)])
   print(df_ratio[i+ 1,c(1:4)])
 
@@ -213,7 +213,7 @@ colnames(logFC_23) <- c("day",colnames(df_ratio[,-c(1:4)]))
 Next calculate log2 fold change for 9 vs 3
 ```{r}
 logFC_93 <- data.frame()
-for (i in seq(3,nrow(df_ratio),3)){
+for (i in seq(2,nrow(df_ratio),3)){
   print(df_ratio[i+ 1,c(1:4)])
   print(df_ratio[i,c(1:4)])
 
@@ -231,7 +231,7 @@ colnames(logFC_93) <- c("day",colnames(df_ratio[,-c(1:4)]))
 First calculate log2 fold change for 9 vs 2
 ```{r}
 logFC_92 <- data.frame()
-for (i in seq(2,nrow(df_ratio),3)){
+for (i in seq(1,nrow(df_ratio),3)){
   print(df_ratio[i + 2,c(1:4)])
   print(df_ratio[i,c(1:4)])
 
@@ -257,7 +257,7 @@ https://www.khanacademy.org/math/ap-statistics/two-sample-inference/two-sample-z
 Calculate proportion test p value for 2 vs 3
 ```{r}
 pval_23 <- data.frame()
-for (i in seq(2,nrow(new_data_sum),3)){
+for (i in seq(1,nrow(new_data_sum),3)){
   print(new_data_sum[i,c(1:4)])
   print(new_data_sum[i + 1,c(1:4)])
   print(spec_sum[i,])
@@ -294,7 +294,7 @@ colnames(pval_23_adj) <- colnames(pval_23)
 Calculate proportion test p value for 9 vs 3
 ```{r}
 pval_93 <- data.frame()
-for (i in seq(3,nrow(new_data_sum),3)){
+for (i in seq(2,nrow(new_data_sum),3)){
   print(new_data_sum[i+1,c(1:4)])
   print(new_data_sum[i,c(1:4)])
   print(spec_sum[i+1,])
@@ -330,7 +330,7 @@ colnames(pval_93_adj) <- colnames(pval_93)
 Calculate proportion test p value for 9 vs 2
 ```{r}
 pval_92 <- data.frame()
-for (i in seq(2,nrow(new_data_sum),3)){
+for (i in seq(1,nrow(new_data_sum),3)){
   print(new_data_sum[i + 2,c(1:4)])
   print(new_data_sum[i,c(1:4)])
   print(spec_sum[i+2,])
@@ -421,8 +421,6 @@ write.csv(logFC_pval_adjpval, "~/Documents/GitHub/OysterSeedProject/analysis/Tot
 
 ```
 
-
-```{r}
 
 What is the distribution of TOTNUMSPEC sums which aren't equal to 0?
 ```{r}

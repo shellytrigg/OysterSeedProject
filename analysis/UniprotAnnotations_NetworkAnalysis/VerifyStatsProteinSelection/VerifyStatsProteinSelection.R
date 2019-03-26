@@ -5,6 +5,7 @@ library(plyr)
 library(tidyr)
 library(reshape2)
 library(ggplot2)
+library(gtools)
 
 
 #read in uniprot mapping

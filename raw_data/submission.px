@@ -1,0 +1,100 @@
+MTD	submitter_name	Shelly Trigg
+MTD	submitter_email	strigg@uw.edu
+MTD	submitter_affiliation	University of Washington
+MTD	submitter_pride_login	strigg@uw.edu
+MTD	lab_head_name	Steven B. Roberts
+MTD	lab_head_email	sr320@uw.edu
+MTD	lab_head_affiliation	School of Aquatic and Fishery Sciences, Roberts Lab, University of Washington, Seattle, Washington, USA
+MTD	project_title	Oyster seed time x temperature, LC-MSMS
+MTD	project_description	Oyster larvae were reared at two different temperatures (23C and 29C) over 13 days, and 40-50 larvae were sampled on days 3, 5, 7, 9, 11, and 13 for proteomics.
+MTD	keywords	Oyster, larvae, seed, time series, temperature effect, LC-MSMS
+MTD	sample_processing_protocol	Cell homogenates were prepared from flash frozen larvae by adding 500 µL of 50 mM NH4HCO3 in 6 M urea and homogenizing with a pestle directly in the microfuge tube. Samples were centrifuged at 2000 rpm for 5 minutes and supernatant (150 µL) was transferred into new tubes. Supernatants were sonicated three times each for 5 seconds, cooling samples in between sonication rounds using an ethanol/dry ice bath for 5 seconds. After sonication, sample protein concentrations were determined using a BCA assay kit (Pierce). Protein digestion was carried out by diluting 100 µg of protein from each sample with 50 mM NH4HCO3 in 6 M urea solution to a final volume of 100 uL then adding 6.6 µL of 1.5 M tris pH 8.8 and 2.5 µL 200 mM tris(2-carboxyethyl)phosphine hydrochloride were added and samples were vortexed. Sample pH was made basic by adding sodium hydroxide (5N) dropwise and monitoring pH. After incubating samples for one hour at 37°C, 20 µL of 200 mM iodoacetamide was added, samples were vortexed, and samples were then incubated for one hour at room temperature in the dark. Next, 20 µL of 200 mM diothiothreitol was added, samples were vortexed and incubated for one hour at room temperature. 1.65 µL LysC (1:30 enzyme:protein ratio) was added to each sample, samples were vortexed and incubated for one hour at room temperature. 800 µL 25 mM NH4HCO3, 200 µL HPLC grade methanol, and 3.3 uL Trypsin (1:30 enzyme:protein ratio) were added to each sample, samples were vortexed and incubated overnight at room temperature. Samples were evaporated using a centrifugal evaporator at 4°C to near dryness and stored at -80°C. Desalting of samples was done using Macrospin columns (sample capacity 0.03-300 ug; The Nest Group, Southborough, MA) following the manufacturer’s instructions. Dried peptides were reconstituted in 100 µL 3% acetonitrile + 0.1% formic acid and stored at -80°C. Data-dependent acquisition was performed with technical duplicates for each sample, and samples were processed by LC−MS/MS. Briefly, the analytical column (20 cm long) was packed in house with C18 beads (Dr. Maisch HPLC, Germany, 0.3 μm) with a flow rate of 0.3 μL/min. Chromatography was carried out with an increasing ratio of acetonitrile and 0.1% formic acid (solvent A):water and 0.1% formic acid (solvent B)  as previously described (Timmins-Schiffman 2017 Journal of Proteome). Quality-control standards (Pierce Peptide Retention Time Calibration mixture (PRTC) + bovine serum albumin peptides (BSA)) were analyzed throughout the experiment to ensure consistency of peptide detection and elution times. Resulting peptides were analyzed using the high resolution and accurate Orbitrap Fusion Lumos Mass Spectrometer at the University of Washington Proteomics Resource.
+MTD	data_processing_protocol	Mass spectrometer raw files were converted to .mzXML files and were searched against a protein sequence database of the C. gigas proteome (http://gigaton.sigenae.org/ngspipelines/data/dcc6581978/analysis/f78867df95/contigs.fasta.transdecoder.pep.gz) and common contaminants (contam.other, contam.human, and contam.bovin files downloaded from the crapOME (Mellacheruvu et al. Nat Methods 2013)) using Comet v. 2016.01 rev.2 (Eng et al. 2012) with parameters set according to (http://comet-ms.sourceforge.net/parameters/parameters_201601/comet.params.high-low). The Trans Proteomic Pipeline (Eng et al. 1994; Eng et al. 2008) was then used to calculate statistics associated with peptide to protein matches (p-value cut-off for peptide probability used was 0.9). We used Abacus (Fermin et al. 2011) to correlate protein inferences across samples and obtain a single protein identification for each peptide with this Abacus parameter file.
+MTD	experiment_type	[PRIDE, PRIDE:0000429, Shotgun proteomics, ]
+MTD	submission_type	PARTIAL
+MTD	species	[NEWT, 29159, Crassostrea gigas, ]
+MTD	tissue	[BTO, BTO:0001489, whole body, ]
+MTD	instrument	[MS, MS:1001910, LTQ Orbitrap Elite, ]
+MTD	modification	[PRIDE, PRIDE:0000398, No PTMs are included in the dataset, ]
+
+FMH	file_id	file_type	file_path	file_mapping
+FME	0	RAW	/Volumes/web/phainopepla/C_gigas/2016-12-05/20161205_Sample_1.raw	
+FME	1	RAW	/Volumes/web/phainopepla/C_gigas/2016-12-05/20161205_Sample_12.raw	
+FME	2	RAW	/Volumes/web/phainopepla/C_gigas/2016-12-05/20161205_Sample_12A.raw	
+FME	3	RAW	/Volumes/web/phainopepla/C_gigas/2016-12-05/20161205_Sample_16.raw	
+FME	4	RAW	/Volumes/web/phainopepla/C_gigas/2016-12-05/20161205_Sample_16A.raw	
+FME	5	RAW	/Volumes/web/phainopepla/C_gigas/2016-12-05/20161205_Sample_1A.raw	
+FME	6	RAW	/Volumes/web/phainopepla/C_gigas/2016-12-05/20161205_Sample_20.raw	
+FME	7	RAW	/Volumes/web/phainopepla/C_gigas/2016-12-05/20161205_Sample_20A.raw	
+FME	8	RAW	/Volumes/web/phainopepla/C_gigas/2016-12-05/20161205_Sample_24.raw	
+FME	9	RAW	/Volumes/web/phainopepla/C_gigas/2016-12-05/20161205_Sample_24A.raw	
+FME	10	RAW	/Volumes/web/phainopepla/C_gigas/2016-12-05/20161205_Sample_28.raw	
+FME	11	RAW	/Volumes/web/phainopepla/C_gigas/2016-12-05/20161205_Sample_28A.raw	
+FME	12	RAW	/Volumes/web/phainopepla/C_gigas/2016-12-05/20161205_Sample_32.raw	
+FME	13	RAW	/Volumes/web/phainopepla/C_gigas/2016-12-05/20161205_Sample_32A.raw	
+FME	14	RAW	/Volumes/web/phainopepla/C_gigas/2016-12-05/20161205_Sample_36.raw	
+FME	15	RAW	/Volumes/web/phainopepla/C_gigas/2016-12-05/20161205_Sample_36A.raw	
+FME	16	RAW	/Volumes/web/phainopepla/C_gigas/2016-12-05/20161205_Sample_4.raw	
+FME	17	RAW	/Volumes/web/phainopepla/C_gigas/2016-12-05/20161205_Sample_40.raw	
+FME	18	RAW	/Volumes/web/phainopepla/C_gigas/2016-12-05/20161205_Sample_40A.raw	
+FME	19	RAW	/Volumes/web/phainopepla/C_gigas/2016-12-05/20161205_Sample_44.raw	
+FME	20	RAW	/Volumes/web/phainopepla/C_gigas/2016-12-05/20161205_Sample_44A.raw	
+FME	21	RAW	/Volumes/web/phainopepla/C_gigas/2016-12-05/20161205_Sample_48.raw	
+FME	22	RAW	/Volumes/web/phainopepla/C_gigas/2016-12-05/20161205_Sample_48A.raw	
+FME	23	RAW	/Volumes/web/phainopepla/C_gigas/2016-12-05/20161205_Sample_4A.raw	
+FME	28	RAW	/Volumes/web/phainopepla/C_gigas/2016-12-05/20161205_Sample_8.raw	
+FME	29	RAW	/Volumes/web/phainopepla/C_gigas/2016-12-05/20161205_Sample_8A.raw	
+FME	30	SEARCH	/Volumes/web/scaphapoda/Sean/Rhonda-2016-Oyster-Intermediates/20161205_sample_1.pep.xml	0,351
+FME	32	SEARCH	/Volumes/web/scaphapoda/Sean/Rhonda-2016-Oyster-Intermediates/20161205_Sample_12.pep.xml	1,352
+FME	33	SEARCH	/Volumes/web/scaphapoda/Sean/Rhonda-2016-Oyster-Intermediates/20161205_Sample_12A.pep.xml	2,353
+FME	34	SEARCH	/Volumes/web/scaphapoda/Sean/Rhonda-2016-Oyster-Intermediates/20161205_Sample_16.pep.xml	3,354
+FME	35	SEARCH	/Volumes/web/scaphapoda/Sean/Rhonda-2016-Oyster-Intermediates/20161205_Sample_16A.pep.xml	4,355
+FME	36	SEARCH	/Volumes/web/scaphapoda/Sean/Rhonda-2016-Oyster-Intermediates/20161205_Sample_1A.pep.xml	5,356
+FME	37	SEARCH	/Volumes/web/scaphapoda/Sean/Rhonda-2016-Oyster-Intermediates/20161205_Sample_20.pep.xml	6,357
+FME	38	SEARCH	/Volumes/web/scaphapoda/Sean/Rhonda-2016-Oyster-Intermediates/20161205_Sample_20A.pep.xml	7,358
+FME	39	SEARCH	/Volumes/web/scaphapoda/Sean/Rhonda-2016-Oyster-Intermediates/20161205_Sample_24.pep.xml	8,359
+FME	40	SEARCH	/Volumes/web/scaphapoda/Sean/Rhonda-2016-Oyster-Intermediates/20161205_Sample_24A.pep.xml	9,360
+FME	41	SEARCH	/Volumes/web/scaphapoda/Sean/Rhonda-2016-Oyster-Intermediates/20161205_Sample_28.pep.xml	10,361
+FME	42	SEARCH	/Volumes/web/scaphapoda/Sean/Rhonda-2016-Oyster-Intermediates/20161205_Sample_28A.pep.xml	11,362
+FME	43	SEARCH	/Volumes/web/scaphapoda/Sean/Rhonda-2016-Oyster-Intermediates/20161205_Sample_32.pep.xml	12,363
+FME	44	SEARCH	/Volumes/web/scaphapoda/Sean/Rhonda-2016-Oyster-Intermediates/20161205_Sample_32A.pep.xml	13,364
+FME	45	SEARCH	/Volumes/web/scaphapoda/Sean/Rhonda-2016-Oyster-Intermediates/20161205_Sample_36.pep.xml	14,365
+FME	46	SEARCH	/Volumes/web/scaphapoda/Sean/Rhonda-2016-Oyster-Intermediates/20161205_Sample_36A.pep.xml	15,366
+FME	47	SEARCH	/Volumes/web/scaphapoda/Sean/Rhonda-2016-Oyster-Intermediates/20161205_Sample_4.pep.xml	16,367
+FME	48	SEARCH	/Volumes/web/scaphapoda/Sean/Rhonda-2016-Oyster-Intermediates/20161205_Sample_40.pep.xml	17,368
+FME	49	SEARCH	/Volumes/web/scaphapoda/Sean/Rhonda-2016-Oyster-Intermediates/20161205_Sample_40A.pep.xml	18,369
+FME	50	SEARCH	/Volumes/web/scaphapoda/Sean/Rhonda-2016-Oyster-Intermediates/20161205_Sample_44.pep.xml	19,370
+FME	51	SEARCH	/Volumes/web/scaphapoda/Sean/Rhonda-2016-Oyster-Intermediates/20161205_Sample_44A.pep.xml	20,371
+FME	52	SEARCH	/Volumes/web/scaphapoda/Sean/Rhonda-2016-Oyster-Intermediates/20161205_Sample_48.pep.xml	21,372
+FME	53	SEARCH	/Volumes/web/scaphapoda/Sean/Rhonda-2016-Oyster-Intermediates/20161205_Sample_48A.pep.xml	22,373
+FME	54	SEARCH	/Volumes/web/scaphapoda/Sean/Rhonda-2016-Oyster-Intermediates/20161205_Sample_4A.pep.xml	23,374
+FME	59	SEARCH	/Volumes/web/scaphapoda/Sean/Rhonda-2016-Oyster-Intermediates/20161205_Sample_8.pep.xml	28,379
+FME	350	SEARCH	/Volumes/web/scaphapoda/Sean/Rhonda-2016-Oyster-Intermediates/20161205_Sample_8A.pep.xml	29,380
+FME	351	PEAK	/Volumes/web/scaphapoda/Sean/Rhonda-2016-Oyster-Intermediates/20161205_sample_1.mzXML	
+FME	352	PEAK	/Volumes/web/scaphapoda/Sean/Rhonda-2016-Oyster-Intermediates/20161205_Sample_12.mzXML	
+FME	353	PEAK	/Volumes/web/scaphapoda/Sean/Rhonda-2016-Oyster-Intermediates/20161205_Sample_12A.mzXML	
+FME	354	PEAK	/Volumes/web/scaphapoda/Sean/Rhonda-2016-Oyster-Intermediates/20161205_Sample_16.mzXML	
+FME	355	PEAK	/Volumes/web/scaphapoda/Sean/Rhonda-2016-Oyster-Intermediates/20161205_Sample_16A.mzXML	
+FME	356	PEAK	/Volumes/web/scaphapoda/Sean/Rhonda-2016-Oyster-Intermediates/20161205_Sample_1A.mzXML	
+FME	357	PEAK	/Volumes/web/scaphapoda/Sean/Rhonda-2016-Oyster-Intermediates/20161205_Sample_20.mzXML	
+FME	358	PEAK	/Volumes/web/scaphapoda/Sean/Rhonda-2016-Oyster-Intermediates/20161205_Sample_20A.mzXML	
+FME	359	PEAK	/Volumes/web/scaphapoda/Sean/Rhonda-2016-Oyster-Intermediates/20161205_Sample_24.mzXML	
+FME	360	PEAK	/Volumes/web/scaphapoda/Sean/Rhonda-2016-Oyster-Intermediates/20161205_Sample_24A.mzXML	
+FME	361	PEAK	/Volumes/web/scaphapoda/Sean/Rhonda-2016-Oyster-Intermediates/20161205_Sample_28.mzXML	
+FME	362	PEAK	/Volumes/web/scaphapoda/Sean/Rhonda-2016-Oyster-Intermediates/20161205_Sample_28A.mzXML	
+FME	363	PEAK	/Volumes/web/scaphapoda/Sean/Rhonda-2016-Oyster-Intermediates/20161205_Sample_32.mzXML	
+FME	364	PEAK	/Volumes/web/scaphapoda/Sean/Rhonda-2016-Oyster-Intermediates/20161205_Sample_32A.mzXML	
+FME	365	PEAK	/Volumes/web/scaphapoda/Sean/Rhonda-2016-Oyster-Intermediates/20161205_Sample_36.mzXML	
+FME	366	PEAK	/Volumes/web/scaphapoda/Sean/Rhonda-2016-Oyster-Intermediates/20161205_Sample_36A.mzXML	
+FME	367	PEAK	/Volumes/web/scaphapoda/Sean/Rhonda-2016-Oyster-Intermediates/20161205_Sample_4.mzXML	
+FME	368	PEAK	/Volumes/web/scaphapoda/Sean/Rhonda-2016-Oyster-Intermediates/20161205_Sample_40.mzXML	
+FME	369	PEAK	/Volumes/web/scaphapoda/Sean/Rhonda-2016-Oyster-Intermediates/20161205_Sample_40A.mzXML	
+FME	370	PEAK	/Volumes/web/scaphapoda/Sean/Rhonda-2016-Oyster-Intermediates/20161205_Sample_44.mzXML	
+FME	371	PEAK	/Volumes/web/scaphapoda/Sean/Rhonda-2016-Oyster-Intermediates/20161205_Sample_44A.mzXML	
+FME	372	PEAK	/Volumes/web/scaphapoda/Sean/Rhonda-2016-Oyster-Intermediates/20161205_Sample_48.mzXML	
+FME	373	PEAK	/Volumes/web/scaphapoda/Sean/Rhonda-2016-Oyster-Intermediates/20161205_Sample_48A.mzXML	
+FME	374	PEAK	/Volumes/web/scaphapoda/Sean/Rhonda-2016-Oyster-Intermediates/20161205_Sample_4A.mzXML	
+FME	379	PEAK	/Volumes/web/scaphapoda/Sean/Rhonda-2016-Oyster-Intermediates/20161205_Sample_8.mzXML	
+FME	380	PEAK	/Volumes/web/scaphapoda/Sean/Rhonda-2016-Oyster-Intermediates/20161205_Sample_8A.mzXML	
+FME	381	OTHER	/Users/Shelly/Desktop/oyster_tempXtime_proteomics_metadata.csv	
+
