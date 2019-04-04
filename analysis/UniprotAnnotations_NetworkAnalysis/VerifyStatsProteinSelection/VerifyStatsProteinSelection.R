@@ -147,6 +147,9 @@ png("~/Documents/GitHub/OysterSeedProject/analysis/UniprotAnnotations_NetworkAna
 heatmap3(data4heatmap3,Colv = NA, cexRow = 0.5, cexCol = 1, RowSideColors=RowSideColors,ColSideColors = ColSideColors,RowAxisColors=1,ColAxisColors=1,legendfun=function() showLegend(legend=c("ASCA","ASCA_Clustering", "Clustering", "Proportions_Test", "Proportions_Test_ASCA","All methods"),col=c("lightslateblue","lightseagreen","gold","palegreen","maroon3","chocolate4"), title = "Method", cex = 1.5))
 dev.off()
 
+pdf("~/Documents/GitHub/OysterSeedProject/analysis/UniprotAnnotations_NetworkAnalysis/VerifyStatsProteinSelection/plots/heatmap_NSAF_ColorByMethod.pdf",width = 10, height = 10)
+heatmap3(data4heatmap3,Colv = NA, cexRow = 0.2, cexCol = 0.5, RowSideColors=RowSideColors,ColSideColors = ColSideColors,RowAxisColors=1,ColAxisColors=1,legendfun=function() showLegend(legend=c("ASCA","ASCA_Clustering", "Clustering", "Proportions_Test", "Proportions_Test_ASCA","All methods"),col=c("lightslateblue","lightseagreen","gold","palegreen","maroon3","chocolate4"), title = "Method", cex = 1.5))
+dev.off()
 #can't figure out how to fix the resolution of the axis labels
 
 

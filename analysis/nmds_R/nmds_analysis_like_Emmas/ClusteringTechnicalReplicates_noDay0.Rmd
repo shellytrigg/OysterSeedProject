@@ -1,0 +1,84 @@
+---
+title: "ClusteringTechnicalReplicates_noDay0"
+author: "Shelly Trigg"
+date: "4/4/2019"
+output: rmarkdown::github_document
+---
+Load packages
+```{r}
+library(vegan)
+library(ggplot2)
+library(dplyr)
+library(gtools)
+```
+
+Load NSAF data
+```{r}
+silo3and9 <- read.csv("~/Documents/GitHub/OysterSeedProject/analysis/nmds_R/silo3and9_nozerovals.csv", stringsAsFactors = FALSE)
+
+silo3and9 <- silo3and9[which(silo3and9$silo3and9.day !=0),]
+colnames(silo3and9)[1:3] <- c("SampleID","day", "temp")
+
+no_val_proteins <- silo3and9[,which(apply(silo3and9, 2, var) == 0)]
+ncol(no_val_proteins)
+```
+
+Remove proteins if they have a zero value in all samples
+```{r}
+silo3and9_nozerovar <- silo3and9[,-c(which(colnames(silo3and9) %in% colnames(no_val_proteins)))]
+
+
+```
+
+try PCA
+
+```{r}
+#first convert day and temp data to factors for plotting
+silo3and9_nozerovar$day <- factor(silo3and9_nozerovar$day, levels = unique(silo3and9_nozerovar$day))
+silo3and9_nozerovar$temp <- factor(silo3and9_nozerovar$temp, levels = unique(silo3and9_nozerovar$temp))
+
+#run PCA
+pca <- prcomp(silo3and9_nozerovar[,-c(1:3)], center = T, scale = T)
+pca_meta <- cbind(silo3and9_nozerovar$day, silo3and9_nozerovar$temp, data.frame(paste(silo3and9_nozerovar$day,silo3and9_nozerovar$temp, sep = "_")),pca$x)
+colnames(pca_meta)[1:3] <- c("day","temp","SampleName")
+ggplot(pca_meta, aes(PC1, PC2)) + geom_point(aes(col = day, shape = temp)) + theme_bw() + ggtitle("PCA of ADJNSAF values where zeros were replaced with 0.1")
+```
+
+try PCA on log transformed values
+```{r}
+silo3and9_log <- log(silo3and9_nozerovar[,-c(1:3)],2)
+pca_log <- prcomp(silo3and9_log, center = F, scale = F)
+pca_log_meta <- cbind(silo3and9_nozerovar$day, silo3and9_nozerovar$temp, data.frame(paste(silo3and9_nozerovar$day,silo3and9_nozerovar$temp, sep = "_")),pca_log$x)
+colnames(pca_log_meta)[1:3] <- c("day","temp","SampleName")
+ggplot(pca_log_meta, aes(PC1, PC2)) + geom_point(aes(col = day, shape = temp)) + theme_bw() + ggtitle("PCA of log ADJNSAF values with zeros replaced with 0.1")
+```
+
+Make MDS dissimilarity matrix
+```{r}
+nmds.silo3and9 <- metaMDS(silo3and9_nozerovar[,-c(1:3)], distance = 'euclidean', k = 2, trymax = 3000, autotransform = FALSE)
+
+#make data frame of NMDS scores
+nmds.silo3and9.scores <- cbind(silo3and9_nozerovar$day, silo3and9_nozerovar$temp,data.frame(scores(nmds.silo3and9)))
+colnames(nmds.silo3and9.scores)[1:2] <- c("day","temp")
+ggplot(nmds.silo3and9.scores, aes(NMDS1, NMDS2)) + geom_point(aes(col = day, shape = temp)) + theme_bw() + ggtitle("NMDS of ADJNSAF values with zeros replaced with 0.1")
+```
+
+Make MDS dissimilarity matrix with log tranformed ADJNSAF values
+```{r}
+nmds.silo3and9_log <- metaMDS(silo3and9_log, distance = 'euclidean', k = 2, trymax = 3000, autotransform = FALSE)
+
+#make data frame of NMDS scores
+nmds.silo3and9_log.scores <- cbind(silo3and9_nozerovar$day, silo3and9_nozerovar$temp,data.frame(scores(nmds.silo3and9_log)))
+colnames(nmds.silo3and9_log.scores)[1:2] <- c("day","temp")
+ggplot(nmds.silo3and9_log.scores, aes(NMDS1, NMDS2)) + geom_point(aes(col = day, shape = temp)) + theme_bw() + ggtitle("NMDS of log ADJNSAF values with zeros replaced with 0.1")
+```
+
+Make MDS dissimilarity matrix with log transformed (ADJNSAF values) and bray curtis distance
+```{r}
+nmds.silo3and9_log_bray <- metaMDS(silo3and9_nozerovar[,-c(1:3)], distance = 'bray', k = 2, trymax = 3000, autotransform = FALSE)
+
+#make data frame of NMDS scores
+nmds.silo3and9_log_bray.scores <- cbind(silo3and9_nozerovar$day, silo3and9_nozerovar$temp,data.frame(scores(nmds.silo3and9_log_bray)))
+colnames(nmds.silo3and9_log_bray.scores)[1:2] <- c("day","temp")
+ggplot(nmds.silo3and9_log_bray.scores, aes(NMDS1, NMDS2)) + geom_point(aes(col = day, shape = temp)) + theme_bw() + ggtitle("bray curtis NMDS of ADJNSAF values with zeros replaced with 0.1")
+```
