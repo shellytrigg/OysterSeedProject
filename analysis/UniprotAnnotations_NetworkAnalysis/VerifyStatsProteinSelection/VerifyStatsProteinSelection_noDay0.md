@@ -66,8 +66,7 @@ make a proportional venn diagram to show overlapping proteins detected by statis
     ## 000 100 010 110 001 101 011 111 
     ##   0  70  69  39 127   9   2  25
 
-    ## quartz_off_screen 
-    ##                 2
+![](VerifyStatsProteinSelection_noDay0_files/figure-markdown_github/unnamed-chunk-15-1.png)
 
 make a proportional venn diagram to show overlapping proteins passing Uniprot BLAST eval cutoff detected by statistical methods
 
@@ -76,8 +75,7 @@ make a proportional venn diagram to show overlapping proteins passing Uniprot BL
     ## 000 100 010 110 001 101 011 111 
     ##   0  30  30  17  69   4   1  10
 
-    ## quartz_off_screen 
-    ##                 2
+![](VerifyStatsProteinSelection_noDay0_files/figure-markdown_github/unnamed-chunk-16-1.png)
 
 ### Get an idea of how well our methods are selecting proteins with abundances changes related to temperature
 
@@ -85,7 +83,8 @@ make a proportional venn diagram to show overlapping proteins passing Uniprot BL
 
 read in and format avg NSAF data
 
-**CREATE HEATMAP OF ALL SELECTED PROTEINS** ordered by day
+**CREATE HEATMAP OF ALL SELECTED PROTEINS**
+ordered by day
 
     ## 
     ##                   ASCA         ASCAclustering             clustering 
@@ -99,17 +98,22 @@ read in and format avg NSAF data
 
 ordered by temperature then day ![](VerifyStatsProteinSelection_noDay0_files/figure-markdown_github/unnamed-chunk-19-1.png)
 
-**CREATE HEATMAP OF ASCA SELECTED PROTEINS** ordered by day ![](VerifyStatsProteinSelection_noDay0_files/figure-markdown_github/unnamed-chunk-20-1.png)
+**CREATE HEATMAP OF ASCA SELECTED PROTEINS**
+ordered by day ![](VerifyStatsProteinSelection_noDay0_files/figure-markdown_github/unnamed-chunk-20-1.png)
 
 ordered by temp then day ![](VerifyStatsProteinSelection_noDay0_files/figure-markdown_github/unnamed-chunk-21-1.png)
 
 Abundance plots for ASCA selected proteins ![](VerifyStatsProteinSelection_noDay0_files/figure-markdown_github/unnamed-chunk-22-1.png)
 
-**CREATE HEATMAP OF CLUSTERING SELECTED PROTEINS** ordered by day ![](VerifyStatsProteinSelection_noDay0_files/figure-markdown_github/unnamed-chunk-23-1.png)
+**CREATE HEATMAP OF CLUSTERING SELECTED PROTEINS**
+ordered by day ![](VerifyStatsProteinSelection_noDay0_files/figure-markdown_github/unnamed-chunk-23-1.png)
 
-ordered by temp then day ![](VerifyStatsProteinSelection_noDay0_files/figure-markdown_github/unnamed-chunk-24-1.png) Abundance plots for cluster selected proteins ![](VerifyStatsProteinSelection_noDay0_files/figure-markdown_github/unnamed-chunk-25-1.png)
+ordered by temp then day ![](VerifyStatsProteinSelection_noDay0_files/figure-markdown_github/unnamed-chunk-24-1.png)
 
-**CREATE HEATMAP OF PROP TEST SELECTED PROTEINS** Since prop test was on TOTNUMSPEC, I will plot those instead of NSAFs
+Abundance plots for cluster selected proteins ![](VerifyStatsProteinSelection_noDay0_files/figure-markdown_github/unnamed-chunk-25-1.png)
+
+**CREATE HEATMAP OF PROP TEST SELECTED PROTEINS**
+Since prop test was on TOTNUMSPEC, I will plot those instead of NSAFs
 
 Read in and format TOTNUMSPEC data
 

@@ -113,9 +113,7 @@ make a proportional venn diagram to show overlapping proteins detected by statis
 selects <- list(ASCA = all_sig0.1_ASCA_clust_pro[grep("ASCA",all_sig0.1_ASCA_clust_pro$method),"protein_ID"], Clustering = all_sig0.1_ASCA_clust_pro[grep("clustering",all_sig0.1_ASCA_clust_pro$method),"protein_ID"], Prop_test = all_sig0.1_ASCA_clust_pro[grep("Prop",all_sig0.1_ASCA_clust_pro$method),"protein_ID"])
 V <- Venn(selects)
 V
-pdf("~/Documents/GitHub/OysterSeedProject/analysis/UniprotAnnotations_NetworkAnalysis/VerifyStatsProteinSelection/plots/Venn_NSAF_Allprots_ColorByMethod.pdf",width = 10, height = 10)
 plot(V,doWeights = TRUE)
-dev.off()
 ```
 
 make a proportional venn diagram to show overlapping proteins passing Uniprot BLAST eval cutoff detected by statistical methods 
@@ -123,9 +121,7 @@ make a proportional venn diagram to show overlapping proteins passing Uniprot BL
 selects_evalpass <- list(ASCA = all_sig0.1_ASCA_clust_pro_evalpass[grep("ASCA",all_sig0.1_ASCA_clust_pro_evalpass$method),"protein_ID"], Clustering = all_sig0.1_ASCA_clust_pro_evalpass[grep("clustering",all_sig0.1_ASCA_clust_pro_evalpass$method),"protein_ID"], Prop_test = all_sig0.1_ASCA_clust_pro_evalpass[grep("Prop",all_sig0.1_ASCA_clust_pro_evalpass$method),"protein_ID"])
 Veval <- Venn(selects_evalpass)
 Veval
-pdf("~/Documents/GitHub/OysterSeedProject/analysis/UniprotAnnotations_NetworkAnalysis/VerifyStatsProteinSelection/plots/Venn_NSAF_evalpassProts_ColorByMethod.pdf",width = 10, height = 10)
 plot(Veval,doWeights = TRUE)
-dev.off()
 ```
 
 ### Get an idea of how well our methods are selecting proteins with abundances changes related to temperature
@@ -144,7 +140,7 @@ all_sig0.1_ASCA_clust_pro_avgNSAF <- merge(all_sig0.1_ASCA_clust_pro, STACKED_av
 all_sig0.1_ASCA_clust_pro_avgNSAF$temp <- as.character(all_sig0.1_ASCA_clust_pro_avgNSAF$temp)
 ```
 
-**CREATE HEATMAP OF ALL SELECTED PROTEINS**
+**CREATE HEATMAP OF ALL SELECTED PROTEINS**  
 ordered by day
 ```{r, echo = FALSE}
 all_sig0.1_ASCA_clust_pro_avgNSAF$daytemp <- paste("Day",all_sig0.1_ASCA_clust_pro_avgNSAF$day, all_sig0.1_ASCA_clust_pro_avgNSAF$temp, "C", sep = "_")
@@ -172,7 +168,7 @@ ColSideColors_orderT <- ColSideColors[order(ColSideColors[,1], decreasing = TRUE
 heatmap3(data4heatmap3_orderT,Colv = NA, cexRow = 0.1, cexCol = 0.5, RowSideColors=RowSideColors,ColSideColors = ColSideColors_orderT,RowAxisColors=1,ColAxisColors=1,legendfun=function() showLegend(legend=c("ASCA","ASCA_Clustering", "Clustering", "Proportions_Test", "Proportions_Test_ASCA","All methods"),col=c("lightgoldenrod1","steelblue1","mediumpurple1","mediumaquamarine","coral2","olivedrab1","sandybrown"), title = "Method", cex = 0.8))
 ```
 
-**CREATE HEATMAP OF ASCA SELECTED PROTEINS**
+**CREATE HEATMAP OF ASCA SELECTED PROTEINS**  
 ordered by day
 ```{r, echo = FALSE}
 ASCAdata4heatmap <- data4heatmap[grep("ASCA", data4heatmap$method),]
@@ -193,11 +189,11 @@ heatmap3(ASCAdata4heatmap3_orderT,Colv = NA, cexRow = 0.1, cexCol = 0.5,ColSideC
 ```
 
 Abundance plots for ASCA selected proteins
-```{r, echo= FALSE}
-ggplot(all_sig0.1_ASCA_clust_pro_avgNSAF[grep("ASCA", all_sig0.1_ASCA_clust_pro_avgNSAF$method),], aes(x = day, y = avgNSAF, color = temp)) + geom_line() + facet_wrap(~protein_ID, scale = "free") + scale_x_continuous(breaks = c(3,5,7,9,11,13), labels = c(3,5,7,9,11,13)) +   theme(strip.text.x = element_text(size = 3)) + ggtitle("Avg NSAF Abundance for proteins selected by ASCA")
+```{r, echo = FALSE, fig.height=50}
+ggplot(all_sig0.1_ASCA_clust_pro_avgNSAF[grep("ASCA", all_sig0.1_ASCA_clust_pro_avgNSAF$method),], aes(x = day, y = avgNSAF, color = temp)) + geom_line() + facet_wrap(~protein_ID, scale = "free", ncol=5) + scale_x_continuous(breaks = c(3,5,7,9,11,13), labels = c(3,5,7,9,11,13)) +   theme(strip.text.x = element_text(size = 3)) + ggtitle("Avg NSAF Abundance for proteins selected by ASCA")
 ```
 
-**CREATE HEATMAP OF CLUSTERING SELECTED PROTEINS**
+**CREATE HEATMAP OF CLUSTERING SELECTED PROTEINS**  
 ordered by day
 ```{r, echo = FALSE}
 clusterdata4heatmap <- data4heatmap[grep("cluster", data4heatmap$method),]
@@ -216,12 +212,13 @@ clusterdata4heatmap3_orderT <- clusterdata4heatmap[,c(7,9,11,13,3,5,8,10,12,14,4
 ColSideColors_orderT <- ColSideColors[order(ColSideColors[,1], decreasing = TRUE),]
 heatmap3(clusterdata4heatmap3_orderT,Colv = NA, cexRow = 0.1, cexCol = 0.5,ColSideColors = ColSideColors_orderT,ColAxisColors=1)
 ```
+
 Abundance plots for cluster selected proteins
-```{r, echo = FALSE}
-ggplot(all_sig0.1_ASCA_clust_pro_avgNSAF[grep("cluster", all_sig0.1_ASCA_clust_pro_avgNSAF$method),], aes(x = day, y = avgNSAF, color = temp)) + geom_line() + facet_wrap(~protein_ID, scale = "free") + scale_x_continuous(breaks = c(3,5,7,9,11,13), labels = c(3,5,7,9,11,13)) +   theme(strip.text.x = element_text(size = 3)) + ggtitle("Avg NSAF Abundance for proteins selected by clustering")
+```{r, echo = FALSE, fig.height=50}
+ggplot(all_sig0.1_ASCA_clust_pro_avgNSAF[grep("cluster", all_sig0.1_ASCA_clust_pro_avgNSAF$method),], aes(x = day, y = avgNSAF, color = temp)) + geom_line() + facet_wrap(~protein_ID, scale = "free", ncol = 5) + scale_x_continuous(breaks = c(3,5,7,9,11,13), labels = c(3,5,7,9,11,13)) +   theme(strip.text.x = element_text(size = 3)) + ggtitle("Avg NSAF Abundance for proteins selected by clustering")
 ```
 
-**CREATE HEATMAP OF PROP TEST SELECTED PROTEINS**
+**CREATE HEATMAP OF PROP TEST SELECTED PROTEINS**  
 Since prop test was on TOTNUMSPEC, I will plot those instead of NSAFs
 
 Read in and format TOTNUMSPEC data
@@ -265,6 +262,6 @@ heatmap3(proptestdata4heatmap3_orderT,Colv = NA, cexRow = 0.1, cexCol = 0.5,ColS
 ```
 
 Abundance plots for proportions test selected proteins
-```{r, echo = FALSE}
-ggplot(all_sig0.1_ASCA_clust_pro_totnumspec[grep("PropTest", all_sig0.1_ASCA_clust_pro_totnumspec$method),], aes(x = day, y = TotNumSpec, color = temp)) + geom_line() + facet_wrap(~protein_ID, scale = "free") + scale_x_continuous(breaks = c(3,5,7,9,11,13), labels = c(3,5,7,9,11,13)) +   theme(strip.text.x = element_text(size = 3)) + ggtitle("Total Spectral Abundance for proteins selected by ChiSq prop. test pval 0.1")
+```{r, echo = FALSE, fig.height=50}
+ggplot(all_sig0.1_ASCA_clust_pro_totnumspec[grep("PropTest", all_sig0.1_ASCA_clust_pro_totnumspec$method),], aes(x = day, y = TotNumSpec, color = temp)) + geom_line() + facet_wrap(~protein_ID, scale = "free", ncol = 5) + scale_x_continuous(breaks = c(3,5,7,9,11,13), labels = c(3,5,7,9,11,13)) +   theme(strip.text.x = element_text(size = 3)) + ggtitle("Total Spectral Abundance for proteins selected by ChiSq prop. test pval 0.1")
 ```
