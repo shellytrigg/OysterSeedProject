@@ -35,7 +35,7 @@ for (i in 1:length(adjChiSqpvalColumns)){ # for each name in adj.Chisq.pval colu
 
 #count how many unique proteins are in the list of proteins with adj Chi sq. pvalue <= 0.1
 nrow(unique(all_sig_pro))
-#[1] 153
+#[1] 163
 
 #make a data frame of just unique proteins so we can select these from the foldchange/pvalue data
 all_sig0.1_pro <- unique(all_sig_pro)
@@ -55,7 +55,8 @@ ASCA_tempdata$rank <- 1:nrow(ASCA_tempdata)
 
 
 #read in clustering data
-clust_data <- read.csv("~/Documents/GitHub/OysterSeedProject/analysis/250unique-prot.csv ", stringsAsFactors = FALSE)
+#clust_data <- read.csv("~/Documents/GitHub/OysterSeedProject/analysis/250unique-prot.csv", stringsAsFactors = FALSE)
+clust_data <- read.csv("~/Documents/GitHub/OysterSeedProject/analysis/kmeans/Silo3_and_9/silo3_9-NSAF_euclidean/150unique-prot.csv", stringsAsFactors = FALSE)
 clust_data <- data.frame(unique(clust_data[,"ID"]),stringsAsFactors = FALSE)
 colnames(clust_data)[1] <- "protein_ID"
 clust_data$clust <- "clustering"
@@ -106,6 +107,7 @@ STACKED_avgNSAF_data <- gather(avgNSAF_data, "protein_ID", "avgNSAF", 3:ncol(avg
 all_sig0.1_ASCA_clust_pro_avgNSAF <- merge(all_sig0.1_ASCA_clust_pro, STACKED_avgNSAF_data, by = "protein_ID")
 #convert temp from integer to character so plot will have two distinctly colored lines
 all_sig0.1_ASCA_clust_pro_avgNSAF$temp <- as.character(all_sig0.1_ASCA_clust_pro_avgNSAF$temp)
+
 #plot avg NSAF abundances for ASCA and order facets by rank
 d <- ggplot(all_sig0.1_ASCA_clust_pro_avgNSAF[grep("ASCA", all_sig0.1_ASCA_clust_pro_avgNSAF$method),], aes(x = day, y = avgNSAF, color = temp)) + geom_line() + facet_wrap(~rank, scale = "free") + ggtitle("Avg NSAF Abundance for proteins selected by ASCA (facets ordered by rank)")
 ggsave("~/Documents/GitHub/OysterSeedProject/analysis/UniprotAnnotations_NetworkAnalysis/VerifyStatsProteinSelection/plots/orderedASCA_selects_avgNSAF.pdf", d, width = 19, height = 13 )
@@ -154,3 +156,26 @@ dev.off()
 
 
 
+###make heatmaps of selected proteins from each method and one heatmap of all selected proteins
+
+clusterdata4heatmap <- data4heatmap[grep("clustering", data4heatmap$method),]
+
+#ordered by day
+clusterdata4heatmap3 <- clusterdata4heatmap[,mixedsort(colnames(clusterdata4heatmap[,-c(1:2)]))]
+rownames(clusterdata4heatmap3) <- clusterdata4heatmap[,2]
+#make data frames to store heatmap color values
+#columns are days/temp; color 23C blue, 29C red, each day a different shade of gray
+ColSideColors<-cbind(Temp=c(rep(c("steelblue2","red"),6)), Day=c(rep("#D9D9D9",2),rep("#BDBDBD",2),rep("#969696",2),rep("#737373",2),rep("#525252",2),rep("#252525",2)))
+#rows are proteins ordered by method; color by method
+#first figure out the frequency of each method
+table(clusterdata4heatmap$method)
+RowSideColors <- c(rep("lightseagreen",27),rep("gold",81),rep("chocolate4",19),rep("maroon3",8))
+heatmap3(clusterdata4heatmap3,Colv = NA, cexRow = 0.1, cexCol = 0.5, RowSideColors=RowSideColors,ColSideColors = ColSideColors,RowAxisColors=1,ColAxisColors=1)
+
+#ordered by temp then day
+clusterdata4heatmap3_orderT <- clusterdata4heatmap[,c(7,9,11,13,3,5,8,10,12,14,4,6)]
+ColSideColors_orderT <- ColSideColors[order(ColSideColors[,1], decreasing = TRUE),]
+heatmap3(clusterdata4heatmap3_orderT,Colv = NA, cexRow = 0.1, cexCol = 0.5, RowSideColors=RowSideColors,ColSideColors = ColSideColors_orderT,RowAxisColors=1,ColAxisColors=1)
+
+d <- ggplot(all_sig0.1_ASCA_clust_pro_avgNSAF[grep("clustering", all_sig0.1_ASCA_clust_pro_avgNSAF$method),], aes(x = day, y = avgNSAF, color = temp)) + geom_line() + facet_wrap(~protein_ID, scale = "free") + ggtitle("Avg NSAF Abundance for proteins selected by clustering")
+ggsave("~/Documents/GitHub/OysterSeedProject/analysis/UniprotAnnotations_NetworkAnalysis/VerifyStatsProteinSelection/plots/clusteringNOD0_selects_avgNSAF.pdf", d, width = 19, height = 13 )

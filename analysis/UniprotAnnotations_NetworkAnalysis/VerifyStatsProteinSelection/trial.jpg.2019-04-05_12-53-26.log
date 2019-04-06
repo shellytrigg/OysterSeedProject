@@ -1,0 +1,21 @@
+INFO [2019-04-05 12:53:26] [[1]]
+INFO [2019-04-05 12:53:26] list(ASCA = all_sig0.1_ASCA_clust_pro[grep("ASCA", all_sig0.1_ASCA_clust_pro$method), 
+INFO [2019-04-05 12:53:26]     "protein_ID"], Clustering = all_sig0.1_ASCA_clust_pro[grep("clustering", 
+INFO [2019-04-05 12:53:26]     all_sig0.1_ASCA_clust_pro$method), "protein_ID"], Prop_test = all_sig0.1_ASCA_clust_pro[grep("Prop", 
+INFO [2019-04-05 12:53:26]     all_sig0.1_ASCA_clust_pro$method), "protein_ID"])
+INFO [2019-04-05 12:53:26] 
+INFO [2019-04-05 12:53:26] $fill
+INFO [2019-04-05 12:53:26] c("slateblue1", "goldenrod1", "palegreen")
+INFO [2019-04-05 12:53:26] 
+INFO [2019-04-05 12:53:26] $alpha
+INFO [2019-04-05 12:53:26] c(0.5, 0.5, 0.5)
+INFO [2019-04-05 12:53:26] 
+INFO [2019-04-05 12:53:26] $euler.d
+INFO [2019-04-05 12:53:26] [1] TRUE
+INFO [2019-04-05 12:53:26] 
+INFO [2019-04-05 12:53:26] $scaled
+INFO [2019-04-05 12:53:26] [1] TRUE
+INFO [2019-04-05 12:53:26] 
+INFO [2019-04-05 12:53:26] $filename
+INFO [2019-04-05 12:53:26] [1] "trial.jpg"
+INFO [2019-04-05 12:53:26] 
