@@ -97,50 +97,24 @@ read in and format avg NSAF data
 
 ![](VerifyStatsProteinSelection_noDay0_files/figure-markdown_github/unnamed-chunk-18-1.png)
 
-    ## quartz_off_screen 
-    ##                 2
+ordered by temperature then day ![](VerifyStatsProteinSelection_noDay0_files/figure-markdown_github/unnamed-chunk-19-1.png)
 
-ordered by temperature then day
+**CREATE HEATMAP OF ASCA SELECTED PROTEINS** ordered by day ![](VerifyStatsProteinSelection_noDay0_files/figure-markdown_github/unnamed-chunk-20-1.png)
 
-    ## quartz_off_screen 
-    ##                 2
+ordered by temp then day ![](VerifyStatsProteinSelection_noDay0_files/figure-markdown_github/unnamed-chunk-21-1.png)
 
-**CREATE HEATMAP OF ASCA SELECTED PROTEINS** ordered by day
+Abundance plots for ASCA selected proteins ![](VerifyStatsProteinSelection_noDay0_files/figure-markdown_github/unnamed-chunk-22-1.png)
 
-    ## quartz_off_screen 
-    ##                 2
+**CREATE HEATMAP OF CLUSTERING SELECTED PROTEINS** ordered by day ![](VerifyStatsProteinSelection_noDay0_files/figure-markdown_github/unnamed-chunk-23-1.png)
 
-ordered by temp then day
-
-    ## quartz_off_screen 
-    ##                 2
-
-Abundance plots for ASCA selected proteins
-
-**CREATE HEATMAP OF CLUSTERING SELECTED PROTEINS** ordered by day
-
-    ## quartz_off_screen 
-    ##                 2
-
-ordered by temp then day
-
-    ## quartz_off_screen 
-    ##                 2
-
-Abundance plots for cluster selected proteins
+ordered by temp then day ![](VerifyStatsProteinSelection_noDay0_files/figure-markdown_github/unnamed-chunk-24-1.png) Abundance plots for cluster selected proteins ![](VerifyStatsProteinSelection_noDay0_files/figure-markdown_github/unnamed-chunk-25-1.png)
 
 **CREATE HEATMAP OF PROP TEST SELECTED PROTEINS** Since prop test was on TOTNUMSPEC, I will plot those instead of NSAFs
 
 Read in and format TOTNUMSPEC data
 
-ordered by day
+ordered by day ![](VerifyStatsProteinSelection_noDay0_files/figure-markdown_github/unnamed-chunk-27-1.png)
 
-    ## quartz_off_screen 
-    ##                 2
+ordered by temp then day ![](VerifyStatsProteinSelection_noDay0_files/figure-markdown_github/unnamed-chunk-28-1.png)
 
-ordered by temp then day
-
-    ## quartz_off_screen 
-    ##                 2
-
-Abundance plots for proportions test selected proteins
+Abundance plots for proportions test selected proteins ![](VerifyStatsProteinSelection_noDay0_files/figure-markdown_github/unnamed-chunk-29-1.png)

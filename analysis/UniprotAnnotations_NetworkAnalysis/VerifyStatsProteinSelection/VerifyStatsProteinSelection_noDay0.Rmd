@@ -160,20 +160,16 @@ ColSideColors<-cbind(Temp=c(rep(c("steelblue2","red"),6)), Day=c(rep("#D9D9D9",2
 #first figure out the frequency of each method
 table(data4heatmap$method)
 RowSideColors <- c(rep("lightgoldenrod1",70),rep("steelblue1",39),rep("mediumpurple1",69),rep("mediumaquamarine",127), rep("coral2",9),rep("olivedrab1",25), rep("sandybrown",2))
-heatmap3(data4heatmap3,Colv = NA, cexRow = 0.1, cexCol = 0.5, RowSideColors=RowSideColors,ColSideColors = ColSideColors,RowAxisColors=1,ColAxisColors=1)
+
 #code below replaces original legend with methods legend, would be nice to figure out how to keep both
-pdf("~/Documents/GitHub/OysterSeedProject/analysis/UniprotAnnotations_NetworkAnalysis/VerifyStatsProteinSelection/plots/heatmap_NSAF_noD0_ColorByMethod.pdf",width = 10, height = 10)
 heatmap3(data4heatmap3,Colv = NA, cexRow = 0.1, cexCol = 0.5, RowSideColors=RowSideColors,ColSideColors = ColSideColors,RowAxisColors=1,ColAxisColors=1,legendfun=function() showLegend(legend=c("ASCA","ASCA_Clustering", "Clustering", "Proportions_Test", "Proportions_Test_ASCA","All methods"),col=c("lightgoldenrod1","steelblue1","mediumpurple1","mediumaquamarine","coral2","olivedrab1","sandybrown"), title = "Method", cex = 0.8))
-dev.off()
 ```
 
 ordered by temperature then day
 ```{r, echo = FALSE}
 data4heatmap3_orderT <- data4heatmap[,c(7,9,11,13,3,5,8,10,12,14,4,6)]
 ColSideColors_orderT <- ColSideColors[order(ColSideColors[,1], decreasing = TRUE),]
-pdf("~/Documents/GitHub/OysterSeedProject/analysis/UniprotAnnotations_NetworkAnalysis/VerifyStatsProteinSelection/plots/heatmap_NSAF_noD0_ordT_ColorByMethod.pdf",width = 10, height = 10)
 heatmap3(data4heatmap3_orderT,Colv = NA, cexRow = 0.1, cexCol = 0.5, RowSideColors=RowSideColors,ColSideColors = ColSideColors_orderT,RowAxisColors=1,ColAxisColors=1,legendfun=function() showLegend(legend=c("ASCA","ASCA_Clustering", "Clustering", "Proportions_Test", "Proportions_Test_ASCA","All methods"),col=c("lightgoldenrod1","steelblue1","mediumpurple1","mediumaquamarine","coral2","olivedrab1","sandybrown"), title = "Method", cex = 0.8))
-dev.off()
 ```
 
 **CREATE HEATMAP OF ASCA SELECTED PROTEINS**
@@ -186,24 +182,19 @@ rownames(ASCAdata4heatmap3) <- ASCAdata4heatmap[,2]
 #make data frames to store heatmap color values
 #columns are days/temp; color 23C blue, 29C red, each day a different shade of gray
 ColSideColors<-cbind(Temp=c(rep(c("steelblue2","red"),6)), Day=c(rep("#D9D9D9",2),rep("#BDBDBD",2),rep("#969696",2),rep("#737373",2),rep("#525252",2),rep("#252525",2)))
-pdf("~/Documents/GitHub/OysterSeedProject/analysis/UniprotAnnotations_NetworkAnalysis/VerifyStatsProteinSelection/plots/heatmap_ASCA_NSAF_noD0_ColorByMethod.pdf",width = 10, height = 10)
 heatmap3(ASCAdata4heatmap3,Colv = NA, cexRow = 0.1, cexCol = 0.5,ColSideColors = ColSideColors,ColAxisColors=1)
-dev.off()
 ```
 
 ordered by temp then day
 ```{r, echo = FALSE}
 ASCAdata4heatmap3_orderT <- ASCAdata4heatmap[,c(7,9,11,13,3,5,8,10,12,14,4,6)]
 ColSideColors_orderT <- ColSideColors[order(ColSideColors[,1], decreasing = TRUE),]
-pdf("~/Documents/GitHub/OysterSeedProject/analysis/UniprotAnnotations_NetworkAnalysis/VerifyStatsProteinSelection/plots/heatmap_ASCA_NSAF_noD0_ordT_ColorByMethod.pdf",width = 10, height = 10)
 heatmap3(ASCAdata4heatmap3_orderT,Colv = NA, cexRow = 0.1, cexCol = 0.5,ColSideColors = ColSideColors_orderT,ColAxisColors=1)
-dev.off()
 ```
 
 Abundance plots for ASCA selected proteins
 ```{r, echo= FALSE}
-d <- ggplot(all_sig0.1_ASCA_clust_pro_avgNSAF[grep("ASCA", all_sig0.1_ASCA_clust_pro_avgNSAF$method),], aes(x = day, y = avgNSAF, color = temp)) + geom_line() + facet_wrap(~protein_ID, scale = "free") + scale_x_continuous(breaks = c(3,5,7,9,11,13), labels = c(3,5,7,9,11,13)) +   theme(strip.text.x = element_text(size = 3)) + ggtitle("Avg NSAF Abundance for proteins selected by ASCA")
-ggsave("~/Documents/GitHub/OysterSeedProject/analysis/UniprotAnnotations_NetworkAnalysis/VerifyStatsProteinSelection/plots/ASCA_selects_avgNSAF.pdf", d, width = 19, height = 13 )
+ggplot(all_sig0.1_ASCA_clust_pro_avgNSAF[grep("ASCA", all_sig0.1_ASCA_clust_pro_avgNSAF$method),], aes(x = day, y = avgNSAF, color = temp)) + geom_line() + facet_wrap(~protein_ID, scale = "free") + scale_x_continuous(breaks = c(3,5,7,9,11,13), labels = c(3,5,7,9,11,13)) +   theme(strip.text.x = element_text(size = 3)) + ggtitle("Avg NSAF Abundance for proteins selected by ASCA")
 ```
 
 **CREATE HEATMAP OF CLUSTERING SELECTED PROTEINS**
@@ -216,23 +207,18 @@ rownames(clusterdata4heatmap3) <- clusterdata4heatmap[,2]
 #make data frames to store heatmap color values
 #columns are days/temp; color 23C blue, 29C red, each day a different shade of gray
 ColSideColors<-cbind(Temp=c(rep(c("steelblue2","red"),6)), Day=c(rep("#D9D9D9",2),rep("#BDBDBD",2),rep("#969696",2),rep("#737373",2),rep("#525252",2),rep("#252525",2)))
-pdf("~/Documents/GitHub/OysterSeedProject/analysis/UniprotAnnotations_NetworkAnalysis/VerifyStatsProteinSelection/plots/heatmap_clustering_NSAF_noD0_ColorByMethod.pdf",width = 10, height = 10)
 heatmap3(clusterdata4heatmap3,Colv = NA, cexRow = 0.1, cexCol = 0.5,ColSideColors = ColSideColors,ColAxisColors=1)
-dev.off()
 ```
 
 ordered by temp then day
 ```{r, echo = FALSE}
 clusterdata4heatmap3_orderT <- clusterdata4heatmap[,c(7,9,11,13,3,5,8,10,12,14,4,6)]
 ColSideColors_orderT <- ColSideColors[order(ColSideColors[,1], decreasing = TRUE),]
-pdf("~/Documents/GitHub/OysterSeedProject/analysis/UniprotAnnotations_NetworkAnalysis/VerifyStatsProteinSelection/plots/heatmap_clusterign_NSAF_noD0_ordT_ColorByMethod.pdf",width = 10, height = 10)
 heatmap3(clusterdata4heatmap3_orderT,Colv = NA, cexRow = 0.1, cexCol = 0.5,ColSideColors = ColSideColors_orderT,ColAxisColors=1)
-dev.off()
 ```
 Abundance plots for cluster selected proteins
 ```{r, echo = FALSE}
-d <- ggplot(all_sig0.1_ASCA_clust_pro_avgNSAF[grep("cluster", all_sig0.1_ASCA_clust_pro_avgNSAF$method),], aes(x = day, y = avgNSAF, color = temp)) + geom_line() + facet_wrap(~protein_ID, scale = "free") + scale_x_continuous(breaks = c(3,5,7,9,11,13), labels = c(3,5,7,9,11,13)) +   theme(strip.text.x = element_text(size = 3)) + ggtitle("Avg NSAF Abundance for proteins selected by clustering")
-ggsave("~/Documents/GitHub/OysterSeedProject/analysis/UniprotAnnotations_NetworkAnalysis/VerifyStatsProteinSelection/plots/clustering_selects_avgNSAF.pdf", d, width = 19, height = 13 )
+ggplot(all_sig0.1_ASCA_clust_pro_avgNSAF[grep("cluster", all_sig0.1_ASCA_clust_pro_avgNSAF$method),], aes(x = day, y = avgNSAF, color = temp)) + geom_line() + facet_wrap(~protein_ID, scale = "free") + scale_x_continuous(breaks = c(3,5,7,9,11,13), labels = c(3,5,7,9,11,13)) +   theme(strip.text.x = element_text(size = 3)) + ggtitle("Avg NSAF Abundance for proteins selected by clustering")
 ```
 
 **CREATE HEATMAP OF PROP TEST SELECTED PROTEINS**
@@ -268,22 +254,17 @@ rownames(proptestdata4heatmap3) <- proptestdata4heatmap[,2]
 #make data frames to store heatmap color values
 #columns are days/temp; color 23C blue, 29C red, each day a different shade of gray
 ColSideColors<-cbind(Temp=c(rep(c("steelblue2","red"),6)), Day=c(rep("#D9D9D9",2),rep("#BDBDBD",2),rep("#969696",2),rep("#737373",2),rep("#525252",2),rep("#252525",2)))
-pdf("~/Documents/GitHub/OysterSeedProject/analysis/UniprotAnnotations_NetworkAnalysis/VerifyStatsProteinSelection/plots/heatmap_proptest_NSAF_noD0_ColorByMethod.pdf",width = 10, height = 10)
 heatmap3(proptestdata4heatmap3,Colv = NA, cexRow = 0.1, cexCol = 0.5,ColSideColors = ColSideColors,ColAxisColors=1)
-dev.off()
 ```
 
 ordered by temp then day
 ```{r, echo = FALSE}
 proptestdata4heatmap3_orderT <- proptestdata4heatmap[,c(7,9,11,13,3,5,8,10,12,14,4,6)]
 ColSideColors_orderT <- ColSideColors[order(ColSideColors[,1], decreasing = TRUE),]
-pdf("~/Documents/GitHub/OysterSeedProject/analysis/UniprotAnnotations_NetworkAnalysis/VerifyStatsProteinSelection/plots/heatmap_proptest_NSAF_noD0_ordT_ColorByMethod.pdf",width = 10, height = 10)
 heatmap3(proptestdata4heatmap3_orderT,Colv = NA, cexRow = 0.1, cexCol = 0.5,ColSideColors = ColSideColors_orderT,ColAxisColors=1)
-dev.off()
 ```
 
 Abundance plots for proportions test selected proteins
 ```{r, echo = FALSE}
-d <- ggplot(all_sig0.1_ASCA_clust_pro_totnumspec[grep("PropTest", all_sig0.1_ASCA_clust_pro_totnumspec$method),], aes(x = day, y = TotNumSpec, color = temp)) + geom_line() + facet_wrap(~protein_ID, scale = "free") + scale_x_continuous(breaks = c(3,5,7,9,11,13), labels = c(3,5,7,9,11,13)) +   theme(strip.text.x = element_text(size = 3)) + ggtitle("Total Spectral Abundance for proteins selected by ChiSq prop. test pval 0.1")
-ggsave("~/Documents/GitHub/OysterSeedProject/analysis/UniprotAnnotations_NetworkAnalysis/VerifyStatsProteinSelection/plots/chisqpval0.1_selects_TotNumSpec.pdf", d, width = 19, height = 13 )
+ggplot(all_sig0.1_ASCA_clust_pro_totnumspec[grep("PropTest", all_sig0.1_ASCA_clust_pro_totnumspec$method),], aes(x = day, y = TotNumSpec, color = temp)) + geom_line() + facet_wrap(~protein_ID, scale = "free") + scale_x_continuous(breaks = c(3,5,7,9,11,13), labels = c(3,5,7,9,11,13)) +   theme(strip.text.x = element_text(size = 3)) + ggtitle("Total Spectral Abundance for proteins selected by ChiSq prop. test pval 0.1")
 ```
