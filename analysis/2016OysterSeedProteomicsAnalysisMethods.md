@@ -6,7 +6,7 @@
 
 	for more details see Rhonda's jupyter notebook: [https://github.com/Ellior2/Fish-546-Bioinformatics/blob/master/analyses/DDA_2016/000-Remotelogin_filechange.ipynb](https://github.com/Ellior2/Fish-546-Bioinformatics/blob/master/analyses/DDA_2016/000-Remotelogin_filechange.ipynb)
 
-2. The following common contaminant fasta files were obtained from: (?????)
+2. The following common contaminant fasta files were obtained from the [CRAPome](https://www.nature.com/articles/nmeth.2557)
 
 		contam.bovin.fa 	2017-02-10 11:30 	3.9K 
 		contam.human.fa 	2017-02-10 11:30 	26K
