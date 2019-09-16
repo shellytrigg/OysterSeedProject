@@ -1,0 +1,1 @@
+This analysis was an attempt to see if TopGO data (topGO.tsv) from the GigaTON website yielded a better GO analysis. Only ~2/3 of sig. proteins mapped to TopGO terms and the GSEABase goslim analysis seems less inclusive than the previous analysis. Likely because fewer proteins have annotation and/or the proteins have less TopGO annotations in general. 
