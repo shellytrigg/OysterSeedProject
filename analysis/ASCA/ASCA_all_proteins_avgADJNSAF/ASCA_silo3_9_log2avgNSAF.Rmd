@@ -1,0 +1,506 @@
+---
+title: "ASCA_avgNSAFvals_allProteins_noDay0"
+author: "Shelly Trigg"
+date: "9/13/2019"
+output: rmarkdown::github_document
+---
+
+load libraries
+```{r, echo = FALSE}
+library(dplyr)
+library(tidyr)
+library(MetStaT)
+library(ggplot2)
+library(heatmap3)
+library(colorRamps)
+library(plotrix)
+```
+
+load data
+```{r}
+#NSAF data from filtered proteins
+data <- read.csv("~/Documents/GitHub/OysterSeedProject/analysis/nmds_R/silo3and9_nozerovals_AVGs.csv", stringsAsFactors = FALSE)
+
+all_silo39_prots <- data.frame(rownames(t(data[,grep("CHOYP",colnames(data))])))
+write.csv(all_silo39_prots,"~/Documents/GitHub/OysterSeedProject/analysis/ASCA/ASCA_all_proteins_avgADJNSAF/Silo3_9_log/all_silo39_prots.csv", row.names = FALSE, quote =FALSE)
+
+```
+
+```{r, echo =FALSE, eval = FALSE}
+#load data with annotations so protein IDs can be substituted with shorter names
+#data with uniprot annotations
+data_w_uniprot <- read.csv("~/Documents/GitHub/OysterSeedProject/raw_data/gigaton-uniport-table_GOterms-sperated.csv", stringsAsFactors = FALSE)
+#subset only Protein IDs and Entry names
+#data_w_uniprot <- data_w_uniprot[,c("Protein.ID", "Entry.name.new")]
+#replace pipe character with nothing; remember \\ to escape the | character
+data_w_uniprot$Protein.ID <- gsub("\\|",".", data_w_uniprot$Protein.ID)
+#replace all characters following '_' with nothing in the entry name column
+data_w_uniprot$Entry.name.simple <- gsub("\\_.*","", data_w_uniprot$Entry.name)
+#replace 'none' with 'unknown'
+data_w_uniprot$Entry.name.simple <- gsub("None","Unknown",data_w_uniprot$Entry.name.simple)
+
+#there are duplicated Entry names for unique protein IDs, so we need to make unique Entry names by adding .1, .2 etc.
+#https://stackoverflow.com/questions/16646446/renaming-duplicate-strings-in-r
+
+data_w_uniprot$Entry.name.new <- make.names(data_w_uniprot$Entry.name.simple, unique = TRUE)
+```
+
+```{r subset_data_for_CHOYP_only_rm0, echo = FALSE}
+#make a dataframe with just CHOYP proteins
+choyp_data <- data[which(data$day !=0),c(1:2,grep("CHOYP", colnames(data)))]
+
+#make a seperate data frame with contaminant proteins
+contam_data <- data[,-grep("CHOYP", colnames(data))]
+```
+
+```{r}
+contam_data_t <- t(contam_data[,-c(1:2)])
+colnames(contam_data_t) <- paste(contam_data$day,contam_data$temp, sep = "_")
+heatmap3(as.matrix(contam_data_t), Colv = NA, cexRow = 0.5)
+```
+
+
+**Perform ASCA on log2 data**
+```{r}
+#create matrix to pass to ASCA command, excluding the silo and time info
+ASCA_X <- as.matrix(log(choyp_data[,-c(1:2)],2))
+#create matrix to pass to ASCA command with only the silo and time info
+ASCA_F <- as.matrix(choyp_data[,c(1:2)])
+#perform ASCA
+ASCA <- ASCA.Calculate(ASCA_X, ASCA_F, equation.elements = "1,2,12", scaling = FALSE)
+```
+
+Here is a summary of the ASCA results (e.g. variance explained by different factors; factor 1= time (days), factor 2 = temperature, interaction = interaction of time and temperature)
+```{r}
+#print the ASCA summary
+ASCA.GetSummary(ASCA)
+```
+
+### Plot PCAs from ASCA  
+
+**This first plot is the time (days) effect PCA**
+```{r avgNSAF_PCA_timeEffect_plot}
+#plot PCA for factor 1, which is time in this case
+ASCA.PlotScoresPerLevel(ASCA, ee = "1", pcs = "1,2")
+```
+
+**This next plot is the temperature effect PCA**
+```{r avgNSAF_PCA_tempEffect_plot}
+#plot PCA for factor 2, which is temperature in this case
+ASCA.PlotScoresPerLevel(ASCA, ee = "2", pcs = "1,2")
+```
+
+**This next plot is the time x temp interaction effect PCA**
+```{r avgNSAF_PCA_timeXtempEffect_plot}
+#plot PCA for factor interaction, which is time x temp in this case
+timextemp_PC12 <- data.frame(ASCA$`12`$svd$t[,c(1,2)])
+timextemp_PC12 <- cbind(data.frame(ASCA$`12`$level.combinations$row.patterns), timextemp_PC12)
+colnames(timextemp_PC12)<- c("day","temp","PC1","PC2")
+timextemp_PC12$day <- as.character(timextemp_PC12$day)
+timextemp_PC12$temp <- as.character(timextemp_PC12$temp)
+ggplot(timextemp_PC12, aes(PC1, PC2)) + geom_point(aes(col = day, shape = temp, size = 3)) + theme_bw() + ggtitle("PC1 vs PC2 for time x temperature interaction effect") + theme(plot.title = element_text(face = "bold")) + xlab(paste("PC1"," (",formatC(ASCA$`12`$svd$var.explained[1] * 100,digits=2,format="f"),"%)", sep = "")) + ylab(paste("PC2"," (",formatC(ASCA$`12`$svd$var.explained[2] * 100,digits=2,format="f"),"%)", sep = ""))
+```
+
+### Analysis of proteins affected by temperature
+
+Because the temperature effect PCA show the most separation between 23C and 29C in PC2, we will look at those loadings.
+
+**PC1 loadings for temperature effect**
+```{r avgNSAF_PCA_tempEffect_PC2loadings, echo = FALSE}
+#extract protein names from ASCA data; these will be combined with loadings values; the order is maintained
+protnames <- data.frame(colnames(ASCA$data))
+#combine protein names with ASCA loadings for PC2 for temperature, since this component showed the greatest separation between temperatures
+d <- cbind(protnames, ASCA$`2`$svd$v[,1])
+#rename the columns
+colnames(d) <- c("protein", "PC1loadings")
+#make a dataframe of proteins with PC loadings greater than zero for the loadings plot
+d_great <- d[which(d$PC1loadings > 0),]
+#make a dataframe of proteins with PC loadings less than zero for the loadings plot
+d_less <- d[which(d$PC1loadings < 0),]
+#write out PC1 loadings for ASCA$2$svd$[,1]
+#write.csv(d, "~/Documents/GitHub/paper-OysterSeed-TimeXTemp/Data/Supplementary_Data6.csv", row.names = FALSE, quote = FALSE)
+#plot PC1 loadings
+plot(d_great[order(d_great$PC1loadings, decreasing = TRUE),2], xlab = "protein", ylab = "PC1 Loadings")
+abline(h=0.03, col = "red")
+plot(d_less[order(d_less$PC1loadings, decreasing = TRUE),2],xlab = "protein", ylab = "PC1 Loadings")
+abline(h=-0.025, col = "red")
+
+```
+
+To pull out proteins affected by temperature based on their influence in seperating treatment groups on PC1 of the temperature PCA, I picked an absolute value loadings threshold of 0.025. This means any protein that had a loadings value > 0.025 or < -0.025 was selected.
+```{r, echo = FALSE}
+#make list of proteins with temperature PC1 loadings values >= 0.025
+cutd <- d[which(d$PC1loadings >= 0.03 | d$PC1loadings <= -0.025),]
+#make a list of cutoff proteins with normalized abundance
+cut_data <-data[,which(colnames(data) %in% cutd$protein)]
+rownames(cut_data) <- paste(data$day, data$temp, sep="_")
+```
+
+
+Number of proteins affected by temperature at loadings value > 0.03 or < -0.025
+```{r, echo = FALSE}
+nrow(cutd)
+```
+
+
+
+**Heatmap of proteins affected by temperature based on temperature effect PC2 loadings value cutoff**
+```{r avgNSAF_tempEffectPC1_cutoff0.03&-0.025_heatmap_OrderedByTemp_ShortNames,fig.height=10, fig.width=10, eval = FALSE, echo = FALSE}
+#reorder the cut data so that samples are grouped by temperature
+cut_data_ord <- data[,c(1:3,which(colnames(data) %in% cutd$protein))]
+cut_data_ord <- cut_data_ord[order(cut_data_ord$temp,cut_data_ord$day),]
+rownames(cut_data_ord) <- paste(cut_data_ord$day, cut_data_ord$temp, sep="_")
+cut_data_ord <- cut_data_ord[,-c(1:3)]
+#replace CHOYP names with "entry names"
+#transposed to eventually get row names as columns to match entry names to. 
+#t.data.frame returns a matrix so I had convert back to data frame for all downstream rearranging because data frames are much easier to work with
+cut_data_ord_t <- data.frame(t.data.frame(cut_data_ord))
+#make row names which contain the protein IDs a column
+cut_data_ord_t <- cbind(rownames(cut_data_ord_t), cut_data_ord_t)
+#add the column name
+colnames(cut_data_ord_t)[1] <- "Protein.ID"
+#convert the Protein ID column to character
+cut_data_ord_t[,1] <- as.character(cut_data_ord_t[,1])
+#add the Entry names
+cut_data_ord_t <- merge(data_w_uniprot[,c("Protein.ID","Entry.name.new")],cut_data_ord_t, by = "Protein.ID")
+#make the entry names the row names
+rownames(cut_data_ord_t) <- cut_data_ord_t[,"Entry.name.new"]
+#remove the protein ID and entry name columns since the row names are added
+cut_data_ord_t_m <- cut_data_ord_t[,-c(1:2)]
+#this step removes the x from the column names while preserving the order of colnames
+colnames(cut_data_ord_t_m) <- rownames(cut_data_ord)
+#save proteins as a list
+silo3_9_sig_temp_prots <- data.frame(rownames(cut_data_ord_t_m), stringsAsFactors = FALSE)
+colnames(silo3_9_sig_temp_prots)[1] <- "prots"
+
+#plot the heat map
+heatmap3(as.matrix(cut_data_ord_t_m), Colv = NA, cexRow = 0.5)
+
+#make data frames to store heatmap color values
+#columns are days/temp; color 23C blue, 29C red, each day a different shade of gray
+ColSideColors<-cbind(Temp=c("purple",rep("cyan3",6),rep("magenta2",6)), Day=c("white",rep(c("#D9D9D9","#BDBDBD","#969696","#737373","#525252","#252525"),2)))
+
+heatmap3(as.matrix(cut_data_ord_t_m),Colv = NA,cexRow = 0.4, cexCol = 0.8,ColSideColors = ColSideColors,ColAxisColors=1)
+```
+
+**extract clusters from heatmap**
+```{r}
+hm <- as.dist(1-cor(t.data.frame(cut_data_ord_t_m), use="pa"))
+hm2 <- hclust(hm, method = 'complete')
+plot(hm2)
+
+#Identify clades in heatmap
+# define some clusters
+
+#make a list of proteins with cluster IDs based on where the tree is cut
+#1.8 gives 2 clusters
+mycl <- cutree(hm2, h=1.8)
+
+#assign colors to cluster IDs
+clusterCols <- colorRamps::primary.colors(length(unique(mycl)))
+myClusterSideBar <- clusterCols[mycl]
+
+#plot heat map of simantic similarities
+pdf(file=paste0("ASCAtempSig_heatmap_silo39.pdf"), width=5, height=5)
+heatmap3(as.matrix(cut_data_ord_t_m),cexRow = 0.5, cexCol = 0.5, RowSideColors=myClusterSideBar,ColSideColors = ColSideColors,RowAxisColors=1,ColAxisColors=1,hclustfun=hclust, distfun = function(x) as.dist(1 - cor(t(x), use = "pa")), method = "complete", scale = "row", Colv=NA)
+dev.off()
+
+#get color name
+clusterColor <- lapply(myClusterSideBar, color.id)
+clusterColor <- lapply(clusterColor, `[[`,1)
+clusterColor <- data.frame(unlist(clusterColor), stringsAsFactors = FALSE)
+
+foo <- cbind(data.frame(mycl), clusterColor)
+#add protein column to data frame for merging
+foo$Entry.name.new <- rownames(foo)
+
+#add protein column back to NSAF data frame for merging
+cut_data_ord_t_m_proteinID <- cut_data_ord_t_m
+cut_data_ord_t_m_proteinID$Entry.name.new <- rownames(cut_data_ord_t_m)
+
+clade.prot <- merge(cut_data_ord_t_m_proteinID, foo, by = "Entry.name.new")
+
+colnames(clade.prot)[16] <- "ClusterColor"
+colnames(clade.prot)[15] <- "ClusterID"
+
+#remove day 0 from clade prot
+clade.prot_noD0 <- clade.prot[,-2]
+
+#normalize within terms (autoscale by row)
+#calculate row means and SD
+clade.prot_noD0$mean <- apply(clade.prot_noD0[,2:13], 1, mean)
+clade.prot_noD0$sd <- apply(clade.prot_noD0[,2:13],1, sd)
+
+#sweep second argument is margin which corresponds to 1 (rows) or 2 (columns); this is for autoscaling by row to make colors relative to one another like the heatmap does
+#subtract the row mean from each value
+clade.prot_no_D0_norm <- sweep(clade.prot_noD0[,2:13],1,clade.prot_noD0$mean)
+#divide each value by the row standard deviation
+clade.prot_no_D0_norm <- sweep(clade.prot_no_D0_norm[,1:12],1,clade.prot_noD0$sd, FUN = "/")
+
+clade.prot_no_D0_norm <- cbind(clade.prot_noD0[,c("Entry.name.new", "ClusterID", "ClusterColor")], clade.prot_no_D0_norm)
+
+#save temp sig. proteins with original protein IDs
+write.csv(merge(cut_data_ord_t[,1:2], clade.prot_no_D0_norm, by = "Entry.name.new"),"~/Documents/GitHub/OysterSeedProject/analysis/ASCA/ASCA_all_proteins_avgADJNSAF/Silo3_9_log/silo3_9_tempSig_prots.csv", quote = FALSE, row.names = FALSE)
+
+STACKED_NSAF <- tidyr::gather(clade.prot_no_D0_norm, daytemp, NSAF, 4:15)
+STACKED_NSAF$day <- gsub("X|_.*","",STACKED_NSAF$daytemp)
+STACKED_NSAF$temp <- as.factor(gsub(".*_","",STACKED_NSAF$daytemp))
+str(STACKED_NSAF)
+STACKED_NSAF$day <- as.integer(STACKED_NSAF$day)
+
+#make column with unique ID
+#https://thenode.biologists.com/visualizing-data-one-more-time/education/
+
+STACKED_NSAF$uniq.id <- paste(STACKED_NSAF$Entry.name.new, STACKED_NSAF$temp, sep = "_")
+
+ggplot(STACKED_NSAF,aes(day,NSAF)) + geom_line(aes(group = uniq.id,color = temp),alpha = 0.1)  + stat_smooth(aes(color = temp), method = loess,size = 1) + ylab("mean autoscaled NSAF") + facet_wrap(~ClusterID)  + scale_x_continuous(breaks = c(3,5,7,9,11,13), labels = c(3,5,7,9,11,13)) + scale_color_manual(values=c("cyan3", "magenta2")) + theme_bw()
+
+#make mean summary table for plotting summary lines of protein abundances/clade
+STACKED_NSAF_mean <- STACKED_NSAF %>%
+    group_by(day, temp, ClusterID) %>%
+    summarise(n = n(), mean=mean(NSAF), median=median(NSAF), sd=sd(NSAF)) %>%
+    mutate(sem = sd / sqrt(n - 1),
+      CI_lower = mean + qt((1-0.95)/2, n - 1) * sem,
+      CI_upper = mean - qt((1-0.95)/2, n - 1) * sem)
+
+ggplot(STACKED_NSAF_mean, aes(x=day, y=mean, color = temp)) + geom_line(aes(x=day, y=mean, color=temp)) + ylab("mean autoscaled NSAF") + geom_ribbon(aes(ymin=CI_lower,ymax=CI_upper,fill=temp),color="grey70",alpha=0.4)  + facet_wrap(~ClusterID) + scale_color_manual(values=c("cyan3", "magenta2")) + scale_fill_manual(values=c("cyan3", "magenta2")) + scale_x_continuous(breaks = c(3,5,7,9,11,13), labels = c(3,5,7,9,11,13)) + theme_bw()
+
+```
+
+
+
+## PART 2
+### Analysis of proteins affected by time (development associated proteins)
+
+**PC1 loadings for the time effect PCA**
+```{r avgNSAF_PCA_timeEffect_PC1loadings, echo = FALSE}
+#make dataframes of factor 1 (time) PC1 loadings
+d1 <- cbind(protnames, ASCA$`1`$svd$v[,1])
+colnames(d1) <- c("protein", "PC1loadings")
+d1_great <- d1[which(d1$PC1loadings > 0),]
+d1_less <- d1[which(d1$PC1loadings < 0),]
+
+plot(d1_great[order(d1_great$PC1loadings, decreasing = TRUE),2])
+abline(h=0.03, col = "red")
+plot(d1_less[order(d1_less$PC1loadings, decreasing = TRUE),2])
+abline(h=-0.03, col = "red")
+```
+
+**PC2 loadings for the time effect PCA**
+```{r avgNSAF_PCA_timeEffect_PC2loadings, echo = FALSE}
+d2 <- cbind(protnames, ASCA$`1`$svd$v[,2])
+colnames(d2) <- c("protein", "PC2loadings")
+d2_great <- d2[which(d2$PC2loadings > 0),]
+d2_less <- d2[which(d2$PC2loadings < 0),]
+
+plot(d2_great[order(d2_great$PC2loadings, decreasing = TRUE),2])
+plot(d2_less[order(d2_less$PC2loadings, decreasing = TRUE),2])
+
+#make list of proteins with temperature PC1 loadings values >= 0.025
+cutd1 <- data.frame(d1[which(abs(d1$PC1loadings) >= 0.035),1])
+colnames(cutd1) <- "protein"
+cutd2 <- data.frame(d2[which(abs(d2$PC2loadings) >= 0.035),1])
+colnames(cutd2) <- "protein"
+cutd12 <- unique(rbind(cutd1,cutd2))
+```
+
+number of proteins affected by time at loadings value > 0.025 or < -0.025
+```{r, echo = FALSE}
+nrow(cutd12)
+```
+
+**heatmap of proteins affected by time based on time effect PC1 and PC2 loadings value cutoffs**
+```{r avgNSAF_timeEffectPC1and2_cutoff0.025_heatmap_OrderedByTime, echo = FALSE, fig.height=10, fig.width=10, echo = FALSE}
+#make a list of cutoff proteins with normalized abundance
+cut12_data <-data[,which(colnames(data) %in% cutd12$protein)]
+rownames(cut12_data) <- paste(data$day, data$temp, sep="_")
+heatmap3(t.data.frame(cut12_data),Colv = NA,cexRow = 0.4)
+
+#make data frames to store heatmap color values
+#columns are days/temp; color 23C blue, 29C red, each day a different shade of gray
+ColSideColors<-cbind(Temp=c("purple",rep(c("cyan3","magenta2"),6)), Day=c("white",rep("#D9D9D9",2),rep("#BDBDBD",2),rep("#969696",2),rep("#737373",2),rep("#525252",2),rep("#252525",2)))
+
+heatmap3(t.data.frame(cut12_data),Colv = NA,cexRow = 0.4, cexCol = 0.8,ColSideColors = ColSideColors,ColAxisColors=1)
+
+
+hm <- as.dist(1-cor(cut12_data, use="pa"))
+hm2 <- hclust(hm, method = 'complete')
+plot(hm2)
+
+#Identify clades in heatmap
+# define some clusters
+
+#make a list of proteins with cluster IDs based on where the tree is cut
+mycl <- cutree(hm2, h=1.5)
+
+#assign colors to cluster IDs
+clusterCols <- colorRamps::primary.colors(length(unique(mycl)))
+myClusterSideBar <- clusterCols[mycl]
+pdf(file=paste0("ASCAtimeSig_heatmap_silo39.pdf"), width=5, height=5)
+heatmap3(t.data.frame(cut12_data),cexRow = 0.5, cexCol = 0.5, RowSideColors=myClusterSideBar,ColSideColors = ColSideColors,RowAxisColors=1,ColAxisColors=1,hclustfun=hclust, distfun = function(x) as.dist(1 - cor(t(x), use = "pa")), method = "complete", scale = "row", Colv=NA)
+dev.off()
+
+#get color name
+clusterColor <- lapply(myClusterSideBar, color.id)
+clusterColor <- lapply(clusterColor, `[[`,1)
+clusterColor <- data.frame(unlist(clusterColor), stringsAsFactors = FALSE)
+
+foo <- cbind(data.frame(mycl), clusterColor)
+#add protein column to data frame for merging
+foo$protein_ID <- rownames(foo)
+
+#add protein column back to NSAF data frame for merging
+cut12_data_proteinID <- data.frame(t(cut12_data))
+cut12_data_proteinID$protein_ID <- rownames(cut12_data_proteinID)
+
+clade.prot <- merge(cut12_data_proteinID, foo, by = "protein_ID")
+
+colnames(clade.prot)[16] <- "ClusterColor"
+colnames(clade.prot)[15] <- "ClusterID"
+
+#remove day 0 from clade prot
+clade.prot_noD0 <- clade.prot[,-2]
+
+#normalize within terms (autoscale by row)
+#calculate row means and SD
+clade.prot_noD0$mean <- apply(clade.prot_noD0[,2:13], 1, mean)
+clade.prot_noD0$sd <- apply(clade.prot_noD0[,2:13],1, sd)
+
+#sweep second argument is margin which corresponds to 1 (rows) or 2 (columns); this is for autoscaling by row to make colors relative to one another like the heatmap does
+#subtract the row mean from each value
+clade.prot_no_D0_norm <- sweep(clade.prot_noD0[,2:13],1,clade.prot_noD0$mean)
+#divide each value by the row standard deviation
+clade.prot_no_D0_norm <- sweep(clade.prot_no_D0_norm[,1:12],1,clade.prot_noD0$sd, FUN = "/")
+
+clade.prot_no_D0_norm <- cbind(clade.prot_noD0[,c("protein_ID", "ClusterID", "ClusterColor")], clade.prot_no_D0_norm)
+
+write.csv(clade.prot_no_D0_norm,"~/Documents/GitHub/OysterSeedProject/analysis/ASCA/ASCA_all_proteins_avgADJNSAF/Silo3_9_log/silo3_9_timeSig_prots.csv", quote = FALSE, row.names = FALSE)
+
+STACKED_NSAF <- tidyr::gather(clade.prot_no_D0_norm, daytemp, NSAF, 4:15)
+STACKED_NSAF$day <- gsub("X|_.*","",STACKED_NSAF$daytemp)
+STACKED_NSAF$temp <- as.factor(gsub(".*_","",STACKED_NSAF$daytemp))
+str(STACKED_NSAF)
+STACKED_NSAF$day <- as.integer(STACKED_NSAF$day)
+
+#make column with unique ID
+#https://thenode.biologists.com/visualizing-data-one-more-time/education/
+
+STACKED_NSAF$uniq.id <- paste(STACKED_NSAF$protein_ID, STACKED_NSAF$temp, sep = "_")
+
+
+ggplot(STACKED_NSAF,aes(day,NSAF)) + geom_line(aes(group = uniq.id),alpha = 0.1) + stat_smooth(method = "loess") + ylab("mean autoscaled NSAF") + facet_wrap(~ClusterID)  + scale_x_continuous(breaks = c(3,5,7,9,11,13), labels = c(3,5,7,9,11,13)) + theme_bw()
+
+ggplot(STACKED_NSAF,aes(day,NSAF)) + geom_line(aes(group = uniq.id,color = temp),alpha = 0.1)  + stat_smooth(aes(color = temp), method = loess, size = 1) + scale_color_manual(values=c("cyan3", "magenta2")) + ylab("mean autoscaled NSAF") + facet_wrap(~ClusterID, ncol = 2)  + scale_x_continuous(breaks = c(3,5,7,9,11,13), labels = c(3,5,7,9,11,13)) + theme_bw()
+
+#make mean summary table for plotting summary lines of protein abundances/clade
+STACKED_NSAF_mean <- STACKED_NSAF %>%
+    group_by(day, temp, ClusterID) %>%
+    summarise(n = n(), mean=mean(NSAF), median=median(NSAF), sd=sd(NSAF)) %>%
+    mutate(sem = sd / sqrt(n - 1),
+      CI_lower = mean + qt((1-0.95)/2, n - 1) * sem,
+      CI_upper = mean - qt((1-0.95)/2, n - 1) * sem)
+
+ggplot(STACKED_NSAF_mean, aes(x=day, y=mean, color = temp)) +
+  geom_line(aes(x=day, y=mean, color=temp)) + ylab("mean autoscaled NSAF") +
+  geom_ribbon(aes(ymin=CI_lower,ymax=CI_upper,fill=temp),color="grey70",alpha=0.4)  + facet_wrap(~ClusterID) + scale_color_manual(values=c("cyan3", "magenta2")) + scale_fill_manual(values=c("cyan3", "magenta2")) + scale_x_continuous(breaks = c(3,5,7,9,11,13), labels = c(3,5,7,9,11,13)) + theme_bw()
+
+#make mean summary table for plotting summary lines of protein abundances/clade
+STACKED_NSAF_mean_day <- STACKED_NSAF %>%
+    group_by(day, ClusterID) %>%
+    summarise(n = n(), mean=mean(NSAF), median=median(NSAF), sd=sd(NSAF)) %>%
+    mutate(sem = sd / sqrt(n - 1),
+      CI_lower = mean + qt((1-0.95)/2, n - 1) * sem,
+      CI_upper = mean - qt((1-0.95)/2, n - 1) * sem)
+
+ggplot(STACKED_NSAF_mean_day, aes(x=day, y=mean)) +
+  geom_line(aes(x=day, y=mean)) + ylab("mean autoscaled NSAF") +
+  geom_ribbon(aes(ymin=CI_lower,ymax=CI_upper),color="grey70",alpha=0.4)  + facet_wrap(~ClusterID)  + scale_x_continuous(breaks = c(3,5,7,9,11,13), labels = c(3,5,7,9,11,13)) + theme_bw()
+
+
+```
+
+```{r, echo = FALSE, eval = FALSE}
+write.csv(cut12_data, "~/Documents/GitHub/OysterSeedProject/analysis/ASCA/ASCA_all_proteins_avgADJNSAF/ASCAlog_TimeAffectedProteins.csv")
+```
+
+**merge time affected proteins with uniprot**
+```{r}
+data_w_uniprot$column12 <- as.numeric(data_w_uniprot$column12)
+
+
+```
+
+
+
+
+### Analysis of proteins affected by the interaction of time and temp 
+
+**PC1 loadings for the time x temperature interaction effect PCA**
+```{r avgNSAF_PCA_timeXtempEffect_PC1loadings, echo = FALSE}
+#look at PC1 loadings because this separates
+d3 <- cbind(protnames, ASCA$`12`$svd$v[,1])
+colnames(d3) <- c("protein", "PC1loadings")
+d3_great <- d3[which(d3$PC1loadings > 0),]
+d3_less <- d3[which(d3$PC1loadings < 0),]
+
+plot(d3_great[order(d3_great$PC1loadings, decreasing = TRUE),2])
+plot(d3_less[order(d3_less$PC1loadings, decreasing = TRUE),2])
+```
+
+**PC2 loadings for the time x temperature interaction effect PCA**
+```{r avgNSAF_PCA_timeXtempEffect_PC2loadings, echo = FALSE}
+d4 <- cbind(protnames, ASCA$`12`$svd$v[,2])
+colnames(d4) <- c("protein", "PC2loadings")
+d4_great <- d4[which(d4$PC2loadings > 0),]
+d4_less <- d4[which(d4$PC2loadings < 0),]
+
+plot(d4_great[order(d4_great$PC2loadings, decreasing = TRUE),2])
+plot(d4_less[order(d4_less$PC2loadings, decreasing = TRUE),2])
+
+#make list of proteins with temperature PC1 loadings values >= 0.04
+cutd3 <- data.frame(d3[which(abs(d3$PC1loadings) >= 0.04),1])
+colnames(cutd3) <- "protein"
+cutd4 <- data.frame(d4[which(abs(d4$PC2loadings) >= 0.04),1])
+colnames(cutd4) <- "protein"
+cutd34 <- unique(rbind(cutd3,cutd4))
+```
+
+number of proteins affected by time x temperature interaction at loadings value > 0.025 or < -0.025
+```{r, echo = FALSE}
+nrow(cutd34)
+```
+
+
+**heatmap of proteins affected by the time x temperature interaction based on time x temperature effect PC1 and PC2 loadings value cutoffs**
+```{r avgNSAF_timeXtempEffectPC1and2_cutoff0.025_heatmap_OrderedByTime, echo = FALSE, fig.height=10, fig.width=10, echo = FALSE}
+#make a list of cutoff proteins with normalized abundance
+cut34_data <-data[,which(colnames(data) %in% cutd34$protein)]
+rownames(cut34_data) <- paste(data$day, data$temp,sep="_")
+cut34_data <- cut34_data[order(factor(rownames(cut34_data),levels = c("0_16","3_23","5_23","7_23","9_23","11_23","13_23","3_29","5_29","7_29","9_29", "11_29", "13_29"))),]
+heatmap3(t.data.frame(cut34_data),Colv = NA,cexRow = 0.4)
+
+```
+
+```{r, echo = FALSE, eval = FALSE}
+write.csv(cut34_data, "~/Documents/GitHub/OysterSeedProject/analysis/ASCA/ASCA_all_proteins_avgADJNSAF/ASCA_timeXtempAffectedProteins.csv")
+```
+
+```{r, Create_table_all_ASCA_proteins_and_loadings_with_PC1and2cutoff0.025, eval = FALSE}
+combined1d2 <- merge(d1[which(abs(d1$PC1loadings) >= 0.025),],d2[which(abs(d2$PC2loadings) >= 0.025),], by = "protein", all = TRUE)
+for(i in 1:nrow(combined1d2)){
+  combined1d2$TimePC12[i] <- sum(abs(combined1d2$PC1loadings[i]), abs(combined1d2$PC2loadings[i]), na.rm = TRUE)
+}
+
+combined3d4 <- merge(d3[which(abs(d3$PC1loadings) >= 0.025),],d4[which(abs(d4$PC2loadings) >= 0.025),], by = "protein", all = TRUE)
+for(i in 1:nrow(combined3d4)){
+  combined3d4$TimexTempPC12[i] <- sum(abs(combined3d4$PC1loadings[i]), abs(combined3d4$PC2loadings[i]), na.rm = TRUE)
+}
+
+ASCA_all <- merge(cutd, combined1d2[,c("protein", "TimePC12")], by = "protein", all = TRUE)
+ASCA_all <- merge(ASCA_all, combined3d4[,c("protein", "TimexTempPC12")], by = "protein", all = TRUE)    
+colnames(ASCA_all)[2] <- "TempPC2"
+
+write.csv(ASCA_all,"~/Documents/GitHub/OysterSeedProject/analysis/ASCA/ASCA_all_proteins_avgADJNSAF/ASCA_TimexTemp_proteins_loadings.csv", row.names = FALSE, quote = FALSE)
+
+```
+

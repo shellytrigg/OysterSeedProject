@@ -1,0 +1,317 @@
+---
+title: "Silo2_3_ASCA_logNSAFs_FunctionalAnalysis"
+author: "Shelly Trigg"
+date: "9/14/2019"
+output: html_document
+---
+
+**load libraries**
+```{r}
+#load libraries
+library(plyr)
+library(tidyr)
+#install.packages("ontologyIndex")
+#install.packages("ontologySimilarity")
+library(ontologyIndex)
+library(ontologySimilarity)
+library(GSEABase)
+library(reshape2)
+library(heatmap3)
+library(plotrix)
+library(colorRamps)
+```
+
+**read in and format uniprot data**
+```{r}
+#read in uniprot mapping
+uniprot <- read.csv("/Volumes/web/metacarcinus/Cgigas/all_giga-uniprot-blastP-out.nopipe.annotations.tab", sep ="\t", header = FALSE, stringsAsFactors = FALSE)
+#rename uniprot columns
+colnames(uniprot) <- c("protein_ID","Entry", "Entry_name", "perc_ident_match", "align_len", "num_mismatch", "num_gaps","querStart", "querEnd", "subjStart", "subjEnd", "evalue", "bitscore","Entry.1","Entry_name.1", "Protein_names", "Gene_names", "Organism", "Protein_length","Pathway", "GO_bp", "GO","GO_IDs", "Protein_fams")
+#convert columns that should be numeric to numeric
+str(uniprot)
+uniprot[,4:13] <- lapply(uniprot[,4:13], as.numeric)
+#NAs introduced by coercion
+#this is because the entries that are unmappaed have NA values
+str(uniprot)
+
+#filter for choyp proteins and for evalue <= 10x10^-10 (unmapped proteins get removed here)
+uniprot_filtered <- uniprot[grep("CHOYP",uniprot$protein_ID),]
+uniprot_filtered <- uniprot[which(uniprot$evalue <= 1*10^-10),]
+
+
+```
+
+**read in and format ASCA logNSAF time, temp, and silo sig. data**
+```{r}
+silo23_ASCA <- read.csv("~/Documents/GitHub/OysterSeedProject/analysis/ASCA/ASCA_all_proteins_avgADJNSAF/Silo2vs3/Silo2_3_log/silo2_3_log_tempSig_prots.csv", stringsAsFactors = FALSE)
+#convert decimal in protein.ID column name to protein_ID
+colnames(silo23_ASCA)[2] <- "protein_ID"
+
+```
+
+**read in all proteins detected specific for each comparison to generate GO background** 
+```{r}
+silo23_all_prots <- read.csv("~/Documents/GitHub/OysterSeedProject/analysis/ASCA/ASCA_all_proteins_avgADJNSAF/Silo2vs3/Silo2_3_log/all_silo23_prots.csv", stringsAsFactors = FALSE)
+
+#rename column to protein_ID
+colnames(silo23_all_prots)[1] <- "protein_ID"
+#remove pipe in protein IDs
+silo23_all_prots$protein_ID <- gsub("\\|","\\.", silo23_all_prots$protein_ID)
+```
+
+**Match GO IDs to sig protein lists**
+```{r}
+#Get GO IDs for silo 2 and 3 sig. proteins
+silo23_sig_pro_GO <- merge(silo23_ASCA, uniprot_filtered[,c("protein_ID","GO_IDs")], by ="protein_ID")
+
+#count number of proteins with GO IDs
+nrow(silo23_sig_pro_GO)
+
+#write out sig proteins with GO IDs
+silo23_sig_pro_GO_mwu <- cbind(silo23_sig_pro_GO[,1],data.frame(gsub(" ","",silo23_sig_pro_GO$GO_IDs)))
+write.table(silo23_sig_pro_GO_mwu,"~/Documents/GitHub/OysterSeedProject/analysis/UniprotAnnotations_NetworkAnalysis/ASCA_logNSAFs_FunctionalAnalysis/silo23_sig_pro_GO.tab",quote = FALSE, sep = "\t", col.names = FALSE,row.names = FALSE)
+
+
+#Since GO IDs are listed all in one column, spread them across multiple columns (1 column /term)
+silo23_sig_pro_GOid_term <- data.frame()
+for (i in 1:nrow(silo23_sig_pro_GO)){
+  silo23_sig_pro_GOid_term_row <- data.frame(t(data.frame(strsplit(as.character(silo23_sig_pro_GO$GO_IDs[i]),'; ', fixed = TRUE))))
+  silo23_sig_pro_GOid_term <- rbind.fill(silo23_sig_pro_GOid_term,silo23_sig_pro_GOid_term_row)
+}
+
+#add protein IDs back to GO IDs
+silo23_sig_pro_GOid_term <- cbind(silo23_sig_pro_GO[,"protein_ID"], silo23_sig_pro_GOid_term)
+#this results in a table with protein ID listed in one column and each next column contains a GO ID that was listed with the protein in Uniprot DB.
+#convert all factors to  characters
+silo23_sig_pro_GOid_term <- data.frame(lapply(silo23_sig_pro_GOid_term, as.character), stringsAsFactors = FALSE)
+#proteins that don't have GO IDs?
+
+#reshape data so that all GO ID columns are gathered in one column called "GO" 
+STACKED_silo23_sig_pro_GOid_term <- tidyr::gather(silo23_sig_pro_GOid_term,"col","GO", 2:ncol(silo23_sig_pro_GOid_term))
+#exlude middle column which just contains the string "gene" in each row
+STACKED_silo23_sig_pro_GOid_term <- STACKED_silo23_sig_pro_GOid_term[,-2]
+#remove duplicate rows
+STACKED_silo23_sig_pro_GOid_term <- unique(STACKED_silo23_sig_pro_GOid_term)
+colnames(STACKED_silo23_sig_pro_GOid_term)[1] <- "protein_ID"
+#remove any rows where GO column has NA value. 
+STACKED_silo23_sig_pro_GOid_term <- STACKED_silo23_sig_pro_GOid_term[which(!is.na(STACKED_silo23_sig_pro_GOid_term$GO)),]
+#this resulting data frame has two columns "gene" and "GO"
+#write.csv(STACKED_sig0.1_pro_GOid_term, "~/Documents/GitHub/OysterSeedProject/analysis/UniprotAnnotations_NetworkAnalysis/SameDayFCtoTemp/ChiSq_ASCA_clust/intermediate_files/STACKED_sig0.1_pro_GOid_term.csv", quote = FALSE, row.names = FALSE)
+```
+
+
+**Extract GO IDs for different clades**
+```{r}
+silo23_clade1_GO <- STACKED_silo23_sig_pro_GOid_term[which(STACKED_silo23_sig_pro_GOid_term$protein_ID %in% silo23_ASCA[which(silo23_ASCA$ClusterID == 1),"protein_ID"]),]
+
+write.csv(silo23_clade1_GO, "~/Documents/GitHub/OysterSeedProject/analysis/UniprotAnnotations_NetworkAnalysis/ASCA_logNSAFs_FunctionalAnalysis/silo23_clade1_GO.csv", quote = FALSE, row.names = FALSE)
+
+silo23_clade2_GO <- STACKED_silo23_sig_pro_GOid_term[which(STACKED_silo23_sig_pro_GOid_term$protein_ID %in% silo23_ASCA[which(silo23_ASCA$ClusterID == 2),"protein_ID"]),]
+
+write.csv(silo23_clade2_GO, "~/Documents/GitHub/OysterSeedProject/analysis/UniprotAnnotations_NetworkAnalysis/ASCA_logNSAFs_FunctionalAnalysis/silo23_clade2_GO.csv", quote = FALSE, row.names = FALSE)
+```
+
+**MATCH GO IDS TO BACKGROUND LIST**
+
+```{r}
+#Get GO IDs for silo 2 and 3 ALL. proteins
+silo23_ALL_pro_GO <- merge(silo23_all_prots, uniprot_filtered[,c("protein_ID","GO_IDs")], by ="protein_ID")
+
+#count number of proteins with GO IDs
+nrow(silo23_ALL_pro_GO)
+
+#Since GO IDs are listed all in one column, spread them across multiple columns (1 column /term)
+silo23_ALL_pro_GOid_term <- data.frame()
+for (i in 1:nrow(silo23_ALL_pro_GO)){
+  silo23_ALL_pro_GOid_term_row <- data.frame(t(data.frame(strsplit(as.character(silo23_ALL_pro_GO$GO_IDs[i]),'; ', fixed = TRUE))))
+  silo23_ALL_pro_GOid_term <- rbind.fill(silo23_ALL_pro_GOid_term,silo23_ALL_pro_GOid_term_row)
+}
+
+#add protein IDs back to GO IDs
+silo23_ALL_pro_GOid_term <- cbind(silo23_ALL_pro_GO[,"protein_ID"], silo23_ALL_pro_GOid_term)
+#this results in a table with protein ID listed in one column and each next column contains a GO ID that was listed with the protein in Uniprot DB.
+#convert all factors to  characters
+silo23_ALL_pro_GOid_term <- data.frame(lapply(silo23_ALL_pro_GOid_term, as.character), stringsAsFactors = FALSE)
+#proteins that don't have GO IDs?
+
+#reshape data so that all GO ID columns are gathered in one column called "GO" 
+STACKED_silo23_ALL_pro_GOid_term <- tidyr::gather(silo23_ALL_pro_GOid_term,"col","GO", 2:ncol(silo23_ALL_pro_GOid_term))
+#exlude middle column which just contains the string "gene" in each row
+STACKED_silo23_ALL_pro_GOid_term <- STACKED_silo23_ALL_pro_GOid_term[,-2]
+#remove duplicate rows
+STACKED_silo23_ALL_pro_GOid_term <- unique(STACKED_silo23_ALL_pro_GOid_term)
+colnames(STACKED_silo23_ALL_pro_GOid_term)[1] <- "protein_ID"
+#remove any rows where GO column has NA value. 
+STACKED_silo23_ALL_pro_GOid_term <- STACKED_silo23_ALL_pro_GOid_term[which(!is.na(STACKED_silo23_ALL_pro_GOid_term$GO)),]
+#this resulting data frame has two columns "gene" and "GO"
+#write.csv(STACKED_ALL0.1_pro_GOid_term, "~/Documents/GitHub/OysterSeedProject/analysis/UniprotAnnotations_NetworkAnalysis/SameDayFCtoTemp/ChiSq_ASCA_clust/intermediate_files/STACKED_ALL0.1_pro_GOid_term.csv", quote = FALSE, row.names = FALSE)
+
+```
+
+**TOP GO fisher test style enrichment**
+```{r}
+#save total number of clade proteins and universe proteins as objects
+total_clade1_prots <- length(unique(silo23_clade1_GO$protein_ID))
+total_clade2_prots <- length(unique(silo23_clade2_GO$protein_ID))
+total_universe_prots <- length(unique(STACKED_silo23_ALL_pro_GOid_term$protein_ID))
+
+#loop through each unique GO ID and perform a fisher test (comparing representation of GO ID in clade to its representation in the universe)
+
+for(j in (1:2)){
+  clade_data <- read.csv(paste0("silo23_clade",j,"_GO.csv"), stringsAsFactors = FALSE)
+  uniq_clade_data <- unique(clade_data$GO)
+
+  #make table with unique GO ID and # proteins with GO ID
+  GO_enrich <- data.frame(matrix(0,nrow=length(uniq_clade_data),ncol=3))
+  colnames(GO_enrich) <- c("GO","p.value","p.adj")
+  for(i in (1:length(uniq_clade_data))){
+    num_sig_prots <- nrow(clade_data[grep(uniq_clade_data[[i]],clade_data$GO),])
+    num_prots <- nrow(STACKED_silo23_ALL_pro_GOid_term[grep(uniq_clade_data[[i]],STACKED_silo23_ALL_pro_GOid_term$GO),])
+    cont_table <- matrix(c(num_sig_prots,num_prots,total_clade1_prots,total_universe_prots),nrow=2,dimnames = list(c("sig prots","prots"),c("total sig prots","prot univ")))
+    test <- fisher.test(cont_table) 
+    GO_enrich$GO[i] <- uniq_clade_data[[i]]
+    GO_enrich$p.value[i] <- test$p.value
+    GO_enrich$p.adj[i] <- p.adjust(test$p.value, method = "fdr", n = length(uniq_clade_data))
+  }
+  GO_enrich_0.05 <- data.frame(GO_enrich[which(GO_enrich$p.value<=0.05),c("GO","p.value")])
+  write.csv(GO_enrich_0.05,paste0("GO_enrich_0.05_silo23_clade",j,".csv"),quote = FALSE, row.names = FALSE)
+}
+
+```
+
+**GO SEMSIM OF ENRICHED GENES**
+```{r}
+#load GO data and GO info from OntologyIndex package
+data(go)
+data(GO_IC)
+
+for(j in (1:2)){
+  GO_enrich_0.05 <- read.csv(paste0("GO_enrich_0.05_silo23_clade",j,".csv"), stringsAsFactors = FALSE)
+ #create a list of character vectors called terms from enriched GO IDs
+  terms <- as.list(GO_enrich_0.05$GO)
+  #Get GO info in ontologyX database (GO.obo) for terms in "terms" list
+  GO_IC_data <- get_term_info_content(go, term_sets = as.vector(GO_enrich_0.05$GO))
+  #Subset terms to match 
+  terms <- terms[terms %in% names(GO_IC_data)]
+  #create a semantic similarity matrix with enriched GO IDs
+  sim_matrix <- get_sim_grid(ontology=go,information_content=GO_IC_data,term_sets=terms)
+  #add row and column names that are the GO IDs
+  rownames(sim_matrix) <- unlist(terms)
+  colnames(sim_matrix) <- unlist(terms)
+  
+  #save sim matrix
+  write.csv(sim_matrix,paste0("enrichGOsemsim_matrix_",j,".csv"), quote = FALSE)
+  
+  #plot heat map of simantic similarities
+  pdf(file=paste0("GOsimsem_heatmap_silo23_clade",j,".pdf"), width=10, height=8)
+  heatmap3(sim_matrix, scale = "none")
+  dev.off()
+}
+```
+
+**Finding clusters in heatmap**
+Dendrogram should be inspected manually with heatmap to determine where the tree should be cut to get the appropriate number of clusters
+```{r}
+#find clusters in heatmap
+
+#define clade
+j=2
+#read in matrix data
+sim_matrix <- read.csv(paste0("enrichGOsemsim_matrix_",j,".csv"), stringsAsFactors = FALSE)
+#format matrix data for as.dist
+sim_matrix <- data.matrix(sim_matrix)
+sim_matrix <- sim_matrix[,-1]
+colnames(sim_matrix) <- gsub("\\.",":", colnames(sim_matrix))
+rownames(sim_matrix) <- colnames(sim_matrix)
+#plot dendrogram  
+hm <- as.dist(1-cor(t(sim_matrix), use="pa"))
+hm2 <- hclust(hm, method = 'complete')
+plot(hm2)
+
+cut <- 0.5
+abline(h=cut, col = "red")
+
+############################################################
+#make a list of proteins with cluster IDs based on where the tree is cut
+
+#for complete clustering
+mycl <- cutree(hm2,h=cut)
+
+#assign colors to cluster IDs
+clusterCols <- colorRamps::primary.colors(length(unique(mycl)))
+myClusterSideBar <- clusterCols[mycl]
+
+#replot and save heatmap with clades
+pdf(file=paste0("GOsimsem_heatmap_silo23_clade",j,".pdf"), width=10, height=8)
+heatmap3(sim_matrix,cexRow = 0.5, cexCol = 0.5, RowSideColors=myClusterSideBar,RowAxisColors=1,hclustfun=hclust, distfun = function(x) as.dist(1 - cor(t(x), use = "pa")), method = "complete", scale = "none")
+dev.off()
+
+#get color name
+clusterColor <- lapply(myClusterSideBar, color.id)
+clusterColor <- lapply(clusterColor, `[[`,1)
+clusterColor <- data.frame(unlist(clusterColor), stringsAsFactors = FALSE)
+
+#merge cluster color with GO ID and cluster number
+foo <- cbind(data.frame(mycl), clusterColor)
+foo$GO <- rownames(foo)
+colnames(foo) <- c("Clust_Num","Clust_Color","GO")
+
+#set values < 0.5 or 1 in sim_matrix to 0, convert to dataframe and add GO IDs as column
+sim_matrix1 <- sim_matrix
+sim_matrix1[sim_matrix1<0.5] <- 0
+sim_matrix1[sim_matrix1==1] <- 0
+sim_matrix1 <- data.frame(sim_matrix1)
+sim_matrix1$GO <- row.names(sim_matrix1)
+
+#merge clade info with sim_matrix
+sim_matrix_clade <- merge(foo,data.frame(sim_matrix1), by = "GO")
+
+#sum the semantic similarity scores for each GO ID
+sim_matrix_clade$sumsim <- apply(sim_matrix_clade[,5:ncol(sim_matrix_clade)],1,sum)
+#exclude any terms that summed to 0; this happens because many terms are set to 0 in the step above and remove individual GO columns now that we have the sum for each term
+sim_matrix_clade <- sim_matrix_clade[which(sim_matrix_clade$sumsim!=0),c(1:3,ncol(sim_matrix_clade))]
+
+#make a data frame with the cluster color and the semantic similarity sum of all term sums
+color_sums <- aggregate(sim_matrix_clade$sumsim, by=list(Category=sim_matrix_clade$Clust_Color), FUN=sum)
+#rename columns
+colnames(color_sums) <- c("Clust_Color","semsimsum")
+#add color sum to the abbreviated sim matrix
+sim_matrix_clade_sums <- merge(sim_matrix_clade,color_sums, by = "Clust_Color")
+#Get the full GO term info for each GO ID
+for(i in 1:nrow(sim_matrix_clade_sums)){
+  sim_matrix_clade_sums$term[i] <- go$name[[sim_matrix_clade_sums$GO[i]]]
+}
+
+#remove commas from GO terms so it wont interfere with saving data as .csv
+sim_matrix_clade_sums$term <- gsub(",",";", sim_matrix_clade_sums$term)
+
+#read in GO slim info to add to sim_matrix_clade_sums data frame
+srlabslim <- read.csv("~/Documents/GitHub/OysterSeedProject/raw_data/background/GOSlim_terms.csv", stringsAsFactors = FALSE)
+colnames(srlabslim)[1] <- "GO"
+
+#some GO terms have muliple GO slims so for these, combine GO slims into one line and separate them with a ;
+agg_df <- merge(sim_matrix_clade_sums,srlabslim[,c("GO","GOSlim_bin")],by = "GO",all.x = TRUE)
+agg_df <- aggregate(GOSlim_bin~GO, agg_df, paste, collapse = ";")
+#merge GOslim data with sim_matrix_clade_sums data frame
+sim_matrix_clade_sums <-merge(sim_matrix_clade_sums,agg_df, by = "GO", all.x = TRUE)
+#add p.value info to data frame
+GO_enrich_0.05 <- read.csv(paste0("GO_enrich_0.05_silo23_clade",j,".csv"), stringsAsFactors = FALSE)
+sim_matrix_clade_sums <- merge(sim_matrix_clade_sums,GO_enrich_0.05, by = "GO", all.x = TRUE)
+#order data by semantic similarity sum
+sim_matrix_clade_sums <- sim_matrix_clade_sums[order(sim_matrix_clade_sums$semsimsum,decreasing = TRUE),]
+
+
+write.csv(sim_matrix_clade_sums,paste0("silo23clade",j,"_GOenrich_clust.csv"), quote = FALSE, row.names = FALSE)
+
+###GO terms and pvalues are then uploaded into revigo with 0.5 (small setting)
+
+```
+
+
+
+
+
+
+
+
+

@@ -90,6 +90,8 @@ silo3and9_nozerovar[silo3and9_nozerovar == 0.0000] <- 0.1000
 
 ```{r, echo = FALSE, eval=FALSE}
 write.csv(cbind(silo3and9$SampleID, silo3and9$day, silo3and9$temp,silo3and9_nozerovar), "~/Documents/GitHub/OysterSeedProject/analysis/nmds_R/silo3and9_nozerovals.csv", row.names = FALSE, quote = FALSE)
+
+
 ```
 
 try PCA

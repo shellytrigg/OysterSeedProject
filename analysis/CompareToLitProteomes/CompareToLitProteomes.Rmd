@@ -1,0 +1,154 @@
+---
+title: "Untitled"
+author: "Shelly Trigg"
+date: "7/24/2019"
+output: html_document
+---
+
+```{}
+Shellys-MacBook-Pro:~ Shelly$ scp srlab@roadrunner.fish.washington.edu:/home/srlab/Documents/Shelly/Cgigas/Cgiga-uniprot-blastP-out.tab ~/Documents/GitHub/OysterSeedProject/analysis/CompareToLitProteomes/
+srlab@roadrunner.fish.washington.edu's password: 
+Cgiga-uniprot-blastP-out.tab                                                                                           100% 3637KB   7.7MB/s   00:00    
+```
+
+load libraries
+```{r}
+library(readxl)
+
+```
+
+read in data
+```{r}
+tempxtime_prots <- read.csv("~/Documents/GitHub/OysterSeedProject/analysis/CompareToLitProteomes/Cgiga-uniprot-blastP-out.tab", sep = "\t", header = FALSE, stringsAsFactors = FALSE)
+
+dsRNA_prots <- read_xlsx("~/Documents/GitHub/OysterSeedProject/analysis/CompareToLitProteomes/pr5b00615_si_002.xlsx", sheet = 2, skip = 2)
+
+temp_prots <- read_xlsx("~/Documents/GitHub/OysterSeedProject/analysis/CompareToLitProteomes/gcb13249-sup-0003-tables4.xlsx", skip = 2)
+
+smp_prots <- read_xlsx("~/Documents/GitHub/OysterSeedProject/analysis/CompareToLitProteomes/SMP_Table1.xlsx")
+
+oshv_prots <- read_xlsx("~/Documents/GitHub/OysterSeedProject/analysis/CompareToLitProteomes/OSHV_table2-3.xlsx")
+
+convert_IDs <- read.csv("~/Documents/GitHub/OysterSeedProject/analysis/CompareToLitProteomes/uniprot-dsRNAtable7_conversions.tab", sep = "\t", header = TRUE, stringsAsFactors = FALSE)
+
+```
+
+format data
+```{r}
+tempxtime_prots$V1 <- gsub("\\|","\\.", tempxtime_prots$V1)
+tempxtime_prots$V2 <- gsub("tr\\|","", tempxtime_prots$V2)
+tempxtime_prots <- tempxtime_prots[which(tempxtime_prots$V11 <= 1 * 10^(-10)),]
+
+temp <- data.frame(t(data.frame(strsplit(tempxtime_prots$V2, "|", fixed = TRUE))))
+rownames(temp) <- NULL
+colnames(temp) <- c("UniprotID", "UniprotAC")
+
+tempxtime_prots <- cbind(temp, tempxtime_prots)
+
+
+colnames(dsRNA_prots)[5] <- "EMBL_ACC"
+dsRNA_prots <- merge(dsRNA_prots, convert_IDs, by = "EMBL_ACC", all.x = TRUE)
+colnames(dsRNA_prots)[12]<- "UniprotAC"
+
+colnames(temp_prots)[3] <- "UniprotID"
+
+```
+
+
+
+join data
+```{r}
+common_temp_proteins <- merge(tempxtime_prots, temp_prots[,c(1:11,20:23,40)], by = "UniprotID")
+length(unique(temp_prots$UniprotID))
+length(unique(common_temp_proteins$UniprotID))
+
+common_oshv_prots <- merge(tempxtime_prots, oshv_prots, by = "UniprotAC")
+length(unique(oshv_prots$UniprotAC))
+length(unique(common_oshv_prots$UniprotAC))
+
+
+
+
+smp prots = CGI gene id
+oshv prots = UniprotAc
+dsRNA prots = "Hit ACC" EMBL IDs need to be converted 
+
+
+
+
+
+
+```
+
+
+read in temp x time NSAF data
+```{r}
+NSAF <- read.csv("~/Documents/GitHub/OysterSeedProject/analysis/nmds_R/silo3and9_nozerovals_AVGs.csv", stringsAsFactors = FALSE)
+
+
+NSAF <- NSAF[,c(1,2,grep("CHOYP", colnames(NSAF)))]
+NSAF_t <- data.frame(t(NSAF[,-c(1:2)]))
+colnames(NSAF_t) <- paste0("day",NSAF$day,"_", NSAF$temp,"C")
+NSAF_t$V1 <- rownames(NSAF_t)
+```
+
+merge with uniprot AC
+```{r}
+NSAF_unip <- merge(NSAF_t, tempxtime_prots, by = "V1")
+NSAF_unip$V1 <- 
+```
+
+
+merge NSAF_unip with Temp proteins
+```{r}
+NSAF_unip_TEMP <- merge(NSAF_unip, temp_prots, by = "UniprotID")
+
+#select proteins that Dineshram considered DE
+NSAF_unip_TEMPup <- NSAF_unip_TEMP[which(NSAF_unip_TEMP$`Average:T/C(117:113)` > 1.3),]
+NSAF_unip_TEMPup$direction <- "up"
+NSAF_unip_TEMPdown <- NSAF_unip_TEMP[which(NSAF_unip_TEMP$`Average:T/C(117:113)` < 0.78),]
+NSAF_unip_TEMPdown$direction <- "down"
+NSAF_unip_TEMP_DE <- rbind(NSAF_unip_TEMPup,NSAF_unip_TEMPdown)
+```
+
+make heatmap of TempxTime proteins that overlap with Dineshram DE temp proteins
+```{r}
+NSAF_TEMPde_m <- NSAF_unip_TEMP_DE[,3:15]
+rownames(NSAF_TEMPde_m) <- NSAF_unip_TEMP_DE$V1
+
+
+ColSideColors<-cbind(Temp=c("magenta",rep(c("steelblue2","red"),6)), Day=c("white",rep("#D9D9D9",2),rep("#BDBDBD",2),rep("#969696",2),rep("#737373",2),rep("#525252",2),rep("#252525",2)))
+
+RowSideColors=c(rep("red4", 36), rep("steelblue4", 85))
+
+heatmap3(NSAF_TEMPde_m,cexRow = 0.5, cexCol = 0.5, RowSideColors=RowSideColors,ColSideColors = ColSideColors,RowAxisColors=1,ColAxisColors=1, scale = "row",Colv = NA)
+
+
+
+NSAF_TEMPde_d <- NSAF_unip_TEMP_DE[which(NSAF_unip_TEMP_DE$direction == "down"),3:15]
+rownames(NSAF_TEMPde_d) <- NSAF_unip_TEMP_DE[which(NSAF_unip_TEMP_DE$direction == "down"),2]
+
+heatmap3(NSAF_TEMPde_d,cexRow = 0.5, cexCol = 0.5, RowSideColors = rep("steelblue4",85),ColSideColors = ColSideColors,RowAxisColors=1,ColAxisColors=1, scale = "row",Colv = NA)
+
+
+
+
+NSAF_TEMPde_h <- NSAF_unip_TEMP_DE[which(NSAF_unip_TEMP_DE$direction == "up"),3:15]
+rownames(NSAF_TEMPde_h) <- NSAF_unip_TEMP_DE[which(NSAF_unip_TEMP_DE$direction == "up"),2]
+
+
+
+###try line plots
+
+NSAF_TEMPde_stacked <- tidyr::gather(NSAF_unip_TEMP_DE,"timeTemp", "NSAF", 4:15)
+NSAF_TEMPde_stacked$day <- gsub("day","",NSAF_TEMPde_stacked$timeTemp)
+NSAF_TEMPde_stacked$day <- gsub("_.*","",NSAF_TEMPde_stacked$day)
+
+NSAF_TEMPde_stacked$temp <- gsub(".*_","",NSAF_TEMPde_stacked$timeTemp)
+
+
+library(ggplot2)
+ggplot(NSAF_TEMPde_stacked,aes(day,NSAF)) + geom_line(aes(group = V1,alpha = 0.5)) + scale_x_continuous(breaks = c(3,5,7,9,11,13), labels = c(3,5,7,9,11,13))
+
+
+```

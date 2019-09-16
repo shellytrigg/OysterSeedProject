@@ -244,8 +244,24 @@ write.csv(logFC_pval_adjpval, "~/Documents/GitHub/OysterSeedProject/analysis/Tot
 
 ```
 
+select only proteins with adj Chi sq. pvalue <= 0.1
+```{r, echo = FALSE}
+#create a list of all column names with adj.Chisq.pval 
+adjChiSqpvalColumns <- colnames(logFC_pval_adjpval[grep("adj.ChiSq.pval",colnames(logFC_pval_adjpval))])
 
-```{r}
-data <- read.csv("~/Documents/GitHub/OysterSeedProject/analysis/TotNumSpecRatio_FC_Pval/sumNUMSPECSTOT_plus1_ratioFC_logFC_pval.csv", stringsAsFactors = FALSE)
+#build a list of protiens with adj Chi sq. pvalue <= 0.1
+#create empty data frame the loop will add too
+all_sig_pro <- data.frame()
+for (i in 1:length(adjChiSqpvalColumns)){ # for each name in adj.Chisq.pval column name list
+  column <- adjChiSqpvalColumns[i] # create a variable for indexed column name
+  #make a data frame containing protein IDs for all proteins in indexed column that have adj.Chisq.pval <=0.1
+  sig_pro <- data.frame(logFC_pval_adjpval[which(logFC_pval_adjpval[,column] <= 0.1),1],stringsAsFactors = FALSE)
+  #iteratively add protein lists to initial data frame
+  all_sig_pro <- rbind(all_sig_pro, sig_pro)
+}
+```
+
+```{r, echo = FALSE}
+write.csv(all_sig_pro, "~/Documents/GitHub/paper-OysterSeed-TimeXTemp/Data/ChiSquared_Sig0.1_proteins.csv", quote = FALSE)
 
 ```

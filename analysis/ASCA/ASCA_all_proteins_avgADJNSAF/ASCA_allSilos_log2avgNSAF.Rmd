@@ -1,0 +1,299 @@
+---
+title: "ASCA all silos log2avgNSAF"
+author: "Shelly Trigg"
+date: "9/13/2019"
+output: html_document
+---
+### all silo data
+
+
+Load Abacus data, parse out ADJNSAF values, and simplify column names to just sample number
+```{r}
+#upload data file
+ABACUSdata <- read.csv("~/Documents/GitHub/OysterSeedProject/raw_data/ABACUS_output021417.tsv", sep = "\t", header=TRUE, stringsAsFactors = FALSE)
+#select only columns containing ADJNSAF and Protein ID
+ABACUSdata <- ABACUSdata[,c(1,grep("ADJNSAF", colnames(ABACUSdata)))]
+
+## change column names in ABACUSdata to just sampleID
+colnames(ABACUSdata) <- gsub(pattern = "X20161205_SAMPLE_", "", colnames(ABACUSdata))
+colnames(ABACUSdata) <- gsub(pattern = "_ADJNSAF", "", colnames(ABACUSdata))
+```
+
+Load meta data file with temperature and day information
+```{r}
+#upload meta data; this was a csv file I create from Rhonda's notebook entry: https://github.com/Ellior2/Ellior2.github.io/blob/master/_posts/2017-3-11-NMDS-analysis.md
+meta_data <- read.csv("~/Documents/GitHub/OysterSeedProject/analysis/nmds_R/Rhonda_new_sample_names.csv", header = TRUE, stringsAsFactors = FALSE)
+meta_data$silo <- substr(meta_data$Contents,5,5)
+meta_data$day <- substr(meta_data$SampleName,5,6)
+meta_data$SampleName <- gsub(pattern = "H","",meta_data$SampleName)
+meta_data$SampleName <- gsub(pattern = "C","",meta_data$SampleName)
+#create a temperature column
+meta_data$temp <- "temp"
+for(i in 1:nrow(meta_data)){
+  if(meta_data$silo[i] == "2"){
+    meta_data$temp[i] <- "23"
+  }
+  if(meta_data$silo[i] == "3"){
+    meta_data$temp[i] <- "23"
+  }
+  if(meta_data$silo[i] == "9"){
+    meta_data$temp[i] <- "29"
+  }
+  if(meta_data$silo[i] == "e"){
+    meta_data$temp[i] <- "16"
+  }
+}
+```
+
+Reformat Abacus data for NMDS
+```{r}
+#Transpose- switch rows and columns
+tABACUSdata <- t.data.frame(ABACUSdata[,-1])
+colnames(tABACUSdata) <- ABACUSdata[,1]
+tABACUSdata <- cbind(data.frame(rownames(tABACUSdata)),tABACUSdata)
+colnames(tABACUSdata)[1] <- "SampleID"
+
+#add meta data to abacus data
+tABACUSdata <- merge(meta_data[,c(1,2,7,8)],tABACUSdata, by = "SampleID")
+
+#Remove day 15
+tABACUSdata <- tABACUSdata[which(tABACUSdata$day != "15"),]
+```
+
+For proteins with a zero value in any sample, replace with very small value
+```{r}
+temp <- tABACUSdata[,-c(1:4)]
+
+temp[temp == 0.0000] <- 0.1000
+
+tABACUSdata <- cbind(tABACUSdata[,c(1:4)], temp)
+```
+
+Average NSAF values for all proteins
+```{r}
+#order tABACUSdata by sample name
+tABACUSdata <- tABACUSdata[order(tABACUSdata$SampleName),]
+
+df_all_avg <- data.frame()
+#loop through the data and calculate the mean between replicates for each protein
+for (i in seq(1,nrow(tABACUSdata),2)){
+  #this calculates the mean for each odd number row and the row following it
+  df_all_avg_row <- apply(tABACUSdata[c(i,i+1),5:ncol(tABACUSdata)],2,mean)
+  #this sequencially combines rows of data together after the SD is generated
+  df_all_avg <- rbind(df_all_avg, df_all_avg_row)
+}
+
+#merge tABACUS metadata back with average NSAFs
+tABACUSdata_avgNSAF <- cbind(tABACUSdata[-grep("A",tABACUSdata$SampleID),c(1:4)], df_all_avg)
+  
+#add column names back
+colnames(tABACUSdata_avgNSAF) <- colnames(tABACUSdata)
+
+#add silo column
+tABACUSdata_avgNSAF$silo <- substr(tABACUSdata_avgNSAF$SampleName, 2,2)
+#remove sample ID and samlpe name columns
+tABACUSdata_avgNSAF <- tABACUSdata_avgNSAF[,-c(1:2)]
+#put silo column at the front
+tABACUSdata_avgNSAF <- tABACUSdata_avgNSAF[,c(ncol(tABACUSdata_avgNSAF),1:ncol(tABACUSdata_avgNSAF)-1)]
+
+
+#keep only choyp columns
+
+
+tABACUSdata_avgNSAF <- tABACUSdata_avgNSAF[,c(1:3,grep("CHOYP", colnames(tABACUSdata_avgNSAF)))]
+
+
+#convert o in silo column to 0
+tABACUSdata_avgNSAF$silo <- gsub("o",0,tABACUSdata_avgNSAF$silo)
+
+#convert factor columns to numeric for ASCA
+tABACUSdata_avgNSAF$silo <- as.numeric(tABACUSdata_avgNSAF$silo)
+tABACUSdata_avgNSAF$day <- as.numeric(tABACUSdata_avgNSAF$day)
+tABACUSdata_avgNSAF$temp <- as.numeric(tABACUSdata_avgNSAF$temp)
+
+#exclude day 0 for ASCA
+tABACUSdata_avgNSAF_noD0 <- tABACUSdata_avgNSAF[which(tABACUSdata_avgNSAF$day !=0),]
+```
+
+export data set avg tech. rep. NSAF for all proteins 
+```{r,echo=FALSE, eval=FALSE}
+```
+
+**Perform ASCA on log2 data**
+```{r}
+#create matrix to pass to ASCA command, excluding the silo and time info
+ASCA_X <- as.matrix(log(tABACUSdata_avgNSAF_noD0[,-c(1:3)],2))
+#create matrix to pass to ASCA command with only the silo and time info
+ASCA_F <- as.matrix(tABACUSdata_avgNSAF_noD0[,c(1:3)])
+#perform ASCA
+ASCA <- ASCA.Calculate(ASCA_X, ASCA_F, equation.elements = "1,2,3,12,13,23,123", scaling = FALSE)
+```
+
+
+Here is a summary of the ASCA results (e.g. variance explained by different factors; factor 1= time (days), factor 2 = temperature, interaction = interaction of time and temperature)
+```{r}
+#print the ASCA summary
+ASCA.GetSummary(ASCA)
+```
+
+### Plot PCAs from ASCA  
+
+**This first plot is the silo effect PCA**
+```{r avgNSAF_PCA_timeEffect_plot}
+#plot PCA for factor 1, which is time in this case
+ASCA.PlotScoresPerLevel(ASCA, ee = "1", pcs = "1,2")
+```
+
+**The next plot is the time effect PCA**
+```{r avgNSAF_PCA_timeEffect_plot}
+#plot PCA for factor 1, which is time in this case
+ASCA.PlotScoresPerLevel(ASCA, ee = "2", pcs = "1,2")
+```
+
+**This next plot is the temperature effect PCA**
+```{r avgNSAF_PCA_tempEffect_plot}
+#plot PCA for factor 2, which is temperature in this case
+ASCA.PlotScoresPerLevel(ASCA, ee = "3", pcs = "1,2")
+```
+
+**investigate PC1 loadings**
+```{r avgNSAF_PCA_tempEffect_PC2loadings, echo = FALSE}
+#extract protein names from ASCA data; these will be combined with loadings values; the order is maintained
+protnames <- data.frame(colnames(ASCA$data))
+#combine protein names with ASCA loadings for PC2 for temperature, since this component showed the greatest separation between temperatures
+d <- cbind(protnames, ASCA$`3`$svd$v[,1])
+#rename the columns
+colnames(d) <- c("protein", "PC1loadings")
+#make a dataframe of proteins with PC loadings greater than zero for the loadings plot
+d_great <- d[which(d$PC1loadings > 0),]
+#make a dataframe of proteins with PC loadings less than zero for the loadings plot
+d_less <- d[which(d$PC1loadings < 0),]
+#write out PC1 loadings for ASCA$2$svd$[,1]
+#write.csv(d, "~/Documents/GitHub/paper-OysterSeed-TimeXTemp/Data/Supplementary_Data6.csv", row.names = FALSE, quote = FALSE)
+#plot PC1 loadings
+plot(d_great[order(d_great$PC1loadings, decreasing = TRUE),2], xlab = "protein", ylab = "PC1 Loadings")
+abline(h=0.03, col = "red")
+plot(d_less[order(d_less$PC1loadings, decreasing = TRUE),2],xlab = "protein", ylab = "PC1 Loadings")
+abline(h=-0.025, col = "red")
+
+```
+
+To pull out proteins affected by temperature based on their influence in seperating treatment groups on PC2 of the temperature PCA, I picked an absolute value loadings threshold of 0.025. This means any protein that had a loadings value > 0.025 or < -0.025 was selected.
+```{r, echo = FALSE}
+#make list of proteins with temperature PC1 loadings values >= 0.025
+cutd <- d[which(d$PC1loadings >= 0.03 | d$PC1loadings <= -0.025),]
+#make a list of cutoff proteins with normalized abundance
+cut_data <-tABACUSdata_avgNSAF[,which(colnames(tABACUSdata_avgNSAF) %in% cutd$protein)]
+rownames(cut_data) <- paste(tABACUSdata_avgNSAF$silo,tABACUSdata_avgNSAF$day, tABACUSdata_avgNSAF$temp, sep="_")
+```
+
+**Heatmap of proteins affected by temperature based on temperature effect PC2 loadings value cutoff**
+```{r avgNSAF_tempEffectPC1_cutoff0.03&-0.025_heatmap_OrderedByTemp_ShortNames,fig.height=10, fig.width=10, eval = FALSE, echo = FALSE}
+#reorder the cut data so that samples are grouped by temperature
+cut_data_ord <- cut_data[order(factor(rownames(cut_data),levels = c("0_0_16","2_3_23","2_5_23","2_7_23","2_9_23","2_11_23","2_13_23","3_3_23","3_5_23","3_7_23","3_9_23","3_11_23","3_13_23","9_3_29","9_5_29","9_7_29","9_9_29","9_11_29","9_13_29"))),]
+
+#replace CHOYP names with "entry names"
+#transposed to eventually get row names as columns to match entry names to. 
+#t.data.frame returns a matrix so I had convert back to data frame for all downstream rearranging because data frames are much easier to work with
+cut_data_ord_t <- data.frame(t.data.frame(cut_data_ord))
+#make row names which contain the protein IDs a column
+cut_data_ord_t <- cbind(rownames(cut_data_ord_t), cut_data_ord_t)
+#add the column name
+colnames(cut_data_ord_t)[1] <- "Protein.ID"
+#convert the Protein ID column to character
+cut_data_ord_t[,1] <- as.character(cut_data_ord_t[,1])
+#sub pipe for decimal in protein IDs
+cut_data_ord_t$Protein.ID <- gsub("\\|","\\.", cut_data_ord_t$Protein.ID)
+
+#add the Entry names
+cut_data_ord_t <- merge(data_w_uniprot[,c("Protein.ID","Entry.name.new")],cut_data_ord_t, by = "Protein.ID")
+#make the entry names the row names
+rownames(cut_data_ord_t) <- cut_data_ord_t[,"Entry.name.new"]
+#remove the protein ID and entry name columns since the row names are added
+cut_data_ord_t <- cut_data_ord_t[,-c(1:2)]
+#this step removes the x from the column names while preserving the order of colnames
+colnames(cut_data_ord_t) <- rownames(cut_data_ord)
+
+#save proteins as a list
+silo2_3_9_sig_temp_prots <- data.frame(rownames(cut_data_ord_t), stringsAsFactors = FALSE)
+colnames(silo2_3_9_sig_temp_prots)[1] <- "prots"
+
+#plot the heat map
+heatmap3(as.matrix(cut_data_ord_t), Colv = NA, cexRow = 0.25)
+
+#make data frames to store heatmap color values
+#columns are days/temp; color 23C blue, 29C red, each day a different shade of gray
+ColSideColors<-cbind(Temp=c("purple",rep("gold2",6),rep("cyan3",6),rep("magenta2",6)), Day=c("white",rep(c("#D9D9D9","#BDBDBD","#969696","#737373","#525252","#252525"),3)))
+
+heatmap3(as.matrix(cut_data_ord_t),Colv = NA,cexRow = 0.4, cexCol = 0.8,ColSideColors = ColSideColors,ColAxisColors=1)
+
+```
+
+
+**investigate overlap between 2,3,9 sig proteins and 3,9 proteins**
+```{r}
+#count number proteins in 2,3,9
+nrow(silo2_3_9_sig_temp_prots)
+
+nrow(silo3_9_sig_temp_prots)
+
+nrow(subset(silo3_9_sig_temp_prots, prots %in% silo2_3_9_sig_temp_prots$prots))
+
+
+```
+
+### Analysis of proteins affected by time (development associated proteins)
+
+**PC1 loadings for the time effect PCA**
+```{r avgNSAF_PCA_timeEffect_PC1loadings, echo = FALSE}
+#make dataframes of factor 2 (time) PC1 loadings
+d1 <- cbind(protnames, ASCA$`2`$svd$v[,1])
+colnames(d1) <- c("protein", "PC1loadings")
+d1_great <- d1[which(d1$PC1loadings > 0),]
+d1_less <- d1[which(d1$PC1loadings < 0),]
+
+plot(d1_great[order(d1_great$PC1loadings, decreasing = TRUE),2])
+abline(h=0.035, col = "red")
+plot(d1_less[order(d1_less$PC1loadings, decreasing = TRUE),2])
+abline(h=-0.025, col = "red")
+```
+
+**PC2 loadings for the time effect PCA**
+```{r avgNSAF_PCA_timeEffect_PC2loadings, echo = FALSE}
+d2 <- cbind(protnames, ASCA$`2`$svd$v[,2])
+colnames(d2) <- c("protein", "PC2loadings")
+d2_great <- d2[which(d2$PC2loadings > 0),]
+d2_less <- d2[which(d2$PC2loadings < 0),]
+
+plot(d2_great[order(d2_great$PC2loadings, decreasing = TRUE),2])
+plot(d2_less[order(d2_less$PC2loadings, decreasing = TRUE),2])
+
+#make list of proteins with temperature PC1 loadings values >= 0.025
+cutd1 <- data.frame(d1[which(abs(d1$PC1loadings) >= 0.035),1])
+colnames(cutd1) <- "protein"
+cutd2 <- data.frame(d2[which(abs(d2$PC2loadings) >= 0.035),1])
+colnames(cutd2) <- "protein"
+cutd12 <- unique(rbind(cutd1,cutd2))
+```
+
+number of proteins affected by time at loadings value > 0.025 or < -0.025
+```{r, echo = FALSE}
+nrow(cutd12)
+```
+
+**heatmap of proteins affected by time based on time effect PC1 and PC2 loadings value cutoffs**
+```{r avgNSAF_timeEffectPC1and2_cutoff0.025_heatmap_OrderedByTime, echo = FALSE, fig.height=10, fig.width=10, echo = FALSE}
+#make a list of cutoff proteins with normalized abundance
+cut12_data <-tABACUSdata_avgNSAF[,which(colnames(tABACUSdata_avgNSAF) %in% cutd12$protein)]
+rownames(cut12_data) <- paste(tABACUSdata_avgNSAF[,"silo"], tABACUSdata_avgNSAF[,"day"], tABACUSdata_avgNSAF[,"temp"], sep="_")
+cut12_data <- cut12_data[order(factor(rownames(cut12_data),levels = c("0_0_16","2_3_23","3_3_23","9_3_29","2_5_23","3_5_23","9_5_29","2_7_23","3_7_23","9_7_29","2_9_23","3_9_23","9_9_29","2_11_23","3_11_23","9_11_29","2_13_23","3_13_23","9_13_29"))),]
+heatmap3(t.data.frame(cut12_data),Colv = NA,cexRow = 0.4)
+
+#make data frames to store heatmap color values
+#columns are days/temp; color 23C blue, 29C red, each day a different shade of gray
+ColSideColors<-cbind(Temp=c("purple",rep(c("gold2","cyan3","magenta2"),6)), Day=c("white",rep("#D9D9D9",3),rep("#BDBDBD",3),rep("#969696",3),rep("#737373",3),rep("#525252",3),rep("#252525",3)))
+
+heatmap3(t.data.frame(cut12_data),Colv = NA,cexRow = 0.4, cexCol = 0.8,ColSideColors = ColSideColors,ColAxisColors=1)
+
+```
+

@@ -1,0 +1,24 @@
+GO,Clust_Color,Clust_Num,sumsim,semsimsum,term,GOSlim_bin,p.value
+GO:0010734,darkslategray1,5,1.31572921317808,21.0083521383506,negative regulation of protein glutathionylation,protein metabolism,0.0413207302924873
+GO:0010872,darkslategray1,5,1.31572921317808,21.0083521383506,regulation of cholesterol esterification,other metabolic processes,0.0277425491962409
+GO:0010874,darkslategray1,5,2.42016306803631,21.0083521383506,regulation of cholesterol efflux,transport,0.0277425491962409
+GO:0017157,darkslategray1,5,4.71737111668429,21.0083521383506,regulation of exocytosis,transport,0.00664385600417757
+GO:0031630,darkslategray1,5,3.24553650837849,21.0083521383506,regulation of synaptic vesicle fusion to presynaptic membrane,cell-cell signaling;cell organization and biogenesis;transport,0.0277425491962409
+GO:0032482,darkslategray1,5,0.52157604563851,21.0083521383506,Rab protein signal transduction,signal transduction,0.0232757323339609
+GO:0050775,darkslategray1,5,2.10988238071764,21.0083521383506,positive regulation of dendrite morphogenesis,developmental processes;cell organization and biogenesis,0.00995998768965971
+GO:0060620,darkslategray1,5,2.42016306803631,21.0083521383506,regulation of cholesterol import,transport,0.0277425491962409
+GO:1904879,darkslategray1,5,2.94220152450285,21.0083521383506,positive regulation of calcium ion transmembrane transport via high voltage-gated calcium channel,NA,0.0413207302924873
+GO:0007308,gray50,3,2.64450632735581,10.5780253094232,oocyte construction,cell organization and biogenesis,0.0413207302924873
+GO:0007624,gray50,3,1.34748097931596,10.5780253094232,ultradian rhythm,other biological processes,0.0413207302924873
+GO:0046390,gray50,3,1.76491900523739,10.5780253094232,ribose phosphate biosynthetic process,other metabolic processes,0.0413207302924873
+GO:0048789,gray50,3,1.97076583769783,10.5780253094232,cytoskeletal matrix organization at active zone,cell organization and biogenesis,0.0277425491962409
+GO:0048790,gray50,3,2.85035315981624,10.5780253094232,maintenance of presynaptic active zone structure,transport;cell-cell signaling,0.00822652948819533
+GO:0001096,black,1,1.76491900523739,7.29475701571218,TFIIF-class transcription factor binding,NA,0.0413207302924873
+GO:0004345,black,1,0.794153167539566,7.29475701571218,glucose-6-phosphate dehydrogenase activity,other molecular function,0.0413207302924873
+GO:0005524,black,1,1.3824595026187,7.29475701571218,ATP binding,other molecular function,0.0114699704548137
+GO:0005536,black,1,1.3824595026187,7.29475701571218,glucose binding,other molecular function,0.00664385600417757
+GO:0033721,black,1,0.794153167539566,7.29475701571218,aldehyde dehydrogenase (NADP+) activity,other molecular function,0.0413207302924873
+GO:0046872,black,1,1.17661267015826,7.29475701571218,metal ion binding,other molecular function,0.00355063722501592
+GO:0005654,green,2,0.794153167539566,3.17661267015826,nucleoplasm,nucleus,0.0012551918583797
+GO:0005674,green,2,1.58830633507913,3.17661267015826,transcription factor TFIIF complex,nucleus,0.0277425491962409
+GO:0005846,green,2,0.794153167539566,3.17661267015826,nuclear cap binding complex,other cellular component,0.0413207302924873

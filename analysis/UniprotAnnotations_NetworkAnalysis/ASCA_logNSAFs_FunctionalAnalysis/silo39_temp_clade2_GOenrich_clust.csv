@@ -1,0 +1,61 @@
+GO,Clust_Color,Clust_Num,sumsim,semsimsum,term,GOSlim_bin,p.value
+GO:0005634,green,3,3.15862829398996,41.2346907025831,nucleus,nucleus,0.000735757741497656
+GO:0005730,green,3,5.14151087159071,41.2346907025831,nucleolus,nucleus,0.000148701141259869
+GO:0005739,green,3,4.88022844547433,41.2346907025831,mitochondrion,mitochondrion,1.56204152785446e-08
+GO:0005791,green,3,4.88022844547433,41.2346907025831,rough endoplasmic reticulum,ER/Golgi,0.00822558888542083
+GO:0005794,green,3,4.88022844547433,41.2346907025831,Golgi apparatus,ER/Golgi,0.00405184225403441
+GO:0005802,green,3,4.30636172831287,41.2346907025831,trans-Golgi network,ER/Golgi,0.00172954239131328
+GO:0005829,green,3,2.86933358580729,41.2346907025831,cytosol,cytosol,0.00050381989204485
+GO:0005856,green,3,3.13061601192368,41.2346907025831,cytoskeleton,cytoskeleton,0.00041672947326417
+GO:0005874,green,3,2.01089485966704,41.2346907025831,microtubule,cytoskeleton,0.000430883119925181
+GO:0019005,green,3,0.83514914327784,41.2346907025831,SCF ubiquitin ligase complex,other cellular component,0.00660693218017269
+GO:0035578,green,3,4.30636172831287,41.2346907025831,azurophil granule lumen,NA,0.00822558888542083
+GO:1990124,green,3,0.83514914327784,41.2346907025831,messenger ribonucleoprotein complex,NA,0.000769598444017266
+GO:0006919,khaki1,7,4.55783640434182,38.4480718901109,activation of cysteine-type endopeptidase activity involved in apoptotic process,death,0.00660693218017269
+GO:0010632,khaki1,7,4.32456626029172,38.4480718901109,regulation of epithelial cell migration,other biological processes,0.00107208305129944
+GO:0010881,khaki1,7,5.80200140805896,38.4480718901109,regulation of cardiac muscle contraction by regulation of the release of sequestered calcium ion,transport,0.00142234519318968
+GO:0010917,khaki1,7,1.47743514776724,38.4480718901109,negative regulation of mitochondrial membrane potential,other biological processes,0.000515630189457933
+GO:0010940,khaki1,7,4.4614048349476,38.4480718901109,positive regulation of necrotic cell death,death,1.33869258118442e-05
+GO:0032757,khaki1,7,4.49922486710132,38.4480718901109,positive regulation of interleukin-8 production,other biological processes,0.0044869337769039
+GO:0043069,khaki1,7,4.63115956671348,38.4480718901109,negative regulation of programmed cell death,death,0.00226328927614999
+GO:0043124,khaki1,7,4.13170312150328,38.4480718901109,negative regulation of I-kappaB kinase/NF-kappaB signaling,signal transduction,0.0058585435491389
+GO:0045665,khaki1,7,4.56274027938554,38.4480718901109,negative regulation of neuron differentiation,developmental processes,0.00660693218017269
+GO:0000175,yellow,4,4.02731594359511,34.5917382464163,3'-5'-exoribonuclease activity,other molecular function,0.00275253578353337
+GO:0003943,yellow,4,3.8592254489892,34.5917382464163,N-acetylgalactosamine-4-sulfatase activity,other molecular function,0.00107208305129944
+GO:0004065,yellow,4,3.8592254489892,34.5917382464163,arylsulfatase activity,other molecular function,0.00107208305129944
+GO:0004499,yellow,4,2.23405686689904,34.5917382464163,N;N-dimethylaniline monooxygenase activity,other molecular function,0.00226328927614999
+GO:0008409,yellow,4,3.93088437420089,34.5917382464163,5'-3' exonuclease activity,other molecular function,0.000769598444017266
+GO:0008484,yellow,4,5.42442841724852,34.5917382464163,sulfuric ester hydrolase activity,other molecular function,0.00142234519318968
+GO:0016491,yellow,4,5.09166050539439,34.5917382464163,oxidoreductase activity,other molecular function,0.000209888921549926
+GO:0033784,yellow,4,2.23405686689904,34.5917382464163,senecionine N-oxygenase activity,other molecular function,0.000515630189457933
+GO:0033897,yellow,4,3.93088437420089,34.5917382464163,ribonuclease T2 activity,other molecular function,0.000310925706653847
+GO:0000290,deeppink2,5,4.39788942266338,30.059990217535,deadenylation-dependent decapping of nuclear-transcribed mRNA,RNA metabolism,0.00142234519318968
+GO:0000398,deeppink2,5,4.56274027938554,30.059990217535,mRNA splicing; via spliceosome,RNA metabolism,0.00719988560604743
+GO:0006364,deeppink2,5,4.3698771405971,30.059990217535,rRNA processing,RNA metabolism,0.00109631176534904
+GO:0009820,deeppink2,5,3.7286782456873,30.059990217535,alkaloid metabolic process,other metabolic processes,0.000515630189457933
+GO:0043928,deeppink2,5,4.39788942266338,30.059990217535,exonucleolytic nuclear-transcribed mRNA catabolic process involved in deadenylation-dependent decay,RNA metabolism,0.000166241694754439
+GO:0071051,deeppink2,5,4.3698771405971,30.059990217535,polyadenylation-dependent snoRNA 3'-end processing,NA,0.00107208305129944
+GO:0080009,deeppink2,5,4.23303856594122,30.059990217535,mRNA methylation,RNA metabolism,0.00226328927614999
+GO:0003676,black,1,3.72659591128573,23.4181638276919,nucleic acid binding,nucleic acid binding activity,0.00690413982355913
+GO:0003723,black,1,3.68519590144248,23.4181638276919,RNA binding,nucleic acid binding activity,0.00345438647173926
+GO:0003729,black,1,3.44483582314961,23.4181638276919,mRNA binding,nucleic acid binding activity,0.00486191632244949
+GO:0005524,black,1,3.80560812318712,23.4181638276919,ATP binding,other molecular function,0.00062437468338773
+GO:0005525,black,1,2.97045897990927,23.4181638276919,GTP binding,other molecular function,0.00191476285448707
+GO:0020037,black,1,2.97045897990927,23.4181638276919,heme binding,other molecular function,0.00555302457067064
+GO:0030507,black,1,2.81501010880842,23.4181638276919,spectrin binding,cytoskeletal activity,0.00822558888542083
+GO:0006744,salmon,6,7.43316097477243,19.3817583053057,ubiquinone biosynthetic process,other metabolic processes,0.00226328927614999
+GO:0007017,salmon,6,2.86933358580729,19.3817583053057,microtubule-based process,other biological processes,9.40685707460596e-06
+GO:0007369,salmon,6,0.83514914327784,19.3817583053057,gastrulation,developmental processes,0.00181965456287987
+GO:0019827,salmon,6,0.83514914327784,19.3817583053057,stem cell population maintenance,other biological processes,0.0058585435491389
+GO:0043312,salmon,6,3.70448272908513,19.3817583053057,neutrophil degranulation,transport,0.00146852367231122
+GO:0055114,salmon,6,0.83514914327784,19.3817583053057,oxidation-reduction process,other metabolic processes,0.00410546222315758
+GO:0061580,salmon,6,2.86933358580729,19.3817583053057,colon epithelial cell migration,NA,0.00107208305129944
+GO:0035794,purple,8,5.34676873357454,10.8864006059375,positive regulation of mitochondrial membrane permeability,NA,0.000515630189457933
+GO:0044458,purple,8,3.96576515520152,10.8864006059375,motile cilium assembly,NA,0.00660693218017269
+GO:0051289,purple,8,1.57386671716146,10.8864006059375,protein homotetramerization,cell organization and biogenesis,0.000479099750569112
+GO:0009268,darkslategray1,10,1.47743514776724,4.43230544330172,response to pH,other biological processes,0.00328668878335715
+GO:0043627,darkslategray1,10,1.47743514776724,4.43230544330172,response to estrogen,other biological processes,0.00660693218017269
+GO:0051597,darkslategray1,10,1.47743514776724,4.43230544330172,response to methylmercury,other biological processes,6.16799929247494e-05
+GO:0000212,green4,2,0.83514914327784,1.67029828655568,meiotic spindle organization,cell organization and biogenesis;cell cycle and proliferation,0.00142234519318968
+GO:0007283,green4,2,0.83514914327784,1.67029828655568,spermatogenesis,other biological processes,0.00174388860410426
+GO:0033365,lightslateblue,9,0.83514914327784,0.83514914327784,protein localization to organelle,other biological processes,0.0044869337769039

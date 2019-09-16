@@ -1,0 +1,362 @@
+---
+title: "Untitled"
+author: "Shelly Trigg"
+date: "9/16/2019"
+output: html_document
+---
+
+###############################################################################
+###############################################################################
+############Many failed analysis attempts#################################
+###############################################################################
+###############################################################################
+
+###run in ASCA_logNSAFs_FunctionalAnalysis.Rproj environment (many objects created in other scripts in the environment)
+
+
+**Run a proportions test to see if proportions of terms in sig protein list are different than their proportions in the background list**
+  
+  
+  ```{r}
+#first make background with same terms that are in each clade list
+
+
+clade1_bkgd <- STACKED_silo23_ALL_pro_GOid_term[which(STACKED_silo23_ALL_pro_GOid_term$GO %in% silo23_clade1_GO$GO),]
+
+clade1_bkgd_freqs <- data.frame(table(clade1_bkgd$GO))
+clade1_bkgd_total_terms <- nrow(clade1_bkgd)
+
+clade1_sig_freqs <- data.frame(table(silo23_clade1_GO$GO))
+clade1_total_terms <- nrow(silo23_clade1_GO)
+
+clade1_term_obsv <- merge(clade1_sig_freqs,clade1_bkgd_freqs, by = "Var1")
+colnames(clade1_term_obsv) <- c("GO_ID","Sig.Freq", "Bkgd.Freq")
+
+for (i in (1:nrow(clade1_term_obsv))){
+  prop.results <- prop.test(x=c(clade1_term_obsv[i,"Sig.Freq"],clade1_term_obsv[i,"Bkgd.Freq"]), n=c(clade1_total_terms,clade1_bkgd_total_terms))
+  clade1_term_obsv$p.value[i] <- prop.results$p.value
+  clade1_term_obsv$p.adj[i] <- p.adjust(clade1_term_obsv$p.value[i], method = "fdr", n = nrow(clade1_term_obsv))
+  
+}
+
+
+```
+
+
+**GO MWU**
+  ```{r}
+
+#save proteins and GO_IDs for GO MWU input
+silo23_ALL_pro_GO_mwu <- cbind(silo23_ALL_pro_GO[,1],data.frame(gsub(" ","",silo23_ALL_pro_GO$GO_IDs)))
+write.table(silo23_ALL_pro_GO_mwu,"~/Documents/GitHub/OysterSeedProject/analysis/UniprotAnnotations_NetworkAnalysis/ASCA_logNSAFs_FunctionalAnalysis/silo23_all_pro_GO.tab",quote = FALSE, sep = "\t", col.names = FALSE,row.names = FALSE)
+
+
+#edit measure of significance table for passing it to MWU
+mwu_table <- read.csv("~/Documents/GitHub/OysterSeedProject/analysis/UniprotAnnotations_NetworkAnalysis/ASCA_logNSAFs_FunctionalAnalysis/silo23_ASCA_PC1_siloeffect.csv", stringsAsFactors = FALSE)
+#probably not necessary to match column names between input files
+colnames(mwu_table)[1] <- "protein_ID"
+#probably not necessary: remove the pipe in the protein names
+mwu_table$protein_ID <- gsub("\\|","\\.",mwu_table$protein_ID)
+
+
+#convert PC1loadings to absolute values to that ranking works
+mwu_table$PC1loadings<- abs(mwu_table$PC1loadings)
+
+write.csv(mwu_table,"~/Documents/GitHub/OysterSeedProject/analysis/UniprotAnnotations_NetworkAnalysis/ASCA_logNSAFs_FunctionalAnalysis/silo23_ASCA_Prot_PC1_siloeffect.csv", quote = FALSE, row.names = FALSE)
+
+```
+
+
+
+```{r}
+# Edit these to match your data file names: 
+input="silo23_ASCA_Prot_PC1_siloeffect.csv" # two columns of comma-separated values: gene id, continuous measure of significance. To perform standard GO enrichment analysis based on Fisher's exact test, use binary measure (0 or 1, i.e., either sgnificant or not).
+goAnnotations="silo23_all_pro_GO.tab" # two-column, tab-delimited, one line per gene, multiple GO terms separated by semicolon. If you have multiple lines per gene, use nrify_GOtable.pl prior to running this script.
+goDatabase="go.obo" # download from http://www.geneontology.org/GO.downloads.ontology.shtml
+goDivision="BP" # either MF, or BP, or CC
+source("gomwu.functions.R")
+
+```
+
+
+```{r}
+# Calculating stats. It might take ~3 min for MF and BP. Do not rerun it if you just want to replot the data with different cutoffs, go straight to gomwuPlot. If you change any of the numeric values below, delete the files that were generated in previos runs first.
+gomwuStats(input, goDatabase, goAnnotations, goDivision,
+           perlPath="perl", # replace with full path to perl executable if it is not in your system's PATH already
+           largest=0.1,  # a GO category will not be considered if it contains more than this fraction of the total number of genes
+           smallest=5,   # a GO category should contain at least this many genes to be considered
+           clusterCutHeight=0.25) # threshold for merging similar (gene-sharing) terms. See README for details.
+# There are no GO terms pass 10% FDR.
+```
+
+```{r}
+# Plotting results
+quartz()
+results=gomwuPlot(input,goAnnotations,goDivision,
+                  #	absValue=-log(0.05,10),  # genes with the measure value exceeding this will be counted as "good genes". Specify absValue=0.001 if you are doing Fisher's exact test for standard GO enrichment or analyzing a WGCNA module (all non-zero genes = "good genes").
+                  absValue=1,
+                  level1=0.1, # FDR threshold for plotting. Specify level1=1 to plot all GO categories containing genes exceeding the absValue.
+                  level2=0.05, # FDR cutoff to print in regular (not italic) font.
+                  level3=0.01, # FDR cutoff to print in large bold font.
+                  txtsize=1.2,    # decrease to fit more on one page, or increase (after rescaling the plot so the tree fits the text) for better "word cloud" effect
+                  treeHeight=0.5, # height of the hierarchical clustering tree
+                  #	colors=c("dodgerblue2","firebrick1","skyblue2","lightcoral") # these are default colors, un-remar and change if needed
+)
+# manually rescale the plot so the tree matches the text 
+# if there are too many categories displayed, try make it more stringent with level1=0.05,level2=0.01,level3=0.001.  
+
+# text representation of results, with actual adjusted p-values
+results
+
+```
+
+#read in results
+```{r}
+silo23_GOmwu_results <- read.table("~/Documents/GitHub/OysterSeedProject/analysis/UniprotAnnotations_NetworkAnalysis/ASCA_logNSAFs_FunctionalAnalysis/MWU_BP_silo23_ASCA_Prot_PC1_siloeffect.csv", sep = " ", header = TRUE, stringsAsFactors = FALSE)
+
+```
+
+
+
+
+
+
+
+
+
+
+
+**Map all GO IDs to GO slim terms; not sure how helpful this is **
+  
+  ```{r}
+#make list of unique GO terms without a protein ID column
+silo23_sig_GOids <- unique(STACKED_silo23_sig_pro_GOid_term$GO)
+#Use GSEA to generate list of all GO Slim BP, MP, and CC
+#DF will have "term", "GOid", "GOcategory"
+
+#BP first
+#goslims with GSEA
+myCollection <- GOCollection(silo23_sig_GOids)
+#I downloaded goslim_generic.obo from http://geneontology.org/docs/go-subset-guide/
+#then i moved it to the R library for GSEABase in the extdata folder
+fl <- system.file("extdata", "goslim_generic.obo", package="GSEABase")
+slim <- getOBOCollection(fl)
+slims <- data.frame(goSlim(myCollection, slim, "BP"))
+slims$GOid <- rownames(slims)
+slims$Term <- as.character(slims$Term)
+rownames(slims) <- NULL
+
+GSEA_bp <- slims[,c("Term", "GOid")]
+GSEA_bp$GOcategory <- "BP"
+
+#MP next
+slims <- data.frame(goSlim(myCollection, slim, "MF"))
+slims$GOid <- rownames(slims)
+slims$Term <- as.character(slims$Term)
+rownames(slims) <- NULL
+
+GSEA_MF <- slims[,c("Term", "GOid")]
+GSEA_MF$GOcategory <- "MF"
+
+GSEA_BP_MF <- rbind(GSEA_bp, GSEA_MF)
+colnames(GSEA_BP_MF) <- c("Term", "GOslim", "GOcategory")
+```
+
+
+**make a list of GO slims for background proteins**
+  ```{r}
+#make list of unique GO terms without a protein ID column
+silo23_ALL_GOids <- unique(STACKED_silo23_ALL_pro_GOid_term$GO)
+#Use GSEA to generate list of all GO Slim BP, MP, and CC
+#DF will have "term", "GOid", "GOcategory"
+
+#BP first
+myCollection.All <- GOCollection(silo23_ALL_GOids)
+
+slims_ALL <- data.frame(goSlim(myCollection.All, slim, "BP"))
+slims_ALL$GOid <- rownames(slims_ALL)
+slims$Term <- as.character(slims$Term)
+rownames(slims) <- NULL
+
+GSEA_bp <- slims[,c("Term", "GOid")]
+GSEA_bp$GOcategory <- "BP"
+
+
+
+#tried prop test but nothing significant
+# > sum(slims$Count)
+# [1] 1081
+# > sum(slims_ALL$Count)
+# [1] 19170
+# > test <- prop.test(x=c(29,413), n = c(1081,19170))
+# > test
+# 
+# 	2-sample test for equality of proportions with
+# 	continuity correction
+# 
+# data:  c(29, 413) out of c(1081, 19170)
+# X-squared = 1.1017, df = 1, p-value = 0.2939
+# alternative hypothesis: two.sided
+# 95 percent confidence interval:
+#  -0.005054521  0.015620387
+# sample estimates:
+#     prop 1     prop 2 
+# 0.02682701 0.02154408 
+# > test <- prop.test(x=c(23,390), n = c(1081,19170))
+# > test
+# 
+# 	2-sample test for equality of proportions with
+# 	continuity correction
+# 
+# data:  c(23, 390) out of c(1081, 19170)
+# X-squared = 0.010083, df = 1, p-value = 0.92
+# alternative hypothesis: two.sided
+# 95 percent confidence interval:
+#  -0.00838773  0.01025235
+# sample estimates:
+#     prop 1     prop 2 
+# 0.02127660 0.02034429 
+
+
+```
+
+**TRY FOLD CHANGE ANALYSIS**
+  ```{r}
+silo23_ASCA_FC <- silo23_ASCA
+silo23_ASCA_FC$silo2_avg <- apply(silo23_ASCA_FC[,which(substr(colnames(silo23_ASCA_FC),2,2)==2)],1,mean)
+silo23_ASCA_FC$silo3_avg <- apply(silo23_ASCA_FC[,which(substr(colnames(silo23_ASCA_FC),2,2)==3)],1,mean)
+
+
+```
+
+
+
+**TRY ONTOLOGY X packages**
+  ```{r}
+
+data(go)
+
+
+###customizing gene list to use
+agg_df <- aggregate(GO~protein_ID, silo23_clade1_GO, c)
+agg_list <- as.list(agg_df$GO)
+names(agg_list)<- agg_df$protein_ID
+
+bp <- go$id[go$name == "biological_process"]
+bp_anno <- lapply(agg_list,function(x) get_ancestors(go, intersection_with_descendants(go, roots=bp, x)))
+all_terms <- unique(unlist(use.names=FALSE, bp_anno))
+terms <- remove_uninformative_terms(go, agg_list)
+
+rmlinks_terms <- remove_links(go,terms= terms)
+
+length(all_terms)
+length(terms)
+length(rmlinks_terms)
+
+###still too many terms (793). Can't plot this because it's too messy. It needs to be further reduced
+
+
+
+###this didn't get anywhere
+#extract unique GO terms for clade 1
+silo23_clade1_GO_uniq <- unique(silo23_clade1_GO$GO)
+
+#get parent terms of unique GO IDs 
+silo23_clade1_GO_parents<- list()
+for(i in 1:length(silo23_clade1_GO_uniq)){
+  temp_silo23_clade1_GO_parents <- try(go$parents[[silo23_clade1_GO_uniq[i]]], TRUE)
+  if(isTRUE(class(temp_silo23_clade1_GO_parents)=="try-error")) {next} else {silo23_clade1_GO_parents[[i]] = temp_silo23_clade1_GO_parents}
+}
+
+names(silo23_clade1_GO_parents) <- silo23_clade1_GO_uniq
+
+#silo23_clade1_GO_parents <- silo23_clade1_GO_parents[!sapply(silo23_clade1_GO_parents, is.null)]
+
+silo23_clade1_GO_index <- ontology_index(parents = silo23_clade1_GO_parents)
+
+#remove redundant terms
+silo23_clade1_GO_index_min <- minimal_set(silo23_clade1_GO_index,silo23_clade1_GO_uniq)
+
+silo23_clade1_GO_index_min_inform <- remove_uninformative_terms(go,silo23_clade1_GO_index_min)
+
+bp <- go$id[go$name == "biological_process"]
+bp_anno <- lapply(silo23_clade1_GO_index_min,function(x) get_ancestors(go, intersection_with_descendants(go, roots=bp, x)))
+
+onto_plot(go,terms = get_ancestors(go,silo23_clade1_GO_index_min))
+
+terms <- remove_links(go, get_ancestors(go, silo23_clade1_GO_index_min))
+
+onto_plot(go, terms=terms, fillcolor=rainbow(length(terms)))
+
+```
+
+
+
+**map to SR lab GO slims**
+```{r}
+srlabslim <- read.csv("~/Documents/GitHub/OysterSeedProject/raw_data/background/GOSlim_terms.csv", stringsAsFactors = FALSE)
+colnames(srlabslim)[1] <- "GO"
+silo23_clade1_GO_srlabslim <- merge(silo23_clade1_GO, srlabslim, by = "GO")
+View(table(silo23_clade1_GO_srlabslim$GOSlim_bin))
+#results are too general and not informative, nothing to compare to, not screaming out that anything is happening 
+```
+
+
+**Create Ontology Plots**
+```{r}
+library(ontologyIndex)
+library(ontologyPlot)
+library(ontologySimilarity)
+data(go)
+data(gene_GO_terms)
+data(GO_IC)
+cc <- go$id[go$name == "biological_process"]
+cc_anno <- lapply(gene_GO_terms[c("QPCTL","CRNN")],function(x) get_ancestors(go, intersection_with_descendants(go, roots=cc, x)))
+all_terms <- unique(unlist(use.names=FALSE, cc_anno))
+QPCTL <- cc_anno$QPCTL
+CRNN <- cc_anno$CRNN
+terms <- remove_uninformative_terms(go, list(QPCTL, CRNN))
+pdf(file="GO-plot.pdf", width=5, height=4)
+onto_plot(go, terms=terms,width=calibrate_sizes(GO_IC[terms], low=1, high=3),fillcolor=rgb(0, terms %in% QPCTL, terms %in% CRNN, 0.5))
+dev.off()
+
+
+
+###customizing gene list to use
+agg_df <- aggregate(GO~protein_ID, silo23_clade1_GO, c)
+agg_list <- as.list(agg_df$GO)
+names(agg_list)<- agg_df$protein_ID
+
+bp <- go$id[go$name == "biological_process"]
+bp_anno <- lapply(agg_list,function(x) get_ancestors(go, intersection_with_descendants(go, roots=bp, x)))
+all_terms <- unique(unlist(use.names=FALSE, bp_anno))
+terms <- remove_uninformative_terms(go, agg_list)
+
+rmlinks_terms <- remove_links(go,terms= terms)
+
+length(all_terms)
+length(terms)
+length(rmlinks_terms)
+
+pdf(file="GO-plot.pdf", width=5, height=4)
+onto_plot(go, terms=terms,width=calibrate_sizes(GO_IC[terms], low=1, high=3),fillcolor=rgb(0, terms %in% QPCTL, terms %in% CRNN, 0.5))
+dev.off()
+
+
+**remove GO terms with sem sim values < 0.5 and !=1, then try heatmap**
+```{r}
+sim_matrix_m <- melt(sim_matrix)
+sim_matrix_m <- sim_matrix_m[which(sim_matrix_m$value>0.5),]
+sim_matrix_m <- sim_matrix_m[which(sim_matrix_m$value!=1),]
+sim_matrix_m <- tidyr::spread(sim_matrix_m, "Var2","value")
+rownames(sim_matrix_m) <- sim_matrix_m$Var1
+sim_matrix_m <- sim_matrix_m[,-1]
+sim_matrix_m[is.na(sim_matrix_m)] <- 0
+sim_matrix_m_sd <- data.frame(apply(sim_matrix_m,1,sd))
+colnames(sim_matrix_m_sd) <- "SD"
+
+sim_matrix_m<- sim_matrix_m[which(!(rownames(sim_matrix_m)%in% rownames(sim_matrix_m_sd[which(sim_matrix_m_sd$SD > 0),]))),]
+
+
+### Always had too many terms so never got a clear plot
+```

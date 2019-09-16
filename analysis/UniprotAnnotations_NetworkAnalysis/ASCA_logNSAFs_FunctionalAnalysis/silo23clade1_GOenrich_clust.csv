@@ -1,0 +1,80 @@
+GO,Clust_Color,Clust_Num,sumsim,semsimsum,term,GOSlim_bin,p.value
+GO:0006218,yellow,7,5.62403113435377,71.6054148070598,uridine catabolic process,other metabolic processes,0.0277425491962409
+GO:0006424,yellow,7,9.74522569578242,71.6054148070598,glutamyl-tRNA aminoacylation,protein metabolism;RNA metabolism,0.0413207302924873
+GO:0006433,yellow,7,9.74522569578242,71.6054148070598,prolyl-tRNA aminoacylation,RNA metabolism;protein metabolism,0.0413207302924873
+GO:0006520,yellow,7,8.30323442577932,71.6054148070598,cellular amino acid metabolic process,other metabolic processes,0.0118396142746407
+GO:0006551,yellow,7,5.42712670787156,71.6054148070598,leucine metabolic process,other metabolic processes,0.0277425491962409
+GO:0008655,yellow,7,8.39461807492497,71.6054148070598,pyrimidine-containing compound salvage,other metabolic processes,0.0277425491962409
+GO:0009102,yellow,7,6.49110382630936,71.6054148070598,biotin biosynthetic process,other metabolic processes,0.0277425491962409
+GO:0009972,yellow,7,5.62403113435377,71.6054148070598,cytidine deamination,other metabolic processes,0.0413207302924873
+GO:0019858,yellow,7,5.40496580742995,71.6054148070598,cytosine metabolic process,other metabolic processes,0.0277425491962409
+GO:0043097,yellow,7,6.84585230447228,71.6054148070598,pyrimidine nucleoside salvage,other metabolic processes,0.00394985095748817
+GO:0010862,dodgerblue2,16,5.98133187028967,35.2271110039519,positive regulation of pathway-restricted SMAD protein phosphorylation,signal transduction;protein metabolism,0.0277425491962409
+GO:0045428,dodgerblue2,16,3.36661375051307,35.2271110039519,regulation of nitric oxide biosynthetic process,other metabolic processes,0.0413207302924873
+GO:1903518,dodgerblue2,16,6.07189130883738,35.2271110039519,positive regulation of single strand break repair,NA,0.0277425491962409
+GO:1903638,dodgerblue2,16,3.86136257730585,35.2271110039519,positive regulation of protein import into mitochondrial outer membrane,NA,0.0277425491962409
+GO:1903774,dodgerblue2,16,3.95192201585357,35.2271110039519,positive regulation of viral budding via host ESCRT complex,NA,0.0413207302924873
+GO:1904877,dodgerblue2,16,5.47207551285663,35.2271110039519,positive regulation of DNA ligase activity,NA,0.0277425491962409
+GO:2000825,dodgerblue2,16,6.52191396829573,35.2271110039519,positive regulation of androgen receptor activity,NA,0.0413207302924873
+GO:0006386,khaki1,13,7.4580398273844,33.1869041623313,termination of RNA polymerase III transcription,RNA metabolism;cell organization and biogenesis,0.0277425491962409
+GO:0035523,khaki1,13,4.56479450203122,33.1869041623313,protein K29-linked deubiquitination,NA,0.0413207302924873
+GO:0042779,khaki1,13,6.13133181405379,33.1869041623313,tRNA 3'-trailer cleavage,RNA metabolism,0.0277425491962409
+GO:0045292,khaki1,13,5.90314901479948,33.1869041623313,mRNA cis splicing; via spliceosome,RNA metabolism,0.0346210889096945
+GO:1990167,khaki1,13,4.56479450203122,33.1869041623313,protein K27-linked deubiquitination,NA,0.0277425491962409
+GO:1990168,khaki1,13,4.56479450203122,33.1869041623313,protein K33-linked deubiquitination,NA,0.0413207302924873
+GO:0003676,gold4,4,5.41938014722753,26.8491274682038,nucleic acid binding,nucleic acid binding activity,0.0405938236093421
+GO:0005137,gold4,4,3.08862409009063,26.8491274682038,interleukin-5 receptor binding,signal transduction activity,0.0277425491962409
+GO:0005525,gold4,4,2.41775774579219,26.8491274682038,GTP binding,other molecular function,0.0188136477514892
+GO:0008289,gold4,4,0.526476973733171,26.8491274682038,lipid binding,other molecular function,0.0444340502245619
+GO:0017022,gold4,4,3.08862409009063,26.8491274682038,myosin binding,cytoskeletal activity,0.0377299853734716
+GO:0019838,gold4,4,3.08862409009063,26.8491274682038,growth factor binding,other molecular function,0.0413207302924873
+GO:0032182,gold4,4,3.08862409009063,26.8491274682038,ubiquitin-like protein binding,other molecular function,0.0413207302924873
+GO:0032356,gold4,4,1.67072756000041,26.8491274682038,oxidized DNA binding,nucleic acid binding activity,0.0277425491962409
+GO:0045545,gold4,4,1.3716645909974,26.8491274682038,syndecan binding,other molecular function,0.0413207302924873
+GO:0051022,gold4,4,3.08862409009063,26.8491274682038,Rho GDP-dissociation inhibitor binding,other molecular function,0.0413207302924873
+GO:0000147,darkmagenta,8,4.30058113908547,24.1440447853394,actin cortical patch assembly,cell organization and biogenesis,0.0277425491962409
+GO:0032392,darkmagenta,8,3.76728578957922,24.1440447853394,DNA geometric change,DNA metabolism,0.0413207302924873
+GO:0035695,darkmagenta,8,4.76728578957922,24.1440447853394,mitophagy by induced vacuole formation,NA,0.0413207302924873
+GO:0036257,darkmagenta,8,3.76728578957922,24.1440447853394,multivesicular body organization,NA,0.0277425491962409
+GO:0051289,darkmagenta,8,3.77080313875813,24.1440447853394,protein homotetramerization,cell organization and biogenesis,0.0334408590038029
+GO:0099054,darkmagenta,8,3.77080313875813,24.1440447853394,presynapse assembly,NA,0.0413207302924873
+GO:0005737,black,1,3.84243587333731,23.4479524047089,cytoplasm,other cellular component,0.0441802013191641
+GO:0005895,black,1,3.12753381168873,23.4479524047089,interleukin-5 receptor complex,plasma membrane;other membranes,0.0277425491962409
+GO:0016020,black,1,2.82693347665638,23.4479524047089,membrane,other membranes,0.0298126377062682
+GO:0034455,black,1,3.46980801057019,23.4479524047089,t-UTP complex,nucleus,0.0413207302924873
+GO:0070522,black,1,3.46980801057019,23.4479524047089,ERCC4-ERCC1 complex,nucleus,0.0277425491962409
+GO:0071007,black,1,3.35571661094304,23.4479524047089,U2-type catalytic step 2 spliceosome,nucleus,0.0409405819095397
+GO:0097452,black,1,3.35571661094304,23.4479524047089,GAIT complex,NA,0.0413207302924873
+GO:0004105,green,5,2.99907897990374,18.9759611645564,choline-phosphate cytidylyltransferase activity,other molecular function,0.0277425491962409
+GO:0004850,green,5,3.24445080118722,18.9759611645564,uridine phosphorylase activity,other molecular function,0.0413207302924873
+GO:0010340,green,5,3.24445080118722,18.9759611645564,carboxyl-O-methyltransferase activity,other molecular function,0.0277425491962409
+GO:0016423,green,5,3.24445080118722,18.9759611645564,tRNA (guanine) methyltransferase activity,other molecular function,0.0413207302924873
+GO:0047315,green,5,2.99907897990374,18.9759611645564,kynurenine-glyoxylate transaminase activity,other molecular function,0.0413207302924873
+GO:0080048,green,5,3.24445080118722,18.9759611645564,GDP-D-glucose phosphorylase activity,other molecular function,0.0277425491962409
+GO:0007563,blue,14,1.59981579598075,16.531476098667,regulation of eclosion,developmental processes,0.0277425491962409
+GO:0032707,blue,14,2.98056626503767,16.531476098667,negative regulation of interleukin-23 production,other biological processes,0.0413207302924873
+GO:0045578,blue,14,4.04481920922573,16.531476098667,negative regulation of B cell differentiation,developmental processes,0.0413207302924873
+GO:0048025,blue,14,5.70664323646138,16.531476098667,negative regulation of mRNA splicing; via spliceosome,RNA metabolism,0.0207310070644597
+GO:1903645,blue,14,2.1996315919615,16.531476098667,negative regulation of chaperone-mediated protein folding,NA,0.0277425491962409
+GO:0016197,springgreen,12,2.41269566898725,9.27726751061682,endosomal transport,transport,0.0120790277687144
+GO:0032509,springgreen,12,2.29684985034082,9.27726751061682,endosome transport via multivesicular body sorting pathway,transport,0.00521668764250514
+GO:0051666,springgreen,12,2.28386099564437,9.27726751061682,actin cortical patch localization,other biological processes,0.0277425491962409
+GO:0051668,springgreen,12,2.28386099564437,9.27726751061682,localization within membrane,other biological processes,0.0413207302924873
+GO:1990414,cyan,18,7.89005821888741,7.89005821888741,replication-born double-strand break repair via sister chromatid exchange,NA,0.0413207302924873
+GO:0051127,darkslategray1,19,7.2536827492935,7.2536827492935,positive regulation of actin nucleation,cell organization and biogenesis,0.0277425491962409
+GO:0006968,purple,15,2.22593808632116,6.80632014733958,cellular defense response,stress response,0.0277425491962409
+GO:0071346,purple,15,2.29019103050921,6.80632014733958,cellular response to interferon-gamma,NA,0.0377299853734716
+GO:0071394,purple,15,2.29019103050921,6.80632014733958,cellular response to testosterone stimulus,NA,0.0413207302924873
+GO:0004126,green4,3,0.845187617264232,5.07112570358539,cytidine deaminase activity,other molecular function,0.0413207302924873
+GO:0004655,green4,3,0.845187617264232,5.07112570358539,porphobilinogen synthase activity,other molecular function,0.0277425491962409
+GO:0004818,green4,3,0.845187617264232,5.07112570358539,glutamate-tRNA ligase activity,other molecular function,0.0413207302924873
+GO:0004827,green4,3,0.845187617264232,5.07112570358539,proline-tRNA ligase activity,other molecular function,0.0413207302924873
+GO:0047804,green4,3,0.845187617264232,5.07112570358539,cysteine-S-conjugate beta-lyase activity,other molecular function,0.0413207302924873
+GO:1904265,green4,3,0.845187617264232,5.07112570358539,ubiquitin-specific protease activity involved in negative regulation of retrograde protein transport; ER to cytosol,NA,0.0277425491962409
+GO:0004411,darkred,2,1.59981579598075,4.70888794939453,homogentisate 1;2-dioxygenase activity,other molecular function,0.0277425491962409
+GO:0033735,darkred,2,1.50925635743303,4.70888794939453,aspartate dehydrogenase activity,other molecular function,0.0277425491962409
+GO:0047800,darkred,2,1.59981579598075,4.70888794939453,cysteamine dioxygenase activity,other molecular function,0.0277425491962409
+GO:0002625,deeppink2,9,2.91631332084962,2.91631332084962,regulation of T cell antigen processing and presentation,other biological processes,0.0277425491962409
+GO:0045035,salmon,11,0.845187617264232,1.69037523452846,sensory organ precursor cell division,developmental processes,0.0413207302924873
+GO:0048132,salmon,11,0.845187617264232,1.69037523452846,female germ-line stem cell asymmetric division,other biological processes,0.0413207302924873
+GO:0016236,gray50,10,0.845187617264232,0.845187617264232,macroautophagy,stress response;other metabolic processes,0.0346210889096945

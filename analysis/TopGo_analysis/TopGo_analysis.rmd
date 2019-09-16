@@ -1,0 +1,87 @@
+---
+title: "TopGO_analysis"
+author: "Shelly Trigg"
+date: "7/23/2019"
+output: html_document
+---
+
+
+load libraries
+```{r}
+library(GSEABase)
+
+```
+
+read in data
+```{r}
+sig0.1_ASCA_clustering_data <- read.csv("~/Documents/GitHub/OysterSeedProject/analysis/UniprotAnnotations_NetworkAnalysis/VerifyStatsProteinSelection/all_sig0.1_ASCA_clust_pro.csv", stringsAsFactors = FALSE)
+
+sig0.1_ASCA_clustering_data$Pro_GO <- gsub("\\.m.*", "", sig0.1_ASCA_clustering_data$protein_ID)
+
+topGO <- read.csv("~/Documents/GitHub/OysterSeedProject/analysis/TopGo_analysis/topGO.tsv", sep = "\t", header = FALSE, stringsAsFactors = FALSE)
+
+colnames(topGO) <- c("Pro_GO", "GO_ids")
+```
+
+merge protein data with GO data
+```{r}
+select_prot_GO <- merge(sig0.1_ASCA_clustering_data, topGO, by = "Pro_GO")
+
+```
+
+
+
+Get GO IDs from select_prot_GO
+```{r}
+sig0.1_pro_GO <- select_prot_GO[,c("protein_ID","GO_ids")]
+sig0.1_pro_GOid_term <- data.frame()
+for (i in 1:nrow(sig0.1_pro_GO)){
+  sig0.1_pro_GOid_term_row <- data.frame(t(data.frame(strsplit(as.character(sig0.1_pro_GO$GO_ids[i]),', ', fixed = TRUE))))
+  sig0.1_pro_GOid_term <- plyr::rbind.fill(sig0.1_pro_GOid_term,sig0.1_pro_GOid_term_row)
+}
+
+#add protein IDs back to GO IDs
+sig0.1_pro_GOid_term <- cbind(select_prot_GO[,"protein_ID"], sig0.1_pro_GOid_term)
+#this results in a table with protein ID listed in one column and each next column contains a GO ID that was listed with the protein in Uniprot DB.
+#convert all factors to  characters
+sig0.1_pro_GOid_term <- data.frame(lapply(sig0.1_pro_GOid_term, as.character), stringsAsFactors = FALSE)
+#there are two proteins that don't have GO IDs
+
+#reshape data so that all GO ID columns are gathered in one column called "GO" 
+STACKED_sig0.1_pro_GOid_term <- tidyr::gather(sig0.1_pro_GOid_term,"protein_ID","GO", 2:ncol(sig0.1_pro_GOid_term))
+#exlude middle column which just contains the string "protein_ID" in each row
+STACKED_sig0.1_pro_GOid_term <- STACKED_sig0.1_pro_GOid_term[,c(1,3)]
+#remove duplicate rows
+STACKED_sig0.1_pro_GOid_term <- unique(STACKED_sig0.1_pro_GOid_term)
+colnames(STACKED_sig0.1_pro_GOid_term)[1] <- "protein_ID"
+#remove any rows where GO column has NA value. 
+STACKED_sig0.1_pro_GOid_term <- STACKED_sig0.1_pro_GOid_term[which(!is.na(STACKED_sig0.1_pro_GOid_term$GO)),]
+#this resulting data frame has two columns "protein_ID" and "GO"
+
+###Next map all GO IDs to GO slim terms
+
+
+#make list of unique GO terms without a protein ID column
+sig0.1_sig_GOids <- unique(STACKED_sig0.1_pro_GOid_term$GO)
+#Use GSEA to generate list of all GO Slim BP, MP, and CC
+#DF will have "term", "GOid", "GOcategory"
+
+#BP first
+#goslims with GSEA
+myCollection <- GOCollection(sig0.1_sig_GOids)
+#I downloaded goslim_generic.obo from http://geneontology.org/docs/go-subset-guide/
+#then i moved it to the R library for GSEABase in the extdata folder
+fl <- system.file("extdata", "goslim_generic.obo", package="GSEABase")
+slim <- getOBOCollection(fl)
+slims <- data.frame(goSlim(myCollection, slim, "BP"))
+slims$GOid <- rownames(slims)
+slims$Term <- as.character(slims$Term)
+rownames(slims) <- NULL
+
+GSEA_bp <- slims[,c("Term", "GOid")]
+GSEA_bp$GOcategory <- "BP"
+
+```{r}
+
+
+```

@@ -10,6 +10,8 @@ library(heatmap3)
 library(devtools)
 #install_github("js229/Vennerable")
 library(Vennerable)
+library(colorRamps)
+library(plotrix)
 
 
 #read in same day log FC and pval data
@@ -75,7 +77,7 @@ proteins_evalpass <- read.csv("~/Documents/GitHub/OysterSeedProject/analysis/Uni
 #exclude proteins that don't pass eval cut-off
 all_sig0.1_ASCA_clust_pro_evalpass <- all_sig0.1_ASCA_clust_pro[which(all_sig0.1_ASCA_clust_pro$protein_ID %in% proteins_evalpass[,1]),]
 nrow(all_sig0.1_ASCA_clust_pro_evalpass)
-#161
+#284
 write.csv(all_sig0.1_ASCA_clust_pro_evalpass, "~/Documents/GitHub/OysterSeedProject/analysis/UniprotAnnotations_NetworkAnalysis/VerifyStatsProteinSelection/all_sig0.1_ASCA_clust_pro_evalpass.csv", quote = FALSE, row.names = FALSE)
 
 
@@ -134,10 +136,44 @@ dev.off()
 
 ###ordered by temperature then day
 data4heatmap3_orderT <- data4heatmap[,c(7,9,11,13,3,5,8,10,12,14,4,6)]
+rownames(data4heatmap3_orderT) <- rownames(data4heatmap3)
 ColSideColors_orderT <- ColSideColors[order(ColSideColors[,1], decreasing = TRUE),]
-pdf("~/Documents/GitHub/OysterSeedProject/analysis/UniprotAnnotations_NetworkAnalysis/VerifyStatsProteinSelection/plots/heatmap_NSAF_noD0_ordT_ColorByMethod.pdf",width = 10, height = 10)
-heatmap3(data4heatmap3_orderT,Colv = NA, cexRow = 0.1, cexCol = 0.5, RowSideColors=RowSideColors,ColSideColors = ColSideColors_orderT,RowAxisColors=1,ColAxisColors=1,legendfun=function() showLegend(legend=c("ASCA","ASCA_Clustering", "Clustering", "Proportions_Test", "Proportions_Test_ASCA","All methods"),col=c("lightgoldenrod1","steelblue1","mediumpurple1","mediumaquamarine","coral2","olivedrab1","sandybrown"), title = "Method", cex = 0.8))
+#pdf("~/Documents/GitHub/OysterSeedProject/analysis/UniprotAnnotations_NetworkAnalysis/VerifyStatsProteinSelection/plots/heatmap_NSAF_noD0_ordT_ColorByMethod.pdf",width = 10, height = 10)
+#heatmap3(data4heatmap3_orderT,Colv = NA, cexRow = 0.1, cexCol = 0.5, RowSideColors=RowSideColors,ColSideColors = ColSideColors_orderT,RowAxisColors=1,ColAxisColors=1,legendfun=function() showLegend(legend=c("ASCA","ASCA_Clustering", "Clustering", "Proportions_Test", "Proportions_Test_ASCA","All methods"),col=c("lightgoldenrod1","steelblue1","mediumpurple1","mediumaquamarine","coral2","olivedrab1","sandybrown"), title = "Method", cex = 0.8))
+pdf("~/Documents/GitHub/OysterSeedProject/analysis/UniprotAnnotations_NetworkAnalysis/VerifyStatsProteinSelection/plots/heatmap_NSAF_noD0_ordT_ColorByMethod_clustByClade.pdf",width = 10, height = 10)
+heatmap3(data4heatmap3_orderT,cexRow = 0.1, cexCol = 0.5, RowSideColors=RowSideColors,ColSideColors = ColSideColors_orderT,RowAxisColors=1,ColAxisColors=1,legendfun=function() showLegend(legend=c("ASCA","ASCA_Clustering", "Clustering","Clustering_Proportions_Test", "Proportions_Test", "Proportions_Test_ASCA","All methods"),col=c("lightgoldenrod1","steelblue1","mediumpurple1","sandybrown","mediumaquamarine","coral2","olivedrab1"), title = "Method", cex = 0.8),hclustfun=hclust, distfun = function(x) as.dist(1 - cor(t(x), use = "pa")), method = "average", scale = "row", Colv=NA)
 dev.off()
+
+#extracting clades
+heatmap3(data4heatmap3_orderT,cexRow = 0.1, cexCol = 0.5, RowSideColors=RowSideColors,ColSideColors = ColSideColors_orderT,RowAxisColors=1,ColAxisColors=1,legendfun=function() showLegend(legend=c("ASCA","ASCA_Clustering", "Clustering", "Proportions_Test", "Proportions_Test_ASCA","All methods"),col=c("lightgoldenrod1","steelblue1","mediumpurple1","mediumaquamarine","coral2","olivedrab1","sandybrown"), title = "Method", cex = 0.8),hclustfun=hclust, distfun = function(x) as.dist(1 - cor(t(x), use = "pa")), method = "average", scale = "row", Colv=NA)
+hm <- as.dist(1-cor(t(data4heatmap3_orderT), use="pa"))
+hm2 <- hclust(hm, method = 'average')
+plot(hm2)
+
+#Identify clades in heatmap
+# define some clusters
+mycl <- cutree(hm2, h=0.7)
+clusterCols <- colorRamps::primary.colors(length(unique(mycl)))
+myClusterSideBar <- clusterCols[mycl]
+pdf("~/Documents/GitHub/OysterSeedProject/analysis/UniprotAnnotations_NetworkAnalysis/VerifyStatsProteinSelection/plots/heatmap_NSAF_noD0_ordT_ColorByMethodAndClade.pdf",width = 10, height = 10)
+heatmap3(data4heatmap3_orderT,cexRow = 0.5, cexCol = 0.5, RowSideColors=myClusterSideBar,ColSideColors = ColSideColors_orderT,RowAxisColors=1,ColAxisColors=1,legendfun=function() showLegend(legend=c("ASCA","ASCA_Clustering", "Clustering", "Proportions_Test", "Proportions_Test_ASCA","All methods"),col=c("lightgoldenrod1","steelblue1","mediumpurple1","mediumaquamarine","coral2","olivedrab1","sandybrown"), title = "Method", cex = 0.8),hclustfun=hclust, distfun = function(x) as.dist(1 - cor(t(x), use = "pa")), method = "average", scale = "row", Colv=NA)
+dev.off()
+
+#get color name
+clusterColor <- lapply(myClusterSideBar, color.id)
+clusterColor <- lapply(clusterColor, `[[`,1)
+clusterColor <- data.frame(unlist(clusterColor), stringsAsFactors = FALSE)
+
+
+
+foo <- cbind(data4heatmap[,2],data4heatmap3_orderT, clusterID=mycl, clusterColor)
+#foo <- cbind(data4heatmap3_orderT, clusterID=mycl)
+
+clade.prot <- foo[hm2$order,]
+colnames(clade.prot)[1] <- "protein_ID"
+colnames(clade.prot)[15] <- "ClusterColor"
+
+write.csv(clade.prot, "~/Documents/GitHub/OysterSeedProject/analysis/UniprotAnnotations_NetworkAnalysis/ASCA_Clust_ChiSq_data4heatmap3_orderT.csv", row.names= FALSE, quote = FALSE)
 
 
 ###CREATE HEATMAP OF ASCA SELECTED PROTEINS

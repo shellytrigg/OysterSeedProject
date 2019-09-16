@@ -1,0 +1,105 @@
+
+BLAST proteomics data against UNIPROT Cgigas PROTEOME to get common UNIPROT accession numbers to compare proteins to published data
+
+
+on Emu
+
+get Uniprot Cgigas Reference Proteome 
+
+```
+srlab@emu:~/GitHub/Shelly_Pgenerosa/Cgigas$ wget ftp://ftp.uniprot.org/pub/databases/uniprot/current_release/knowledgebase/reference_proteomes/Eukaryota/UP000005408_29159.fasta.gz -O ~/GitHub/Shelly_Pgenerosa/Cgigas/UP000005408_29159.fasta.gz
+--2019-07-23 19:24:19--  ftp://ftp.uniprot.org/pub/databases/uniprot/current_release/knowledgebase/reference_proteomes/Eukaryota/UP000005408_29159.fasta.gz
+           => ‘/home/srlab/GitHub/Shelly_Pgenerosa/Cgigas/UP000005408_29159.fasta.gz’
+Resolving ftp.uniprot.org (ftp.uniprot.org)... 141.161.180.197
+Connecting to ftp.uniprot.org (ftp.uniprot.org)|141.161.180.197|:21... connected.
+Logging in as anonymous ... Logged in!
+==> SYST ... done.    ==> PWD ... done.
+==> TYPE I ... done.  ==> CWD (1) /pub/databases/uniprot/current_release/knowledgebase/reference_proteomes/Eukaryota ... done.
+==> SIZE UP000005408_29159.fasta.gz ... 7799399
+==> PASV ... done.    ==> RETR UP000005408_29159.fasta.gz ... done.
+Length: 7799399 (7.4M) (unauthoritative)
+
+UP000005408_29159.fasta.gz     100%[====================================================>]   7.44M  2.52MB/s    in 3.0s    
+
+2019-07-23 19:24:24 (2.52 MB/s) - ‘/home/srlab/GitHub/Shelly_Pgenerosa/Cgigas/UP000005408_29159.fasta.gz’ saved [7799399]
+```
+
+Unzip fasta file
+
+```
+srlab@emu:~/GitHub/Shelly_Pgenerosa/Cgigas$ gunzip UP000005408_29159.fasta.gz
+```
+Copy over proteomics .fa
+
+```
+scp strigg@ostrich.fish.washington.edu:/Volumes/web/halfshell/bu-git-repos/nb-2017/C_gigas/data/Cg_Giga_cont_AA.fa .
+```
+But no BLAST on Emu?! Switched to Roadrunner:
+
+Copy data from emu to road runner
+
+```
+srlab@roadrunner:~/Documents/Shelly/Cgigas$ scp -r srlab@emu.fish.washington.edu:~/GitHub/Shelly_Pgenerosa/Cgigas/* .
+
+srlab@emu.fish.washington.edu's password: 
+Cg_Giga_cont_AA.fa                                                                                                     100%   21MB  20.8MB/s   00:00    
+UP000005408_29159.fasta                                                                                                100%   14MB  14.0MB/s   00:00    
+```
+Make blastdb
+
+```
+srlab@roadrunner:~/Documents/Shelly/Cgigas$ /home/shared/anaconda3/bin/makeblastdb -in UP000005408_29159.fasta -out UNIPROT_Cgigas_db -dbtype prot
+
+Building a new DB, current time: 07/23/2019 22:47:49
+New DB name:   /home/srlab/Documents/Shelly/Cgigas/UNIPROT_Cgigas_db
+New DB title:  UP000005408_29159.fasta
+Sequence type: Protein
+Keep MBits: T
+Maximum file size: 1000000000B
+Adding sequences from FASTA; added 25982 sequences in 2.73942 seconds.
+```
+
+Run BLASTP
+
+```
+srlab@roadrunner:~/Documents/Shelly/Cgigas$ /home/shared/anaconda3/bin/blastp -query Cg_Giga_cont_AA.fa -db UNIPROT_Cgigas_db -out Cgiga-uniprot-blastP-out.tab -num_threads 8 -max_hsps 1 -max_target_seqs 1 -outfmt 6  
+```
+
+
+## compare BLASTP alignments to Cgigas to alignments to whole NCBI
+- do we get more hits from Cgigas db alone?
+
+Count number of alingments in output
+
+```
+wc -l Cgiga-uniprot-blastP-out.tab
+40334
+
+```
+
+Number of seqs in original file is 40751
+
+Filter for good matches:
+number of seqs in original file = 36,121
+
+
+
+merge with NSAF data
+
+selec
+
+
+
+See if proteins show same behavior as previous studies:
+
+plot heatmaps
+
+for oshv: color protein blue = down, red = up
+
+
+For dineshram:
+
+on Day 3, about half of the temp DE genes are higher in my high temp and half are lower in my high temp
+
+
+

@@ -1,0 +1,123 @@
+GO,Clust_Color,Clust_Num,sumsim,semsimsum,term,GOSlim_bin,p.value,p.adj,,,
+GO:0006098,turquoise4,7,14.09539531,242.3548694,pentose-phosphate shunt,other metabolic processes,0.002615019,0.614529446,,GO:0006098,0.002615019
+GO:0006139,turquoise4,7,13.27100352,242.3548694,nucleobase-containing compound metabolic process,other metabolic processes,0.003267171,0.767785166,,GO:0006139,0.003267171
+GO:0006383,turquoise4,7,11.71245971,242.3548694,transcription from RNA polymerase III promoter,RNA metabolism,0.003918683,0.920890622,,GO:0006383,0.003918683
+GO:0006384,turquoise4,7,11.62915981,242.3548694,transcription initiation from RNA polymerase III promoter,cell organization and biogenesis;RNA metabolism,0.000654718,0.153858741,,GO:0006384,0.000654718
+GO:0006397,turquoise4,7,10.13589634,242.3548694,mRNA processing,RNA metabolism,0.000871398,0.204778578,,GO:0006397,0.000871398
+GO:0006468,turquoise4,7,12.87829725,242.3548694,protein phosphorylation,protein metabolism,0.000762897,0.179280809,,GO:0006468,0.000762897
+GO:0006508,turquoise4,7,6.421599749,242.3548694,proteolysis,protein metabolism,0.000432308,0.101592304,,GO:0006508,0.000432308
+GO:0006520,turquoise4,7,7.067394085,242.3548694,cellular amino acid metabolic process,other metabolic processes,0.003593007,0.844356664,,GO:0006520,0.003593007
+GO:0006695,turquoise4,7,10.76170106,242.3548694,cholesterol biosynthetic process,other metabolic processes,0.002615019,0.614529446,,GO:0006695,0.002615019
+GO:0006739,turquoise4,7,18.76853436,242.3548694,NADP metabolic process,other metabolic processes,0.001308793,0.307566431,,GO:0006739,0.001308793
+GO:0006740,turquoise4,7,13.52435191,242.3548694,NADPH regeneration,other metabolic processes,0.002288703,0.537845176,,GO:0006740,0.002288703
+GO:0009051,turquoise4,7,13.9529932,242.3548694,pentose-phosphate shunt; oxidative branch,other metabolic processes,0.00163559,0.384363694,,GO:0009051,0.00163559
+GO:0019322,turquoise4,7,8.336190712,242.3548694,pentose biosynthetic process,other metabolic processes,0.001308793,0.307566431,,GO:0019322,0.001308793
+GO:0019372,turquoise4,7,7.034309185,242.3548694,lipoxygenase pathway,other metabolic processes,0.000981836,0.230731455,,GO:0019372,0.000981836
+GO:0019439,turquoise4,7,7.603116552,242.3548694,aromatic compound catabolic process,other metabolic processes,0.000654718,0.153858741,,GO:0019439,0.000654718
+GO:0030488,turquoise4,7,10.84258024,242.3548694,tRNA methylation,RNA metabolism,0.004894755,1,,GO:0030488,0.004894755
+GO:0030574,turquoise4,7,8.901917191,242.3548694,collagen catabolic process,other metabolic processes,0.001962227,0.461123267,,GO:0030574,0.001962227
+GO:0042795,turquoise4,7,11.90070506,242.3548694,snRNA transcription from RNA polymerase II promoter,RNA metabolism,0.003267171,0.767785166,,GO:0042795,0.003267171
+GO:0046390,turquoise4,7,10.10299875,242.3548694,ribose phosphate biosynthetic process,other metabolic processes,0.000981836,0.230731455,,GO:0046390,0.000981836
+GO:0046395,turquoise4,7,8.020121489,242.3548694,carboxylic acid catabolic process,other metabolic processes,0.000654718,0.153858741,,GO:0046395,0.000654718
+GO:0046434,turquoise4,7,7.588052719,242.3548694,organophosphate catabolic process,other metabolic processes,0.000654718,0.153858741,,GO:0046434,0.000654718
+GO:0046470,turquoise4,7,9.506949901,242.3548694,phosphatidylcholine metabolic process,other metabolic processes,0.000981836,0.230731455,,GO:0046470,0.000981836
+GO:0051156,turquoise4,7,8.299141319,242.3548694,glucose 6-phosphate metabolic process,other metabolic processes,0.001308793,0.307566431,,GO:0051156,0.001308793
+GO:0000187,yellow,5,15.17420003,155.4825827,activation of MAPK activity,protein metabolism;signal transduction,1.46E-05,0.003420728,,GO:0000187,1.46E-05
+GO:0001934,yellow,5,13.94376981,155.4825827,positive regulation of protein phosphorylation,protein metabolism,6.91E-05,0.016238409,,GO:0001934,6.91E-05
+GO:0007257,yellow,5,12.23868466,155.4825827,activation of JUN kinase activity,stress response;protein metabolism;signal transduction,0.002615019,0.614529446,,GO:0007257,0.002615019
+GO:0010875,yellow,5,3.298348536,155.4825827,positive regulation of cholesterol efflux,transport,0.002941175,0.691176101,,GO:0010875,0.002941175
+GO:0031116,yellow,5,4.276647408,155.4825827,positive regulation of microtubule polymerization,protein metabolism;cell organization and biogenesis,0.003593007,0.844356664,,GO:0031116,0.003593007
+GO:0032147,yellow,5,13.29687602,155.4825827,activation of protein kinase activity,other metabolic processes,4.20E-07,9.88E-05,,GO:0032147,4.20E-07
+GO:0032411,yellow,5,6.635090496,155.4825827,positive regulation of transporter activity,transport,0.000981836,0.230731455,,GO:0032411,0.000981836
+GO:0033138,yellow,5,7.701629629,155.4825827,positive regulation of peptidyl-serine phosphorylation,protein metabolism,0.004894755,1,,GO:0033138,0.004894755
+GO:0033148,yellow,5,6.44355944,155.4825827,positive regulation of intracellular estrogen receptor signaling pathway,signal transduction,0.001308793,0.307566431,,GO:0033148,0.001308793
+GO:0043408,yellow,5,12.20676593,155.4825827,regulation of MAPK cascade,signal transduction,0.002288703,0.537845176,,GO:0043408,0.002288703
+GO:0043507,yellow,5,15.10176622,155.4825827,positive regulation of JUN kinase activity,stress response;signal transduction;protein metabolism,0.002941175,0.691176101,,GO:0043507,0.002941175
+GO:0045740,yellow,5,7.362210689,155.4825827,positive regulation of DNA replication,DNA metabolism,0.003267171,0.767785166,,GO:0045740,0.003267171
+GO:0045944,yellow,5,7.362210689,155.4825827,positive regulation of transcription from RNA polymerase II promoter,RNA metabolism,0.000145293,0.034143837,,GO:0045944,0.000145293
+GO:0050679,yellow,5,3.585649309,155.4825827,positive regulation of epithelial cell proliferation,cell cycle and proliferation,0.003918683,0.920890622,,GO:0050679,0.003918683
+GO:0051099,yellow,5,3.336741961,155.4825827,positive regulation of binding,other biological processes,0.000654718,0.153858741,,GO:0051099,0.000654718
+GO:0051247,yellow,5,13.31770989,155.4825827,positive regulation of protein metabolic process,protein metabolism,0.000981836,0.230731455,,GO:0051247,0.000981836
+GO:0051770,yellow,5,6.90237346,155.4825827,positive regulation of nitric-oxide synthase biosynthetic process,other metabolic processes,0.000981836,0.230731455,,GO:0051770,0.000981836
+GO:1904879,yellow,5,3.298348536,155.4825827,positive regulation of calcium ion transmembrane transport via high voltage-gated calcium channel,NA,0.000981836,0.230731455,,GO:1904879,0.000981836
+GO:0001520,black,1,6.020663791,117.2118127,outer dense fiber,other cellular component,0.00163559,0.384363694,,GO:0001520,0.00163559
+GO:0005634,black,1,1.647091625,117.2118127,nucleus,nucleus,4.32E-06,0.001015905,,GO:0005634,4.32E-06
+GO:0005654,black,1,5.398744533,117.2118127,nucleoplasm,nucleus,8.67E-06,0.002037194,,GO:0005654,8.67E-06
+GO:0005666,black,1,7.55070779,117.2118127,DNA-directed RNA polymerase III complex,nucleus,0.002941175,0.691176101,,GO:0005666,0.002941175
+GO:0005669,black,1,7.738953141,117.2118127,transcription factor TFIID complex,nucleus,0.002615019,0.614529446,,GO:0005669,0.002615019
+GO:0005672,black,1,7.738953141,117.2118127,transcription factor TFIIA complex,nucleus,0.000654718,0.153858741,,GO:0005672,0.000654718
+GO:0005737,black,1,1.450815007,117.2118127,cytoplasm,other cellular component,3.34E-06,0.0007845,,GO:0005737,3.34E-06
+GO:0005762,black,1,9.691923293,117.2118127,mitochondrial large ribosomal subunit,mitochondrion;translational apparatus,9.43E-05,0.022162986,,GO:0005762,9.43E-05
+GO:0005794,black,1,4.474154029,117.2118127,Golgi apparatus,ER/Golgi,0.00481419,1,,GO:0005794,0.00481419
+GO:0005829,black,1,3.601360399,117.2118127,cytosol,cytosol,1.20E-05,0.002819541,,GO:0005829,1.20E-05
+GO:0030173,black,1,8.451555907,117.2118127,integral component of Golgi membrane,other membranes;ER/Golgi,0.002615019,0.614529446,,GO:0030173,0.002615019
+GO:0031305,black,1,8.708927063,117.2118127,integral component of mitochondrial inner membrane,other membranes;mitochondrion,0.001962227,0.461123267,,GO:0031305,0.001962227
+GO:0032839,black,1,6.07329711,117.2118127,dendrite cytoplasm,other cellular component,0.003267171,0.767785166,,GO:0032839,0.003267171
+GO:0032991,black,1,5.674023663,117.2118127,macromolecular complex,other cellular component,0.002124441,0.49924371,,GO:0032991,0.002124441
+GO:0034364,black,1,5.641404648,117.2118127,high-density lipoprotein particle,non-structural extracellular,0.001962227,0.461123267,,GO:0034364,0.001962227
+GO:0034366,black,1,5.289984437,117.2118127,spherical high-density lipoprotein particle,non-structural extracellular,0.000654718,0.153858741,,GO:0034366,0.000654718
+GO:0043231,black,1,1.903136555,117.2118127,intracellular membrane-bounded organelle,other cellular component,7.14E-05,0.016780089,,GO:0043231,7.14E-05
+GO:0044613,black,1,7.55070779,117.2118127,nuclear pore central transport channel,NA,0.00163559,0.384363694,,GO:0044613,0.00163559
+GO:0048471,black,1,3.601360399,117.2118127,perinuclear region of cytoplasm,other cellular component,0.004132484,0.971133693,,GO:0048471,0.004132484
+GO:0072562,black,1,1.607953113,117.2118127,blood microparticle,NA,0.002288703,0.537845176,,GO:0072562,0.002288703
+GO:0097224,black,1,5.8474993,117.2118127,sperm connecting piece,NA,0.002288703,0.537845176,,GO:0097224,0.002288703
+GO:0098592,black,1,1.548595988,117.2118127,cytoplasmic side of apical plasma membrane,NA,0.001308793,0.307566431,,GO:0098592,0.001308793
+GO:0001103,red,2,4.066108969,78.31574074,RNA polymerase II repressing transcription factor binding,NA,0.003593007,0.844356664,,GO:0001103,0.003593007
+GO:0004063,red,2,4.458816132,78.31574074,aryldialkylphosphatase activity,other molecular function,0.000654718,0.153858741,,GO:0004063,0.000654718
+GO:0004064,red,2,4.542116027,78.31574074,arylesterase activity,other molecular function,0.000981836,0.230731455,,GO:0004064,0.000981836
+GO:0004181,red,2,4.542116027,78.31574074,metallocarboxypeptidase activity,other molecular function,0.002615019,0.614529446,,GO:0004181,0.002615019
+GO:0004345,red,2,0.509313211,78.31574074,glucose-6-phosphate dehydrogenase activity,other molecular function,0.000981836,0.230731455,,GO:0004345,0.000981836
+GO:0004556,red,2,4.11067361,78.31574074,alpha-amylase activity,other molecular function,0.00163559,0.384363694,,GO:0004556,0.00163559
+GO:0004674,red,2,2.869766264,78.31574074,protein serine/threonine kinase activity,kinase activity,4.34E-05,0.010189145,,GO:0004674,4.34E-05
+GO:0004708,red,2,7.25855537,78.31574074,MAP kinase kinase activity,kinase activity,2.41E-06,0.000565826,,GO:0004708,2.41E-06
+GO:0004713,red,2,2.869766264,78.31574074,protein tyrosine kinase activity,kinase activity,0.000111284,0.026151782,,GO:0004713,0.000111284
+GO:0005186,red,2,3.877863618,78.31574074,pheromone activity,signal transduction activity,0.003918683,0.920890622,,GO:0005186,0.003918683
+GO:0005524,red,2,3.858731555,78.31574074,ATP binding,other molecular function,0.000720495,0.169316305,,GO:0005524,0.000720495
+GO:0005536,red,2,3.858731555,78.31574074,glucose binding,other molecular function,0.002615019,0.614529446,,GO:0005536,0.002615019
+GO:0008545,red,2,3.023084818,78.31574074,JUN kinase kinase activity,kinase activity,0.000654718,0.153858741,,GO:0008545,0.000654718
+GO:0016430,red,2,2.728722233,78.31574074,tRNA (adenine-N6-)-methyltransferase activity,other molecular function,0.000654718,0.153858741,,GO:0016430,0.000654718
+GO:0017025,red,2,4.066108969,78.31574074,TBP-class protein binding,other molecular function,0.002288703,0.537845176,,GO:0017025,0.002288703
+GO:0031435,red,2,4.066108969,78.31574074,mitogen-activated protein kinase kinase kinase binding,other molecular function,0.00163559,0.384363694,,GO:0031435,0.00163559
+GO:0035035,red,2,4.066108969,78.31574074,histone acetyltransferase binding,other molecular function,0.002288703,0.537845176,,GO:0035035,0.002288703
+GO:0097200,red,2,4.458816132,78.31574074,cysteine-type endopeptidase activity involved in execution phase of apoptosis,NA,0.003593007,0.844356664,,GO:0097200,0.003593007
+GO:0102007,red,2,4.542116027,78.31574074,acyl-L-homoserine-lactone lactonohydrolase activity,NA,0.000654718,0.153858741,,GO:0102007,0.000654718
+GO:0102009,red,2,4.542116027,78.31574074,proline dipeptidase activity,NA,0.000981836,0.230731455,,GO:0102009,0.000981836
+GO:0010734,dodgerblue2,12,10.99135954,74.97069454,negative regulation of protein glutathionylation,protein metabolism,0.000981836,0.230731455,,GO:0010734,0.000981836
+GO:0034393,dodgerblue2,12,4.928465146,74.97069454,positive regulation of smooth muscle cell apoptotic process,death,0.000981836,0.230731455,,GO:0034393,0.000981836
+GO:0043523,dodgerblue2,12,2.463385062,74.97069454,regulation of neuron apoptotic process,death,0.0042442,0.997387063,,GO:0043523,0.0042442
+GO:0045415,dodgerblue2,12,14.30205912,74.97069454,negative regulation of interleukin-8 biosynthetic process,other metabolic processes,0.000981836,0.230731455,,GO:0045415,0.000981836
+GO:0060244,dodgerblue2,12,6.261105067,74.97069454,negative regulation of cell proliferation involved in contact inhibition,cell cycle and proliferation,0.001308793,0.307566431,,GO:0060244,0.001308793
+GO:0060761,dodgerblue2,12,8.53624791,74.97069454,negative regulation of response to cytokine stimulus,other biological processes,0.000654718,0.153858741,,GO:0060761,0.000654718
+GO:2000378,dodgerblue2,12,9.203588554,74.97069454,negative regulation of reactive oxygen species metabolic process,NA,0.003267171,0.767785166,,GO:2000378,0.003267171
+GO:2000672,dodgerblue2,12,7.35104558,74.97069454,negative regulation of motor neuron apoptotic process,NA,0.000981836,0.230731455,,GO:2000672,0.000981836
+GO:2001240,dodgerblue2,12,10.93343856,74.97069454,negative regulation of extrinsic apoptotic signaling pathway in absence of ligand,NA,0.001308793,0.307566431,,GO:2001240,0.001308793
+GO:0009611,khaki1,10,2.727431737,53.47977916,response to wounding,stress response,0.003593007,0.844356664,,GO:0009611,0.003593007
+GO:0010041,khaki1,10,4.912767577,53.47977916,response to iron(III) ion,other biological processes,0.001308793,0.307566431,,GO:0010041,0.001308793
+GO:0031667,khaki1,10,6.237275884,53.47977916,response to nutrient levels,other biological processes,0.003593007,0.844356664,,GO:0031667,0.003593007
+GO:0032094,khaki1,10,5.051719133,53.47977916,response to food,other biological processes,0.001308793,0.307566431,,GO:0032094,0.001308793
+GO:0070542,khaki1,10,5.142705667,53.47977916,response to fatty acid,other biological processes,0.002615019,0.614529446,,GO:0070542,0.002615019
+GO:0071363,khaki1,10,6.535618308,53.47977916,cellular response to growth factor stimulus,NA,0.004569557,1,,GO:0071363,0.004569557
+GO:0071499,khaki1,10,4.745854552,53.47977916,cellular response to laminar fluid shear stress,NA,0.000654718,0.153858741,,GO:0071499,0.000654718
+GO:0072709,khaki1,10,6.678020419,53.47977916,cellular response to sorbitol,NA,0.000981836,0.230731455,,GO:0072709,0.000981836
+GO:0072734,khaki1,10,6.535618308,53.47977916,cellular response to staurosporine,NA,0.002615019,0.614529446,,GO:0072734,0.002615019
+GO:1902617,khaki1,10,4.912767577,53.47977916,response to fluoride,NA,0.000981836,0.230731455,,GO:1902617,0.000981836
+GO:0007254,purple,11,17.05072729,47.6645489,JNK cascade,signal transduction;stress response,0.001962227,0.461123267,,GO:0007254,0.001962227
+GO:0023014,purple,11,17.56497936,47.6645489,signal transduction by protein phosphorylation,NA,3.03E-07,7.13E-05,,GO:0023014,3.03E-07
+GO:0070375,purple,11,13.04884225,47.6645489,ERK5 cascade,signal transduction,0.000981836,0.230731455,,GO:0070375,0.000981836
+GO:0034115,darkslategray1,14,6.777933111,38.07268979,negative regulation of heterotypic cell-cell adhesion,developmental processes;cell adhesion,0.00163559,0.384363694,,GO:0034115,0.00163559
+GO:0050770,darkslategray1,14,4.444283638,38.07268979,regulation of axonogenesis,cell organization and biogenesis;developmental processes,0.003593007,0.844356664,,GO:0050770,0.003593007
+GO:0061052,darkslategray1,14,11.02195167,38.07268979,negative regulation of cell growth involved in cardiac muscle cell development,NA,0.001962227,0.461123267,,GO:0061052,0.001962227
+GO:0090051,darkslategray1,14,9.232522346,38.07268979,negative regulation of cell migration involved in sprouting angiogenesis,NA,0.001962227,0.461123267,,GO:0090051,0.001962227
+GO:2000342,darkslategray1,14,6.595999022,38.07268979,negative regulation of chemokine (C-X-C motif) ligand 2 production,NA,0.000654718,0.153858741,,GO:2000342,0.000654718
+GO:0031098,orchid1,13,10.38376677,10.38376677,stress-activated protein kinase signaling cascade,stress response;signal transduction,2.70E-07,6.34E-05,,GO:0031098,2.70E-07
+GO:0006915,springgreen,9,0.501857061,7.5108141,apoptotic process,death,5.84E-05,0.013732751,,GO:0006915,5.84E-05
+GO:0043249,springgreen,9,2.05045305,7.5108141,erythrocyte maturation,developmental processes,0.00163559,0.384363694,,GO:0043249,0.00163559
+GO:0048754,springgreen,9,2.406193878,7.5108141,branching morphogenesis of an epithelial tube,developmental processes,0.003267171,0.767785166,,GO:0048754,0.003267171
+GO:0061049,springgreen,9,2.05045305,7.5108141,cell growth involved in cardiac muscle cell development,NA,0.001962227,0.461123267,,GO:0061049,0.001962227
+GO:0097194,springgreen,9,0.501857061,7.5108141,execution phase of apoptosis,NA,0.004894755,1,,GO:0097194,0.004894755
+GO:0007165,green,4,4.070497746,7.501334758,signal transduction,signal transduction,0.001494735,0.351262834,,GO:0007165,0.001494735
+GO:0048012,green,4,3.430837012,7.501334758,hepatocyte growth factor receptor signaling pathway,signal transduction,0.001962227,0.461123267,,GO:0048012,0.001962227
+GO:0007016,gray50,8,2.908050939,3.765648828,cytoskeletal anchoring at plasma membrane,cell organization and biogenesis,0.0042442,0.997387063,,GO:0007016,0.0042442
+GO:0070208,gray50,8,0.857597889,3.765648828,protein heterotrimerization,cell organization and biogenesis,0.003918683,0.920890622,,GO:0070208,0.003918683
+GO:0006850,gold4,3,1.631895883,3.263791767,mitochondrial pyruvate transport,transport,0.000654718,0.153858741,,GO:0006850,0.000654718
+GO:0006913,gold4,3,1.631895883,3.263791767,nucleocytoplasmic transport,transport,0.003267171,0.767785166,,GO:0006913,0.003267171
