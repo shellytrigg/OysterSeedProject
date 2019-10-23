@@ -1,0 +1,14 @@
+SUID,description,dispensability,log_size,name,selected,shared name,uniqueness,value,absvalue
+2443,Rho protein signal transduction,0.336,4.246,Rho protein signal transduction,FALSE,Rho protein signal transduction,0.796,-2.31,2.31
+2444,late endosome to lysosome transport,0.144,2.127,late endosome to lysosome transport,FALSE,late endosome to lysosome transport,0.875,-2.883,2.883
+2445,gastrulation involving germ band extension,0.393,2.394,gastrulation involving germ band extension,FALSE,gastrulation involving germ band extension,0.563,-3.008,3.008
+2446,extrinsic apoptotic signaling pathway via death domain receptors,0.293,3.285,extrinsic apoptotic signaling pathway via death domain receptors,FALSE,extrinsic apoptotic signaling pathway via death domain receptors,0.776,-2.64,2.64
+2447,actin cytoskeleton organization,0,4.69,actin cytoskeleton organization,FALSE,actin cytoskeleton organization,0.606,-3.601,3.601
+2448,positive regulation of protein serine/threonine kinase activity,0.162,3.985,positive regulation of protein serine/threonine kinase activity,FALSE,positive regulation of protein serine/threonine kinase activity,0.828,-2.883,2.883
+2449,regulation of filopodium assembly,0.326,3.043,regulation of filopodium assembly,FALSE,regulation of filopodium assembly,0.642,-2.531,2.531
+2450,imaginal disc-derived leg morphogenesis,0.369,2.735,imaginal disc-derived leg morphogenesis,FALSE,imaginal disc-derived leg morphogenesis,0.542,-3.008,3.008
+2451,terminal button organization,0.303,2.548,terminal button organization,FALSE,terminal button organization,0.743,-2.883,2.883
+2452,synaptic vesicle exocytosis,0.141,3.48,synaptic vesicle exocytosis,FALSE,synaptic vesicle exocytosis,0.593,-3.008,3.008
+2453,adherens junction maintenance,0.294,2.332,adherens junction maintenance,FALSE,adherens junction maintenance,0.748,-3.184,3.184
+2454,protein localization to adherens junction,0,2.236,protein localization to adherens junction,FALSE,protein localization to adherens junction,0.869,-3.184,3.184
+2455,tracheal pit formation in open tracheal system,0.043,1.322,tracheal pit formation in open tracheal system,FALSE,tracheal pit formation in open tracheal system,0.631,-3.184,3.184

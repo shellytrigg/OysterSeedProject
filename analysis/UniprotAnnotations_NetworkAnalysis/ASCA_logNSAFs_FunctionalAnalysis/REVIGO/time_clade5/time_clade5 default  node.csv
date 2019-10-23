@@ -1,0 +1,20 @@
+SUID,description,dispensability,log_size,name,selected,shared name,uniqueness,value,absvalue
+2623,peptide cross-linking,0.297,3.233,peptide cross-linking,FALSE,peptide cross-linking,0.858,-2.583,2.583
+2624,negative regulation of smooth muscle cell-matrix adhesion,0.314,1.806,negative regulation of smooth muscle cell-matrix adhesion,FALSE,negative regulation of smooth muscle cell-matrix adhesion,0.611,-5.618,5.618
+2625,activation of protein kinase A activity,0.338,1.477,activation of protein kinase A activity,FALSE,activation of protein kinase A activity,0.662,-2.707,2.707
+2626,negative regulation of monocyte chemotactic protein-1 production,0.327,2.199,negative regulation of monocyte chemotactic protein-1 production,FALSE,negative regulation of monocyte chemotactic protein-1 production,0.531,-5.472,5.472
+2627,RNA metabolism,0.16,6.311,RNA metabolism,FALSE,RNA metabolism,0.823,-2.407,2.407
+2628,arginine metabolism,0.291,4.695,arginine metabolism,FALSE,arginine metabolism,0.773,-2.883,2.883
+2629,hydrogen peroxide catabolism,0.011,4.078,hydrogen peroxide catabolism,FALSE,hydrogen peroxide catabolism,0.874,-2.31,2.31
+364,negative regulation of mitochondrial membrane potential,0.112,2.179,negative regulation of mitochondrial membrane potential,FALSE,negative regulation of mitochondrial membrane potential,0.782,-2.883,2.883
+2630,negative regulation of platelet-derived growth factor receptor signaling pathway,0.35,2.496,negative regulation of platelet-derived growth factor receptor signaling pathway,FALSE,negative regulation of platelet-derived growth factor receptor signaling pathway,0.522,-5.348,5.348
+2631,negative regulation of smooth muscle cell proliferation,0.388,2.932,negative regulation of smooth muscle cell proliferation,FALSE,negative regulation of smooth muscle cell proliferation,0.568,-4.903,4.903
+2632,regulation of sorocarp development,0.11,2.223,regulation of sorocarp development,FALSE,regulation of sorocarp development,0.728,-2.883,2.883
+2633,negative regulation of T cell migration,0.314,1.556,negative regulation of T cell migration,FALSE,negative regulation of T cell migration,0.535,-5.618,5.618
+80,lipid metabolism,0.179,5.655,lipid metabolism,FALSE,lipid metabolism,0.83,-4.051,4.051
+2634,urea cycle,0.203,2.623,urea cycle,FALSE,urea cycle,0.842,-2.786,2.786
+357,positive regulation of necrotic cell death,0.118,2.255,positive regulation of necrotic cell death,FALSE,positive regulation of necrotic cell death,0.703,-2.786,2.786
+2635,negative regulation of lipoprotein lipid oxidation,0.086,1.556,negative regulation of lipoprotein lipid oxidation,FALSE,negative regulation of lipoprotein lipid oxidation,0.599,-5.618,5.618
+2636,glucose metabolism,0,4.741,glucose metabolism,FALSE,glucose metabolism,0.799,-6.17,6.17
+2637,UTP biosynthesis,0.246,3.823,UTP biosynthesis,FALSE,UTP biosynthesis,0.722,-2.583,2.583
+2638,peptidyl-serine modification,0.046,4.078,peptidyl-serine modification,FALSE,peptidyl-serine modification,0.847,-3.184,3.184

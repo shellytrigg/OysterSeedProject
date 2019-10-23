@@ -1,0 +1,29 @@
+SUID,description,dispensability,log_size,name,selected,shared name,uniqueness,value,absvalue
+2233,negative regulation of protein glutathionylation,0.296,1.462,negative regulation of protein glutathionylation,FALSE,negative regulation of protein glutathionylation,0.668,-3.008,3.008
+2234,positive regulation of calcium ion transmembrane transport via high voltage-gated calcium channel,0.306,0.699,positive regulation of calcium ion transmembrane transport via high voltage-gated calcium channel,FALSE,positive regulation of calcium ion transmembrane transport via high voltage-gated calcium channel,0.748,-3.008,3.008
+2235,collagen catabolism,0.374,2.835,collagen catabolism,FALSE,collagen catabolism,0.791,-2.707,2.707
+2236,positive regulation of smooth muscle cell apoptotic process,0.176,2.228,positive regulation of smooth muscle cell apoptotic process,FALSE,positive regulation of smooth muscle cell apoptotic process,0.666,-3.008,3.008
+2237,mRNA processing,0.209,4.857,mRNA processing,FALSE,mRNA processing,0.813,-3.06,3.06
+2238,phosphatidylcholine metabolism,0.384,3.618,phosphatidylcholine metabolism,FALSE,phosphatidylcholine metabolism,0.735,-3.008,3.008
+2239,cellular amino acid metabolism,0.314,5.856,cellular amino acid metabolism,FALSE,cellular amino acid metabolism,0.753,-2.445,2.445
+2240,nucleobase-containing compound metabolism,0.263,6.532,nucleobase-containing compound metabolism,FALSE,nucleobase-containing compound metabolism,0.83,-2.486,2.486
+2241,response to wounding,0.34,4.212,response to wounding,FALSE,response to wounding,0.825,-2.445,2.445
+2242,cholesterol biosynthesis,0.318,3.173,cholesterol biosynthesis,FALSE,cholesterol biosynthesis,0.82,-2.583,2.583
+2243,positive regulation of microtubule polymerization,0.396,3.045,positive regulation of microtubule polymerization,FALSE,positive regulation of microtubule polymerization,0.658,-2.445,2.445
+2244,negative regulation of cell proliferation involved in contact inhibition,0.369,2.057,negative regulation of cell proliferation involved in contact inhibition,FALSE,negative regulation of cell proliferation involved in contact inhibition,0.742,-2.883,2.883
+2245,pentose biosynthesis,0.137,1.806,pentose biosynthesis,FALSE,pentose biosynthesis,0.865,-2.883,2.883
+2246,negative regulation of response to cytokine stimulus,0.347,3.11,negative regulation of response to cytokine stimulus,FALSE,negative regulation of response to cytokine stimulus,0.624,-3.184,3.184
+2247,transcription initiation from RNA polymerase III promoter,0.102,2.959,transcription initiation from RNA polymerase III promoter,FALSE,transcription initiation from RNA polymerase III promoter,0.845,-3.184,3.184
+2248,transcription from RNA polymerase III promoter,0.25,4.005,transcription from RNA polymerase III promoter,FALSE,transcription from RNA polymerase III promoter,0.826,-2.407,2.407
+2249,lipoxygenase pathway,0.121,2.238,lipoxygenase pathway,FALSE,lipoxygenase pathway,0.839,-3.008,3.008
+2250,proteolysis,0.385,5.826,proteolysis,FALSE,proteolysis,0.814,-3.364,3.364
+2251,cellular response to sorbitol,0.399,0.954,cellular response to sorbitol,FALSE,cellular response to sorbitol,0.812,-3.008,3.008
+2252,positive regulation of nitric-oxide synthase biosynthesis,0.356,2.274,positive regulation of nitric-oxide synthase biosynthesis,FALSE,positive regulation of nitric-oxide synthase biosynthesis,0.676,-3.008,3.008
+2253,response to fluoride,0.211,1.342,response to fluoride,FALSE,response to fluoride,0.834,-3.008,3.008
+2254,organophosphate catabolism,0.353,4.671,organophosphate catabolism,FALSE,organophosphate catabolism,0.733,-3.184,3.184
+2255,signal transduction by protein phosphorylation,0,5.286,signal transduction by protein phosphorylation,FALSE,signal transduction by protein phosphorylation,0.507,-6.519,6.519
+2256,snRNA transcription from RNA polymerase II promoter,0.201,2.631,snRNA transcription from RNA polymerase II promoter,FALSE,snRNA transcription from RNA polymerase II promoter,0.837,-2.486,2.486
+2257,cellular response to laminar fluid shear stress,0.272,2.14,cellular response to laminar fluid shear stress,FALSE,cellular response to laminar fluid shear stress,0.828,-3.184,3.184
+2258,response to food,0.36,2.951,response to food,FALSE,response to food,0.814,-2.883,2.883
+2259,negative regulation of chemokine (C-X-C motif) ligand 2 production,0.155,1.491,negative regulation of chemokine (C-X-C motif) ligand 2 production,FALSE,negative regulation of chemokine (C-X-C motif) ligand 2 production,0.748,-3.184,3.184
+2260,ERK5 cascade,0.385,2.037,ERK5 cascade,FALSE,ERK5 cascade,0.629,-3.008,3.008

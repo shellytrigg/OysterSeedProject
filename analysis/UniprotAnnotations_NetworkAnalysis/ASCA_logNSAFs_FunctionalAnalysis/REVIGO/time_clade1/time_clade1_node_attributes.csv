@@ -1,0 +1,23 @@
+SUID,absval,description,dispensability,log_size,name,selected,shared name,uniqueness,value,absvalue
+2152,,endoplasmic reticulum tubular network organization,0.021,2.769,endoplasmic reticulum tubular network organization,FALSE,endoplasmic reticulum tubular network organization,0.649,-2.883,2.883
+2153,,hypoxanthine salvage,0.483,3.034,hypoxanthine salvage,FALSE,hypoxanthine salvage,0.678,-3.008,3.008
+2154,,glycolytic process,0,4.844,glycolytic process,FALSE,glycolytic process,0.495,-4.253,4.253
+2155,,positive regulation of mammary gland epithelial cell proliferation,0.342,2.396,positive regulation of mammary gland epithelial cell proliferation,FALSE,positive regulation of mammary gland epithelial cell proliferation,0.639,-3.008,3.008
+2156,,negative regulation of axonogenesis,0.598,3.051,negative regulation of axonogenesis,FALSE,negative regulation of axonogenesis,0.502,-2.64,2.64
+2157,,ganglioside catabolism,0.505,2.832,ganglioside catabolism,FALSE,ganglioside catabolism,0.692,-2.583,2.583
+2158,,protein heterotrimerization,0.448,2.525,protein heterotrimerization,FALSE,protein heterotrimerization,0.738,-2.407,2.407
+2159,,positive regulation of epithelial cell migration,0.6,3.444,positive regulation of epithelial cell migration,FALSE,positive regulation of epithelial cell migration,0.577,-2.31,2.31
+2160,,regulation of branching morphogenesis of a nerve,0.48,1.944,regulation of branching morphogenesis of a nerve,FALSE,regulation of branching morphogenesis of a nerve,0.672,-3.008,3.008
+2161,,fructose metabolism,0.531,3.458,fructose metabolism,FALSE,fructose metabolism,0.705,-2.531,2.531
+2162,,nuclear pore complex assembly,0.358,2.779,nuclear pore complex assembly,FALSE,nuclear pore complex assembly,0.713,-2.583,2.583
+2163,,mannose metabolism,0.608,3.596,mannose metabolism,FALSE,mannose metabolism,0.702,-2.486,2.486
+2164,,lignin catabolism,0.498,3.116,lignin catabolism,FALSE,lignin catabolism,0.705,-3.184,3.184
+2165,,inosine biosynthesis,0.494,2.632,inosine biosynthesis,FALSE,inosine biosynthesis,0.677,-3.008,3.008
+2166,,cortical cytoskeleton organization,0.357,3.65,cortical cytoskeleton organization,FALSE,cortical cytoskeleton organization,0.697,-2.786,2.786
+2167,,oligosaccharide catabolism,0.699,3.388,oligosaccharide catabolism,FALSE,oligosaccharide catabolism,0.682,-2.445,2.445
+2168,,actomyosin structure organization,0.625,3.881,actomyosin structure organization,FALSE,actomyosin structure organization,0.613,-2.31,2.31
+2169,,positive regulation of protein localization to endoplasmic reticulum,0.345,1.792,positive regulation of protein localization to endoplasmic reticulum,FALSE,positive regulation of protein localization to endoplasmic reticulum,0.81,-2.883,2.883
+2170,,adenosine catabolism,0.454,2.033,adenosine catabolism,FALSE,adenosine catabolism,0.641,-2.786,2.786
+2171,,prepulse inhibition,0.374,2.455,prepulse inhibition,FALSE,prepulse inhibition,0.74,-2.707,2.707
+2172,,myelin maintenance,0.616,2.619,myelin maintenance,FALSE,myelin maintenance,0.511,-2.786,2.786
+2173,,positive regulation of ERBB3 signaling pathway,0.045,1.447,positive regulation of ERBB3 signaling pathway,FALSE,positive regulation of ERBB3 signaling pathway,0.758,-3.008,3.008

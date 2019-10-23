@@ -1,0 +1,13 @@
+SUID,description,dispensability,log_size,name,selected,shared name,uniqueness,value,absvalue
+2558,nuclear retention of pre-mRNA with aberrant 3'-ends at the site of transcription,0.353,2.671,nuclear retention of pre-mRNA with aberrant 3'-ends at the site of transcription,FALSE,nuclear retention of pre-mRNA with aberrant 3'-ends at the site of transcription,0.567,-3.008,3.008
+2559,regulation of developmental process,0.48,5.189,regulation of developmental process,FALSE,regulation of developmental process,0.677,-2.64,2.64
+370,polyadenylation-dependent snoRNA 3'-end processing,0.017,2.883,polyadenylation-dependent snoRNA 3'-end processing,FALSE,polyadenylation-dependent snoRNA 3'-end processing,0.69,-2.707,2.707
+2560,regulation of systemic arterial blood pressure,0.39,3.328,regulation of systemic arterial blood pressure,FALSE,regulation of systemic arterial blood pressure,0.78,-2.486,2.486
+2561,hemidesmosome assembly,0.361,2.412,hemidesmosome assembly,FALSE,hemidesmosome assembly,0.74,-2.64,2.64
+2562,extracellular matrix organization,0.294,3.886,extracellular matrix organization,FALSE,extracellular matrix organization,0.693,-3.664,3.664
+2563,protein import into mitochondrial inner membrane,0.48,3.191,protein import into mitochondrial inner membrane,FALSE,protein import into mitochondrial inner membrane,0.654,-3.008,3.008
+2564,regulation of cilium assembly,0,3.133,regulation of cilium assembly,FALSE,regulation of cilium assembly,0.625,-4.717,4.717
+2565,positive regulation of cysteine-type endopeptidase activity involved in apoptotic process,0.496,3.463,positive regulation of cysteine-type endopeptidase activity involved in apoptotic process,FALSE,positive regulation of cysteine-type endopeptidase activity involved in apoptotic process,0.587,-2.64,2.64
+2566,positive regulation of epithelial cell proliferation,0.448,3.559,positive regulation of epithelial cell proliferation,FALSE,positive regulation of epithelial cell proliferation,0.759,-2.407,2.407
+2567,positive regulation of isotype switching,0.141,2.749,positive regulation of isotype switching,FALSE,positive regulation of isotype switching,0.551,-3.008,3.008
+71,anterograde axonal protein transport,0.085,1.477,anterograde axonal protein transport,FALSE,anterograde axonal protein transport,0.721,-3.184,3.184

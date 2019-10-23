@@ -1,0 +1,38 @@
+GO.ID,Term,clade1,clade2
+GO:0007015,actin filament organization,0.0214,NA
+GO:0003283,atrial septum development,0.0324,NA
+GO:0006465,signal peptide processing,0.0324,NA
+GO:0018243,protein O-linked glycosylation via threo...,0.0324,NA
+GO:0030245,cellulose catabolic process,0.0324,NA
+GO:0030903,notochord development,0.0324,NA
+GO:0033292,T-tubule organization,0.0324,NA
+GO:0035767,endothelial cell chemotaxis,0.0324,NA
+GO:0048135,female germ-line cyst formation,0.0324,NA
+GO:0061052,negative regulation of cell growth invol...,0.0324,NA
+GO:0086091,regulation of heart rate by cardiac cond...,0.0324,NA
+GO:1901018,positive regulation of potassium ion tra...,0.0324,NA
+GO:0010881,regulation of cardiac muscle contraction...,0.0387,0.0056
+GO:0070528,protein kinase C signaling,0.0387,NA
+GO:0086005,ventricular cardiac muscle cell action p...,0.0387,NA
+GO:0098910,regulation of atrial cardiac muscle cell...,0.0387,NA
+GO:0006552,leucine catabolic process,0.045,NA
+GO:0006567,threonine catabolic process,0.045,NA
+GO:0060307,regulation of ventricular cardiac muscle...,0.045,NA
+GO:0051597,response to methylmercury,NA,0.0004
+GO:0043928,exonucleolytic nuclear-transcribed mRNA ...,NA,0.0015
+GO:0007017,microtubule-based process,NA,0.0028
+GO:0061580,colon epithelial cell migration,NA,0.0038
+GO:0071051,polyadenylation-dependent snoRNA 3'-end ...,NA,0.0038
+GO:0000290,deadenylation-dependent decapping of nuc...,NA,0.0056
+GO:0000212,meiotic spindle organization,NA,0.0101
+GO:0080009,mRNA methylation,NA,0.0101
+GO:0051289,protein homotetramerization,NA,0.0117
+GO:0006744,ubiquinone biosynthetic process,NA,0.0128
+GO:0035794,positive regulation of mitochondrial mem...,NA,0.0128
+GO:0009268,response to pH,NA,0.0226
+GO:0032757,positive regulation of interleukin-8 pro...,NA,0.0304
+GO:0043124,negative regulation of I-kappaB kinase/N...,NA,0.0304
+GO:0006919,activation of cysteine-type endopeptidas...,NA,0.0347
+GO:0043312,neutrophil degranulation,NA,0.0376
+GO:0052548,regulation of endopeptidase activity,NA,0.0389
+GO:0014819,regulation of skeletal muscle contractio...,NA,0.039

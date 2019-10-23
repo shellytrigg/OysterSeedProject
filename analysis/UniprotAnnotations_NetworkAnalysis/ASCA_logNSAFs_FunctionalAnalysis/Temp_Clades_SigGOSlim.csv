@@ -1,0 +1,35 @@
+Term,clade1,clade2
+anatomical structure development,5,0
+biosynthetic process,1,1
+carbohydrate metabolic process,1,0
+catabolic process,3,2
+cell cycle,0,1
+cell death,0,1
+cell differentiation,3,0
+cell motility,1,1
+cell proliferation,1,0
+cell-cell signaling,1,0
+cellular amino acid metabolic proce...,2,0
+cellular component assembly,0,1
+cellular nitrogen compound metaboli...,1,4
+cellular protein modification proce...,1,0
+circulatory system process,4,1
+cofactor metabolic process,0,1
+cytoskeleton organization,1,1
+embryo development,1,0
+growth,1,0
+homeostatic process,1,1
+immune system process,0,1
+locomotion,1,1
+membrane organization,1,1
+mitochondrion organization,0,1
+nucleobase-containing compound cata...,0,2
+plasma membrane organization,1,0
+protein maturation,1,0
+protein-containing complex assembly,0,1
+reproduction,1,1
+signal transduction,2,2
+small molecule metabolic process,2,1
+transmembrane transport,3,1
+transport,3,3
+vesicle-mediated transport,0,1

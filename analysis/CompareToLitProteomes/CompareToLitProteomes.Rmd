@@ -21,12 +21,21 @@ read in data
 ```{r}
 tempxtime_prots <- read.csv("~/Documents/GitHub/OysterSeedProject/analysis/CompareToLitProteomes/Cgiga-uniprot-blastP-out.tab", sep = "\t", header = FALSE, stringsAsFactors = FALSE)
 
+#response to dsRNA (mock viral infection)
+#Masood, Raftos, and Nair, journal of proteome research, 2016
 dsRNA_prots <- read_xlsx("~/Documents/GitHub/OysterSeedProject/analysis/CompareToLitProteomes/pr5b00615_si_002.xlsx", sheet = 2, skip = 2)
 
+#Dineshram GBC 2016 table 6
 temp_prots <- read_xlsx("~/Documents/GitHub/OysterSeedProject/analysis/CompareToLitProteomes/gcb13249-sup-0003-tables4.xlsx", skip = 2)
 
+#shell matrix proteins
+#Qi Li et al. 2017
+#https://www.nature.com/articles/srep45754/tables/1
 smp_prots <- read_xlsx("~/Documents/GitHub/OysterSeedProject/analysis/CompareToLitProteomes/SMP_Table1.xlsx")
 
+#Corporeau 2014, journal of proteomics
+#OSHV infected 8-month old oysters 2 days post infection
+#https://europepmc.org/abstract/med/25009143
 oshv_prots <- read_xlsx("~/Documents/GitHub/OysterSeedProject/analysis/CompareToLitProteomes/OSHV_table2-3.xlsx")
 
 convert_IDs <- read.csv("~/Documents/GitHub/OysterSeedProject/analysis/CompareToLitProteomes/uniprot-dsRNAtable7_conversions.tab", sep = "\t", header = TRUE, stringsAsFactors = FALSE)
@@ -95,7 +104,140 @@ NSAF_t$V1 <- rownames(NSAF_t)
 merge with uniprot AC
 ```{r}
 NSAF_unip <- merge(NSAF_t, tempxtime_prots, by = "V1")
-NSAF_unip$V1 <- 
+colnames(NSAF_unip)[1] <- "protein_ID"
+```
+
+Merge with OSHV proteins
+```{r}
+NSAF_oshv <- NSAF_unip[which(NSAF_unip$UniprotAC %in% unique(oshv_prots$UniprotAC)),]
+
+NSAF_oshv <- merge(NSAF_oshv, oshv_prots[,c(1,7)])
+NSAF_oshv <- unique(NSAF_oshv)
+nrow(NSAF_oshv)
+#78 proteins overlap with OSHV proteins
+
+
+NSAF_oshv_down <- NSAF_oshv[which(NSAF_oshv$direction == "down"),2:15]
+rownames(NSAF_oshv_down) <- NSAF_oshv_down$protein_ID
+NSAF_oshv_down$protein_ID <- NULL
+colnames(NSAF_oshv_down) <- gsub("day","", colnames(NSAF_oshv_down))
+colnames(NSAF_oshv_down) <- gsub("C","", colnames(NSAF_oshv_down))
+
+#reorder columns
+NSAF_oshv_down <- NSAF_oshv_down[,c(1,2,4,6,8,10,12,3,5,7,9,11,13)]
+heatmap3(data.matrix(NSAF_oshv_down), Colv = NA, margins = c(5,15),cexRow = 0.7)
+
+#maybe cut the dendrogram and make line plots of clades to really see if things are going down?
+
+hm <- as.dist(1-cor(t.data.frame(NSAF_oshv_down), use="pa"))
+hm2 <- hclust(hm, method = 'complete')
+plot(hm2)
+
+#Identify clades in heatmap
+# define some clusters
+
+#make a list of proteins with cluster IDs based on where the tree is cut
+#1.8 gives 2 clusters
+mycl <- cutree(hm2, h=1.3)
+
+#assign colors to cluster IDs
+clusterCols <- colorRamps::primary.colors(length(unique(mycl)))
+myClusterSideBar <- clusterCols[mycl]
+
+
+heatmap3(data.matrix(NSAF_oshv_down), Colv = NA, margins = c(5,15),cexRow = 0.7, RowSideColors = myClusterSideBar, RowAxisColors = 1, hclustfun = hclust, distfun = function(x) as.dist(1 - cor(t(x), use = "pa")), method = "complete", scale = "row")
+
+
+heatmap3(as.matrix(cut_data_ord_t_m),cexRow = 0.5, cexCol = 0.5, RowSideColors=myClusterSideBar,ColSideColors = ColSideColors,RowAxisColors=1,ColAxisColors=1,hclustfun=hclust, distfun = function(x) as.dist(1 - cor(t(x), use = "pa")), method = "complete", scale = "row", Colv=NA)
+
+#get color name
+clusterColor <- lapply(myClusterSideBar, color.id)
+clusterColor <- lapply(clusterColor, `[[`,1)
+clusterColor <- data.frame(unlist(clusterColor), stringsAsFactors = FALSE)
+
+foo <- cbind(data.frame(mycl), clusterColor)
+#add protein column to data frame for merging
+
+#add protein column back to NSAF data frame for merging
+colnames(foo)[2] <- "ClusterColor"
+colnames(foo)[1] <- "ClusterID"
+ 
+foo <- merge(foo,NSAF_oshv_down, by = "row.names")
+colnames(foo)[1] <- "protein_ID"
+
+#remove day 0 from clade prot
+foo <- foo[,-grep("0_16", colnames(foo))]
+
+#normalize within terms (autoscale by row)
+#calculate row means and SD
+foo$mean <- apply(foo[,4:15], 1, mean)
+foo$sd <- apply(foo[,4:15],1, sd)
+
+#sweep second argument is margin which corresponds to 1 (rows) or 2 (columns); this is for autoscaling by row to make colors relative to one another like the heatmap does
+#subtract the row mean from each value
+foo_norm <- sweep(foo[,4:15],1,foo$mean)
+#divide each value by the row standard deviation
+foo_norm <- sweep(foo_norm[,1:12],1,foo$sd, FUN = "/")
+
+foo_norm <- cbind(foo[,c("protein_ID", "ClusterID", "ClusterColor")], foo_norm)
+
+STACKED_NSAF <- tidyr::gather(foo_norm, daytemp, NSAF, 4:15)
+STACKED_NSAF$day <- gsub("X|_.*","",STACKED_NSAF$daytemp)
+STACKED_NSAF$temp <- as.factor(gsub(".*_","",STACKED_NSAF$daytemp))
+str(STACKED_NSAF)
+STACKED_NSAF$day <- as.integer(STACKED_NSAF$day)
+
+#make column with unique ID
+#https://thenode.biologists.com/visualizing-data-one-more-time/education/
+
+STACKED_NSAF$uniq.id <- paste(STACKED_NSAF$protein_ID, STACKED_NSAF$temp, sep = "_")
+library(ggplot2)
+ggplot(STACKED_NSAF,aes(day,NSAF)) + geom_line(aes(group = uniq.id,color = temp),alpha = 0.1)  + stat_smooth(aes(color = temp), method = loess,size = 1) + ylab("mean autoscaled NSAF") + facet_wrap(~ClusterID)  + scale_x_continuous(breaks = c(3,5,7,9,11,13), labels = c(3,5,7,9,11,13)) + scale_color_manual(values=c("cyan3", "magenta2")) + theme_bw()
+
+##proteins from infected animals which show lower abundance than uninfected animals 
+
+#there are specific time points when OSHV proteins show lower abundance in the normal temp compared to the high temp:
+##clade 1: days 3-7 and 11-13
+##clade 2: days 5-9
+##clade 3: days 11-13
+##clade 4: day 9
+##clade 5: days 3,5,7,11,13
+##clade 6: days 3, 9, 11, 13
+
+
+#read in all ASCA proteins
+ASCA_temp_all <- read.csv("~/Documents/GitHub/OysterSeedProject/analysis/ASCA/ASCA_all_proteins_avgADJNSAF/All_Temp_ASCA_proteins.csv", stringsAsFactors = FALSE)
+
+colnames(ASCA_temp_all)[1] <- "protein_ID"
+
+ASCA_foo_norm <- merge(foo_norm, ASCA_temp_all, by = "protein_ID", all.x = TRUE)
+nrow(ASCA_NSAF_oshv_down)
+
+ggplot(ASCA_foo_norm) + geom_density(aes(PC1loadings)) + facet_wrap(~ClusterColor)
+#50 
+#plot PC1 loadings for overlapping proteins
+plot(density(ASCA_NSAF_oshv_down$PC1loadings))
+#most proteins get cut off by the loadings thresholds
+
+#merge ASCA_foo_norm with uniprot IDs
+ASCA_foo_norm <- merge(ASCA_foo_norm, NSAF_unip[,c("protein_ID", "UniprotID", "UniprotAC")], all.x = TRUE)
+
+write.csv(ASCA_foo_norm, "OSHV_down_overlap_PC1loadings_clades.csv", quote = FALSE, row.names = FALSE)
+
+#read in temp affected protein IDs
+
+ASCA_temp <- read.csv("~/Documents/GitHub/OysterSeedProject/analysis/ASCA/ASCA_all_proteins_avgADJNSAF/Temp_affected_proteinIDs.csv", stringsAsFactors = FALSE)
+
+NSAF_oshv_ASCA_down <- NSAF_oshv_down[which(rownames(NSAF_oshv_down) %in% ASCA_temp$protein),]
+nrow(ASCA_NSAF_oshv_down)
+
+
+#only 3 ASCA temp affected proteins overlap with oshv down reg. proteins
+
+
+
+
+
 ```
 
 

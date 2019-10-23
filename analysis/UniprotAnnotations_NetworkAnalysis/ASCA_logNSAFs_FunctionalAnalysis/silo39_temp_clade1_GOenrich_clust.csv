@@ -1,113 +1,113 @@
 GO,Clust_Color,Clust_Num,sumsim,semsimsum,term,GOSlim_bin,p.value
-GO:0010881,gray50,7,13.6569920335428,149.713871790738,regulation of cardiac muscle contraction by regulation of the release of sequestered calcium ion,transport,0.0489957276650377
-GO:0035329,gray50,7,2.18081400637495,149.713871790738,hippo signaling,NA,0.0489957276650377
-GO:0043268,gray50,7,8.17752523341574,149.713871790738,positive regulation of potassium ion transport,transport,0.0489957276650377
-GO:0045578,gray50,7,8.55226804233011,149.713871790738,negative regulation of B cell differentiation,developmental processes,0.0213067821595928
-GO:0045721,gray50,7,5.24046880312859,149.713871790738,negative regulation of gluconeogenesis,other metabolic processes,0.0352528436741845
-GO:0051279,gray50,7,7.78731716084393,149.713871790738,regulation of release of sequestered calcium ion into cytosol,transport,0.0489957276650377
-GO:0051924,gray50,7,8.54974338928716,149.713871790738,regulation of calcium ion transport,transport,0.042149492720218
-GO:0051928,gray50,7,8.46643743603066,149.713871790738,positive regulation of calcium ion transport,transport,0.0283054009772392
-GO:0060307,gray50,7,8.92829906835445,149.713871790738,regulation of ventricular cardiac muscle cell membrane repolarization,other biological processes,0.042149492720218
-GO:0061052,gray50,7,9.51301874642507,149.713871790738,negative regulation of cell growth involved in cardiac muscle cell development,NA,0.042149492720218
-GO:0070528,gray50,7,2.18081400637495,149.713871790738,protein kinase C signaling,signal transduction,0.042149492720218
-GO:0071672,gray50,7,5.5120580199227,149.713871790738,negative regulation of smooth muscle cell chemotaxis,NA,0.0352528436741845
-GO:0086004,gray50,7,10.8204725503063,149.713871790738,regulation of cardiac muscle cell contraction,NA,0.042149492720218
-GO:1901018,gray50,7,8.71483936351985,149.713871790738,positive regulation of potassium ion transmembrane transporter activity,NA,0.0352528436741845
-GO:1901019,gray50,7,8.1640043185038,149.713871790738,regulation of calcium ion transmembrane transporter activity,NA,0.0283054009772392
-GO:1901021,gray50,7,8.7675087638279,149.713871790738,positive regulation of calcium ion transmembrane transporter activity,NA,0.0283054009772392
-GO:2000325,gray50,7,4.94386770447724,149.713871790738,regulation of ligand-dependent nuclear receptor transcription coactivator activity,NA,0.0142566018084177
-GO:2000393,gray50,7,4.49228949304018,149.713871790738,negative regulation of lamellipodium morphogenesis,NA,0.0283054009772392
-GO:2000394,gray50,7,6.9725416904883,149.713871790738,positive regulation of lamellipodium morphogenesis,NA,0.0213067821595928
-GO:2001259,gray50,7,8.09259196054375,149.713871790738,positive regulation of cation channel activity,NA,0.042149492720218
-GO:0000400,red,2,4.61861486251249,98.191063580497,four-way junction DNA binding,nucleic acid binding activity,0.0283054009772392
-GO:0003785,red,2,5.10561679577207,98.191063580497,actin monomer binding,cytoskeletal activity,0.00181965456287987
-GO:0003941,red,2,5.272900242005,98.191063580497,L-serine ammonia-lyase activity,other molecular function,0.0352528436741845
-GO:0004419,red,2,5.18760363632226,98.191063580497,hydroxymethylglutaryl-CoA lyase activity,other molecular function,0.0142566018084177
-GO:0004719,red,2,5.18760363632226,98.191063580497,protein-L-isoaspartate (D-aspartate) O-methyltransferase activity,other molecular function,0.0142566018084177
-GO:0004743,red,2,5.18760363632226,98.191063580497,pyruvate kinase activity,kinase activity,0.042149492720218
-GO:0004794,red,2,5.272900242005,98.191063580497,L-threonine ammonia-lyase activity,other molecular function,0.0283054009772392
-GO:0005521,red,2,4.72868916903212,98.191063580497,lamin binding,other molecular function,0.0283054009772392
-GO:0008301,red,2,4.61861486251249,98.191063580497,DNA binding; bending,nucleic acid binding activity,0.0352528436741845
-GO:0008420,red,2,5.27448215980304,98.191063580497,CTD phosphatase activity,other molecular function,0.0213067821595928
-GO:0008810,red,2,5.27448215980304,98.191063580497,cellulase activity,other molecular function,0.042149492720218
-GO:0016603,red,2,5.18760363632226,98.191063580497,glutaminyl-peptide cyclotransferase activity,other molecular function,0.0213067821595928
-GO:0016810,red,2,5.78646907170973,98.191063580497,hydrolase activity; acting on carbon-nitrogen (but not peptide) bonds,other molecular function,0.0489957276650377
-GO:0017040,red,2,5.43176479414346,98.191063580497,ceramidase activity,other molecular function,0.0213067821595928
-GO:0030248,red,2,4.30220614061839,98.191063580497,cellulose binding,other molecular function,0.0352528436741845
-GO:0030295,red,2,0.854184489471395,98.191063580497,protein kinase activator activity,enzyme regulator activity,0.042149492720218
-GO:0030414,red,2,0.854184489471395,98.191063580497,peptidase inhibitor activity,enzyme regulator activity,0.0352528436741845
-GO:0030507,red,2,5.02032019008933,98.191063580497,spectrin binding,cytoskeletal activity,0.00822558888542083
-GO:0046965,red,2,4.72868916903212,98.191063580497,retinoid X receptor binding,signal transduction activity,0.0352528436741845
-GO:0051015,red,2,5.33672891198342,98.191063580497,actin filament binding,cytoskeletal activity,0.0424424371631263
-GO:0071933,red,2,4.95980128524347,98.191063580497,Arp2/3 complex binding,NA,0.0283054009772392
-GO:0002027,green,4,6.45824604125828,62.7936425061212,regulation of heart rate,other biological processes,0.042149492720218
-GO:0010882,green,4,7.91051254009115,62.7936425061212,regulation of cardiac muscle contraction by calcium ion signaling,other biological processes,0.0352528436741845
-GO:0055117,green,4,6.80552955105929,62.7936425061212,regulation of cardiac muscle contraction,other biological processes,0.0352528436741845
-GO:0086005,green,4,3.98564880848075,62.7936425061212,ventricular cardiac muscle cell action potential,NA,0.0283054009772392
-GO:0086014,green,4,3.98564880848075,62.7936425061212,atrial cardiac muscle cell action potential,NA,0.0352528436741845
-GO:0086015,green,4,3.90035220279801,62.7936425061212,SA node cell action potential,NA,0.0283054009772392
-GO:0086046,green,4,3.54386465283106,62.7936425061212,membrane depolarization during SA node cell action potential,NA,0.0283054009772392
-GO:0086091,green,4,6.40737070737569,62.7936425061212,regulation of heart rate by cardiac conduction,NA,0.042149492720218
-GO:0098907,green,4,8.48347251430655,62.7936425061212,regulation of SA node cell action potential,NA,0.0283054009772392
-GO:0098910,green,4,11.3129966794396,62.7936425061212,regulation of atrial cardiac muscle cell action potential,NA,0.0283054009772392
-GO:0001725,yellow,5,4.26855944351958,44.9513492094559,stress fiber,cytoskeleton,0.0129533903448128
-GO:0005585,yellow,5,3.66288270440567,44.9513492094559,collagen type II trimer,extracellular matrix,0.0142566018084177
-GO:0005640,yellow,5,4.79130258078814,44.9513492094559,nuclear outer membrane,other membranes;nucleus,0.0352528436741845
-GO:0005744,yellow,5,5.58496816541368,44.9513492094559,mitochondrial inner membrane presequence translocase complex,mitochondrion;other membranes,0.0213067821595928
-GO:0005787,yellow,5,5.58496816541368,44.9513492094559,signal peptidase complex,other membranes;ER/Golgi,0.0213067821595928
-GO:0005856,yellow,5,4.10641812124525,44.9513492094559,cytoskeleton,cytoskeleton,0.00041672947326417
-GO:0034993,yellow,5,5.37863375003921,44.9513492094559,LINC complex,nucleus,0.0283054009772392
-GO:0035183,yellow,5,1.5377757675773,44.9513492094559,female germline ring canal inner rim,non-structural extracellular,0.042149492720218
-GO:0045172,yellow,5,1.5377757675773,44.9513492094559,germline ring canal,non-structural extracellular,0.0283054009772392
-GO:0098794,yellow,5,3.93787427889929,44.9513492094559,postsynapse,NA,0.0402706897725258
-GO:1904724,yellow,5,4.56019046457679,44.9513492094559,tertiary granule lumen,NA,0.0489957276650377
-GO:0006465,darkmagenta,6,5.44941651066732,42.8640468520233,signal peptide processing,protein metabolism,0.042149492720218
-GO:0006565,darkmagenta,6,5.60880881653228,42.8640468520233,L-serine catabolic process,other metabolic processes,0.0283054009772392
-GO:0006567,darkmagenta,6,5.60880881653228,42.8640468520233,threonine catabolic process,other metabolic processes,0.0283054009772392
-GO:0006629,darkmagenta,6,4.89592135138988,42.8640468520233,lipid metabolic process,other metabolic processes,0.00213446851181006
-GO:0017186,darkmagenta,6,5.24308209529286,42.8640468520233,peptidyl-pyroglutamic acid biosynthetic process; using glutaminyl-peptide cyclotransferase,protein metabolism,0.0213067821595928
-GO:0018243,darkmagenta,6,5.63857569936927,42.8640468520233,protein O-linked glycosylation via threonine,protein metabolism,0.042149492720218
-GO:0030245,darkmagenta,6,5.30859018213881,42.8640468520233,cellulose catabolic process,other metabolic processes,0.042149492720218
-GO:0046951,darkmagenta,6,5.11084338010061,42.8640468520233,ketone body biosynthetic process,other metabolic processes,0.0142566018084177
-GO:0000212,black,1,4.05561403418036,42.8066524610573,meiotic spindle organization,cell organization and biogenesis;cell cycle and proliferation,0.0489957276650377
-GO:0007282,black,1,3.9219558067177,42.8066524610573,cystoblast division,other biological processes,0.0213067821595928
-GO:0008302,black,1,6.32557210211038,42.8066524610573,female germline ring canal formation; actin assembly,transport;cell organization and biogenesis,0.0352528436741845
-GO:0030723,black,1,6.31991116668341,42.8066524610573,ovarian fusome organization,cell organization and biogenesis,0.0213067821595928
-GO:0030724,black,1,6.31991116668341,42.8066524610573,testicular fusome organization,cell organization and biogenesis,0.0213067821595928
-GO:0045478,black,1,7.5854389793532,42.8066524610573,fusome organization,cell organization and biogenesis,0.0352528436741845
-GO:0048134,black,1,4.26428895550735,42.8066524610573,germ-line cyst formation,cell cycle and proliferation,0.0352528436741845
-GO:0048135,black,1,4.01396024982148,42.8066524610573,female germ-line cyst formation,cell cycle and proliferation,0.0213067821595928
-GO:0036309,purple,10,5.6816464211605,35.0643525903833,protein localization to M-band,NA,0.0283054009772392
-GO:0045047,purple,10,6.37576437549721,35.0643525903833,protein targeting to ER,transport,0.0283054009772392
-GO:0070296,purple,10,5.25932344666865,35.0643525903833,sarcoplasmic reticulum calcium ion transport,transport,0.0283054009772392
-GO:0070972,purple,10,6.155241512707,35.0643525903833,protein localization to endoplasmic reticulum,NA,0.0283054009772392
-GO:0072321,purple,10,6.13410331761349,35.0643525903833,chaperone-mediated protein transport,NA,0.0283054009772392
-GO:1902463,purple,10,5.45827351673642,35.0643525903833,protein localization to cell leading edge,NA,0.0213067821595928
-GO:0036371,dodgerblue2,11,7.42399015660805,31.8877128547489,protein localization to T-tubule,NA,0.0283054009772392
-GO:0090286,dodgerblue2,11,8.54877283527013,31.8877128547489,cytoskeletal anchoring at nuclear membrane,NA,0.0283054009772392
-GO:0090292,dodgerblue2,11,8.54877283527013,31.8877128547489,nuclear matrix anchoring at nuclear membrane,NA,0.0283054009772392
-GO:0099641,dodgerblue2,11,7.36617702760061,31.8877128547489,anterograde axonal protein transport,NA,0.0142566018084177
-GO:0007015,khaki1,9,8.52522756175542,21.8642510333943,actin filament organization,cell organization and biogenesis,0.0237114272558611
-GO:0032392,khaki1,9,3.71477495982332,21.8642510333943,DNA geometric change,DNA metabolism,0.0213067821595928
-GO:0051017,khaki1,9,3.04042786951671,21.8642510333943,actin filament bundle assembly,cell organization and biogenesis,0.0109486368609074
-GO:0061572,khaki1,9,3.75130910595465,21.8642510333943,actin filament bundle organization,NA,0.0213067821595928
-GO:0090135,khaki1,9,2.83251153634421,21.8642510333943,actin filament branching,NA,0.0213067821595928
-GO:0001503,gold4,3,0.854184489471395,21.6901463919738,ossification,developmental processes,0.0489957276650377
-GO:0003283,gold4,3,3.32079533121719,21.6901463919738,atrial septum development,NA,0.0283054009772392
-GO:0003417,gold4,3,3.63617267874506,21.6901463919738,growth plate cartilage development,NA,0.0352528436741845
-GO:0007527,gold4,3,3.32079533121719,21.6901463919738,adult somatic muscle development,developmental processes,0.0213067821595928
-GO:0030903,gold4,3,3.54416823564127,21.6901463919738,notochord development,developmental processes,0.0213067821595928
-GO:0042692,gold4,3,3.16436109842576,21.6901463919738,muscle cell differentiation,other biological processes,0.042149492720218
-GO:0060351,gold4,3,3.84966922725596,21.6901463919738,cartilage development involved in endochondral bone morphogenesis,developmental processes,0.0283054009772392
-GO:0034316,springgreen,8,6.25638794315533,20.5883126538632,negative regulation of Arp2/3 complex-mediated actin nucleation,cell organization and biogenesis,0.0352528436741845
-GO:0048096,springgreen,8,6.84269786889494,20.5883126538632,chromatin-mediated maintenance of transcription,RNA metabolism;cell organization and biogenesis,0.0213067821595928
-GO:0070940,springgreen,8,7.48922684181294,20.5883126538632,dephosphorylation of RNA polymerase II C-terminal domain,NA,0.0213067821595928
-GO:0071316,darkslategray1,13,3.18562584167423,12.2828924264385,cellular response to nicotine,NA,0.0142566018084177
-GO:0071374,darkslategray1,13,3.03981033114562,12.2828924264385,cellular response to parathyroid hormone stimulus,NA,0.0283054009772392
-GO:0071375,darkslategray1,13,3.27092244735697,12.2828924264385,cellular response to peptide hormone stimulus,NA,0.042149492720218
-GO:0071774,darkslategray1,13,2.78653380626165,12.2828924264385,response to fibroblast growth factor,NA,0.0142566018084177
-GO:0033292,orchid1,12,1.37219074197496,10.0884605728626,T-tubule organization,cell organization and biogenesis,0.042149492720218
-GO:0035767,orchid1,12,0.854184489471395,10.0884605728626,endothelial cell chemotaxis,NA,0.0213067821595928
-GO:0071306,orchid1,12,4.61594059489616,10.0884605728626,cellular response to vitamin E,NA,0.0142566018084177
-GO:0086066,orchid1,12,1.62307237326004,10.0884605728626,atrial cardiac muscle cell to AV node cell communication,NA,0.0283054009772392
-GO:0086070,orchid1,12,1.62307237326004,10.0884605728626,SA node cell to atrial cardiac muscle cell communication,NA,0.0283054009772392
+GO:0000400,darkred,2,4.61861486251249,98.191063580497,four-way junction DNA binding,nucleic acid binding activity,0.0283054009772392
+GO:0003785,darkred,2,5.10561679577207,98.191063580497,actin monomer binding,cytoskeletal activity,0.00181965456287987
+GO:0003941,darkred,2,5.272900242005,98.191063580497,L-serine ammonia-lyase activity,other molecular function,0.0352528436741845
+GO:0004419,darkred,2,5.18760363632226,98.191063580497,hydroxymethylglutaryl-CoA lyase activity,other molecular function,0.0142566018084177
+GO:0004719,darkred,2,5.18760363632226,98.191063580497,protein-L-isoaspartate (D-aspartate) O-methyltransferase activity,other molecular function,0.0142566018084177
+GO:0004743,darkred,2,5.18760363632226,98.191063580497,pyruvate kinase activity,kinase activity,0.042149492720218
+GO:0004794,darkred,2,5.272900242005,98.191063580497,L-threonine ammonia-lyase activity,other molecular function,0.0283054009772392
+GO:0005521,darkred,2,4.72868916903212,98.191063580497,lamin binding,other molecular function,0.0283054009772392
+GO:0008301,darkred,2,4.61861486251249,98.191063580497,DNA binding; bending,nucleic acid binding activity,0.0352528436741845
+GO:0008420,darkred,2,5.27448215980304,98.191063580497,CTD phosphatase activity,other molecular function,0.0213067821595928
+GO:0008810,darkred,2,5.27448215980304,98.191063580497,cellulase activity,other molecular function,0.042149492720218
+GO:0016603,darkred,2,5.18760363632226,98.191063580497,glutaminyl-peptide cyclotransferase activity,other molecular function,0.0213067821595928
+GO:0016810,darkred,2,5.78646907170973,98.191063580497,hydrolase activity; acting on carbon-nitrogen (but not peptide) bonds,other molecular function,0.0489957276650377
+GO:0017040,darkred,2,5.43176479414346,98.191063580497,ceramidase activity,other molecular function,0.0213067821595928
+GO:0030248,darkred,2,4.30220614061839,98.191063580497,cellulose binding,other molecular function,0.0352528436741845
+GO:0030295,darkred,2,0.854184489471395,98.191063580497,protein kinase activator activity,enzyme regulator activity,0.042149492720218
+GO:0030414,darkred,2,0.854184489471395,98.191063580497,peptidase inhibitor activity,enzyme regulator activity,0.0352528436741845
+GO:0030507,darkred,2,5.02032019008933,98.191063580497,spectrin binding,cytoskeletal activity,0.00822558888542083
+GO:0046965,darkred,2,4.72868916903212,98.191063580497,retinoid X receptor binding,signal transduction activity,0.0352528436741845
+GO:0051015,darkred,2,5.33672891198342,98.191063580497,actin filament binding,cytoskeletal activity,0.0424424371631263
+GO:0071933,darkred,2,4.95980128524347,98.191063580497,Arp2/3 complex binding,NA,0.0283054009772392
+GO:0010881,lightslateblue,16,13.6569920335428,89.3052587278701,regulation of cardiac muscle contraction by regulation of the release of sequestered calcium ion,transport,0.0489957276650377
+GO:0043268,lightslateblue,16,8.17752523341574,89.3052587278701,positive regulation of potassium ion transport,transport,0.0489957276650377
+GO:0051279,lightslateblue,16,7.78731716084393,89.3052587278701,regulation of release of sequestered calcium ion into cytosol,transport,0.0489957276650377
+GO:0051924,lightslateblue,16,8.54974338928716,89.3052587278701,regulation of calcium ion transport,transport,0.042149492720218
+GO:0051928,lightslateblue,16,8.46643743603066,89.3052587278701,positive regulation of calcium ion transport,transport,0.0283054009772392
+GO:0060307,lightslateblue,16,8.92829906835445,89.3052587278701,regulation of ventricular cardiac muscle cell membrane repolarization,other biological processes,0.042149492720218
+GO:1901018,lightslateblue,16,8.71483936351985,89.3052587278701,positive regulation of potassium ion transmembrane transporter activity,NA,0.0352528436741845
+GO:1901019,lightslateblue,16,8.1640043185038,89.3052587278701,regulation of calcium ion transmembrane transporter activity,NA,0.0283054009772392
+GO:1901021,lightslateblue,16,8.7675087638279,89.3052587278701,positive regulation of calcium ion transmembrane transporter activity,NA,0.0283054009772392
+GO:2001259,lightslateblue,16,8.09259196054375,89.3052587278701,positive regulation of cation channel activity,NA,0.042149492720218
+GO:0035329,darkmagenta,8,2.18081400637495,60.4086130628684,hippo signaling,NA,0.0489957276650377
+GO:0045578,darkmagenta,8,8.55226804233011,60.4086130628684,negative regulation of B cell differentiation,developmental processes,0.0213067821595928
+GO:0045721,darkmagenta,8,5.24046880312859,60.4086130628684,negative regulation of gluconeogenesis,other metabolic processes,0.0352528436741845
+GO:0061052,darkmagenta,8,9.51301874642507,60.4086130628684,negative regulation of cell growth involved in cardiac muscle cell development,NA,0.042149492720218
+GO:0070528,darkmagenta,8,2.18081400637495,60.4086130628684,protein kinase C signaling,signal transduction,0.042149492720218
+GO:0071672,darkmagenta,8,5.5120580199227,60.4086130628684,negative regulation of smooth muscle cell chemotaxis,NA,0.0352528436741845
+GO:0086004,darkmagenta,8,10.8204725503063,60.4086130628684,regulation of cardiac muscle cell contraction,NA,0.042149492720218
+GO:2000325,darkmagenta,8,4.94386770447724,60.4086130628684,regulation of ligand-dependent nuclear receptor transcription coactivator activity,NA,0.0142566018084177
+GO:2000393,darkmagenta,8,4.49228949304018,60.4086130628684,negative regulation of lamellipodium morphogenesis,NA,0.0283054009772392
+GO:2000394,darkmagenta,8,6.9725416904883,60.4086130628684,positive regulation of lamellipodium morphogenesis,NA,0.0213067821595928
+GO:0002027,gold4,4,6.45824604125828,47.3781280335306,regulation of heart rate,other biological processes,0.042149492720218
+GO:0010882,gold4,4,7.91051254009115,47.3781280335306,regulation of cardiac muscle contraction by calcium ion signaling,other biological processes,0.0352528436741845
+GO:0055117,gold4,4,6.80552955105929,47.3781280335306,regulation of cardiac muscle contraction,other biological processes,0.0352528436741845
+GO:0086091,gold4,4,6.40737070737569,47.3781280335306,regulation of heart rate by cardiac conduction,NA,0.042149492720218
+GO:0098907,gold4,4,8.48347251430655,47.3781280335306,regulation of SA node cell action potential,NA,0.0283054009772392
+GO:0098910,gold4,4,11.3129966794396,47.3781280335306,regulation of atrial cardiac muscle cell action potential,NA,0.0283054009772392
+GO:0001725,green,5,4.26855944351958,44.9513492094559,stress fiber,cytoskeleton,0.0129533903448128
+GO:0005585,green,5,3.66288270440567,44.9513492094559,collagen type II trimer,extracellular matrix,0.0142566018084177
+GO:0005640,green,5,4.79130258078814,44.9513492094559,nuclear outer membrane,other membranes;nucleus,0.0352528436741845
+GO:0005744,green,5,5.58496816541368,44.9513492094559,mitochondrial inner membrane presequence translocase complex,other membranes;mitochondrion,0.0213067821595928
+GO:0005787,green,5,5.58496816541368,44.9513492094559,signal peptidase complex,ER/Golgi;other membranes,0.0213067821595928
+GO:0005856,green,5,4.10641812124525,44.9513492094559,cytoskeleton,cytoskeleton,0.00041672947326417
+GO:0034993,green,5,5.37863375003921,44.9513492094559,LINC complex,nucleus,0.0283054009772392
+GO:0035183,green,5,1.5377757675773,44.9513492094559,female germline ring canal inner rim,non-structural extracellular,0.042149492720218
+GO:0045172,green,5,1.5377757675773,44.9513492094559,germline ring canal,non-structural extracellular,0.0283054009772392
+GO:0098794,green,5,3.93787427889929,44.9513492094559,postsynapse,NA,0.0402706897725258
+GO:1904724,green,5,4.56019046457679,44.9513492094559,tertiary granule lumen,NA,0.0489957276650377
+GO:0006465,chartreuse,6,5.44941651066732,42.8640468520233,signal peptide processing,protein metabolism,0.042149492720218
+GO:0006565,chartreuse,6,5.60880881653228,42.8640468520233,L-serine catabolic process,other metabolic processes,0.0283054009772392
+GO:0006567,chartreuse,6,5.60880881653228,42.8640468520233,threonine catabolic process,other metabolic processes,0.0283054009772392
+GO:0006629,chartreuse,6,4.89592135138988,42.8640468520233,lipid metabolic process,other metabolic processes,0.00213446851181006
+GO:0017186,chartreuse,6,5.24308209529286,42.8640468520233,peptidyl-pyroglutamic acid biosynthetic process; using glutaminyl-peptide cyclotransferase,protein metabolism,0.0213067821595928
+GO:0018243,chartreuse,6,5.63857569936927,42.8640468520233,protein O-linked glycosylation via threonine,protein metabolism,0.042149492720218
+GO:0030245,chartreuse,6,5.30859018213881,42.8640468520233,cellulose catabolic process,other metabolic processes,0.042149492720218
+GO:0046951,chartreuse,6,5.11084338010061,42.8640468520233,ketone body biosynthetic process,other metabolic processes,0.0142566018084177
+GO:0036309,springgreen,11,5.6816464211605,35.0643525903833,protein localization to M-band,NA,0.0283054009772392
+GO:0045047,springgreen,11,6.37576437549721,35.0643525903833,protein targeting to ER,transport,0.0283054009772392
+GO:0070296,springgreen,11,5.25932344666865,35.0643525903833,sarcoplasmic reticulum calcium ion transport,transport,0.0283054009772392
+GO:0070972,springgreen,11,6.155241512707,35.0643525903833,protein localization to endoplasmic reticulum,NA,0.0283054009772392
+GO:0072321,springgreen,11,6.13410331761349,35.0643525903833,chaperone-mediated protein transport,NA,0.0283054009772392
+GO:1902463,springgreen,11,5.45827351673642,35.0643525903833,protein localization to cell leading edge,NA,0.0213067821595928
+GO:0036371,blue,13,7.42399015660805,31.8877128547489,protein localization to T-tubule,NA,0.0283054009772392
+GO:0090286,blue,13,8.54877283527013,31.8877128547489,cytoskeletal anchoring at nuclear membrane,NA,0.0283054009772392
+GO:0090292,blue,13,8.54877283527013,31.8877128547489,nuclear matrix anchoring at nuclear membrane,NA,0.0283054009772392
+GO:0099641,blue,13,7.36617702760061,31.8877128547489,anterograde axonal protein transport,NA,0.0142566018084177
+GO:0000212,black,1,4.05561403418036,30.6064474490108,meiotic spindle organization,cell organization and biogenesis;cell cycle and proliferation,0.0489957276650377
+GO:0008302,black,1,6.32557210211038,30.6064474490108,female germline ring canal formation; actin assembly,transport;cell organization and biogenesis,0.0352528436741845
+GO:0030723,black,1,6.31991116668341,30.6064474490108,ovarian fusome organization,cell organization and biogenesis,0.0213067821595928
+GO:0030724,black,1,6.31991116668341,30.6064474490108,testicular fusome organization,cell organization and biogenesis,0.0213067821595928
+GO:0045478,black,1,7.5854389793532,30.6064474490108,fusome organization,cell organization and biogenesis,0.0352528436741845
+GO:0007015,gray50,10,8.52522756175542,21.8642510333943,actin filament organization,cell organization and biogenesis,0.0237114272558611
+GO:0032392,gray50,10,3.71477495982332,21.8642510333943,DNA geometric change,DNA metabolism,0.0213067821595928
+GO:0051017,gray50,10,3.04042786951671,21.8642510333943,actin filament bundle assembly,cell organization and biogenesis,0.0109486368609074
+GO:0061572,gray50,10,3.75130910595465,21.8642510333943,actin filament bundle organization,NA,0.0213067821595928
+GO:0090135,gray50,10,2.83251153634421,21.8642510333943,actin filament branching,NA,0.0213067821595928
+GO:0003283,navy,7,3.32079533121719,20.8359619025024,atrial septum development,NA,0.0283054009772392
+GO:0003417,navy,7,3.63617267874506,20.8359619025024,growth plate cartilage development,NA,0.0352528436741845
+GO:0007527,navy,7,3.32079533121719,20.8359619025024,adult somatic muscle development,developmental processes,0.0213067821595928
+GO:0030903,navy,7,3.54416823564127,20.8359619025024,notochord development,developmental processes,0.0213067821595928
+GO:0042692,navy,7,3.16436109842576,20.8359619025024,muscle cell differentiation,other biological processes,0.042149492720218
+GO:0060351,navy,7,3.84966922725596,20.8359619025024,cartilage development involved in endochondral bone morphogenesis,developmental processes,0.0283054009772392
+GO:0086005,darkslategray1,18,3.98564880848075,15.4155144725906,ventricular cardiac muscle cell action potential,NA,0.0283054009772392
+GO:0086014,darkslategray1,18,3.98564880848075,15.4155144725906,atrial cardiac muscle cell action potential,NA,0.0352528436741845
+GO:0086015,darkslategray1,18,3.90035220279801,15.4155144725906,SA node cell action potential,NA,0.0283054009772392
+GO:0086046,darkslategray1,18,3.54386465283106,15.4155144725906,membrane depolarization during SA node cell action potential,NA,0.0283054009772392
+GO:0048096,turquoise4,9,6.84269786889494,14.3319247107079,chromatin-mediated maintenance of transcription,RNA metabolism;cell organization and biogenesis,0.0213067821595928
+GO:0070940,turquoise4,9,7.48922684181294,14.3319247107079,dephosphorylation of RNA polymerase II C-terminal domain,NA,0.0213067821595928
+GO:0071316,cyan,17,3.18562584167423,12.2828924264385,cellular response to nicotine,NA,0.0142566018084177
+GO:0071374,cyan,17,3.03981033114562,12.2828924264385,cellular response to parathyroid hormone stimulus,NA,0.0283054009772392
+GO:0071375,cyan,17,3.27092244735697,12.2828924264385,cellular response to peptide hormone stimulus,NA,0.042149492720218
+GO:0071774,cyan,17,2.78653380626165,12.2828924264385,response to fibroblast growth factor,NA,0.0142566018084177
+GO:0007282,lightgreen,12,3.9219558067177,12.2002050120465,cystoblast division,other biological processes,0.0213067821595928
+GO:0048134,lightgreen,12,4.26428895550735,12.2002050120465,germ-line cyst formation,cell cycle and proliferation,0.0352528436741845
+GO:0048135,lightgreen,12,4.01396024982148,12.2002050120465,female germ-line cyst formation,cell cycle and proliferation,0.0213067821595928
+GO:0033292,dodgerblue2,15,1.37219074197496,10.0884605728626,T-tubule organization,cell organization and biogenesis,0.042149492720218
+GO:0035767,dodgerblue2,15,0.854184489471395,10.0884605728626,endothelial cell chemotaxis,NA,0.0213067821595928
+GO:0071306,dodgerblue2,15,4.61594059489616,10.0884605728626,cellular response to vitamin E,NA,0.0142566018084177
+GO:0086066,dodgerblue2,15,1.62307237326004,10.0884605728626,atrial cardiac muscle cell to AV node cell communication,NA,0.0283054009772392
+GO:0086070,dodgerblue2,15,1.62307237326004,10.0884605728626,SA node cell to atrial cardiac muscle cell communication,NA,0.0283054009772392
+GO:0034316,purple,14,6.25638794315533,6.25638794315533,negative regulation of Arp2/3 complex-mediated actin nucleation,cell organization and biogenesis,0.0352528436741845
+GO:0001503,green4,3,0.854184489471395,0.854184489471395,ossification,developmental processes,0.0489957276650377

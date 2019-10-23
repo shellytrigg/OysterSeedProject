@@ -1,0 +1,144 @@
+<graph label="Cytoscape Web" directed="0" Graphic="1" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:cy="http://www.cytoscape.org" xmlns="http://www.cs.rpi.edu/XGMML">
+<att name="documentVersion" value="0.1"/>
+<node id="GO:71049" label="nuclear retention of pre-mRNA with aberrant 3'-ends at the site of transcription">
+	<att type="string" name="description" value="nuclear retention of pre-mRNA with aberrant 3'-ends at the site of transcription"/>
+	<att type="real" name="value" value="-3.008"/>
+	<att type="real" name="log_size" value="2.671"/>
+	<att type="real" name="uniqueness" value="0.567"/>
+	<att type="real" name="dispensability" value="0.353"/>
+	<graphics type="ELLIPSE" x="-94.820" y="-82.456" fill="#ff5d5d"/>
+</node>
+<node id="GO:50793" label="regulation of developmental process">
+	<att type="string" name="description" value="regulation of developmental process"/>
+	<att type="real" name="value" value="-2.640"/>
+	<att type="real" name="log_size" value="5.189"/>
+	<att type="real" name="uniqueness" value="0.677"/>
+	<att type="real" name="dispensability" value="0.480"/>
+	<graphics type="ELLIPSE" x="124.272" y="86.910" fill="#ff7171"/>
+</node>
+<node id="GO:71051" label="polyadenylation-dependent snoRNA 3'-end processing">
+	<att type="string" name="description" value="polyadenylation-dependent snoRNA 3'-end processing"/>
+	<att type="real" name="value" value="-2.707"/>
+	<att type="real" name="log_size" value="2.883"/>
+	<att type="real" name="uniqueness" value="0.690"/>
+	<att type="real" name="dispensability" value="0.017"/>
+	<graphics type="ELLIPSE" x="3.384" y="-163.604" fill="#ff6d6d"/>
+</node>
+<node id="GO:3073" label="regulation of systemic arterial blood pressure">
+	<att type="string" name="description" value="regulation of systemic arterial blood pressure"/>
+	<att type="real" name="value" value="-2.486"/>
+	<att type="real" name="log_size" value="3.328"/>
+	<att type="real" name="uniqueness" value="0.780"/>
+	<att type="real" name="dispensability" value="0.390"/>
+	<graphics type="ELLIPSE" x="128.202" y="-58.081" fill="#ff7979"/>
+</node>
+<node id="GO:31581" label="hemidesmosome assembly">
+	<att type="string" name="description" value="hemidesmosome assembly"/>
+	<att type="real" name="value" value="-2.640"/>
+	<att type="real" name="log_size" value="2.412"/>
+	<att type="real" name="uniqueness" value="0.740"/>
+	<att type="real" name="dispensability" value="0.361"/>
+	<graphics type="ELLIPSE" x="-93.163" y="130.309" fill="#ff7171"/>
+</node>
+<node id="GO:30198" label="extracellular matrix organization">
+	<att type="string" name="description" value="extracellular matrix organization"/>
+	<att type="real" name="value" value="-3.664"/>
+	<att type="real" name="log_size" value="3.886"/>
+	<att type="real" name="uniqueness" value="0.693"/>
+	<att type="real" name="dispensability" value="0.294"/>
+	<graphics type="ELLIPSE" x="-58.939" y="145.347" fill="#ff3939"/>
+</node>
+<node id="GO:45039" label="protein import into mitochondrial inner membrane">
+	<att type="string" name="description" value="protein import into mitochondrial inner membrane"/>
+	<att type="real" name="value" value="-3.008"/>
+	<att type="real" name="log_size" value="3.191"/>
+	<att type="real" name="uniqueness" value="0.654"/>
+	<att type="real" name="dispensability" value="0.480"/>
+	<graphics type="ELLIPSE" x="-103.055" y="33.016" fill="#ff5d5d"/>
+</node>
+<node id="GO:1902017" label="regulation of cilium assembly">
+	<att type="string" name="description" value="regulation of cilium assembly"/>
+	<att type="real" name="value" value="-4.717"/>
+	<att type="real" name="log_size" value="3.133"/>
+	<att type="real" name="uniqueness" value="0.625"/>
+	<att type="real" name="dispensability" value="0.000"/>
+	<graphics type="ELLIPSE" x="-6.407" y="104.392" fill="#ff0000"/>
+</node>
+<node id="GO:43280" label="positive regulation of cysteine-type endopeptidase activity involved in apoptotic process">
+	<att type="string" name="description" value="positive regulation of cysteine-type endopeptidase activity involved in apoptotic process"/>
+	<att type="real" name="value" value="-2.640"/>
+	<att type="real" name="log_size" value="3.463"/>
+	<att type="real" name="uniqueness" value="0.587"/>
+	<att type="real" name="dispensability" value="0.496"/>
+	<graphics type="ELLIPSE" x="122.013" y="40.617" fill="#ff7171"/>
+</node>
+<node id="GO:50679" label="positive regulation of epithelial cell proliferation">
+	<att type="string" name="description" value="positive regulation of epithelial cell proliferation"/>
+	<att type="real" name="value" value="-2.407"/>
+	<att type="real" name="log_size" value="3.559"/>
+	<att type="real" name="uniqueness" value="0.759"/>
+	<att type="real" name="dispensability" value="0.448"/>
+	<graphics type="ELLIPSE" x="149.923" y="35.448" fill="#ff7d7d"/>
+</node>
+<node id="GO:45830" label="positive regulation of isotype switching">
+	<att type="string" name="description" value="positive regulation of isotype switching"/>
+	<att type="real" name="value" value="-3.008"/>
+	<att type="real" name="log_size" value="2.749"/>
+	<att type="real" name="uniqueness" value="0.551"/>
+	<att type="real" name="dispensability" value="0.141"/>
+	<graphics type="ELLIPSE" x="121.138" y="0.642" fill="#ff5d5d"/>
+</node>
+<node id="GO:99641" label="anterograde axonal protein transport">
+	<att type="string" name="description" value="anterograde axonal protein transport"/>
+	<att type="real" name="value" value="-3.184"/>
+	<att type="real" name="log_size" value="1.477"/>
+	<att type="real" name="uniqueness" value="0.721"/>
+	<att type="real" name="dispensability" value="0.085"/>
+	<graphics type="ELLIPSE" x="-132.681" y="-51.538" fill="#ff5353"/>
+</node>
+<edge id="e0" target="GO:71049" source="GO:45039" directed="false" label="e104">
+	<att type="real" name="weight" value="0.426"/>
+<graphics width="6.957" fill="#edecec"/></edge>
+<edge id="e1" target="GO:71049" source="GO:99641" directed="false" label="e104">
+	<att type="real" name="weight" value="0.353"/>
+<graphics width="5.943" fill="#edecec"/></edge>
+<edge id="e2" target="GO:50793" source="GO:50679" directed="false" label="e104">
+	<att type="real" name="weight" value="0.210"/>
+<graphics width="3.941" fill="#edecec"/></edge>
+<edge id="e3" target="GO:50793" source="GO:45830" directed="false" label="e104">
+	<att type="real" name="weight" value="0.480"/>
+<graphics width="7.718" fill="#edecec"/></edge>
+<edge id="e4" target="GO:3073" source="GO:45830" directed="false" label="e104">
+	<att type="real" name="weight" value="0.390"/>
+<graphics width="6.453" fill="#edecec"/></edge>
+<edge id="e5" target="GO:31581" source="GO:30198" directed="false" label="e104">
+	<att type="real" name="weight" value="0.267"/>
+<graphics width="4.738" fill="#edecec"/></edge>
+<edge id="e6" target="GO:31581" source="GO:45039" directed="false" label="e104">
+	<att type="real" name="weight" value="0.246"/>
+<graphics width="4.436" fill="#edecec"/></edge>
+<edge id="e7" target="GO:31581" source="GO:1902017" directed="false" label="e104">
+	<att type="real" name="weight" value="0.361"/>
+<graphics width="6.050" fill="#edecec"/></edge>
+<edge id="e8" target="GO:30198" source="GO:45039" directed="false" label="e104">
+	<att type="real" name="weight" value="0.296"/>
+<graphics width="5.146" fill="#edecec"/></edge>
+<edge id="e9" target="GO:30198" source="GO:1902017" directed="false" label="e104">
+	<att type="real" name="weight" value="0.294"/>
+<graphics width="5.113" fill="#edecec"/></edge>
+<edge id="e10" target="GO:45039" source="GO:1902017" directed="false" label="e104">
+	<att type="real" name="weight" value="0.463"/>
+<graphics width="7.483" fill="#edecec"/></edge>
+<edge id="e11" target="GO:45039" source="GO:99641" directed="false" label="e104">
+	<att type="real" name="weight" value="0.480"/>
+<graphics width="7.710" fill="#edecec"/></edge>
+<edge id="e12" target="GO:43280" source="GO:50679" directed="false" label="e104">
+	<att type="real" name="weight" value="0.492"/>
+<graphics width="7.890" fill="#edecec"/></edge>
+<edge id="e13" target="GO:43280" source="GO:45830" directed="false" label="e104">
+	<att type="real" name="weight" value="0.496"/>
+<graphics width="7.941" fill="#edecec"/></edge>
+<edge id="e14" target="GO:50679" source="GO:45830" directed="false" label="e104">
+	<att type="real" name="weight" value="0.448"/>
+<graphics width="7.268" fill="#edecec"/></edge>
+</graph>

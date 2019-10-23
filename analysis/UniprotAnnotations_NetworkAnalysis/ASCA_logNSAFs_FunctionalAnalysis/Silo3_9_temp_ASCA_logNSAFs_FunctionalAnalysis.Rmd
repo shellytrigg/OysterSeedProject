@@ -10,12 +10,11 @@ output: html_document
 #load libraries
 library(plyr)
 library(tidyr)
-#install.packages("ontologyIndex")
-#install.packages("ontologySimilarity")
-library(ontologyIndex)
-library(ontologySimilarity)
 library(GSEABase)
 library(reshape2)
+library(gplots)
+library(viridis)
+library(topGO)
 ```
 
 **read in and format uniprot data**
@@ -129,6 +128,158 @@ STACKED_silo39_ALL_pro_GOid_term <- STACKED_silo39_ALL_pro_GOid_term[which(!is.n
 
 ```
 
+
+### TopGO 
+```{r}
+
+###this chunk generates p-values for weight01 fisher test like Liew paper (https://advances.sciencemag.org/content/4/6/eaar8028/tab-figures-data#ref-43)
+library(topGO)
+
+
+#background list silo39_ALL_pro_GO
+#sig pro list silo39_sig_pro_GO
+
+topgo_bkgd <- silo39_ALL_pro_GO
+topgo_bkgd$GO_IDs <- gsub(";",",",topgo_bkgd$GO_IDs)
+
+
+#to switch between time and temp run line 66 in time and temp functional analysis scripts
+topgo_sig <- silo39_sig_pro_GO
+topgo_sig$GO_IDs <- gsub(";",",",topgo_sig$GO_IDs)
+
+topgo_sig_1 <- topgo_sig[which(topgo_sig$ClusterID == 1),c("protein_ID", "GO_IDs")]
+
+topgo_sig_2 <- topgo_sig[which(topgo_sig$ClusterID == 2),c("protein_ID", "GO_IDs")]
+
+
+geneUniverse <- names(geneID2GO_bkgd) 
+
+genesOfInterest_1 <- topgo_sig_1
+genesOfInterest_1 <- as.character(genesOfInterest_1$protein_ID)
+
+geneList_1 <- factor(as.integer(geneUniverse %in% genesOfInterest_1))
+names(geneList_1) <- geneUniverse
+
+myGOdata_1 <- new("topGOdata", description="time_clade1", ontology="BP", allGenes=geneList_1  ,annot = annFUN.gene2GO, gene2GO = geneID2GO_bkgd)
+
+resultFisher_1 <- runTest(myGOdata_1, algorithm="weight01", statistic="fisher") 
+
+allRes_1 <- GenTable(myGOdata_1, weight = resultFisher_1,orderBy = "weight", ranksOf = "classic", topNodes = 50)
+
+#clade 2
+
+genesOfInterest_2 <- topgo_sig_2
+genesOfInterest_2 <- as.character(genesOfInterest_2$protein_ID)
+
+geneList_2 <- factor(as.integer(geneUniverse %in% genesOfInterest_2))
+names(geneList_2) <- geneUniverse
+
+myGOdata_2 <- new("topGOdata", description="time_clade2", ontology="BP", allGenes=geneList_2,  annot = annFUN.gene2GO, gene2GO = geneID2GO_bkgd)
+
+resultFisher_2 <- runTest(myGOdata_2, algorithm="weight01", statistic="fisher") 
+
+allRes_2 <- GenTable(myGOdata_2, weight = resultFisher_2,orderBy = "weight", ranksOf = "classic", topNodes = 50)
+
+sub_allRes1 <- allRes_1[which(allRes_1$Annotated >=5 & allRes_1$weight <= 0.05),]
+sub_allRes2 <- allRes_2[which(allRes_2$Annotated >=5 & allRes_2$weight <= 0.05),]
+
+#bind all result subsets into one data frame
+sub_allRes <- rbind(sub_allRes1, sub_allRes2)
+
+sub_allRes <- sub_allRes[,1:2]
+sub_allRes <- unique(sub_allRes)
+
+sub_allRes <- merge(sub_allRes, sub_allRes1[,c(1,6)], by = "GO.ID", all = TRUE)
+colnames(sub_allRes)[3] <- "clade1"
+
+sub_allRes <- merge(sub_allRes, sub_allRes2[,c(1,6)], by = "GO.ID", all = TRUE)
+colnames(sub_allRes)[4] <- "clade2"
+
+write.csv(sub_allRes, "Temp_Clades_SigGO.csv", quote = FALSE, row.names = FALSE)
+
+```
+
+#get GO slims for clade terms
+```{r}
+library(GSEABase)
+#make list of unique GO terms without a protein ID column
+GO_clade1 <- sub_allRes[which(!is.na(sub_allRes$clade1)),"GO.ID"]
+GO_clade2 <- sub_allRes[which(!is.na(sub_allRes$clade2)),"GO.ID"]
+
+
+#Use GSEA to generate list of GO Slim BP terms for each clade
+#DF will have "term", "GOid", "GOcategory"
+
+#goslims with GSEA
+collection_clade1 <- GOCollection(GO_clade1)
+collection_clade2 <- GOCollection(GO_clade2)
+
+#I downloaded goslim_generic.obo from http://geneontology.org/docs/go-subset-guide/
+#then i moved it to the R library for GSEABase in the extdata folder
+fl <- system.file("extdata", "goslim_generic.obo", package="GSEABase")
+slim <- getOBOCollection(fl)
+slims_clade1 <- data.frame(goSlim(collection_clade1, slim, "BP"))
+slims_clade2 <- data.frame(goSlim(collection_clade2, slim, "BP"))
+
+
+#bind all clade slim terms together
+slims <- rbind(slims_clade1, slims_clade2)
+
+slims <- data.frame(unique(slims$Term))
+colnames(slims)[1] <- "Term"
+
+slims <- merge(slims, slims_clade1[,c("Term", "Count")], by = "Term", all = TRUE)
+colnames(slims)[2] <- "clade1"
+
+slims <- merge(slims, slims_clade2[,c("Term", "Count")], by = "Term", all = TRUE)
+colnames(slims)[3] <- "clade2"
+
+#remove rows without any counts, and biological_process row
+
+slims <- slims[which(apply(slims[,-1],1,sum)!= 0 & slims$Term != "biological_process"),]
+
+write.csv(slims, "Temp_Clades_SigGOSlim.csv",quote = F, row.names = F)
+
+slims_m <- slims[,-1]
+rownames(slims_m) <- slims$Term
+slims_m <- data.matrix(slims_m)
+colnames(slims_m) <- gsub("clade","",colnames(slims_m))
+
+#replace truncated terms with full terms
+rownames(slims_m) <- gsub("nucleobase-containing compound cata...","nucleobase-containing compound catabolic process", rownames(slims_m))
+
+rownames(slims_m) <- gsub("generation of precursor metabolites...","generation of precursor metabolites and energy", rownames(slims_m))
+
+rownames(slims_m) <- gsub("cytoskeleton-dependent intracellula...","cytoskeleton-dependent intracellular transport", rownames(slims_m))
+
+rownames(slims_m) <- gsub("cellular protein modification proce...","cellular protein modification process", rownames(slims_m))
+
+rownames(slims_m) <- gsub("cellular nitrogen compound metaboli...","cellular nitrogen compound metabolic process", rownames(slims_m))
+
+rownames(slims_m) <- gsub("cellular nitrogen compound metaboli...","cellular nitrogen compound metabolic p", rownames(slims_m))
+
+rownames(slims_m) <- gsub("cellular amino acid metabolic proce...","cellular amino acid metabolic process", rownames(slims_m))
+
+rownames(slims_m) <- gsub("anatomical structure formation invo...","anatomical structure formation involved in morphogenesis", rownames(slims_m))
+
+
+
+
+#library(viridis)
+#col = rev(viridis(11))
+col = c("#FFFFFFFF","#C2DF23FF","#85D54AFF","#51C56AFF","#2BB07FFF","#1E9B8AFF","#25858EFF","#2D708EFF","#38598CFF","#433E85FF","#482173FF","#440154FF")
+breaks <- c(-1,0,1,2,3,4,5,6,7,8,9,10,11)
+
+ColSideColors<- c("#000000","#80FFFF")
+pdf(file="GOSlimheatmapTemp.pdf", width=8, height=8)
+heatmap.2(slims_m,margins = c(5,35),cexCol = 1, Colv=NA,revC = TRUE,breaks= breaks,col = col,density.info = "none", trace = "none", scale = "none",ColSideColors = ColSideColors)
+dev.off()
+
+```
+
+
+
+
 COMMENT OUT TIME OR TEMP IN THIS CHUNK BEFORE RUNNING CODE
 **Extract GO IDs for different clades**
 NEED TO CHANGE FILE NAMES FOR SAVING DATA
@@ -163,7 +314,6 @@ write.csv(silo39_clade4_GO, "~/Documents/GitHub/OysterSeedProject/analysis/Unipr
 silo39_clade5_GO <- STACKED_silo39_sig_pro_GOid_term[which(STACKED_silo39_sig_pro_GOid_term$protein_ID %in% silo39_time_ASCA[which(silo39_time_ASCA$ClusterID == 5),"protein_ID"]),]
 
 write.csv(silo39_clade5_GO, "~/Documents/GitHub/OysterSeedProject/analysis/UniprotAnnotations_NetworkAnalysis/ASCA_logNSAFs_FunctionalAnalysis/silo39_time_clade5_GO.csv", quote = FALSE, row.names = FALSE)
-
 ```
 
 **TOP GO fisher test style enrichment**
