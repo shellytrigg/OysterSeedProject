@@ -141,7 +141,8 @@ library(topGO)
 
 topgo_bkgd <- silo39_ALL_pro_GO
 topgo_bkgd$GO_IDs <- gsub(";",",",topgo_bkgd$GO_IDs)
-
+write.table(topgo_bkgd, "TopGO_bkgd.txt", sep = "\t",quote = FALSE, row.names = FALSE, col.names = FALSE)
+geneID2GO_bkgd <- readMappings(file = "TopGO_bkgd.txt")
 
 #to switch between time and temp run line 66 in time and temp functional analysis scripts
 topgo_sig <- silo39_sig_pro_GO
@@ -152,7 +153,7 @@ topgo_sig_1 <- topgo_sig[which(topgo_sig$ClusterID == 1),c("protein_ID", "GO_IDs
 topgo_sig_2 <- topgo_sig[which(topgo_sig$ClusterID == 2),c("protein_ID", "GO_IDs")]
 
 
-geneUniverse <- names(geneID2GO_bkgd) 
+geneUniverse <- names(geneID2GO_bkgd)
 
 genesOfInterest_1 <- topgo_sig_1
 genesOfInterest_1 <- as.character(genesOfInterest_1$protein_ID)
